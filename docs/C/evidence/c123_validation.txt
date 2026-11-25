@@ -1,0 +1,118 @@
+=== CoreOrder Member C (C1-C3) Real Build & Verification Log ===
+Branch & HEAD:
+## c/01-03-runtime...origin/codex/g0-candidate
+?? docs/roles/C/
+?? native/
+?? tests/runtime/
+Base commit: f867a4fb07c928f459fa8b6d3e84a95ee88b1742
+
+=== Submodule Pinned SHAs ===
+vendor/pams:     6cd53810103780770c5b5d6ee0069ccab9f4b358
+vendor/taskflow: 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+vendor/pybind11: a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+
+=== Toolchain & Host ===
+g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 14.2.0
+cmake version 3.31.5
+ctest version 3.31.5
+OS=Windows-11-10.0.26200-SP0 Machine=AMD64 LogicalCPUs=32
+
+=== Configure & Build (Release, Ninja) ===
+cmake_configure_exit=0
+-- Configuring done (0.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+cmake_build_exit=0
+[1/12] Building CXX object CMakeFiles/runtime_contract_smoke.dir/contract_smoke_runner.cpp.obj
+[2/12] Building CXX object CMakeFiles/c2_executor_test.dir/c2_executor_test.cpp.obj
+[3/12] Building CXX object CMakeFiles/c3_determinism_test.dir/c3_determinism_test.cpp.obj
+[4/12] Building CXX object CMakeFiles/c1_taskflow_smoke.dir/c1_taskflow_smoke.cpp.obj
+[5/12] Linking CXX executable runtime_contract_smoke.exe
+[6/12] Building CXX object CMakeFiles/runtime_microbench.dir/runtime_microbench.cpp.obj
+[7/12] Building CXX object runtime_lib/CMakeFiles/coreorder_runtime.dir/executor.cpp.obj
+[8/12] Linking CXX static library runtime_lib\libcoreorder_runtime.a
+[9/12] Linking CXX executable c1_taskflow_smoke.exe
+[10/12] Linking CXX executable c3_determinism_test.exe
+[11/12] Linking CXX executable c2_executor_test.exe
+[12/12] Linking CXX executable runtime_microbench.exe
+
+=== Verified Compiler Command for native/runtime/executor.cpp ===
+D:\CodeBlocks\MinGW\bin\c++.exe -IC:/Users/pengdeyuan/Desktop/澶у/澶т簩/璁＄粍/project/CoreOrder/include -IC:/Users/pengdeyuan/Desktop/澶у/澶т簩/璁＄粍/project/CoreOrder/native/runtime -isystem C:/Users/pengdeyuan/Desktop/澶у/澶т簩/璁＄粍/project/CoreOrder/vendor/taskflow -O3 -DNDEBUG -std=c++17 -fno-fast-math -ffp-contract=off -Wall -Wextra -Werror -o runtime_lib\CMakeFiles\coreorder_runtime.dir\executor.cpp.obj -c C:\Users\pengdeyuan\Desktop\澶у\澶т簩\璁＄粍\project\CoreOrder\native\runtime\executor.cpp
+
+=== CTest Verbose Output ===
+ctest_exit=0
+Internal ctest changing into directory: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+UpdateCTestConfiguration  from :C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime/DartConfiguration.tcl
+Parse Config file:C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime/DartConfiguration.tcl
+UpdateCTestConfiguration  from :C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime/DartConfiguration.tcl
+Parse Config file:C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime/DartConfiguration.tcl
+Test project C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: runtime_contract_smoke
+
+1: Test command: C:\Users\pengdeyuan\Desktop\大学\大二\计组\project\CoreOrder\build\runtime\runtime_contract_smoke.exe
+1: Working Directory: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+1: Test timeout computed to be: 1500
+1: InputRow 112 bytes align 8, OutputRow 16 bytes align 8
+1/4 Test #1: runtime_contract_smoke ...........   Passed    0.87 sec
+test 2
+    Start 2: c1_taskflow_smoke
+
+2: Test command: C:\Users\pengdeyuan\Desktop\大学\大二\计组\project\CoreOrder\build\runtime\c1_taskflow_smoke.exe "C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/fixtures/pams/fcn/rows.jsonl"
+2: Working Directory: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+2: Test timeout computed to be: 1500
+2: [C1] Taskflow version: 3.11.0 (TF_VERSION=301100)
+2: [C1] Contract version: coreorder-r4-v1
+2: [C1] Loaded 24 real PAMS FCN fixture rows from C:/Users/pengdeyuan/Desktop/��ѧ/���/����/project/CoreOrder/fixtures/pams/fcn/rows.jsonl
+2: [C1] Verified 24/24 real PAMS fixture rows bit-for-bit against hex oracle.
+2: [C1] PASS: Taskflow v3.11.0 API, real FCN fixture (serial/static1/2/4), boundaries, coverage, and error rejection verified.
+2/4 Test #2: c1_taskflow_smoke ................   Passed    0.86 sec
+test 3
+    Start 3: c2_executor_test
+
+3: Test command: C:\Users\pengdeyuan\Desktop\大学\大二\计组\project\CoreOrder\build\runtime\c2_executor_test.exe "C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/fixtures/pams/fcn/rows.jsonl"
+3: Working Directory: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+3: Test timeout computed to be: 1500
+3: [C2] PASS: Persistent NativeExecutor multi-batch reuse (workers=1/2/4/8, grains=1/16/64/128/512, AoS+SoA), boundaries, and view validation verified.
+3/4 Test #3: c2_executor_test .................   Passed    0.94 sec
+test 4
+    Start 4: c3_determinism_test
+
+4: Test command: C:\Users\pengdeyuan\Desktop\大学\大二\计组\project\CoreOrder\build\runtime\c3_determinism_test.exe "C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/fixtures/pams/fcn/rows.jsonl"
+4: Working Directory: C:/Users/pengdeyuan/Desktop/大学/大二/计组/project/CoreOrder/build/runtime
+4: Test timeout computed to be: 1500
+4: [C3] Verified Static & Dynamic partitioners across workers=1/2/4/8, grains=1/7/32/128/512, AoS & SoA bit-for-bit.
+4: [C3] Verified strict join on exception, deterministic earliest-begin exception propagation, and clean post-exception executor state.
+4: [C3] Verified concurrent/recursive re-entry rejection without deadlock.
+4: [C3] Verified Member B ExecutorFactory adapter contract.
+4: [C3] Nested BLAS/OpenMP thread audit (oversubscription_risk=true):
+4:      OMP_NUM_THREADS=<unset> (single_thread=false)
+4:      OPENBLAS_NUM_THREADS=<unset> (single_thread=false)
+4:      MKL_NUM_THREADS=<unset> (single_thread=false)
+4:      BLIS_NUM_THREADS=<unset> (single_thread=false)
+4:      VECLIB_MAXIMUM_THREADS=<unset> (single_thread=false)
+4:      NUMEXPR_NUM_THREADS=<unset> (single_thread=false)
+4: [C3] PASS: All determinism, exception-join, re-entrancy, adapter, and nested-thread checks passed.
+4/4 Test #4: c3_determinism_test ..............   Passed    1.20 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   3.90 sec
+
+=== ThreadSanitizer Toolchain Probe ===
+tsan_probe_exit=1 (N/A on MinGW-w64: libtsan unavailable)
+g++ : D:/CodeBlocks/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot fi
+nd -ltsan: No such file or directory
+At line:1 char:2180
++ ... ); $tsan = (g++ -std=c++17 -fsanitize=thread tests/platform/contract_ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:/CodeBlocks/M...le or directory:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+collect2.exe: error: ld returned 1 exit status
