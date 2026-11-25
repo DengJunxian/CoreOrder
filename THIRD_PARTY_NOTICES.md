@@ -25,3 +25,10 @@ The development distributions in [requirements.lock](requirements.lock) are inst
 Exact wheel versions and distribution names in the lock identify the releases on
 [PyPI](https://pypi.org/). Consult the original license files before redistributing
 any third-party package or binary.
+
+The P02 serial and reference entry points invoke PAMS directly. The observer
+reads its logger records and state without copying financial implementations.
+The smoke workload derives from the EPL-1.0 PAMS
+[samples/CI2002/config.json](https://github.com/masanorihirano/pams/blob/6cd53810103780770c5b5d6ee0069ccab9f4b358/samples/CI2002/config.json).
+It changes the agent count and session lengths and sets the print flag and the
+inherited order quota explicitly.

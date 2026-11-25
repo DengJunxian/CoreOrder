@@ -85,5 +85,4 @@ __pycache__/
 .DS_Store
 
 # Generated run data
-/results/raw/
-/results/acceptance/
+/results/
