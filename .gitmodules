@@ -1,0 +1,9 @@
+[submodule "vendor/pams"]
+	path = vendor/pams
+	url = https://github.com/masanorihirano/pams.git
+[submodule "vendor/taskflow"]
+	path = vendor/taskflow
+	url = https://github.com/taskflow/taskflow.git
+[submodule "vendor/pybind11"]
+	path = vendor/pybind11
+	url = https://github.com/pybind/pybind11.git

@@ -1,0 +1,387 @@
+CoreOrder R4 P01 validation
+Date: 2026-11-25 (Asia/Shanghai)
+Base: e2492a4b8317c6674918b13470b577f4d6f8675d
+Branch: a/01-foundation
+The checks below ran on the P01 working tree before commit. Local paths are abbreviated and trailing whitespace is normalized in this receipt.
+
+Git transport and fixed sources
+
+$ git fetch origin
+fatal: unable to access 'https://github.com/DengJunxian/CoreOrder.git/': Recv failure: Operation timed out
+exit=128
+
+$ GIT_TRACE=1 git -c http.version=HTTP/1.1 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=18 fetch origin main
+fatal: unable to access 'https://github.com/DengJunxian/CoreOrder.git/': Operation too slow. Less than 1 bytes/sec transferred the last 18 seconds
+exit=128
+
+$ GIT_TRACE_PACKET=1 git -c protocol.version=1 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=20 fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
+fatal: unable to access 'https://github.com/DengJunxian/CoreOrder.git/': Failed to connect to github.com port 443 after 75003 ms: Couldn't connect to server
+exit=128
+
+$ git -c http.proxy=<configured macOS HTTP proxy> -c http.lowSpeedLimit=1 -c http.lowSpeedTime=15 fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
+From https://github.com/DengJunxian/CoreOrder
+ * [new branch]      main       -> origin/main
+exit=0
+
+$ git switch --track -c main origin/main
+Already on 'main'
+branch 'main' set up to track 'origin/main'.
+exit=0
+
+$ git switch -c a/01-foundation
+Switched to a new branch 'a/01-foundation'
+exit=0
+
+Submodule Git network commands used the same proxy through a command-line Git option.
+The initial shallow snapshots for Taskflow and pybind11 required a fetch of the exact SHA.
+
+
+Submodule vendor/pams at 6cd53810103780770c5b5d6ee0069ccab9f4b358
+git submodule add --depth 1 https://github.com/masanorihirano/pams.git vendor/pams
+Cloning into '<checkout>/vendor/pams'...
+git -C vendor/pams checkout --detach 6cd53810103780770c5b5d6ee0069ccab9f4b358
+HEAD is now at 6cd5381 Merge pull request #148 from masanorihirano/feat/sample-dark-pool
+
+Submodule vendor/taskflow at 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+git submodule add --depth 1 https://github.com/taskflow/taskflow.git vendor/taskflow
+Cloning into '<checkout>/vendor/taskflow'...
+fatal: Not a valid object name 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42^{commit}
+git -C vendor/taskflow fetch --depth 1 origin 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+From https://github.com/taskflow/taskflow
+ * branch            816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 -> FETCH_HEAD
+git -C vendor/taskflow checkout --detach 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+HEAD is now at 816b4ad updated compiler version information to support C++20 in v4
+
+Submodule vendor/pybind11 at a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+git submodule add --depth 1 https://github.com/pybind/pybind11.git vendor/pybind11
+Cloning into '<checkout>/vendor/pybind11'...
+fatal: Not a valid object name a2e59f0e7065404b44dfe92a28aca47ba1378dc4^{commit}
+git -C vendor/pybind11 fetch --depth 1 origin a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+From https://github.com/pybind/pybind11
+ * branch            a2e59f0e7065404b44dfe92a28aca47ba1378dc4 -> FETCH_HEAD
+git -C vendor/pybind11 checkout --detach a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+HEAD is now at a2e59f0 chore: bump to 2.13.6
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+160000 6cd53810103780770c5b5d6ee0069ccab9f4b358 0	vendor/pams
+160000 a2e59f0e7065404b44dfe92a28aca47ba1378dc4 0	vendor/pybind11
+160000 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 0	vendor/taskflow
+exit=0
+
+The copy and comparison of all three licenses against the P00 material returned exit=0.
+$ git submodule status --recursive
+$ git submodule foreach --quiet 'printf "%s: " "$displaypath"; git rev-parse HEAD; git status --porcelain=v1 --untracked-files=all --ignored=matching'
+$ shasum -a 256 LICENSE licenses/*.txt requirements.lock UPSTREAM.lock.json
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+vendor/pams: 6cd53810103780770c5b5d6ee0069ccab9f4b358
+vendor/pybind11: a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+vendor/taskflow: 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a  LICENSE
+ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a  licenses/PAMS-EPL-1.0.txt
+f5c1283bb02d9064ee9d8be64d3bf2dfd3c3ce4c781032885c61af7b5dc7d0d9  licenses/Taskflow-MIT.txt
+83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb  licenses/pybind11-BSD-3-Clause.txt
+3550414575f03e6dbdd57c6d698ea13976fe0926210de5c25f10b4a3fe183a19  requirements.lock
+0942b21338e9a190e0057ad37d18f62799796b9a054f19d08f6a06b3e9d7a137  UPSTREAM.lock.json
+exit=0
+
+Environment, installation, and build
++ git status --short --branch
+## a/01-foundation
+ M .gitignore
+A  .gitmodules
+ M README.md
+A  vendor/pams
+A  vendor/pybind11
+A  vendor/taskflow
+?? .gitattributes
+?? CMakeLists.txt
+?? LICENSE
+?? THIRD_PARTY_NOTICES.md
+?? UPSTREAM.lock.json
+?? licenses/
+?? pyproject.toml
+?? requirements.lock
+?? src/
+?? tests/
+exit=0
+
++ git rev-parse HEAD
+e2492a4b8317c6674918b13470b577f4d6f8675d
+exit=0
+
++ git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+exit=0
+
++ sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
+exit=0
+
++ uname -srm
+Darwin 27.0.0 arm64
+exit=0
+
++ sysctl hw.model hw.memsize hw.physicalcpu hw.logicalcpu machdep.cpu.brand_string
+hw.model: Mac17,3
+hw.memsize: 25769803776
+hw.physicalcpu: 10
+hw.logicalcpu: 10
+machdep.cpu.brand_string: Apple M5
+exit=0
+
++ git --version
+git version 2.50.1 (Apple Git-155)
+exit=0
+
++ c++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+exit=0
+
++ xcrun --show-sdk-version
+26.4.1
+exit=0
+
++ python3.12 -m venv .venv
+exit=0
+
++ .venv/bin/python -m pip install --disable-pip-version-check --progress-bar off --only-binary=:all: -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting cmake==3.31.6 (from -r requirements.lock (line 2))
+  Using cached cmake-3.31.6-py3-none-macosx_10_10_universal2.whl.metadata (6.3 kB)
+Collecting iniconfig==2.0.0 (from -r requirements.lock (line 4))
+  Using cached iniconfig-2.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting numpy==1.26.4 (from -r requirements.lock (line 5))
+  Using cached numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl.metadata (61 kB)
+Collecting packaging==24.2 (from -r requirements.lock (line 6))
+  Using cached packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Requirement already satisfied: pip==26.1.2 in ./.venv/lib/python3.12/site-packages (from -r requirements.lock (line 7)) (26.1.2)
+Collecting pluggy==1.5.0 (from -r requirements.lock (line 8))
+  Using cached pluggy-1.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pytest==7.4.4 (from -r requirements.lock (line 9))
+  Using cached pytest-7.4.4-py3-none-any.whl.metadata (7.9 kB)
+Collecting scipy==1.14.1 (from -r requirements.lock (line 10))
+  Using cached scipy-1.14.1-cp312-cp312-macosx_14_0_arm64.whl.metadata (60 kB)
+Collecting tqdm==4.66.6 (from -r requirements.lock (line 11))
+  Using cached tqdm-4.66.6-py3-none-any.whl.metadata (57 kB)
+Collecting uv-build==0.12.19 (from -r requirements.lock (line 12))
+  Using cached uv_build-0.12.19-py3-none-macosx_11_0_arm64.whl.metadata (1.7 kB)
+Downloading cmake-3.31.6-py3-none-macosx_10_10_universal2.whl (47.2 MB)
+Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Downloading numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl (13.7 MB)
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading pluggy-1.5.0-py3-none-any.whl (20 kB)
+Downloading pytest-7.4.4-py3-none-any.whl (325 kB)
+Downloading scipy-1.14.1-cp312-cp312-macosx_14_0_arm64.whl (23.1 MB)
+Downloading tqdm-4.66.6-py3-none-any.whl (78 kB)
+Downloading uv_build-0.12.19-py3-none-macosx_11_0_arm64.whl (1.3 MB)
+Installing collected packages: uv-build, tqdm, pluggy, packaging, numpy, iniconfig, cmake, scipy, pytest
+Successfully installed cmake-3.31.6 iniconfig-2.0.0 numpy-1.26.4 packaging-24.2 pluggy-1.5.0 pytest-7.4.4 scipy-1.14.1 tqdm-4.66.6 uv-build-0.12.19
+exit=0
+
++ .venv/bin/python -m pip install --disable-pip-version-check --progress-bar off --no-deps --no-build-isolation ./vendor/pams -e .
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'error'
+stderr:
+  error: subprocess-exited-with-error
+
+  × Preparing metadata (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [15 lines of output]
+      Traceback (most recent call last):
+        File "<checkout>/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
+          main()
+        File "<checkout>/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "<checkout>/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 175, in prepare_metadata_for_build_wheel
+          return hook(metadata_directory, config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "<checkout>/.venv/lib/python3.12/site-packages/uv_build/__init__.py", line 113, in prepare_metadata_for_build_wheel
+          return call(args, config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "<checkout>/.venv/lib/python3.12/site-packages/uv_build/__init__.py", line 51, in call
+          raise RuntimeError(f"{uv_bin_name} was not properly installed")
+      RuntimeError: uv-build was not properly installed
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> from file://<checkout>/vendor/pams
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+exit=1
+
+The uv-build shim resolves its installed executable on PATH. Retry with the project's venv bin prepended.
++ PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pip install --disable-pip-version-check --progress-bar off --no-deps --no-build-isolation ./vendor/pams -e .
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://<checkout>
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: <temporary>/pip-ephem-wheel-cache-cwsm714m/wheels/1b/15/f0/9586202fa3d63048719e4fe2f9f564c12a09750df5eb990193
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=2968 sha256=9d1d84d98f66e5ce906a6314edba2168637d8888dc038f49fb8864c460064a27
+  Stored in directory: <temporary>/pip-ephem-wheel-cache-cwsm714m/wheels/52/32/db/4ad74b5d2c5890101a483570890fdfb586c1834dda53c46005
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+exit=0
+
++ .venv/bin/python --version
+Python 3.12.13
+exit=0
+
++ .venv/bin/python -m pip check
+No broken requirements found.
+exit=0
+
++ .venv/bin/python -m pip list --format=freeze
+cmake==3.31.6
+coreorder==0.1.0.dev0
+iniconfig==2.0.0
+numpy==1.26.4
+packaging==24.2
+pams==0.3.0
+pip==26.1.2
+pluggy==1.5.0
+pytest==7.4.4
+scipy==1.14.1
+tqdm==4.66.6
+uv-build==0.12.19
+exit=0
+
++ .venv/bin/python -c 'import coreorder, pams; from importlib.metadata import version; from pams.runners.sequential import SequentialRunner; print(f'"'"'pams {version("pams")} {pams.__file__}'"'"'); print(f'"'"'coreorder {version("coreorder")} {coreorder.__file__}'"'"'); print(SequentialRunner)'
+pams 0.3.0 <checkout>/.venv/lib/python3.12/site-packages/pams/__init__.py
+coreorder 0.1.0.dev0 <checkout>/src/coreorder/__init__.py
+<class 'pams.runners.sequential.SequentialRunner'>
+exit=0
+
++ .venv/bin/python -m pytest -q
+....                                                                     [100%]
+4 passed in 0.25s
+exit=0
+
++ .venv/bin/cmake --version
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+exit=0
+
++ .venv/bin/cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPython_EXECUTABLE=<checkout>/.venv/bin/python
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: <checkout>/.venv/bin/python (found suitable version "3.12.13", required range is "3.12...<3.13") found components: Interpreter Development.Module
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: <checkout>/build
+stderr:
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+exit=0
+
++ .venv/bin/cmake --build build --config Release --parallel 2
+[ 50%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[100%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[100%] Built target _coreorder_toolchain_smoke
+exit=0
+
+Compiler command: /Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_toolchain_smoke_EXPORTS -isystem <checkout>/vendor/taskflow -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem <checkout>/vendor/pybind11/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -c <checkout>/tests/platform/toolchain_smoke.cpp
++ .venv/bin/ctest --test-dir build -C Release --verbose
+Internal ctest changing into directory: <checkout>/build
+UpdateCTestConfiguration  from :<checkout>/build/DartConfiguration.tcl
+Parse Config file:<checkout>/build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :<checkout>/build/DartConfiguration.tcl
+Parse Config file:<checkout>/build/DartConfiguration.tcl
+Test project <checkout>/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: toolchain_smoke
+
+1: Test command: <checkout>/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake "-E" "env" "PYTHONPATH=<checkout>/build" "<checkout>/.venv/bin/python" "-c" "import _coreorder_toolchain_smoke as probe; assert probe.run() == 42"
+1: Working Directory: <checkout>/build
+1: Test timeout computed to be: 1500
+1/1 Test #1: toolchain_smoke ..................   Passed    0.33 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.33 sec
+exit=0
+
++ git submodule foreach --quiet 'printf "%s: " "$displaypath"; git rev-parse HEAD; git status --porcelain=v1 --untracked-files=all --ignored=matching'
+vendor/pams: 6cd53810103780770c5b5d6ee0069ccab9f4b358
+vendor/pybind11: a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+vendor/taskflow: 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+exit=0
+
+Final candidate check after changing CTest to use an explicit exit status
++ .venv/bin/cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPython_EXECUTABLE=<checkout>/.venv/bin/python
++ .venv/bin/cmake --build build --config Release --parallel 2
++ .venv/bin/ctest --test-dir build -C Release --output-on-failure
++ .venv/bin/python -m pytest -q
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: <checkout>/build
+[100%] Built target _coreorder_toolchain_smoke
+Internal ctest changing into directory: <checkout>/build
+Test project <checkout>/build
+    Start 1: toolchain_smoke
+1/1 Test #1: toolchain_smoke ..................   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.02 sec
+....                                                                     [100%]
+4 passed in 0.30s
+All four commands exited 0. The final pytest exit status was directly recorded. The shell used set -e for the preceding checks.
