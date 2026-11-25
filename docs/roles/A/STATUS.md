@@ -33,3 +33,7 @@ P01 基础工程状态为 **PASS**。基线 `e2492a4b8317c6674918b13470b577f4d6f
 输入基线 `5cc8b5ee8889b4c1ac1e363be0b2be30db5b1281`。A 侧 ABI、schema、真实 fixtures、CLI 接口及 CI 对应命令检查通过。G0 候选等待 B/D 的 ABI 联合确认、C 的 range/错误协议确认和 E1 独立验证，状态为 BLOCKED。远端 CI 暂未运行。
 
 [候选检查表](G0_CANDIDATE.md) · [运行证据](evidence/P03.txt)
+
+## P04 组长独立验收
+
+受测候选 `040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb`。干净工作树的上游、安装构建、串行运行、fixture、公共 ABI、CLI/schema 和本机 CI 对应步骤复核通过。**G0 CANDIDATE / BLOCKED**，待 E1 独立差分、B/D 联合 ABI 与 C 接口回执。GitHub Actions 托管运行是 NOT_RUN。 [验收矩阵与开工条件](../../gates/G0.md) · [P04 日志](evidence/P04.txt)
