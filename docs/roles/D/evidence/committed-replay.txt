@@ -1,0 +1,31 @@
+Clean member D implementation checkout before running:
+500a31afa6a05211992ad5834bc3eb75b53db68d
+## d/03-packing
+python -m pytest -p no:cacheprovider -q CoreOrder/tests/layout
+.............                                                            [100%]
+13 passed in 0.71s
+exit_code=0
+python CoreOrder/tests/layout/replay_binding.py C:\Users\LHT\Documents\ChatGPT\coreorder\evidence-inputs\A\fixtures\pams
+python 3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)] numpy 1.26.4 host Windows-11-10.0.26200-SP0
+production binding C:\Users\LHT\Documents\ChatGPT\coreorder\evidence-inputs\B-build\_coreorder_fcn.pyd
+input SHA256 c7bd6c091b008534c8b0978128b41141acd3cfb643de0ee95165c12a0002c6aa rows 24 PAMS 6cd53810103780770c5b5d6ee0069ccab9f4b358 fixture environment {'architecture': 'arm64', 'os': 'macOS-27.0-arm64-arm-64bit', 'packages': {'numpy': '1.26.4', 'scipy': '1.14.1', 'tqdm': '4.66.6'}, 'python': '3.12.13'} seed 42
+aos output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"rows": 2688}, "buffer_capacity_nbytes": {"rows": 2688}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+soa output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "buffer_capacity_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+AoS vs SoA: all output bytes identical
+B vs recorded oracle mismatching row indices []
+exit_code=0
+python CoreOrder/tests/layout/replay_live_event.py C:\Users\LHT\Documents\ChatGPT\coreorder\evidence-inputs\A\fixtures\pams
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Python 3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)] NumPy 1.26.4 binding C:\Users\LHT\Documents\ChatGPT\coreorder\evidence-inputs\B-build\_coreorder_fcn.pyd
+input sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934 pams_sha 6cd53810103780770c5b5d6ee0069ccab9f4b358 seed 42
+# INITIALIZATION TIME 0.0020018
+# EXECUTION TIME 0.0105502
+counts {'calls': 24, 'before': 10, 'gauss': 24, 'orders': 24, 'shock_hooks': 1, 'after': 14}
+before steps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] fundamental prices ['0x1.2c00000000000p+8']
+after steps [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] fundamental prices ['0x1.0e00000000000p+8']
+all live outputs matched PAMS including price bytes and identity; observed agent RNG unchanged
+ordered outputs sha256 7107a3fcb0564c8d2ef3d0f7033a5cf137f9446b447d190a709bd550ddd2709d
+exit_code=0
