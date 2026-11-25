@@ -1,0 +1,17 @@
+PYTHONPATH=CoreOrder/src; .d-venv/Scripts/python -m unittest discover -s CoreOrder/tests/layout -p test_buffers.py -v
+3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)] 1.26.4
+test_aos_shape_offset_stride_endian_and_alignment (test_buffers.BufferTests.test_aos_shape_offset_stride_endian_and_alignment) ... ok
+test_capacity_tail_and_empty (test_buffers.BufferTests.test_capacity_tail_and_empty) ... ok
+test_invalid_scalar_and_index (test_buffers.BufferTests.test_invalid_scalar_and_index) ... ok
+test_lease_blocks_another_thread_until_exit (test_buffers.BufferTests.test_lease_blocks_another_thread_until_exit) ... ok
+test_numpy_abi (test_buffers.BufferTests.test_numpy_abi) ... ok
+test_output_validation (test_buffers.BufferTests.test_output_validation) ... ok
+test_partial_failed_batch_never_read (test_buffers.BufferTests.test_partial_failed_batch_never_read) ... ok
+test_physical_buffers_roundtrip_and_accounting (test_buffers.BufferTests.test_physical_buffers_roundtrip_and_accounting) ... ok
+test_soa_rejects_malformed_columns (test_buffers.BufferTests.test_soa_rejects_malformed_columns) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+OK
+exit_code=0
