@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PAMS workload envelope",
+  "type": "object",
+  "properties": {
+    "simulation": {
+      "type": "object",
+      "properties": {
+        "markets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sessions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sessionName": {
+                "type": [
+                  "string",
+                  "integer"
+                ]
+              },
+              "iterationSteps": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "withOrderPlacement": {
+                "type": "boolean"
+              },
+              "withOrderExecution": {
+                "type": "boolean"
+              },
+              "withPrint": {
+                "type": "boolean"
+              },
+              "maxNormalOrders": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "events": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "sessionName",
+              "iterationSteps",
+              "withOrderPlacement",
+              "withOrderExecution",
+              "withPrint"
+            ]
+          }
+        }
+      },
+      "required": [
+        "markets",
+        "agents",
+        "sessions"
+      ]
+    }
+  },
+  "required": [
+    "simulation"
+  ]
+}

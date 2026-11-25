@@ -1,0 +1,4 @@
+# Keep the upstream license copies byte-identical.
+/LICENSE -text
+/licenses/*.txt -text
+/licenses/Taskflow-MIT.txt whitespace=-blank-at-eol,-blank-at-eof

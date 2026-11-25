@@ -1,0 +1,1729 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "R4-v1 diagnostic run and observation records",
+  "$defs": {
+    "manifest": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_point": {
+          "type": "string",
+          "minLength": 1
+        },
+        "experiment_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workload_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol": {
+          "type": "object"
+        },
+        "protocol_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "repeat": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warmup": {
+          "type": "boolean"
+        },
+        "validation_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_requested": {
+          "enum": [
+            "py-seq",
+            "py-thread",
+            "py-process",
+            "native-serial",
+            "native-parallel"
+          ]
+        },
+        "backend_effective": {
+          "enum": [
+            "py-seq",
+            "py-thread",
+            "py-process",
+            "native-serial",
+            "native-parallel",
+            null
+          ]
+        },
+        "book_restore": {
+          "enum": [
+            "upstream",
+            "incremental"
+          ]
+        },
+        "numeric_mode": {
+          "const": "libm"
+        },
+        "layout": {
+          "enum": [
+            "not_applicable",
+            "aos",
+            "soa"
+          ]
+        },
+        "workers": {
+          "type": "integer"
+        },
+        "grain": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "schedule": {
+          "enum": [
+            "static",
+            "dynamic",
+            null
+          ]
+        },
+        "block_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pairing_group_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "order_seed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "order_position": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "pairing_not_applicable_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "git_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "host_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contract_version": {
+          "const": "coreorder-r4-v1"
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "effective_config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "environment_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "upstream_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "upstream_shas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          }
+        },
+        "N": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "M": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "K": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_normal_orders_by_session": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "measurement_tool": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "run_id",
+        "timestamp",
+        "entry_point",
+        "experiment_id",
+        "workload_id",
+        "protocol_version",
+        "protocol",
+        "protocol_hash",
+        "seed",
+        "repeat",
+        "warmup",
+        "validation_run_id",
+        "backend_requested",
+        "backend_effective",
+        "book_restore",
+        "numeric_mode",
+        "layout",
+        "workers",
+        "grain",
+        "schedule",
+        "block_id",
+        "pairing_group_id",
+        "order_seed",
+        "order_position",
+        "pairing_not_applicable_reason"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "backend_effective": {
+                "enum": [
+                  "py-seq",
+                  "py-thread",
+                  "py-process",
+                  "native-serial",
+                  "native-parallel"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "git_sha",
+              "dirty",
+              "host_id",
+              "contract_version",
+              "input_hash",
+              "effective_config_hash",
+              "environment_hash",
+              "upstream_sha",
+              "upstream_shas"
+            ],
+            "properties": {
+              "seed": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "workers": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "grain": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "block_id": {
+                "const": null
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "pairing_group_id": {
+                "const": null
+              },
+              "order_seed": {
+                "const": null
+              },
+              "order_position": {
+                "const": null
+              },
+              "pairing_not_applicable_reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "block_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "pairing_group_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "order_seed": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "order_position": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "measurement_mode": {
+          "enum": [
+            "diagnostic",
+            "timing"
+          ]
+        },
+        "setup_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "simulation_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "process_wall_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "draw_pack_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "native_compute_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rebuild_orders_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "handle_orders_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "optional_restore_s": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "agent_calls": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "decision_rows": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "native_rows": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "gauss_api_calls": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "orders": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cancels": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "expirations": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "executions": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "market_steps": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rss_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "batch_widths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pmu": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "unmeasured": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "measurement_mode",
+        "setup_s",
+        "simulation_s",
+        "process_wall_s",
+        "draw_pack_s",
+        "native_compute_s",
+        "rebuild_orders_s",
+        "handle_orders_s",
+        "optional_restore_s",
+        "agent_calls",
+        "decision_rows",
+        "native_rows",
+        "gauss_api_calls",
+        "orders",
+        "cancels",
+        "expirations",
+        "executions",
+        "market_steps",
+        "rss_bytes",
+        "batch_widths",
+        "pmu",
+        "unmeasured"
+      ]
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "TIMEOUT",
+            "UNSUPPORTED",
+            "NOT_RUN"
+          ]
+        },
+        "validation_status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "TIMEOUT",
+            "UNSUPPORTED",
+            "NOT_RUN"
+          ]
+        },
+        "reference_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comparison_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trace_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "final_state_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rng_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "censoring": {
+          "enum": [
+            "right",
+            null
+          ]
+        }
+      },
+      "required": [
+        "run_id",
+        "status",
+        "validation_status",
+        "reference_run_id",
+        "comparison_scope"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PASS"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "trace_hash",
+              "final_state_hash",
+              "rng_hash"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "FAIL",
+                  "UNSUPPORTED",
+                  "TIMEOUT"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "TIMEOUT"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "censoring"
+            ],
+            "properties": {
+              "censoring": {
+                "const": "right"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "host_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "os": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kernel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "architecture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cpu": {
+          "type": "object",
+          "properties": {
+            "processor": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "logical_cpus": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "physical_cpus": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "ram_bytes": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          },
+          "required": [
+            "processor",
+            "logical_cpus",
+            "physical_cpus",
+            "ram_bytes"
+          ]
+        },
+        "libc": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ]
+        },
+        "python": {
+          "type": "string",
+          "minLength": 1
+        },
+        "python_executable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "packages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "coreorder_module": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pams_module": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pams_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pams_distribution_matches_import": {
+          "type": "boolean"
+        },
+        "pams_install_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dependency_lock_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "git_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "contract_version": {
+          "const": "coreorder-r4-v1"
+        },
+        "upstream": {
+          "type": "object",
+          "required": [
+            "PAMS",
+            "Taskflow",
+            "pybind11"
+          ],
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "sha": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "required_sha": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "required_version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dirty": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "sha",
+              "required_sha",
+              "required_version",
+              "dirty"
+            ]
+          }
+        },
+        "compiler": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "native_module": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "run_native_flags": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "external_threads": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "host_id",
+        "os",
+        "kernel",
+        "architecture",
+        "cpu",
+        "libc",
+        "python",
+        "python_executable",
+        "packages",
+        "coreorder_module",
+        "pams_module",
+        "pams_version",
+        "pams_distribution_matches_import",
+        "pams_install_source",
+        "dependency_lock_hash",
+        "git_version",
+        "git_sha",
+        "dirty",
+        "contract_version",
+        "upstream",
+        "compiler",
+        "native_module",
+        "run_native_flags",
+        "external_threads"
+      ]
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "session_id": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_kind": {
+          "enum": [
+            "order",
+            "cancel",
+            "expiration",
+            "execution"
+          ]
+        },
+        "market_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "volume": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "order_id": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "side": {
+          "enum": [
+            "buy",
+            "sell"
+          ]
+        },
+        "ttl": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "buy_agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sell_agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "buy_order_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sell_order_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "buy_transaction_fee_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "sell_transaction_fee_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "order_time": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "run_id",
+        "event_seq",
+        "session_id",
+        "step",
+        "event_kind",
+        "market_id",
+        "price_hex",
+        "volume"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "event_kind": {
+                "const": "execution"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "buy_agent_id",
+              "sell_agent_id",
+              "buy_order_id",
+              "sell_order_id",
+              "buy_transaction_fee_hex",
+              "sell_transaction_fee_hex"
+            ],
+            "properties": {
+              "price_hex": {
+                "type": "string",
+                "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "order_id",
+              "agent_id",
+              "order_kind",
+              "side",
+              "ttl"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_kind": {
+                "enum": [
+                  "cancel",
+                  "expiration"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "order_time"
+            ]
+          }
+        }
+      ]
+    },
+    "market_frame": {
+      "type": "object",
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "running": {
+          "type": "boolean"
+        },
+        "market_price_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "fundamental_price_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "last_executed_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_buy_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_sell_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "executed_volume": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_id": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "market_id",
+        "name",
+        "step",
+        "running",
+        "market_price_hex",
+        "fundamental_price_hex",
+        "last_executed_price_hex",
+        "best_buy_price_hex",
+        "best_sell_price_hex",
+        "executed_volume",
+        "run_id",
+        "session_id"
+      ]
+    },
+    "book_order": {
+      "type": "object",
+      "properties": {
+        "agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "placed_at": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ttl": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "volume": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "agent_id",
+        "order_id",
+        "order_kind",
+        "price_hex",
+        "placed_at",
+        "ttl",
+        "volume"
+      ]
+    },
+    "account": {
+      "type": "object",
+      "properties": {
+        "agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cash_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "holdings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "fcn": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "agent_id",
+        "cash_hex",
+        "holdings"
+      ]
+    },
+    "market_snapshot": {
+      "type": "object",
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "running": {
+          "type": "boolean"
+        },
+        "market_price_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "fundamental_price_hex": {
+          "type": "string",
+          "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+        },
+        "last_executed_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_buy_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best_sell_price_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "executed_volume": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "buy_book": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/book_order"
+          }
+        },
+        "sell_book": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/book_order"
+          }
+        }
+      },
+      "required": [
+        "market_id",
+        "name",
+        "step",
+        "running",
+        "market_price_hex",
+        "fundamental_price_hex",
+        "last_executed_price_hex",
+        "best_buy_price_hex",
+        "best_sell_price_hex",
+        "executed_volume",
+        "buy_book",
+        "sell_book"
+      ]
+    },
+    "market_history": {
+      "type": "object",
+      "properties": {
+        "market_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "market_prices_hex": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+          }
+        },
+        "fundamental_prices_hex": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+          }
+        },
+        "last_executed_prices_hex": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "mid_prices_hex": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "executed_volumes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "required": [
+        "market_id",
+        "market_prices_hex",
+        "fundamental_prices_hex",
+        "last_executed_prices_hex",
+        "mid_prices_hex",
+        "executed_volumes"
+      ]
+    },
+    "step_state": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/account"
+          }
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/market_snapshot"
+          }
+        },
+        "rng_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "run_id",
+        "session_id",
+        "step",
+        "accounts",
+        "markets",
+        "rng_hash"
+      ]
+    },
+    "final_state": {
+      "type": "object",
+      "properties": {
+        "initial_accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/account"
+          }
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/account"
+          }
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/market_snapshot"
+          }
+        },
+        "market_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/market_history"
+          }
+        }
+      },
+      "required": [
+        "initial_accounts",
+        "accounts",
+        "markets",
+        "market_history"
+      ]
+    },
+    "python_rng": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": 3
+        },
+        "state": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 625,
+          "maxItems": 625
+        },
+        "gauss_next_hex": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "state",
+        "gauss_next_hex"
+      ]
+    },
+    "final_rng": {
+      "type": "object",
+      "properties": {
+        "runner": {
+          "$ref": "#/$defs/python_rng"
+        },
+        "simulator": {
+          "$ref": "#/$defs/python_rng"
+        },
+        "fundamentals_python": {
+          "$ref": "#/$defs/python_rng"
+        },
+        "fundamentals_numpy": {
+          "type": "object",
+          "required": [
+            "bit_generator",
+            "state"
+          ]
+        },
+        "markets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/python_rng"
+          }
+        },
+        "agents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/python_rng"
+          }
+        },
+        "sessions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/python_rng"
+          }
+        },
+        "events": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/python_rng"
+          }
+        }
+      },
+      "required": [
+        "runner",
+        "simulator",
+        "fundamentals_python",
+        "fundamentals_numpy",
+        "markets",
+        "agents",
+        "sessions",
+        "events"
+      ]
+    },
+    "fcn_row": {
+      "type": "object",
+      "properties": {
+        "call_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "agent_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "market_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "workload": {
+          "enum": [
+            "fixed",
+            "normal"
+          ]
+        },
+        "input": {
+          "type": "object",
+          "properties": {
+            "p_now": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "p_fund": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "p_then": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "w_f": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "w_c": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "w_n": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "noise_scale": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "order_margin": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "z_noise": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "z_margin": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "window": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "effective_window": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "mean_reversion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "margin_type": {
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "chart_sign": {
+              "enum": [
+                -1,
+                1
+              ]
+            }
+          },
+          "required": [
+            "p_now",
+            "p_fund",
+            "p_then",
+            "w_f",
+            "w_c",
+            "w_n",
+            "noise_scale",
+            "order_margin",
+            "z_noise",
+            "z_margin",
+            "window",
+            "effective_window",
+            "mean_reversion",
+            "margin_type",
+            "chart_sign"
+          ]
+        },
+        "output": {
+          "type": "object",
+          "properties": {
+            "price": {
+              "type": "string",
+              "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$"
+            },
+            "side": {
+              "enum": [
+                -1,
+                0,
+                1
+              ]
+            },
+            "error": {
+              "const": 0
+            }
+          },
+          "required": [
+            "price",
+            "side",
+            "error"
+          ]
+        },
+        "volume": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ttl": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rng_before_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rng_after_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "call_index",
+        "agent_id",
+        "market_id",
+        "step",
+        "workload",
+        "input",
+        "output",
+        "volume",
+        "ttl",
+        "rng_before_hash",
+        "rng_after_hash"
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/manifest"
+    },
+    {
+      "$ref": "#/$defs/metrics"
+    },
+    {
+      "$ref": "#/$defs/status"
+    },
+    {
+      "$ref": "#/$defs/environment"
+    },
+    {
+      "$ref": "#/$defs/event"
+    },
+    {
+      "$ref": "#/$defs/market_frame"
+    },
+    {
+      "$ref": "#/$defs/step_state"
+    },
+    {
+      "$ref": "#/$defs/final_state"
+    },
+    {
+      "$ref": "#/$defs/final_rng"
+    },
+    {
+      "$ref": "#/$defs/fcn_row"
+    }
+  ]
+}
