@@ -3,9 +3,10 @@
 import hashlib
 from collections import Counter
 
+from pams.agents.fcn_agent import FCNAgent
 from pams.logs.base import CancelLog, ExecutionLog, ExpirationLog, Logger, OrderLog
 
-from .config import json_bytes
+from .config import json_bytes, sha256
 
 EVENT_KIND = {
     OrderLog: "order",
@@ -25,9 +26,24 @@ def accounts(simulator):
             "agent_id": agent.agent_id,
             "cash_hex": price_hex(agent.get_cash_amount()),
             "holdings": agent.asset_volumes.copy(),
+            **({"fcn": fcn_state(agent)} if type(agent) is FCNAgent else {}),
         }
         for agent in simulator.agents
     ]
+
+
+def fcn_state(agent):
+    return {
+        "w_f": price_hex(agent.fundamental_weight),
+        "w_c": price_hex(agent.chart_weight),
+        "w_n": price_hex(agent.noise_weight),
+        "noise_scale": price_hex(agent.noise_scale),
+        "order_margin": price_hex(agent.order_margin),
+        "window": agent.time_window_size,
+        "mean_reversion": agent.mean_reversion_time,
+        "margin_type": agent.margin_type,
+        "chart_sign": 1 if agent.is_chart_following else -1,
+    }
 
 
 def market_state(market):
@@ -74,6 +90,20 @@ def final_state(simulator):
     }
 
 
+def market_history(simulator):
+    return [
+        {
+            "market_id": market.market_id,
+            "market_prices_hex": [price_hex(value) for value in market.get_market_prices()],
+            "fundamental_prices_hex": [price_hex(value) for value in market.get_fundamental_prices()],
+            "last_executed_prices_hex": [price_hex(value) for value in market.get_last_executed_prices()],
+            "mid_prices_hex": [price_hex(value) for value in market.get_mid_prices()],
+            "executed_volumes": market.get_executed_volumes(),
+        }
+        for market in simulator.markets
+    ]
+
+
 def random_state(prng):
     version, state, gauss_next = prng.getstate()
     return {"version": version, "state": state, "gauss_next_hex": price_hex(gauss_next)}
@@ -94,10 +124,11 @@ def final_rng(runner):
 
 
 class PamsObservations(Logger):
-    def __init__(self, events, steps, run_id):
+    def __init__(self, events, steps, step_states, run_id):
         super().__init__()
         self.events_file = events
         self.steps_file = steps
+        self.step_states_file = step_states
         self.run_id = run_id
         self.event_digest = hashlib.sha256()
         self.event_seq = 0
@@ -137,3 +168,13 @@ class PamsObservations(Logger):
         row = {"run_id": self.run_id, "session_id": log.session.session_id, **market_state(log.market)}
         self.steps_file.write(json_bytes(row))
         self.market_steps += 1
+        if log.market is log.simulator.markets[0]:
+            # The upstream runner emits the first end-log after orders and before any after-step hook.
+            state = {
+                "run_id": self.run_id,
+                "session_id": log.session.session_id,
+                "step": log.market.get_time(),
+                **final_state(log.simulator),
+                "rng_hash": sha256(json_bytes(final_rng(self.runner))),
+            }
+            self.step_states_file.write(json_bytes(state))

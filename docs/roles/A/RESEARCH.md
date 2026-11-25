@@ -20,3 +20,9 @@ PAMS 的 PEP 517 元数据由固定提交声明的 `uv_build` 生成。按锁构
 P02 的 `py-seq` 直接调用同一个上游 `SequentialRunner` 的 `_setup`、`_run`，用单调时钟分别记录初始化和仿真。另一个入口直接调用未修改的 `SequentialRunner.main()`。共享观察器在 `Logger.write` 入队时按产生顺序记录委托、撤单、过期及成交，市场价格来自 `MarketStepEndLog`，位置在该市场 after-step hook 和时钟推进前。订单簿快照对每侧复用上游比较器排序，不调整事件顺序。
 
 同 seed 的核验覆盖逐条交易事件、逐步市场观察、初末账户、最终逻辑簿与已记录的 RNG 状态。其中含代理、市场、session、事件、runner、simulator 和 fundamentals 的 Python 状态及 fundamentals 的 NumPy bit-generator 状态。账户仅记录初末时点，完整逐步状态与独立验证门由后续阶段落实。 [P02 命令与结果](evidence/P02.txt)
+
+## P03 公共契约与真实样本
+
+C++17 头在编译时检查 R4-v1 每个字段的 offset、尺寸和对齐，NumPy dtype 在同机检查。共享观察器在首个原版 market end-log 记录全局逐步账户、簿与 RNG 摘要，最终记录完整 RNG 和历史。真实 FCN 样本直接观察原函数及本次调用中 Python gauss 的返回，保持原随机状态推进。事件 fixture 由固定 PAMS 的 `FundamentalPriceShock` 驱动。
+
+独立验证仍归 E 所有。该候选已暴露 fail-closed 调用入口，与 B/C/D/E 的回执分别保留。 [公共契约](../../CONTRACT.md) · [G0 候选](G0_CANDIDATE.md)

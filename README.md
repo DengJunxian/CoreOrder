@@ -65,3 +65,14 @@ read-only observer. Times from these instrumented runs are diagnostic.
 
 Existing output directories are protected. An unimplemented backend or
 book-restore mode exits with status 2 and records `UNSUPPORTED`.
+
+## Public interfaces and fixtures
+
+See the [R4-v1 contract](docs/CONTRACT.md), [fixture provenance and replay](fixtures/README.md),
+[team ownership](docs/TEAM.md), and [G0 candidate](docs/roles/A/G0_CANDIDATE.md).
+The current serial runner also records full per-step account and logical book
+snapshots, market history and RNG state.
+
+`python -m coreorder validate --suite smoke --output results/validate-smoke` and
+the corresponding `--suite g0` dispatch to E's independent validator. A checkout
+without that implementation records BLOCKED and exits 3.

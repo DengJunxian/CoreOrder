@@ -11,6 +11,7 @@ from .run_records import run_recorded
 
 def run_upstream(config_path, seed, observer):
     runner = SequentialRunner(settings=config_path, prng=random.Random(seed), logger=observer)
+    observer.runner = runner
     runner.main()
     return runner, {}
 

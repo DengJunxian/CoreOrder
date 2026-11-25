@@ -32,3 +32,7 @@ The smoke workload derives from the EPL-1.0 PAMS
 [samples/CI2002/config.json](https://github.com/masanorihirano/pams/blob/6cd53810103780770c5b5d6ee0069ccab9f4b358/samples/CI2002/config.json).
 It changes the agent count and session lengths and sets the print flag and the
 inherited order quota explicitly.
+
+P03 uses the pinned JSON Schema validator in `requirements.lock`. jsonschema,
+jsonschema-specifications, referencing, attrs and rpds-py use MIT licenses.
+typing-extensions uses PSF-2.0. Consult the notices in the installed wheels.

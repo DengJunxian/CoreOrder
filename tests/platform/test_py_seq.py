@@ -6,6 +6,8 @@ from pathlib import Path
 
 import pytest
 
+from coreorder.schema import validate_record
+
 SMOKE = Path(__file__).resolve().parents[2] / "configs/workloads/smoke.json"
 
 
@@ -46,7 +48,9 @@ def test_py_seq_records_real_market_and_matches_upstream(tmp_path):
     metrics = read(production / "metrics.json")
     assert metrics["orders"] > 0 and metrics["executions"] > 0
     assert metrics["market_steps"] == 80
-    for name in ("events.jsonl", "market_steps.jsonl"):
+    for kind in ("manifest", "environment", "metrics", "status"):
+        validate_record(kind, read(production / f"{kind}.json"))
+    for name in ("events.jsonl", "market_steps.jsonl", "step_states.jsonl"):
         assert observations(production, name) == observations(reference, name)
     for name in ("final_state.json", "final_rng.json"):
         assert (production / name).read_bytes() == (reference / name).read_bytes()
@@ -75,7 +79,11 @@ def test_unimplemented_run_is_rejected_without_execution(tmp_path, flags):
     assert result.returncode == 2
     assert "not implemented" in result.stderr
     assert read(output / "status.json")["status"] == "UNSUPPORTED"
-    assert read(output / "manifest.json")["backend_effective"] is None
+    manifest = read(output / "manifest.json")
+    assert manifest["backend_effective"] is None
+    validate_record("manifest", manifest)
+    validate_record("status", read(output / "status.json"))
+    validate_record("metrics", read(output / "metrics.json"))
     assert not (output / "events.jsonl").exists()
 
 

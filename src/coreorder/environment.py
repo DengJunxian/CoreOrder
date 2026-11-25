@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pams
 
+from . import __file__ as coreorder_module
+
 from .config import ROOT, sha256
 
 
@@ -57,6 +59,7 @@ def environment():
         "python": platform.python_version(),
         "python_executable": sys.executable,
         "packages": {dist.metadata["Name"]: dist.version for dist in metadata.distributions()},
+        "coreorder_module": coreorder_module,
         "pams_module": pams.__file__,
         "pams_version": distribution.version,
         "pams_distribution_matches_import": (
@@ -73,6 +76,7 @@ def environment():
             subprocess.check_output([compiler, "--version"], text=True).splitlines()[0]
             if compiler else None
         ),
+        "native_module": None,
         "run_native_flags": None,
         "external_threads": {
             name: os.environ.get(name)

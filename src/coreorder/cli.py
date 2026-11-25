@@ -3,10 +3,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+from jsonschema import ValidationError
+
 from .config import json_bytes
 from .environment import environment
 from .run_records import run_recorded
 from .runner import run_py_seq
+from .schema import validate_record
+from .validate import run_validation
 
 
 def main(argv=None):
@@ -31,16 +35,25 @@ def main(argv=None):
     env = commands.add_parser("environment", help="write the checkout and runtime environment")
     env.add_argument("--output", type=Path, required=True)
 
+    validate = commands.add_parser("validate", help="invoke the independent E1 validator")
+    validate.add_argument("--suite", choices=("smoke", "g0"), required=True)
+    validate.add_argument("--output", type=Path, required=True)
+
     args = parser.parse_args(argv)
     if args.command == "run":
         return run_recorded(args, run_py_seq, entry_point="coreorder")
 
+    if args.command == "validate":
+        return run_validation(args)
+
     try:
-        data = json_bytes(environment())
+        record = environment()
+        validate_record("environment", record)
+        data = json_bytes(record)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         with args.output.open("xb") as output:
             output.write(data)
-    except (OSError, ValueError, subprocess.CalledProcessError) as error:
+    except (OSError, ValueError, ValidationError, subprocess.CalledProcessError) as error:
         print(f"cannot write environment: {error}", file=sys.stderr)
         return 1
     print(args.output)

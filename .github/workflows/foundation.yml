@@ -1,0 +1,42 @@
+name: Foundation checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  foundation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Install fixed dependencies
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          python -m pip install --only-binary=:all: -r requirements.lock
+          python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
+          python -m pip check
+      - name: Test the serial runner, public schemas and fixtures
+        run: .venv/bin/python -m pytest -q
+      - name: Compile and test the C++17 ABI and toolchain
+        run: |
+          .venv/bin/cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE="$PWD/.venv/bin/python"
+          .venv/bin/cmake --build build --config Release --parallel 2
+          .venv/bin/ctest --test-dir build -C Release --output-on-failure
+      - name: Run selected upstream regression tests
+        working-directory: vendor/pams
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 ../../.venv/bin/python -m pytest -q -p no:cacheprovider \
+            tests/pams/runners/test_sequential.py tests/pams/test_market.py \
+            tests/pams/test_order_book.py tests/pams/test_order.py tests/pams/test_simulator.py \
+            tests/pams/agents/test_fcn_agent.py \
+            -k 'collect_orders_from_normal_agents or handle_orders or run_execution_logs_processed_once or execution_order_pattern or expiration_orrder_pattern or get_price_volume or test_gt or test_update_agents_for_execution or test_triggers or test_submit_orders'

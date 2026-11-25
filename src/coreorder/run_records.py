@@ -8,7 +8,8 @@ from datetime import UTC, datetime
 
 from .config import ROOT, json_bytes, load_workload, sha256
 from .environment import environment
-from .snapshot import PamsObservations, final_rng, final_state
+from .schema import validate_record
+from .snapshot import PamsObservations, final_rng, final_state, market_history
 
 
 def run_recorded(args, execute, *, entry_point):
@@ -19,10 +20,10 @@ def run_recorded(args, execute, *, entry_point):
         return 1
 
     protocol = {
-        "version": "P02",
+        "version": "P03",
         "measurement_mode": "diagnostic",
-        "account_scope": "initial and final",
-        "step_scope": "PAMS MarketStepEndLog, before the after-step hook and clock advance",
+        "account_scope": "initial, each global step boundary and final",
+        "step_scope": "first MarketStepEndLog after orders, before any market after-step hook at that step",
         "timing_scope": "PAMS run with diagnostic observation enabled",
     }
     run_id = uuid.uuid4().hex
@@ -30,7 +31,7 @@ def run_recorded(args, execute, *, entry_point):
         "run_id": run_id,
         "timestamp": datetime.now(UTC).isoformat(),
         "entry_point": entry_point,
-        "experiment_id": "P02",
+        "experiment_id": "P03",
         "workload_id": args.config.stem,
         "protocol_version": protocol["version"],
         "protocol": protocol,
@@ -91,12 +92,13 @@ def run_recorded(args, execute, *, entry_point):
                 raw = args.config.read_bytes()
                 (output / "workload.json").write_bytes(raw)
                 manifest["input_hash"] = sha256(raw)
-                load_workload(raw)
+                validate_record("workload", load_workload(raw))
                 effective = output / "effective_config.json"
                 effective.write_bytes(raw)
                 manifest["effective_config_hash"] = manifest["input_hash"]
 
                 env = environment()
+                validate_record("environment", env)
                 env_bytes = json_bytes(env)
                 (output / "environment.json").write_bytes(env_bytes)
                 manifest.update({key: env[key] for key in ("git_sha", "dirty", "host_id", "contract_version")})
@@ -122,12 +124,25 @@ def run_recorded(args, execute, *, entry_point):
                 ):
                     raise ValueError("PAMS must be installed from the fixed vendor/pams checkout")
 
+                validate_record("run_config", {
+                    "backend": args.backend, "book_restore": args.book_restore,
+                    "layout": manifest["layout"], "workers": args.workers,
+                    "grain": args.grain, "schedule": args.schedule, "seed": args.seed,
+                })
                 manifest["backend_effective"] = "py-seq"
-                with (output / "events.jsonl").open("wb") as events, (output / "market_steps.jsonl").open("wb") as steps:
-                    observer = PamsObservations(events, steps, run_id)
+                with (
+                    (output / "events.jsonl").open("wb") as events,
+                    (output / "market_steps.jsonl").open("wb") as steps,
+                    (output / "step_states.jsonl").open("wb") as step_states,
+                ):
+                    observer = PamsObservations(events, steps, step_states, run_id)
                     runner, timings = execute(effective, args.seed, observer)
                 simulator = runner.simulator
-                state_data = json_bytes({"initial_accounts": observer.initial_accounts, **final_state(simulator)})
+                state_data = json_bytes({
+                    "initial_accounts": observer.initial_accounts,
+                    **final_state(simulator),
+                    "market_history": market_history(simulator),
+                })
                 rng_data = json_bytes(final_rng(runner))
                 (output / "final_state.json").write_bytes(state_data)
                 (output / "final_rng.json").write_bytes(rng_data)

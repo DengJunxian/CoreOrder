@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "R4-v1 run configuration",
+  "type": "object",
+  "properties": {
+    "backend": {
+      "enum": [
+        "py-seq",
+        "py-thread",
+        "py-process",
+        "native-serial",
+        "native-parallel"
+      ]
+    },
+    "book_restore": {
+      "enum": [
+        "upstream",
+        "incremental"
+      ]
+    },
+    "layout": {
+      "enum": [
+        "not_applicable",
+        "aos",
+        "soa"
+      ]
+    },
+    "workers": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "grain": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "schedule": {
+      "enum": [
+        "static",
+        "dynamic",
+        null
+      ]
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "backend",
+    "book_restore",
+    "layout",
+    "workers",
+    "grain",
+    "schedule",
+    "seed"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "backend": {
+            "enum": [
+              "py-seq",
+              "py-thread",
+              "py-process"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "layout": {
+            "const": "not_applicable"
+          },
+          "grain": {
+            "const": null
+          },
+          "schedule": {
+            "const": null
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "layout": {
+            "enum": [
+              "aos",
+              "soa"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "backend": {
+            "enum": [
+              "py-seq",
+              "native-serial"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "workers": {
+            "const": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "backend": {
+            "const": "native-serial"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "grain": {
+            "const": null
+          },
+          "schedule": {
+            "const": null
+          }
+        }
+      }
+    }
+  ]
+}

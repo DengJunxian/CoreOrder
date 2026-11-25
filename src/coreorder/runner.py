@@ -9,6 +9,7 @@ from pams.runners.sequential import SequentialRunner
 def run_py_seq(config_path, seed, observer):
     started = perf_counter()
     runner = SequentialRunner(settings=config_path, prng=random.Random(seed), logger=observer)
+    observer.runner = runner
     runner._setup()
     initialized = perf_counter()
     runner._run()

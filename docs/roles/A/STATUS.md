@@ -27,3 +27,9 @@ P01 基础工程状态为 **PASS**。基线 `e2492a4b8317c6674918b13470b577f4d6f
 | G0、完整状态验证与正式性能 | NOT_RUN | P02 记录为诊断样本。 |
 
 执行、配置 hash、重复核验与退出码见 [P02 日志](evidence/P02.txt)。提交 SHA 以包含本回执的本地提交为准。
+
+## P03 公共接口与协作基线
+
+输入基线 `5cc8b5ee8889b4c1ac1e363be0b2be30db5b1281`。A 侧 ABI、schema、真实 fixtures、CLI 接口及 CI 对应命令检查通过。G0 候选等待 B/D 的 ABI 联合确认、C 的 range/错误协议确认和 E1 独立验证，状态为 BLOCKED。远端 CI 暂未运行。
+
+[候选检查表](G0_CANDIDATE.md) · [运行证据](evidence/P03.txt)
