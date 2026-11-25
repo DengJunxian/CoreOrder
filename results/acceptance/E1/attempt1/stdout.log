@@ -1,0 +1,148 @@
+.FFFFF                                                                   [100%]
+================================== FAILURES ===================================
+____________________ test_schema_rejects_missing[git_sha] _____________________
+
+field = 'git_sha'
+
+    @pytest.mark.parametrize("field", ["git_sha", "contract_version", "backend_effective"])
+    def test_schema_rejects_missing(field):
+>       m,t,s = record()
+
+tests\differential\test_e1.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\differential\test_e1.py:22: in record
+    schema = json.loads(Path("validation/manifest.schema.json").read_text())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('validation/manifest.schema.json'), encoding = 'locale'
+errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 2827: illegal multibyte sequence
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+________________ test_schema_rejects_missing[contract_version] ________________
+
+field = 'contract_version'
+
+    @pytest.mark.parametrize("field", ["git_sha", "contract_version", "backend_effective"])
+    def test_schema_rejects_missing(field):
+>       m,t,s = record()
+
+tests\differential\test_e1.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\differential\test_e1.py:22: in record
+    schema = json.loads(Path("validation/manifest.schema.json").read_text())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('validation/manifest.schema.json'), encoding = 'locale'
+errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 2827: illegal multibyte sequence
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+_______________ test_schema_rejects_missing[backend_effective] ________________
+
+field = 'backend_effective'
+
+    @pytest.mark.parametrize("field", ["git_sha", "contract_version", "backend_effective"])
+    def test_schema_rejects_missing(field):
+>       m,t,s = record()
+
+tests\differential\test_e1.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\differential\test_e1.py:22: in record
+    schema = json.loads(Path("validation/manifest.schema.json").read_text())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('validation/manifest.schema.json'), encoding = 'locale'
+errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 2827: illegal multibyte sequence
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+_____________________ test_status_and_zero_fill_rejected ______________________
+
+    def test_status_and_zero_fill_rejected():
+>       m,t,s = record()
+
+tests\differential\test_e1.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\differential\test_e1.py:22: in record
+    schema = json.loads(Path("validation/manifest.schema.json").read_text())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('validation/manifest.schema.json'), encoding = 'locale'
+errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 2827: illegal multibyte sequence
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+______________________ test_unrun_and_fallback_excluded _______________________
+
+    def test_unrun_and_fallback_excluded():
+>       m,t,s = record()
+
+tests\differential\test_e1.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\differential\test_e1.py:22: in record
+    schema = json.loads(Path("validation/manifest.schema.json").read_text())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('validation/manifest.schema.json'), encoding = 'locale'
+errors = None
+
+    def read_text(self, encoding=None, errors=None):
+        """
+        Open the file in text mode, read it, and close the file.
+        """
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='r', encoding=encoding, errors=errors) as f:
+>           return f.read()
+E           UnicodeDecodeError: 'gbk' codec can't decode byte 0xaf in position 2827: illegal multibyte sequence
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1028: UnicodeDecodeError
+============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/differential/test_e1.py::test_schema_rejects_missing[git_sha] - ...
+FAILED tests/differential/test_e1.py::test_schema_rejects_missing[contract_version]
+FAILED tests/differential/test_e1.py::test_schema_rejects_missing[backend_effective]
+FAILED tests/differential/test_e1.py::test_status_and_zero_fill_rejected - Un...
+FAILED tests/differential/test_e1.py::test_unrun_and_fallback_excluded - Unic...
+5 failed, 1 passed, 2 warnings in 1.90s

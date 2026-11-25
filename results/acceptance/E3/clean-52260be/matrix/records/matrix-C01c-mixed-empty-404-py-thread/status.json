@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01c-mixed-empty-404-py-thread",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01c-mixed-empty-404-py-seq",
+  "trace_hash": "0ece1c010155d424d0291161d9e2a5a1fbc284ff3078c2e474af0af2c51c4f4f",
+  "final_state_hash": "4996457c9292a6b950bd3b2ef96681c6a3516fe6bb5ce610d460bcfbf7f8f25b",
+  "rng_hash": "841d2fc20a826c2ece8b732e357c53222e706033feb5ef23ce5a70658fd87fb6",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

@@ -1,0 +1,54 @@
+{
+  "case": "C01f-M0",
+  "seed": 101,
+  "input_hash": "10b287acea833d044edd28c2506112c5cd5503d8c5134e5223dc7e372ce0ef87",
+  "oracle_hashes": {
+    "events": "7dd3333065512d560a04166151ee675c514db28bd79bae11e6f3eecfd0468331",
+    "steps": "a510d1a241f9c37fcfde44574ab6e69470f35501285937f4a6217980cf709502",
+    "final": "d5feee5f185b05abe586ebfb1c763adf7b27e24c39cf17687cb04e5c8b6c54dc",
+    "rng": "1ce6b794a6c262c02b57907eea6a317442ed1e1a6427113f29007c027ed525fc"
+  },
+  "event_counts": {
+    "SimulationBeginLog": 1,
+    "SessionBeginLog": 2,
+    "MarketStepBeginLog": 6,
+    "MarketStepEndLog": 6,
+    "SessionEndLog": 2,
+    "SimulationEndLog": 1
+  },
+  "invariants": {
+    "status": "PASS",
+    "failures": [],
+    "cash_tolerance": {
+      "abs": 1e-07,
+      "rel": 1e-12
+    },
+    "scope": "no-fee conservation and event-ledger-book consistency"
+  },
+  "native_status": "INTEGRATION_PENDING",
+  "native_reason": "A/B/C/D production candidates and unified CLI not delivered",
+  "thread_comparison": {
+    "status": "PASS",
+    "scopes": [
+      "events",
+      "steps",
+      "final",
+      "rng"
+    ]
+  },
+  "thread_hashes": {
+    "events": "7dd3333065512d560a04166151ee675c514db28bd79bae11e6f3eecfd0468331",
+    "steps": "a510d1a241f9c37fcfde44574ab6e69470f35501285937f4a6217980cf709502",
+    "final": "d5feee5f185b05abe586ebfb1c763adf7b27e24c39cf17687cb04e5c8b6c54dc",
+    "rng": "1ce6b794a6c262c02b57907eea6a317442ed1e1a6427113f29007c027ed525fc"
+  },
+  "thread_invariants": {
+    "status": "PASS",
+    "failures": [],
+    "cash_tolerance": {
+      "abs": 1e-07,
+      "rel": 1e-12
+    },
+    "scope": "no-fee conservation and event-ledger-book consistency"
+  }
+}

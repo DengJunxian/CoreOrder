@@ -1,0 +1,57 @@
+{
+  "kind": "validator-traversal-microbenchmark",
+  "formal_system_performance": false,
+  "git_sha": "fd6ad02e7a8f1d848d14ca987d57a5869bb5db0d",
+  "dirty": true,
+  "trace_content_hash": "f092aa575e1d7f0c1e27d9c4abd2d35bdbe349d5097ba19e55b0884840d30483",
+  "trace_input_hash": "c5fd5b109c05a90da35d5a358713d1bb1a98c25f6e57b2e69bd947dfeffadcd3",
+  "seed": 42,
+  "events": 46,
+  "checkpoints": 7,
+  "canonical_json_bytes": 1837454,
+  "warmups": 1,
+  "technical_repeats": 7,
+  "samples_ns": [
+    34281300,
+    35201200,
+    33594600,
+    33364200,
+    33453800,
+    32932000,
+    33200000
+  ],
+  "median_ns": 33453800,
+  "time_boundary": "Only compare on preloaded independent equal structures; excludes IO/setup",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\.research\\venv\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "packages": {
+      "attrs": "26.1.0",
+      "colorama": "0.4.6",
+      "iniconfig": "2.3.1",
+      "jsonschema": "4.23.0",
+      "jsonschema-specifications": "2025.9.1",
+      "numpy": "1.26.4",
+      "packaging": "26.4",
+      "pip": "25.0.1",
+      "pluggy": "1.7.0",
+      "pytest": "7.4.4",
+      "referencing": "0.37.0",
+      "rpds-py": "2026.9.1",
+      "scipy": "1.14.1",
+      "tqdm": "4.66.6",
+      "typing_extensions": "4.16.0"
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    },
+    "power_mode": null,
+    "power_reason": "Not collected; development correctness only"
+  },
+  "limitation": "One real fixture, warm memory, development tree; no E2E inference"
+}

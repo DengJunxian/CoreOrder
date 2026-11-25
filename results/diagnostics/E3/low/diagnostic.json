@@ -1,0 +1,29 @@
+{
+  "measurement_mode": "low-overhead-diagnostic",
+  "setup_s": 0.0006781999982194975,
+  "simulation_s": 0.0014433000033022836,
+  "event_counts": {
+    "SimulationBeginLog": 1,
+    "SessionBeginLog": 2,
+    "MarketStepBeginLog": 6,
+    "OrderLog": 18,
+    "MarketStepEndLog": 6,
+    "ExpirationLog": 10,
+    "SessionEndLog": 2,
+    "SimulationEndLog": 1
+  },
+  "event_stream_hash": "7f61b5371df9425ffccc6a18e6d1eeabfcc554e03898859177e74de6ad1c0f75",
+  "final_hash": "bb36b1ee9ee0198603cc2051111630c8d0c8c6d118fd3d92affa34e3c0c2e440",
+  "rng_hash": "19e94edef239d5cf153b7e3ad274bb2c3121eaf199e7174aa76c1a14b53b8e31",
+  "scope": "DEVELOPMENT ONLY; streaming event encoding remains in timed business path",
+  "counters_missing": {
+    "agent_calls": "not instrumented",
+    "decision_rows": "not instrumented",
+    "native_rows": "not applicable",
+    "gauss_api_calls": "not instrumented"
+  },
+  "git_sha": "fd6ad02e7a8f1d848d14ca987d57a5869bb5db0d",
+  "dirty": true,
+  "seed": 42,
+  "input_hash": "c5fd5b109c05a90da35d5a358713d1bb1a98c25f6e57b2e69bd947dfeffadcd3"
+}

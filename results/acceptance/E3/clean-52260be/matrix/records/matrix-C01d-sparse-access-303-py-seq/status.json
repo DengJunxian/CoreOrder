@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01d-sparse-access-303-py-seq",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01d-sparse-access-303-py-seq",
+  "trace_hash": "3e41addfd8358cce1d74af9cd0748f4b86f1e79d81eddef53b3d2c96ab203d41",
+  "final_state_hash": "e5da0a7c29146b40b4fcb6e796ef39207ed52aebf546b7e7871c5fbbaa3a0b35",
+  "rng_hash": "778808165c61cb11e351abe22d111181e38609ffe72368d58d5f8b2d138a9b7f",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

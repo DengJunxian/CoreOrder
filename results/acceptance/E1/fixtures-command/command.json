@@ -1,0 +1,21 @@
+{
+  "command": [
+    "../.research/venv/Scripts/python.exe",
+    "-m",
+    "validation.fixtures",
+    "--pams-root",
+    "../.research/pams-6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "--output",
+    "results/fixtures/E1"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\CoreOrder",
+  "timestamp_utc": "2026-11-25T08:50:09.519305+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.7642041000071913,
+  "timeout_s": 30.0,
+  "censoring": null,
+  "git_sha": "e2492a4b8317c6674918b13470b577f4d6f8675d",
+  "dirty": true,
+  "scope": "development command; not a formal system timing result"
+}

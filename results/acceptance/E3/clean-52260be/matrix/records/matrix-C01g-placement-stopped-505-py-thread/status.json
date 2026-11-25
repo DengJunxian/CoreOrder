@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01g-placement-stopped-505-py-thread",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01g-placement-stopped-505-py-seq",
+  "trace_hash": "28db871d1b3969269184ced55e9f739464e0edc0c4ce07aebe4f4032dcd2f06f",
+  "final_state_hash": "562209fa31d573f6eb5064e4b4a84526a5e0c6f7b3027090c605ad26d980f9b2",
+  "rng_hash": "c1f666fb0a3deb86d8ea599cb19ddce968841b1c7197ac657053280f0e24eaa7",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

@@ -1,0 +1,10 @@
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+  runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:28: UserWarning: When MultiThreadAgentParallelRunner is used, the maximum number of parallel agents is limited by max_normal_orders (1) even if numParallel (2) is set to a larger value.
+  runner._setup()
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:28: UserWarning: When MultiThreadAgentParallelRunner is used, the maximum number of parallel agents is limited by max_normal_orders (0) even if numParallel (2) is set to a larger value.
+  runner._setup()

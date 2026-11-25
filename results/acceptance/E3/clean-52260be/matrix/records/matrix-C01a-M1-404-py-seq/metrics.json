@@ -1,0 +1,22 @@
+{
+  "setup_s": null,
+  "simulation_s": null,
+  "process_wall_s": null,
+  "draw_pack_s": null,
+  "native_compute_s": null,
+  "rebuild_orders_s": null,
+  "handle_orders_s": null,
+  "optional_restore_s": null,
+  "missing_reasons": {
+    "setup_s": "Not collected in full-trace correctness mode",
+    "simulation_s": "Not collected in full-trace correctness mode",
+    "process_wall_s": "Not collected in full-trace correctness mode",
+    "draw_pack_s": "Not collected in full-trace correctness mode",
+    "native_compute_s": "Not collected in full-trace correctness mode",
+    "rebuild_orders_s": "Not collected in full-trace correctness mode",
+    "handle_orders_s": "Not collected in full-trace correctness mode",
+    "optional_restore_s": "Not collected in full-trace correctness mode"
+  },
+  "metric_sources": {},
+  "measurement_mode": "validation"
+}

@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01h-MarketMaker-404-py-seq",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01h-MarketMaker-404-py-seq",
+  "trace_hash": "42f6b661b325a066641ccb50f24a3d336581c70496c6359781bca94f2af2924d",
+  "final_state_hash": "5e7a3c8c792c196967bac213a1307ab37774510a625de35089c998e170a0aee2",
+  "rng_hash": "22076c10ad9cedd32b6f4d9e48b1d9175e9be02a5eba607b8b572d27bc746ce6",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

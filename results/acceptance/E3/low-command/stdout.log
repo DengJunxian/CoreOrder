@@ -1,0 +1,1 @@
+low-overhead-diagnostic {'SimulationBeginLog': 1, 'SessionBeginLog': 2, 'MarketStepBeginLog': 6, 'OrderLog': 18, 'MarketStepEndLog': 6, 'ExpirationLog': 10, 'SessionEndLog': 2, 'SimulationEndLog': 1} bb36b1ee9ee0198603cc2051111630c8d0c8c6d118fd3d92affa34e3c0c2e440

@@ -1,0 +1,21 @@
+..............                                                           [100%]
+============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_missing_gauss_detected_without_orders
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+14 passed, 8 warnings in 1.41s

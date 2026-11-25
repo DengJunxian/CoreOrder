@@ -1,0 +1,22 @@
+{
+  "command": [
+    "../.research/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "tests/differential",
+    "-q",
+    "--basetemp",
+    ".cache/e3-record-gate"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\CoreOrder",
+  "timestamp_utc": "2026-11-25T09:06:10.492177+00:00",
+  "exit_code": 1,
+  "status": "FAIL",
+  "elapsed_s_driver": 3.0023357000027318,
+  "timeout_s": 60.0,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "fd6ad02e7a8f1d848d14ca987d57a5869bb5db0d",
+  "dirty": true,
+  "scope": "development command; not a formal system timing result"
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "../.research/venv/Scripts/python.exe",
+    "-m",
+    "experiments.validator_microbench",
+    "--trace",
+    "results/fixtures/E1/upstream-trace.json.gz",
+    "--output",
+    "../.deliveries/clean-verification/validator-micro.json"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\CoreOrder",
+  "timestamp_utc": "2026-11-25T09:08:17.141776+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.7585601999890059,
+  "timeout_s": 30.0,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "52260be7cca066b896de7c7f266552add93a82cb",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}

@@ -1,0 +1,2899 @@
+{
+  "module_status": "MODULE_PASS",
+  "system_gate": "INTEGRATION_PENDING",
+  "git_sha": "52260be7cca066b896de7c7f266552add93a82cb",
+  "dirty": false,
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "rows": 60,
+  "actual_upstream_runs": 120,
+  "pending_native_cells": [
+    {
+      "case": "C01a-M1",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01a-M1",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01b-normal",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-all-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01d-sparse-access",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01e-four-markets",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-M0",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MequalsN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01f-MaboveN",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01c-mixed-empty",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01h-MarketMaker",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-fundamental-shock",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 101,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 101,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 202,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 202,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 303,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 303,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 404,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 404,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 505,
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa",
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    },
+    {
+      "case": "C01g-placement-stopped",
+      "seed": 505,
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "status": "NOT_RUN",
+      "integration_status": "INTEGRATION_PENDING"
+    }
+  ],
+  "process_note": "Separate bounded subprocess attempt, see E2/process-command",
+  "measurement_scope": "correctness trace only; no formal timing"
+}

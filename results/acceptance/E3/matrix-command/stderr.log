@@ -1,0 +1,29 @@
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+  runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:28: UserWarning: When MultiThreadAgentParallelRunner is used, the maximum number of parallel agents is limited by max_normal_orders (1) even if numParallel (2) is set to a larger value.
+  runner._setup()
+C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:28: UserWarning: When MultiThreadAgentParallelRunner is used, the maximum number of parallel agents is limited by max_normal_orders (0) even if numParallel (2) is set to a larger value.
+  runner._setup()
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\matrix.py", line 73, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\matrix.py", line 48, in main
+    "invariants":check(oracle),"native_status":"INTEGRATION_PENDING",
+                 ^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\invariants.py", line 27, in check
+    baseline_cash, baseline_assets = totals(trace["initial"])
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\invariants.py", line 21, in totals
+    for market, volume in assets(agent).items():
+                          ^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\invariants.py", line 14, in assets
+    return dict(agent["asset_volumes"]["map"])
+                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+KeyError: 'map'

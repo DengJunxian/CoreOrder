@@ -1,0 +1,12 @@
+......                                                                   [100%]
+============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+6 passed, 2 warnings in 1.52s

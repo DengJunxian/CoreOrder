@@ -1,0 +1,46 @@
+........................F......                                          [100%]
+================================== FAILURES ===================================
+____________________ test_missing_and_fallback_never_pass _____________________
+
+pams_root = WindowsPath('C:/Users/Lenovo/Desktop/计组作业/CoreOrder_Member_E/.research/pams-6cd53810103780770c5b5d6ee0069ccab9f4b358')
+small_config = {'FCNAgents': {'assetVolume': 50, 'cashAmount': 10000, 'chartWeight': {'expon': [0.0]}, 'class': 'FCNAgent', ...}, 'Ma...essionName': 0, ...}, {'iterationSteps': 3, 'maxNormalOrders': 3, 'sessionName': 1, 'withOrderExecution': True, ...}]}}
+
+    def test_missing_and_fallback_never_pass(pams_root,small_config):
+        reference=collect(small_config,42,pams_root)
+        assert evaluate_cell(reference,None,None,None,{})["integration_status"]=="INTEGRATION_PENDING"
+        manifest={"backend_requested":"native-parallel","backend_effective":"py-seq"}
+        assert evaluate_cell(reference,reference,manifest,{"status":"PASS"},{})["status"]=="FAIL"
+        assert evaluate_cell(reference,reference,manifest,{"status":"TIMEOUT"},{})["status"]=="TIMEOUT"
+>       from tests.differential.test_e1 import record
+E       ModuleNotFoundError: No module named 'tests.differential'
+
+tests\differential\test_e3.py:100: ModuleNotFoundError
+============================== warnings summary ===============================
+tests/differential/test_e1.py: 1 warning
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+tests/differential/test_e3.py::test_diagnostic_business_equivalence
+tests/differential/test_e3.py::test_missing_and_fallback_never_pass
+tests/differential/test_e3.py::test_negative_cash_is_upstream_legal
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\tests\differential\test_e3.py:134: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner=cls(settings=copy.deepcopy(config),prng=random.Random(303),logger=logger,simulator_class=ObservedSimulator)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/differential/test_e3.py::test_missing_and_fallback_never_pass - ...
+1 failed, 30 passed, 28 warnings in 2.69s

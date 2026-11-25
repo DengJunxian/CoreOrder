@@ -1,0 +1,38 @@
+.......E......                                                           [100%]
+=================================== ERRORS ====================================
+______________ ERROR at setup of test_swapped_events_and_replay _______________
+
+self = WindowsPath('C:/Users/Lenovo/Desktop/计组作业/CoreOrder_Member_E/CoreOrder/.cache/e2-repair1')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'C:\\Users\\Lenovo\\Desktop\\计组作业\\CoreOrder_Member_E\\CoreOrder\\.cache\\e2-repair1'
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_missing_gauss_detected_without_orders
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/differential/test_e2.py::test_swapped_events_and_replay - FileNot...
+13 passed, 8 warnings, 1 error in 1.21s

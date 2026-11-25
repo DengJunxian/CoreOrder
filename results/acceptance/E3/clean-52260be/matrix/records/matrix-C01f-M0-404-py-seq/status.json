@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01f-M0-404-py-seq",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01f-M0-404-py-seq",
+  "trace_hash": "7dd3333065512d560a04166151ee675c514db28bd79bae11e6f3eecfd0468331",
+  "final_state_hash": "0747d546c9bc3247bf5763a53bcef6020822ca091f5bd0f1e56bcd62fd7a423b",
+  "rng_hash": "6ac697804d0c4bb7f6a57ab34b9be79208ebe68606cdc8a6a2b326d62189a8e5",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

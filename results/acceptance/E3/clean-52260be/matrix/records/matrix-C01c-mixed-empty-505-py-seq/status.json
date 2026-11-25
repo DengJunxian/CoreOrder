@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01c-mixed-empty-505-py-seq",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01c-mixed-empty-505-py-seq",
+  "trace_hash": "d6f5fec457eeca9f3e341353d33f9afa6651583b3592b4e64ed74e8f061e2ebd",
+  "final_state_hash": "7da961762fdb00e542de17c5ed988ff5ecfe65abef56f4e3602e8c386b5ad850",
+  "rng_hash": "03f19c6dd046fe0f2ba55c30452e8a3193e25d0ca432599e15b613ab3c7382e2",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

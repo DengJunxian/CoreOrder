@@ -1,0 +1,63 @@
+{
+  "kind": "derived fault index, not raw trace",
+  "reports": [
+    {
+      "archive_path": "results/counterexamples/E2/missing-gauss/first_divergence.json",
+      "status": "FAIL",
+      "scope": "steps",
+      "difference": {
+        "path": "$/1/state/agents/3/prng/python_random/2",
+        "reference": null,
+        "candidate": {
+          "float_hex": "-0x1.64226dcc1a737p+0"
+        },
+        "reason": "type"
+      },
+      "index": 1,
+      "location": {
+        "session": 0,
+        "next_market_times": [
+          1
+        ]
+      },
+      "seed": 202,
+      "scope_note": "First divergence context; full input retained, no claim of delta-debug minimality"
+    },
+    {
+      "archive_path": "results/counterexamples/E2/price-bit/first_divergence.json",
+      "status": "FAIL",
+      "scope": "events",
+      "difference": {
+        "path": "$/3/fields/price/float_hex",
+        "reference": "0x1.24cb2031ceaf3p+8",
+        "candidate": "0x1.24cb2031ceaf4p+8",
+        "reason": "value"
+      },
+      "index": 3,
+      "location": {
+        "session": 0,
+        "step": 0
+      },
+      "seed": 101,
+      "scope_note": "First divergence context; full input retained, no claim of delta-debug minimality"
+    },
+    {
+      "archive_path": "results/counterexamples/E2/swapped-events/first_divergence.json",
+      "status": "FAIL",
+      "scope": "events",
+      "difference": {
+        "path": "$/3/event_seq",
+        "reference": 3,
+        "candidate": 4,
+        "reason": "value"
+      },
+      "index": 3,
+      "location": {
+        "session": 0,
+        "step": 0
+      },
+      "seed": 101,
+      "scope_note": "First divergence context; full input retained, no claim of delta-debug minimality"
+    }
+  ]
+}

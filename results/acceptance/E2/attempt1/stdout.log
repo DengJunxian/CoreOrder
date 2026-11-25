@@ -1,0 +1,53 @@
+.......E.F....                                                           [100%]
+=================================== ERRORS ====================================
+______________ ERROR at setup of test_swapped_events_and_replay _______________
+
+self = WindowsPath('C:/Users/Lenovo/AppData/Local/Temp/pytest-of-Lenovo')
+
+    def iterdir(self):
+        """Yield path objects of the directory contents.
+    
+        The children are yielded in arbitrary order, and the
+        special entries '.' and '..' are not included.
+        """
+>       for name in os.listdir(self):
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\Lenovo\\AppData\\Local\\Temp\\pytest-of-Lenovo'
+
+..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1056: PermissionError
+================================== FAILURES ===================================
+________________ test_gauss_cache_and_numpy_state_are_material ________________
+
+trace = {'backend_effective': 'py-seq', 'backend_requested': 'py-seq', 'config': {'FCNAgents': {'assetVolume': 50, 'cashAmount...maxNormalOrders': 3, 'sessionName': 1, 'withOrderExecution': True, ...}]}}, 'contract_version': 'coreorder-r4-v1', ...}
+
+    def test_gauss_cache_and_numpy_state_are_material(trace):
+        bad=copy.deepcopy(trace)
+        bad["rng"]["agents/0/prng"]["python_random"][2]=encode(0.5)
+>       assert compare(trace,bad)["scope"]=="rng"
+E       AssertionError: assert 'final' == 'rng'
+E         - rng
+E         + final
+
+tests\differential\test_e2.py:64: AssertionError
+============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_missing_gauss_detected_without_orders
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\.research\pams-6cd53810103780770c5b5d6ee0069ccab9f4b358\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  C:\Users\Lenovo\Desktop\计组作业\CoreOrder_Member_E\CoreOrder\validation\reference.py:25: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/differential/test_e2.py::test_gauss_cache_and_numpy_state_are_material
+ERROR tests/differential/test_e2.py::test_swapped_events_and_replay - Permiss...
+1 failed, 12 passed, 8 warnings, 1 error in 1.11s

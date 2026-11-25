@@ -1,0 +1,177 @@
+{
+  "status": "NOT_RUN",
+  "runnable": false,
+  "reason": "Template only. A/E must supply actual code/config/environment hashes and pilot-frozen step counts before execution.",
+  "contract_version": "coreorder-r4-v1",
+  "pilot_seeds": [
+    11,
+    29
+  ],
+  "formal_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "timing_repeats_per_seed": 3,
+  "warmups_per_variant": 2,
+  "timeout_s": 30,
+  "primary_budget_minutes": 480,
+  "reserve_minutes": 20,
+  "mac_reproduction_budget_minutes": 60,
+  "pairing_keys": [
+    "workload_id",
+    "seed",
+    "repeat",
+    "block_id",
+    "pairing_group_id"
+  ],
+  "formal_code_sha": null,
+  "protocol_lock_hash": null,
+  "stages": [
+    {
+      "id": "P01",
+      "budget_minutes": 30,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "C01",
+      "budget_minutes": 40,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V01",
+      "budget_minutes": 80,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E01",
+      "budget_minutes": 45,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "H01",
+      "budget_minutes": 55,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E02",
+      "budget_minutes": 105,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E03",
+      "budget_minutes": 70,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E05",
+      "budget_minutes": 35,
+      "enabled": true,
+      "status": "NOT_RUN"
+    }
+  ],
+  "optional": [
+    {
+      "id": "E04",
+      "enabled": false,
+      "enable_rule": "G3\u524d\u91cd\u5206\u914d\u9884\u7b97\u53ca\u5b8c\u6574\u9a8c\u8bc1\uff1b\u4e0d\u5f97\u8d85\u8fc7480\u5206\u949f"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "W0-CI2002",
+      "N": null,
+      "M": 1,
+      "K": null,
+      "steps": null,
+      "effective_config_hash": null
+    },
+    {
+      "id": "W1-SMALL-BATCH",
+      "N": 4096,
+      "M": 32,
+      "K": 1,
+      "steps": null,
+      "effective_config_hash": null
+    },
+    {
+      "id": "W2-MEDIUM-BATCH",
+      "N": 4096,
+      "M": 256,
+      "K": 1,
+      "steps": null,
+      "effective_config_hash": null
+    },
+    {
+      "id": "W3-LARGE-MULTI",
+      "N": 16384,
+      "M": 1024,
+      "K": 4,
+      "steps": null,
+      "effective_config_hash": null
+    }
+  ],
+  "time_boundaries": {
+    "simulation": "after setup through last business event; RNG+packing+compute+rebuild+matching included",
+    "process": "spawn through successful exit",
+    "kernel": "diagnostic only"
+  },
+  "missing_rule": "null plus reason; no zero fill",
+  "timeout_rule": "right censored, not exact runtime",
+  "statistics": {
+    "unit": "seed",
+    "within_seed": "median of 3 paired log ratios in predefined blocks",
+    "across_seeds": "exp(mean(seed effects))",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 73021
+  },
+  "correctness_settings": [
+    {
+      "backend": "py-seq",
+      "book_restore": "upstream"
+    },
+    {
+      "backend": "py-thread",
+      "book_restore": "upstream",
+      "workers": 2
+    },
+    {
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos"
+    },
+    {
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa"
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4
+    }
+  ],
+  "process_policy": "attempt separately within timeout; retain true status"
+}

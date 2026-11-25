@@ -1,0 +1,31 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\.research\\venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "packages": {
+    "attrs": "26.1.0",
+    "colorama": "0.4.6",
+    "iniconfig": "2.3.1",
+    "jsonschema": "4.23.0",
+    "jsonschema-specifications": "2025.9.1",
+    "numpy": "1.26.4",
+    "packaging": "26.4",
+    "pip": "25.0.1",
+    "pluggy": "1.7.0",
+    "pytest": "7.4.4",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.9.1",
+    "scipy": "1.14.1",
+    "tqdm": "4.66.6",
+    "typing_extensions": "4.16.0"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  },
+  "power_mode": null,
+  "power_reason": "Not collected; development correctness only"
+}

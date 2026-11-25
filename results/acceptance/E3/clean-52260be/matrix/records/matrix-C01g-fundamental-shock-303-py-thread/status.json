@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01g-fundamental-shock-303-py-thread",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01g-fundamental-shock-303-py-seq",
+  "trace_hash": "a5cd4a3b947aad969161446938b9fe7f6416581e73590d8993092ce8c58b6a38",
+  "final_state_hash": "0c34e7fad6f6a837c30c1034bbbe21d41ebbbe48784ee7dc004bd2a58714cba1",
+  "rng_hash": "994592a72e3787d0b09ab619821b197c1175e90223d0d723cbed422815610953",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}

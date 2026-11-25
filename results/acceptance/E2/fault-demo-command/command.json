@@ -1,0 +1,21 @@
+{
+  "command": [
+    "../.research/venv/Scripts/python.exe",
+    "-m",
+    "tests.differential.fault_demo",
+    "--pams-root",
+    "../.research/pams-6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "--output",
+    "results/counterexamples/E2"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\CoreOrder",
+  "timestamp_utc": "2026-11-25T08:54:20.542079+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 1.7478860999981407,
+  "timeout_s": 30.0,
+  "censoring": null,
+  "git_sha": "d476133adfeba1dfeaef77ba3347b239199e5328",
+  "dirty": true,
+  "scope": "development command; not a formal system timing result"
+}

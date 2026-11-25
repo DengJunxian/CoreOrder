@@ -1,0 +1,56 @@
+{
+  "case": "C01f-MaboveN",
+  "seed": 303,
+  "input_hash": "7b345e22b730829320a0cdfb2ed97768c9e893e2591e3ea113b019595b687b9f",
+  "oracle_hashes": {
+    "events": "33c3c0bd2a3262cefd7413cc3806981b409e172eb7eb89c76f1f416430144ed3",
+    "steps": "b860ba1b2723fb27480712d55988cb7baaea627fbaaabb5d6dc40659d6745b2a",
+    "final": "4f7265aedeb1e2bc745cf6dcfa0f913325a1eae9e0c099ba8860c28e5c5aec8e",
+    "rng": "50937ffa50170efd3ecd6cb6de7faabb9e0f688bc4a048b3328ae6a8a2e98cf6"
+  },
+  "event_counts": {
+    "SimulationBeginLog": 1,
+    "SessionBeginLog": 2,
+    "MarketStepBeginLog": 6,
+    "OrderLog": 48,
+    "MarketStepEndLog": 6,
+    "ExpirationLog": 28,
+    "SessionEndLog": 2,
+    "SimulationEndLog": 1
+  },
+  "invariants": {
+    "status": "PASS",
+    "failures": [],
+    "cash_tolerance": {
+      "abs": 1e-07,
+      "rel": 1e-12
+    },
+    "scope": "no-fee conservation and event-ledger-book consistency"
+  },
+  "native_status": "INTEGRATION_PENDING",
+  "native_reason": "A/B/C/D production candidates and unified CLI not delivered",
+  "thread_comparison": {
+    "status": "PASS",
+    "scopes": [
+      "events",
+      "steps",
+      "final",
+      "rng"
+    ]
+  },
+  "thread_hashes": {
+    "events": "33c3c0bd2a3262cefd7413cc3806981b409e172eb7eb89c76f1f416430144ed3",
+    "steps": "b860ba1b2723fb27480712d55988cb7baaea627fbaaabb5d6dc40659d6745b2a",
+    "final": "4f7265aedeb1e2bc745cf6dcfa0f913325a1eae9e0c099ba8860c28e5c5aec8e",
+    "rng": "50937ffa50170efd3ecd6cb6de7faabb9e0f688bc4a048b3328ae6a8a2e98cf6"
+  },
+  "thread_invariants": {
+    "status": "PASS",
+    "failures": [],
+    "cash_tolerance": {
+      "abs": 1e-07,
+      "rel": 1e-12
+    },
+    "scope": "no-fee conservation and event-ledger-book consistency"
+  }
+}

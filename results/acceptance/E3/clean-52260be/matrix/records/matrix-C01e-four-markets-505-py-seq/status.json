@@ -1,0 +1,11 @@
+{
+  "run_id": "matrix-C01e-four-markets-505-py-seq",
+  "status": "PASS",
+  "validation_status": "PASS",
+  "reference_run_id": "matrix-C01e-four-markets-505-py-seq",
+  "trace_hash": "2378113051ec5cecaa793b704f44e209d195fdff97f3142556d5832ee1bf834b",
+  "final_state_hash": "209f60b6e1a84f411c68ec6cee52c35d50c41f2889d82c0614e7cb1f267540a1",
+  "rng_hash": "9c38d4fd50157eb365298e1e3a8b2271da63aaa39af9d4bbadd008b988a06289",
+  "comparison_scope": "events/steps/final/rng",
+  "censoring": null
+}
