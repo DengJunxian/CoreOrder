@@ -1,0 +1,68 @@
+{
+  "windows_version": "10.0.26200",
+  "architecture": "AMD64",
+  "processor_name": "Intel(R) Core(TM) i7-14650HX",
+  "processor_groups": 1,
+  "packages": 1,
+  "physical_cores": 16,
+  "logical_processors": 24,
+  "physical_ram_bytes": 16790925312,
+  "caches": [
+    {
+      "level": 1,
+      "type": "data",
+      "bytes_each": 32768,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 1,
+      "instances": 8
+    },
+    {
+      "level": 1,
+      "type": "data",
+      "bytes_each": 49152,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 2,
+      "instances": 8
+    },
+    {
+      "level": 1,
+      "type": "instruction",
+      "bytes_each": 32768,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 2,
+      "instances": 8
+    },
+    {
+      "level": 1,
+      "type": "instruction",
+      "bytes_each": 65536,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 1,
+      "instances": 8
+    },
+    {
+      "level": 2,
+      "type": "unified",
+      "bytes_each": 2097152,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 2,
+      "instances": 8
+    },
+    {
+      "level": 2,
+      "type": "unified",
+      "bytes_each": 4194304,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 4,
+      "instances": 2
+    },
+    {
+      "level": 3,
+      "type": "unified",
+      "bytes_each": 31457280,
+      "line_bytes": 64,
+      "shared_by_logical_processors": 24,
+      "instances": 1
+    }
+  ]
+}

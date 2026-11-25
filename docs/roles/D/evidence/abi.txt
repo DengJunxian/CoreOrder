@@ -1,0 +1,42 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.15
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35217 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+abi_check.cpp
+Microsoft (R) Incremental Linker Version 14.44.35217.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:C:\Users\LHT\AppData\Local\Packages\openai.codex_2p2nqsd0c76g0\AC\#!sandbox.{e4f50787-0a62-4e3b-bcd1-a60527d7f735}\Temp\coreorder-d-audit-build\abi_check.exe 
+C:\Users\LHT\AppData\Local\Packages\openai.codex_2p2nqsd0c76g0\AC\#!sandbox.{e4f50787-0a62-4e3b-bcd1-a60527d7f735}\Temp\coreorder-d-audit-build\abi_check.obj 
+cl_exit=0
+PASS NumPy-to-C++ all fields, descending market IDs preserved
+input 112 8
+output 16 8
+metadata 24 8
+p_now 0
+p_fund 8
+p_then 16
+w_f 24
+w_c 32
+w_n 40
+noise_scale 48
+order_margin 56
+z_noise 64
+z_margin 72
+window 80
+effective_window 88
+mean_reversion 96
+margin_type 104
+chart_sign 108
+price 0
+side 8
+error 12
+agent_id 0
+market_id 8
+call_index 16
+PASS numpy=2.4.6 python=3.14.5 fields=21
+compare_exit=0
