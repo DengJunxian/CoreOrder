@@ -2,6 +2,8 @@
 
 # E 状态
 
+GitHub轻量源码提交：533ab8747432a3d0e06c7c0fb248eb049dd0d880，分支e/03-github-delivery。26个源码/测试/配置文件与原交付SHA256逐个一致；该新提交在dirty=false条件重新运行31 tests及pip check，全部exit0。新日志见results/acceptance/E3/github-source-533ab87；随后仅追加日志和文档，当前待用户执行push。
+
 阶段：E1/E2/E3 独立模块 MODULE_PASS，最终干净源码复核完成。契约 coreorder-r4-v1。
 输入基线：e2492a4b8317c6674918b13470b577f4d6f8675d（初始化，非 G0）。
 PAMS：6cd53810103780770c5b5d6ee0069ccab9f4b358，归档逐 blob 核验，未修改。

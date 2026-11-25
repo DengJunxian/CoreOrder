@@ -29,6 +29,8 @@
   "remote_reason": "Connected GitHub account reports push=false; no explicit remote-write grant in the stage package",
   "final_evidence_commit": "Obtain via git rev-parse e/03-system-check; evidence-only successor of verified code",
   "github_delivery_branch": "e/03-github-delivery",
+  "github_verified_source_commit": "533ab8747432a3d0e06c7c0fb248eb049dd0d880",
+  "github_verification": "31 tests and pip check PASS on a clean tree; 26 source/config/test files identical to original delivery",
   "original_history_location": "CoreOrder_E1-E3.bundle (separate archive)",
   "current_delivery_commit": "Run git rev-parse e/03-github-delivery; original stage commits above are preserved in archive"
 }

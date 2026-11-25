@@ -1,0 +1,24 @@
+{
+  "command": [
+    "../.research/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "tests/differential",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "../.deliveries/github-source-review/pytest-temp"
+  ],
+  "cwd": "C:\\Users\\Lenovo\\Desktop\\\u8ba1\u7ec4\u4f5c\u4e1a\\CoreOrder_Member_E\\CoreOrder_GitHub",
+  "timestamp_utc": "2026-11-25T12:33:58.558522+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 2.9464428999926895,
+  "timeout_s": 60.0,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "533ab8747432a3d0e06c7c0fb248eb049dd0d880",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}

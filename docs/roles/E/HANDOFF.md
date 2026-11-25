@@ -2,6 +2,8 @@
 
 # E1–E3 交付与接入
 
+GitHub提交入口为 `e/03-github-delivery`，源码提交533ab8747432a3d0e06c7c0fb248eb049dd0d880，经26个源文件逐一SHA256核对及31 tests/pip check干净复测。最终推送HEAD可由git rev-parse HEAD取得；它是原完整交付的轻量发布快照，原阶段历史和完整raw通过单独bundle归档。
+
 E 的独立工具已实现；G0/G1/G2 系统验收均 **INTEGRATION_PENDING**。不把 vendor 自身对照、测试故障或历史 probe 当生产模块通过。
 最终验证源码：`52260be7cca066b896de7c7f266552add93a82cb`。干净工作树完整复核在 `results/acceptance/E3/clean-52260be`；后续证据提交仅追加文档/raw。阶段commit链见 `COMMITS.json`。
 
