@@ -1,0 +1,35 @@
+{
+  "contract_version": "coreorder-r4-v1",
+  "dependencies": [
+    {
+      "name": "PAMS",
+      "repo": "https://github.com/masanorihirano/pams.git",
+      "version": "0.3.0",
+      "sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "path": "vendor/pams",
+      "license": "EPL-1.0",
+      "license_path": "vendor/pams/LICENSE",
+      "license_copy": "licenses/PAMS-EPL-1.0.txt"
+    },
+    {
+      "name": "Taskflow",
+      "repo": "https://github.com/taskflow/taskflow.git",
+      "version": "3.11.0",
+      "sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "path": "vendor/taskflow",
+      "license": "MIT",
+      "license_path": "vendor/taskflow/LICENSE",
+      "license_copy": "licenses/Taskflow-MIT.txt"
+    },
+    {
+      "name": "pybind11",
+      "repo": "https://github.com/pybind/pybind11.git",
+      "version": "2.13.6",
+      "sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+      "path": "vendor/pybind11",
+      "license": "BSD-3-Clause",
+      "license_path": "vendor/pybind11/LICENSE",
+      "license_copy": "licenses/pybind11-BSD-3-Clause.txt"
+    }
+  ]
+}
