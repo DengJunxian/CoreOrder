@@ -1,0 +1,393 @@
+{
+  "scope": "D3 pack_batch entry through context exit, including view/stat creation and release",
+  "excluded": [
+    "runner.main",
+    "terminal state sampling",
+    "hashing",
+    "native compute",
+    "order rebuild"
+  ],
+  "kind": "module_microbenchmark",
+  "contract_version": "coreorder-r4-v1",
+  "python": "3.12.13",
+  "implementation": "CPython",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "architecture": "AMD64",
+  "dependencies": {
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "tqdm": "4.66.6"
+  },
+  "fixture_pams_commit": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+  "seed": 42,
+  "sha256": {
+    "fixed.json": "f592135a36107eeebf74c951d2c2a43fdc22498e2d30a040af0554382f9171de",
+    "manifest.json": "7abf31ef1e05c8fc6a8509c631b55ea371c04d33901e9700032e79f730b9f4a7",
+    "pack_micro.py": "283ea351a63978ae4a3e31f3c8531d2c416452362105a6be276991559cf386ce",
+    "packing.py": "0536ccbf09ef811bdc66390bc4c4719adcbd36f8d53a465384daa622cf6a6674",
+    "pams/agents/fcn_agent.py": "e8b6d9b642042c0de25099ca41691923463c17a09e231c6c47ce1312ce825922",
+    "pams/market.py": "5d97291fc216d6e7c2691058dddaffe6f3ba7a7f7ff0a435e17c92aef88b1e1a",
+    "pams/runners/sequential.py": "1c45594ea28b5061b02916df7513de73a25a821724756f1b738f324773ddef3b",
+    "hardware.json": "8334e09fac2e41e21f1f6c1f87235017c1b19979c377e9c999e43de4124b1c86"
+  },
+  "agent_order": "simulator.agents order in the terminal snapshot",
+  "market_times": [
+    80
+  ],
+  "rows": 24,
+  "draws": "one next gauss per accessible row from each terminal agent's isolated PRNG clone",
+  "warmups_per_layout": 4,
+  "paired_blocks": 24,
+  "buffer_stats": {
+    "aos": {
+      "n_rows": 24,
+      "capacity": 24,
+      "buffer_nbytes": {
+        "rows": 2688
+      },
+      "buffer_capacity_nbytes": {
+        "rows": 2688
+      },
+      "input_nbytes": 2688,
+      "metadata_nbytes": 576,
+      "metadata_capacity_nbytes": 576
+    },
+    "soa": {
+      "n_rows": 24,
+      "capacity": 24,
+      "buffer_nbytes": {
+        "p_now": 192,
+        "p_fund": 192,
+        "p_then": 192,
+        "w_f": 192,
+        "w_c": 192,
+        "w_n": 192,
+        "noise_scale": 192,
+        "order_margin": 192,
+        "z_noise": 192,
+        "z_margin": 192,
+        "window": 192,
+        "effective_window": 192,
+        "mean_reversion": 192,
+        "margin_type": 96,
+        "chart_sign": 96
+      },
+      "buffer_capacity_nbytes": {
+        "p_now": 192,
+        "p_fund": 192,
+        "p_then": 192,
+        "w_f": 192,
+        "w_c": 192,
+        "w_n": 192,
+        "noise_scale": 192,
+        "order_margin": 192,
+        "z_noise": 192,
+        "z_margin": 192,
+        "window": 192,
+        "effective_window": 192,
+        "mean_reversion": 192,
+        "margin_type": 96,
+        "chart_sign": 96
+      },
+      "input_nbytes": 2688,
+      "metadata_nbytes": 576,
+      "metadata_capacity_nbytes": 576
+    }
+  },
+  "row_and_metadata_sha256": "963fcb72f7c03703e3316cde84f36901b8283864b9d640255317001ce3b857ed",
+  "agent_rng_unchanged": true,
+  "median_ns": {
+    "aos": 331000.0,
+    "soa": 367050.0
+  },
+  "raw": [
+    {
+      "block": 0,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 390200
+    },
+    {
+      "block": 0,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 511400
+    },
+    {
+      "block": 1,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 389200
+    },
+    {
+      "block": 1,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 377200
+    },
+    {
+      "block": 2,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 378600
+    },
+    {
+      "block": 2,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 376000
+    },
+    {
+      "block": 3,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 353200
+    },
+    {
+      "block": 3,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 315400
+    },
+    {
+      "block": 4,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 307900
+    },
+    {
+      "block": 4,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 366100
+    },
+    {
+      "block": 5,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 621500
+    },
+    {
+      "block": 5,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 495100
+    },
+    {
+      "block": 6,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 330900
+    },
+    {
+      "block": 6,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 426500
+    },
+    {
+      "block": 7,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 502900
+    },
+    {
+      "block": 7,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 353700
+    },
+    {
+      "block": 8,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 362400
+    },
+    {
+      "block": 8,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 396800
+    },
+    {
+      "block": 9,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 550600
+    },
+    {
+      "block": 9,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 653800
+    },
+    {
+      "block": 10,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 368500
+    },
+    {
+      "block": 10,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 364400
+    },
+    {
+      "block": 11,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 367300
+    },
+    {
+      "block": 11,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 331100
+    },
+    {
+      "block": 12,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 316500
+    },
+    {
+      "block": 12,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 362300
+    },
+    {
+      "block": 13,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 355000
+    },
+    {
+      "block": 13,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 308800
+    },
+    {
+      "block": 14,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 316100
+    },
+    {
+      "block": 14,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 346300
+    },
+    {
+      "block": 15,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 730600
+    },
+    {
+      "block": 15,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 353300
+    },
+    {
+      "block": 16,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 328000
+    },
+    {
+      "block": 16,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 443200
+    },
+    {
+      "block": 17,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 357300
+    },
+    {
+      "block": 17,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 310500
+    },
+    {
+      "block": 18,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 311000
+    },
+    {
+      "block": 18,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 347500
+    },
+    {
+      "block": 19,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 462700
+    },
+    {
+      "block": 19,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 430400
+    },
+    {
+      "block": 20,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 340100
+    },
+    {
+      "block": 20,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 362500
+    },
+    {
+      "block": 21,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 366800
+    },
+    {
+      "block": 21,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 326700
+    },
+    {
+      "block": 22,
+      "position": 0,
+      "layout": "aos",
+      "elapsed_ns": 329600
+    },
+    {
+      "block": 22,
+      "position": 1,
+      "layout": "soa",
+      "elapsed_ns": 358600
+    },
+    {
+      "block": 23,
+      "position": 0,
+      "layout": "soa",
+      "elapsed_ns": 353300
+    },
+    {
+      "block": 23,
+      "position": 1,
+      "layout": "aos",
+      "elapsed_ns": 321400
+    }
+  ]
+}

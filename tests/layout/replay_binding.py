@@ -98,11 +98,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("fixtures", type=Path)
     parser.add_argument("--build-msvc", type=Path)
+    parser.add_argument("--build-dir", type=Path,
+                        help="directory to retain the compiled binding for other module tests")
     args = parser.parse_args()
     print("python", sys.version, "numpy", np.__version__, "host", platform.platform())
     if args.build_msvc:
         # Windows keeps an imported .pyd mapped until process exit. Build in a
         # fresh directory below the user's temporary folder, reported in stdout.
-        build_dir = Path(tempfile.mkdtemp(prefix="coreorder-d-replay-"))
+        build_dir = args.build_dir or Path(tempfile.mkdtemp(prefix="coreorder-d-replay-"))
+        build_dir = build_dir.resolve()
+        build_dir.mkdir(parents=True, exist_ok=True)
         build_msvc(args.build_msvc.resolve(), build_dir)
     replay(args.fixtures)

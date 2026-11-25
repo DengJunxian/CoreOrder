@@ -1,0 +1,19 @@
+D3 module-level live PAMS and A fixture replay
+Windows-11-10.0.26200-SP0 3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]
+numpy 1.26.4 scipy 1.14.1 tqdm 4.66.6 pytest 7.4.4
+fcn source sha256 e8b6d9b642042c0de25099ca41691923463c17a09e231c6c47ce1312ce825922
+fixture manifest seed=42, local FCN seed=2026+agent_id, market seed=42+market_id
+command: python -m pytest -vv --tb=short tests/layout/test_pams_packing.py
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-7.4.4, pluggy-1.7.0 -- C:\Users\LHT\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\LHT\Documents\ChatGPT\coreorder\CoreOrder
+collecting ... collected 4 items
+
+tests/layout/test_pams_packing.py::PackingWithPams::test_invalid_sample_stream_and_recovery PASSED [ 25%]
+tests/layout/test_pams_packing.py::PackingWithPams::test_pack_from_public_fixture PASSED [ 50%]
+tests/layout/test_pams_packing.py::PackingWithPams::test_rejects_agents_with_untrusted_behavior PASSED [ 75%]
+tests/layout/test_pams_packing.py::PackingWithPams::test_sparse_access_live_updates_and_rng PASSED [100%]
+
+============================== 4 passed in 1.10s ==============================
+exit_code=0

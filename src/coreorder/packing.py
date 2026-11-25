@@ -241,3 +241,76 @@ class LayoutBuffer:
             populate(writer)
             self._publish(writer)
             yield self._view()
+
+
+@dataclass(frozen=True)
+class Draw:
+    """A's previously consumed standard-normal sample(s) for one accessible row."""
+
+    agent_id: int
+    market_id: int
+    z_noise: float
+    z_margin: float | None = None
+
+
+def pack_batch(buffer, agents, markets, samples, *, first_call=0, market_adapter=None):
+    """Lease a live R4 batch in A's sampled agent and simulator market order.
+
+    Enter the returned context while the simulator is quiescent. All inputs
+    are replayable sequences from this batch; D never advances any RNG.
+    market_adapter may name A's audited, semantics-preserving Market subclass.
+    """
+    from pams.agents.fcn_agent import FCNAgent, MARGIN_FIXED, MARGIN_NORMAL
+    from pams.market import Market
+
+    first_call = _count(first_call)
+    if market_adapter is not None and not issubclass(market_adapter, Market):
+        raise TypeError("market_adapter must be an audited Market subtype")
+    # Materialize references once. Multiple agents must traverse the same markets.
+    markets = tuple(markets)
+    for market in markets:
+        if type(market) is not Market and type(market) is not market_adapter:
+            raise TypeError(f"unsupported market type: {type(market).__name__}")
+
+    def populate(writer):
+        row = 0
+        for call, agent in enumerate(agents, start=first_call):
+            if type(agent) is not FCNAgent:
+                raise TypeError(f"call {call}: expected exact PAMS FCNAgent")
+            for market in markets:
+                if not agent.is_market_accessible(market.market_id):
+                    continue
+                identity = (agent.agent_id, market.market_id)
+                if row >= len(samples):
+                    raise ValueError(f"row {row}: missing sample for {identity}")
+                draw = samples[row]
+                if (draw.agent_id, draw.market_id) != identity:
+                    raise ValueError(f"row {row}: expected sample for {identity}")
+                mode = agent.margin_type
+                if mode not in (MARGIN_FIXED, MARGIN_NORMAL):
+                    raise ValueError(f"row {row}: unknown margin type {mode}")
+                if (draw.z_margin is None) != (mode == MARGIN_FIXED):
+                    raise ValueError(f"row {row}: wrong number of gauss samples for {identity}")
+                time = market.get_time()
+                window = agent.time_window_size
+                effective = min(time, window)
+                if effective < 0:
+                    raise ValueError(f"row {row}: negative effective window")
+                values = (
+                    market.get_market_price(), market.get_fundamental_price(),
+                    market.get_market_price(time - effective),
+                    agent.fundamental_weight, agent.chart_weight, agent.noise_weight,
+                    agent.noise_scale, agent.order_margin,
+                    draw.z_noise, 0.0 if mode == MARGIN_FIXED else draw.z_margin,
+                    window, effective, agent.mean_reversion_time,
+                    mode, 1 if agent.is_chart_following else -1,
+                )
+                try:
+                    writer.set_row(row, values, (*identity, call))
+                except (TypeError, ValueError, OverflowError) as exc:
+                    raise ValueError(f"row {row} {identity}: {exc}") from exc
+                row += 1
+        if row != len(samples):
+            raise ValueError(f"row {row}: unexpected trailing samples")
+
+    return buffer.packed(len(samples), populate)

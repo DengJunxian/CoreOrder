@@ -1,0 +1,15 @@
+Command: PYTHONPATH=CoreOrder/src;D-pams-research/masanorihirano-pams-6cd5381;evidence-inputs/B-build; .d-venv/Scripts/python CoreOrder/tests/layout/replay_live_event.py evidence-inputs/A/fixtures/pams
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Python 3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)] NumPy 1.26.4 binding C:\Users\LHT\Documents\ChatGPT\coreorder\evidence-inputs\B-build\_coreorder_fcn.pyd
+input sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934 pams_sha 6cd53810103780770c5b5d6ee0069ccab9f4b358 seed 42
+# INITIALIZATION TIME 0.0030215
+# EXECUTION TIME 0.0101934
+counts {'calls': 24, 'before': 10, 'gauss': 24, 'orders': 24, 'shock_hooks': 1, 'after': 14}
+before steps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] fundamental prices ['0x1.2c00000000000p+8']
+after steps [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] fundamental prices ['0x1.0e00000000000p+8']
+all live outputs matched PAMS including price bytes and identity; observed agent RNG unchanged
+ordered outputs sha256 7107a3fcb0564c8d2ef3d0f7033a5cf137f9446b447d190a709bd550ddd2709d
+exit_code=0

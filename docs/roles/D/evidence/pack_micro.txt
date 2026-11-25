@@ -1,0 +1,8 @@
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+C:\Users\LHT\Documents\ChatGPT\coreorder\D-pams-research\masanorihirano-pams-6cd5381\pams\runners\sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+# INITIALIZATION TIME 0.0024929
+# EXECUTION TIME 0.0046918
+rows=24, blocks=24, median_ns={'aos': 331000.0, 'soa': 367050.0}
+exit=0

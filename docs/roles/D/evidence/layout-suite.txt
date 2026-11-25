@@ -1,0 +1,22 @@
+Command: python -m pytest -p no:cacheprovider -vv CoreOrder/tests/layout
+============================= test session starts =============================
+platform win32 -- Python 3.12.13, pytest-7.4.4, pluggy-1.7.0 -- C:\Users\LHT\Documents\ChatGPT\coreorder\.d-venv\Scripts\python.exe
+rootdir: C:\Users\LHT\Documents\ChatGPT\coreorder
+collecting ... collected 13 items
+
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_aos_shape_offset_stride_endian_and_alignment PASSED [  7%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_capacity_tail_and_empty PASSED [ 15%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_invalid_scalar_and_index PASSED [ 23%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_lease_blocks_another_thread_until_exit PASSED [ 30%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_numpy_abi PASSED [ 38%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_output_validation PASSED [ 46%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_partial_failed_batch_never_read PASSED [ 53%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_physical_buffers_roundtrip_and_accounting PASSED [ 61%]
+CoreOrder/tests/layout/test_buffers.py::BufferTests::test_soa_rejects_malformed_columns PASSED [ 69%]
+CoreOrder/tests/layout/test_pams_packing.py::PackingWithPams::test_invalid_sample_stream_and_recovery PASSED [ 76%]
+CoreOrder/tests/layout/test_pams_packing.py::PackingWithPams::test_pack_from_public_fixture PASSED [ 84%]
+CoreOrder/tests/layout/test_pams_packing.py::PackingWithPams::test_rejects_agents_with_untrusted_behavior PASSED [ 92%]
+CoreOrder/tests/layout/test_pams_packing.py::PackingWithPams::test_sparse_access_live_updates_and_rng PASSED [100%]
+
+============================= 13 passed in 0.77s ==============================
+exit_code=0
