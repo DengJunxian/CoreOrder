@@ -1,10 +1,11 @@
-import importlib
 import json
 import os
 import random
 import time
 import weakref
 from concurrent.futures import ThreadPoolExecutor
+from importlib import import_module
+from importlib.util import find_spec
 
 import numpy as np
 import pytest
@@ -12,7 +13,12 @@ import pytest
 from coreorder.contracts import CONTRACT_VERSION, INPUT_DTYPE, OUTPUT_DTYPE
 from fcn_cases import columns, generated_cases, order_key, public_replay, public_rng, random_state
 
-native = importlib.import_module(os.environ.get("COREORDER_FCN_TEST_MODULE", "_coreorder_fcn"))
+requested_module = os.environ.get("COREORDER_FCN_TEST_MODULE")
+if requested_module is None and find_spec("_coreorder_fcn") is None:
+    pytest.skip("FCN extension is unavailable before the native build; see tests/native/README.md",
+                allow_module_level=True)
+
+native = import_module(requested_module if requested_module is not None else "_coreorder_fcn")
 has_executor_fixture = hasattr(native, "test_factory_creations")
 
 

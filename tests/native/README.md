@@ -12,12 +12,12 @@ cmake -S tests/native -B build-fcn -DCMAKE_BUILD_TYPE=Release \
 cmake --build build-fcn --parallel
 ctest --test-dir build-fcn --output-on-failure
 export PYTHONPATH="$PWD/build-fcn:$PWD/src:$PWD/vendor/pams"
-python -B -m pytest -q -s tests/native/test_fcn.py
+COREORDER_FCN_TEST_MODULE=_coreorder_fcn python -B -m pytest -q -s tests/native/test_fcn.py
 COREORDER_FCN_TEST_MODULE=_coreorder_fcn_test python -B -m pytest -q -s tests/native/test_fcn.py
 python -B tests/native/microbench.py
 ```
 
-第二套 pytest 使用独立的 C 测试替身，覆盖工厂生命周期、两种布局和 1/2/4 workers 的调用结果。生产方式使用 `_coreorder_fcn`。两模块分别在独立 Python 进程中导入。跨主机复放诊断报告高斯浮点差异，逐位验收使用本机实际原版 PAMS 调用，以及公共样本已经捕获的 `z_noise/z_margin`。
+基础工作流在编译前运行仓库级 pytest，此时会跳过尚未构建的原生测试套件。上面的两条定向命令显式指定待测模块，模块缺失或加载失败都会报错。第二套 pytest 使用独立的 C 测试替身，覆盖工厂生命周期、两种布局和 1/2/4 workers 的调用结果。两模块分别在独立 Python 进程中导入。跨主机复放诊断报告高斯浮点差异，逐位验收使用本机实际原版 PAMS 调用，以及公共样本已经捕获的 `z_noise/z_margin`。
 
 在本次 GCC/WSL2 环境，ASan 和 UBSan 验证可独立运行。
 
