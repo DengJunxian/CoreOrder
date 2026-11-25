@@ -1,0 +1,72 @@
+{
+  "input": {
+    "cpp_size_alignment": [
+      112,
+      8
+    ],
+    "numpy_size_alignment": [
+      112,
+      8
+    ],
+    "cpp_offsets": {
+      "p_now": 0,
+      "p_fund": 8,
+      "p_then": 16,
+      "w_f": 24,
+      "w_c": 32,
+      "w_n": 40,
+      "noise_scale": 48,
+      "order_margin": 56,
+      "z_noise": 64,
+      "z_margin": 72,
+      "window": 80,
+      "effective_window": 88,
+      "mean_reversion": 96,
+      "margin_type": 104,
+      "chart_sign": 108
+    },
+    "numpy_offsets": {
+      "p_now": 0,
+      "p_fund": 8,
+      "p_then": 16,
+      "w_f": 24,
+      "w_c": 32,
+      "w_n": 40,
+      "noise_scale": 48,
+      "order_margin": 56,
+      "z_noise": 64,
+      "z_margin": 72,
+      "window": 80,
+      "effective_window": 88,
+      "mean_reversion": 96,
+      "margin_type": 104,
+      "chart_sign": 108
+    },
+    "numpy_stride": 112,
+    "numpy_address_aligned": true,
+    "match": true
+  },
+  "output": {
+    "cpp_size_alignment": [
+      16,
+      8
+    ],
+    "numpy_size_alignment": [
+      16,
+      8
+    ],
+    "cpp_offsets": {
+      "price": 0,
+      "side": 8,
+      "error": 12
+    },
+    "numpy_offsets": {
+      "price": 0,
+      "side": 8,
+      "error": 12
+    },
+    "numpy_stride": 16,
+    "numpy_address_aligned": true,
+    "match": true
+  }
+}

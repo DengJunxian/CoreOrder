@@ -1,0 +1,21 @@
+{
+  "command": [
+    "g++",
+    "-O3",
+    "-std=c++17",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-shared",
+    "-fPIC",
+    "-pthread",
+    "-I/tmp/coreorder-b1.yPm6P905/taskflow",
+    "-I/tmp/coreorder-b1.yPm6P905/pybind11/include",
+    "-I/tmp/coreorder-b1.yPm6P905/python/include/python3.12",
+    "/tmp/coreorder-b1.yPm6P905/original/fcn_probe.cpp",
+    "-o",
+    "/tmp/coreorder-b1.yPm6P905/original/fcn_probe.cpython-312-x86_64-linux-gnu.so"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

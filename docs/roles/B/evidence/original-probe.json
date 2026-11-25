@@ -1,0 +1,90 @@
+{
+  "scope": "Feasibility differential probe of FCN pure numerical kernel against actual PAMS function, not full simulation correctness or speedup",
+  "upstream_repository": "https://github.com/masanorihirano/pams",
+  "upstream_commit": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+  "upstream_function": "pams/agents/fcn_agent.py::FCNAgent.submit_orders_by_market",
+  "upstream_file_sha256": "e8b6d9b642042c0de25099ca41691923463c17a09e231c6c47ce1312ce825922",
+  "license": "EPL-1.0 for adapted numerical expression; LICENSE retained",
+  "taskflow_version": "v3.11.0",
+  "taskflow_sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+  "pybind11_version": "v2.13.6",
+  "pybind11_sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+  "python": "3.12.16 (main, Nov 24 2026, 16:58:06) [Clang 23.1.3 ]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "numpy": "1.26.4",
+  "generated_cases": 10000,
+  "generation_seed": 20261125,
+  "agents": 100,
+  "calls_per_agent": 100,
+  "per_agent_rng_seed": "700001+agent_id",
+  "coverage": {
+    "inaccessible_no_rng_consumption": 910,
+    "no_order": 3297,
+    "accessible": 9090,
+    "fixed_margin": 4540,
+    "chart_following": 4546,
+    "margin_0_chart_1": 2270,
+    "orders": 6703,
+    "normal_margin": 4550,
+    "margin_1_chart_1": 2276,
+    "chart_contrarian": 4544,
+    "margin_0_chart_-1": 2270,
+    "margin_1_chart_-1": 2274,
+    "market_time_zero": 1820,
+    "configured_window_zero": 1818,
+    "normal_no_order_still_two_gauss": 1217,
+    "forced_expected_price_equality": 711,
+    "mean_reversion_zero": 575,
+    "agents_initial_gauss_cache_nonempty": 50
+  },
+  "python_oracle_price_hex_side_volume_ttl_identity_mismatches": 0,
+  "mismatch_examples": [],
+  "python_random_state_mismatches": 0,
+  "rng_mismatch_examples": [],
+  "native_serial_output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80",
+  "thread_checks": [
+    {
+      "schedule": "static",
+      "workers": 1,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    },
+    {
+      "schedule": "static",
+      "workers": 2,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    },
+    {
+      "schedule": "static",
+      "workers": 4,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    },
+    {
+      "schedule": "dynamic",
+      "workers": 1,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    },
+    {
+      "schedule": "dynamic",
+      "workers": 2,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    },
+    {
+      "schedule": "dynamic",
+      "workers": 4,
+      "bytewise_equal_to_serial": true,
+      "output_sha256": "d842a0f30db4b31af69ffef0c37251f12dc80bc05a6dd24e224355068adb1b80"
+    }
+  ],
+  "limits": [
+    "Valid finite domain only; invalid-input exception parity not tested",
+    "Uses actual Market/FCNAgent/Order classes but hand-initialized market histories",
+    "Does not test runner early-stop, event hooks, HFT interleaving, fill/settlement semantics",
+    "Results apply only to recorded toolchain and environment; cross-platform bitwise equality not established",
+    "No timing/performance or cache measurements were made"
+  ]
+}

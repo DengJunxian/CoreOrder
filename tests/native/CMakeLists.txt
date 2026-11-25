@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.20)
+project(CoreOrderFcnTests LANGUAGES CXX)
+
+include(CTest)
+get_filename_component(COREORDER_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../.." ABSOLUTE)
+find_package(Python 3.12...<3.13 REQUIRED COMPONENTS Interpreter Development.Module)
+find_package(Threads REQUIRED)
+set(PYBIND11_FINDPYTHON ON)
+add_subdirectory("${COREORDER_ROOT}/vendor/pybind11" pybind11 EXCLUDE_FROM_ALL)
+
+option(COREORDER_FCN_SANITIZE "Enable ASan and UBSan on the B fixtures and production sources" OFF)
+if(NOT CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    message(FATAL_ERROR "This standalone harness requires GCC or Clang strict floating-point flags")
+endif()
+add_library(fcn_flags INTERFACE)
+target_compile_features(fcn_flags INTERFACE cxx_std_17)
+target_compile_options(fcn_flags INTERFACE -fno-fast-math -ffp-contract=off -Wall -Wextra -Werror)
+if(COREORDER_FCN_SANITIZE)
+    target_compile_options(fcn_flags INTERFACE -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer)
+    target_link_options(fcn_flags INTERFACE -fsanitize=address,undefined)
+endif()
+
+add_library(fcn STATIC "${COREORDER_ROOT}/native/fcn/evaluate.cpp")
+set_target_properties(fcn PROPERTIES POSITION_INDEPENDENT_CODE ON)
+target_include_directories(fcn PUBLIC "${COREORDER_ROOT}/include")
+target_link_libraries(fcn PUBLIC fcn_flags)
+
+add_library(fcn_binding OBJECT "${COREORDER_ROOT}/native/bindings/fcn_binding.cpp")
+set_target_properties(fcn_binding PROPERTIES POSITION_INDEPENDENT_CODE ON CXX_VISIBILITY_PRESET hidden)
+target_include_directories(fcn_binding PUBLIC "${COREORDER_ROOT}/native/bindings")
+target_link_libraries(fcn_binding PUBLIC fcn pybind11::module)
+
+pybind11_add_module(_coreorder_fcn NO_EXTRAS "${COREORDER_ROOT}/native/bindings/module.cpp")
+target_link_libraries(_coreorder_fcn PRIVATE fcn_binding)
+
+pybind11_add_module(_coreorder_fcn_test NO_EXTRAS executor_fixture.cpp)
+target_link_libraries(_coreorder_fcn_test PRIVATE fcn_binding Threads::Threads)
+
+add_executable(fcn_range_test range_test.cpp)
+target_link_libraries(fcn_range_test PRIVATE fcn)
+add_test(NAME fcn_range COMMAND fcn_range_test)

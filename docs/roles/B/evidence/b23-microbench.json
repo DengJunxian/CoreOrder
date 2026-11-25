@@ -1,0 +1,106 @@
+{
+  "scope": "Module diagnostic, hot serial binding over tiled 24 public fixture rows",
+  "included": "validation, result allocation, arithmetic, error scan, binding call",
+  "excluded": "packing, RNG, Order construction, Taskflow and full simulation",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.12.16 (main, Nov 24 2026, 16:58:06) [Clang 23.1.3 ]",
+  "numpy": "1.26.4",
+  "results": [
+    {
+      "rows": 24,
+      "input_bytes": 2688,
+      "output_bytes": 384,
+      "input_sha256": "f933b44c9e08a0ecd767547e3bc047fb68a3dd7f193e1d7d7a0460ba6527a2a7",
+      "output_sha256": "9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3",
+      "calls_per_block": 300,
+      "block_ns": {
+        "aos": [
+          872941,
+          822123,
+          818022,
+          834573,
+          815332,
+          831456,
+          821785
+        ],
+        "soa": [
+          1578069,
+          1682739,
+          1484317,
+          1499956,
+          1615920,
+          1535165,
+          1539400
+        ]
+      },
+      "median_ns_per_call": {
+        "aos": 2740.41,
+        "soa": 5131.333333333333
+      }
+    },
+    {
+      "rows": 408,
+      "input_bytes": 45696,
+      "output_bytes": 6528,
+      "input_sha256": "410905f20646f885947446d257da908f0860d1b3707c5d6a3ff36b58aa68707f",
+      "output_sha256": "a25b1aeb2902746498529e4f610993ead760e3dce2083c291196fa8259e7eb09",
+      "calls_per_block": 300,
+      "block_ns": {
+        "aos": [
+          4293399,
+          4143612,
+          3931674,
+          3974969,
+          3914962,
+          3865583,
+          3930151
+        ],
+        "soa": [
+          5334867,
+          5086901,
+          4837811,
+          5197292,
+          4998208,
+          4732458,
+          4991029
+        ]
+      },
+      "median_ns_per_call": {
+        "aos": 13105.58,
+        "soa": 16660.693333333333
+      }
+    },
+    {
+      "rows": 4104,
+      "input_bytes": 459648,
+      "output_bytes": 65664,
+      "input_sha256": "63528ecf1572744b52fcfb746037eb113e92cbb8017e969d4898759f2a35e918",
+      "output_sha256": "3ca6f852b5999b9f3160c3c9d1ed33eb93c1bd2d533671f0a3a128c07fc1846b",
+      "calls_per_block": 300,
+      "block_ns": {
+        "aos": [
+          33986828,
+          34398525,
+          36050827,
+          34758243,
+          35249353,
+          36552109,
+          36525158
+        ],
+        "soa": [
+          36240385,
+          37568734,
+          39915203,
+          37016083,
+          38569547,
+          37319754,
+          37214869
+        ]
+      },
+      "median_ns_per_call": {
+        "aos": 117497.84333333334,
+        "soa": 124399.18
+      }
+    }
+  ]
+}
