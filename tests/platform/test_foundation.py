@@ -1,6 +1,6 @@
 import json
 import subprocess
-from importlib import metadata
+import sys
 from pathlib import Path
 
 import pytest
@@ -29,13 +29,20 @@ def test_locked_upstream(dependency):
 
 
 def test_installed_packages():
-    import coreorder
-    import pams
-    from pams.runners.sequential import SequentialRunner
+    # E's in-process oracle intentionally imports PAMS from vendor.
+    subprocess.run([sys.executable, "-c", """
+import json
+from importlib import metadata
+from pathlib import Path
 
-    distribution = metadata.distribution("pams")
-    assert distribution.version == "0.3.0"
-    assert json.loads(distribution.read_text("direct_url.json"))["url"] == (ROOT / "vendor/pams").as_uri()
-    assert Path(pams.__file__).resolve() == distribution.locate_file("pams/__init__.py").resolve()
-    assert Path(coreorder.__file__).resolve() == ROOT / "src/coreorder/__init__.py"
-    assert SequentialRunner.__module__ == "pams.runners.sequential"
+import coreorder
+import pams
+from pams.runners.sequential import SequentialRunner
+
+distribution = metadata.distribution("pams")
+assert distribution.version == "0.3.0"
+assert json.loads(distribution.read_text("direct_url.json"))["url"] == (Path.cwd() / "vendor/pams").as_uri()
+assert Path(pams.__file__).resolve() == distribution.locate_file("pams/__init__.py").resolve()
+assert Path(coreorder.__file__).resolve() == Path.cwd() / "src/coreorder/__init__.py"
+assert SequentialRunner.__module__ == "pams.runners.sequential"
+"""], cwd=ROOT, check=True)

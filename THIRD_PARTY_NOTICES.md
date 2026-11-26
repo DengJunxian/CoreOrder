@@ -36,3 +36,16 @@ inherited order quota explicitly.
 P03 uses the pinned JSON Schema validator in `requirements.lock`. jsonschema,
 jsonschema-specifications, referencing, attrs and rpds-py use MIT licenses.
 typing-extensions uses PSF-2.0. Consult the notices in the installed wheels.
+
+P05 derives `CoreOrderMarket._execution` from PAMS `pams/market.py` at
+`6cd53810103780770c5b5d6ee0069ccab9f4b358` under EPL-1.0. The incremental
+branch restores the original temporarily popped orders with `heapq.heappush`.
+See the [method diff](docs/roles/A/HEAP_METHOD.md), [PAMS authorship](vendor/pams/CITATION.cff)
+and [retained license](licenses/PAMS-EPL-1.0.txt).
+
+P07 derives its normal-agent collection order from PAMS
+`pams/runners/sequential.py` at `6cd53810103780770c5b5d6ee0069ccab9f4b358`.
+The FCN numerical translation and direct serial pybind11 binding are Member B's
+sources at `f8d2be9f1391ac5e430112665efaff7bb844c507`. The live packer is Member D's
+source at `decccbf55955e3fbeb4bbe5266eb0c2b043b3f75`. These files are received
+under EPL-1.0. [Integration details](docs/roles/A/INTEGRATION.md)

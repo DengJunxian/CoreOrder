@@ -1,12 +1,14 @@
 import argparse
 import subprocess
 import sys
+from functools import partial
 from pathlib import Path
 
 from jsonschema import ValidationError
 
 from .config import json_bytes
 from .environment import environment
+from .heap_diagnostics import HeapDiagnostics
 from .run_records import run_recorded
 from .runner import run_py_seq
 from .schema import validate_record
@@ -27,21 +29,28 @@ def main(argv=None):
         default="py-seq",
     )
     run.add_argument("--book-restore", choices=("upstream", "incremental"), default="upstream")
+    run.add_argument("--heap-diagnostics", action="store_true", help="record per-side restoration sizes")
+    run.add_argument("--count-heap-comparisons", action="store_true", help="count Order comparisons during restoration")
     run.add_argument("--workers", type=int, default=1)
     run.add_argument("--layout", choices=("aos", "soa"))
     run.add_argument("--grain", type=int)
     run.add_argument("--schedule", choices=("static", "dynamic"))
+    run.add_argument("--validation-trace", action="store_true", help="capture E semantic validation trace")
 
     env = commands.add_parser("environment", help="write the checkout and runtime environment")
     env.add_argument("--output", type=Path, required=True)
 
-    validate = commands.add_parser("validate", help="invoke the independent E1 validator")
-    validate.add_argument("--suite", choices=("smoke", "g0"), required=True)
+    validate = commands.add_parser("validate", help="invoke the independent validator")
+    validate.add_argument("--suite", choices=("smoke", "g0", "g2"), required=True)
     validate.add_argument("--output", type=Path, required=True)
 
     args = parser.parse_args(argv)
     if args.command == "run":
-        return run_recorded(args, run_py_seq, entry_point="coreorder")
+        diagnostics = None
+        if args.heap_diagnostics or args.count_heap_comparisons:
+            diagnostics = HeapDiagnostics(sizes=args.heap_diagnostics, comparisons=args.count_heap_comparisons)
+        execute = partial(run_py_seq, book_restore=args.book_restore, heap_diagnostics=diagnostics)
+        return run_recorded(args, execute, entry_point="coreorder", heap_diagnostics=diagnostics)
 
     if args.command == "validate":
         return run_validation(args)

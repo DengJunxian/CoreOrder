@@ -1,0 +1,104 @@
+{
+  "state": "BLOCKED",
+  "locked_for_execution": false,
+  "candidate_files_sha256": {
+    "figures.json": "36ec5563f33c00f5d28b8ad2843cf300e8102684f8dcd513f1476f9e3048aeab",
+    "frozen.json": "f55ab54ede5c0769c7121232bd84be769a27251b5ffc13a4a016e969e486b191",
+    "runlist-C01.jsonl": "dbeeae7df48eb7af8b6d102aa05e5729d0490ae869f09a980ba5558de3e9a19b",
+    "runlist-E05.jsonl": "1abaabeebe58b9d299f9c8878e6c9bab7263dbeaa61c74124553bd8de3eaabb4",
+    "runlist-V01.jsonl": "7becab9a4eef5478eedb59f9b22adebca3ab2187c029d686b6ab3eb2815063a9",
+    "runlist-timing.jsonl": "bee26b146622339f60ce4757b9928ba2e71b7ee46f8acf9fe147126329f5843c",
+    "workloads/W1-H.json": "582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d",
+    "workloads/W1-SMALL-BATCH.json": "ea713236b7b8257547c17bcf49f2b03793a01ec1c965539f33d70adf8846fd3d",
+    "workloads/W2-H.json": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+    "workloads/W2-MEDIUM-BATCH.json": "eeec23818fa2c75324f10ea149293122bb3e6711e24a5ed707d969d39536c087",
+    "workloads/W3-LARGE-MULTI.json": "7c0de6a027fe3f39d4047c77ccc88f4c4d49a7353c97c70014c400749c8a3a2a",
+    "workloads/c01/C01a-M1.json": "1c4393638342af7d1f7093ec2f5733501b84356d5a1cfe5bf6beaed6e81e23ec",
+    "workloads/c01/C01b-normal.json": "fa92b3446a3282cbbe2370878d85254a67cc43c03526babf83b49d7aa27fd37a",
+    "workloads/c01/C01c-all-empty.json": "f00c7a86d4c4975b61139bf69b7c1cc5a3d831778f134cbed24c342df8887be7",
+    "workloads/c01/C01c-mixed-empty.json": "240110249d4e299f592ba4b62e4957a24cd3534208974c9d5f455b701ea2cf86",
+    "workloads/c01/C01d-sparse-access.json": "5f73b10e3c0c55f41c5a3508c3ba682d9e071a4f633bbc27883ee03e096cfd95",
+    "workloads/c01/C01e-four-markets.json": "70509cab6beb8fcaa518994967907ff6d408ded995cc85a8c10bdd3e9f11dd7a",
+    "workloads/c01/C01f-M0.json": "b4be97da01eb48485ad5d713947b3178f8511066ff6aa9d34c9788df9acd8bfd",
+    "workloads/c01/C01f-MaboveN.json": "67b168d673bf314c2317c95ec5a575179bd426ca5b513c602c00f0c26cf64cdf",
+    "workloads/c01/C01f-MequalsN.json": "143b85ba9017c01f5b68e95fac8dbc5d2484cc5c2164fd3dfca5e4c3d4b8a7d9",
+    "workloads/c01/C01g-fundamental-shock.json": "ce809c52813a9b29df0cb707abd1cfd6bd62e9bcc2a6f27b94a72c630225eaa3",
+    "workloads/c01/C01g-placement-stopped.json": "f24958e7e36597827a679c7b846992205560897f0f170123d4dfc9f9f56f1e52",
+    "workloads/c01/C01h-MarketMaker.json": "5f42c8128122af8c5ac61786dc98f95d84062ef1539d8075f52b78ebb1b74612"
+  },
+  "candidate_production_sha": "92f8bbf08da514dcb24e27b6a815d3947c352798",
+  "clean_audit_checkout": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+  "contract_version": "coreorder-r4-v1",
+  "upstream": {
+    "PAMS": {
+      "dirty": false,
+      "required_sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "required_version": "0.3.0",
+      "sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358"
+    },
+    "Taskflow": {
+      "dirty": false,
+      "required_sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "required_version": "3.11.0",
+      "sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42"
+    },
+    "pybind11": {
+      "dirty": false,
+      "required_sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+      "required_version": "2.13.6",
+      "sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    }
+  },
+  "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+  "baseline_schema_sha256": {
+    "schemas/records.schema.json": "54672cf8789e681628c523d0c4ba35b24c3bf853794293cb7ed22aa80169367a",
+    "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+    "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+  },
+  "local_Mac": {
+    "scope": "only the independently recorded diagnostic chain",
+    "build_compile_commands_sha256": "0ad7e2e9b742d4c36d3caedb5f9727727e2508e675f4684552da3eb23eb8813b",
+    "observed_strict_flags": [
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
+    "environment_file_sha256": "1418266050d3c9cc53849d6559f1e602c6455f54bb65492714e26c54add461a0",
+    "native_module": {
+      "contract_version": "coreorder-r4-v1",
+      "path": "$COREORDER_ARCHIVES/CoreOrder-P12/build/_coreorder_fcn.cpython-312-darwin.so",
+      "sha256": "f680634422bfc56d3155498d1d3bb272755843fd2bd407e937bc6c114b615dad"
+    },
+    "os": "macOS-27.0-arm64-arm-64bit",
+    "architecture": "arm64",
+    "cpu": {
+      "logical_cpus": 10,
+      "physical_cpus": 10,
+      "processor": "Apple M5",
+      "ram_bytes": 25769803776
+    },
+    "compiler": "Apple clang version 21.0.0 (clang-2100.0.123.102)",
+    "python": "3.12.11"
+  },
+  "primary_x86": {
+    "host_id": null,
+    "code_sha": null,
+    "environment_sha256": null,
+    "native_module": null,
+    "compiler": null,
+    "actual_compile_flags": null,
+    "frequency": null,
+    "affinity": null,
+    "actual_pmu_events": null,
+    "reason": "no qualified target-host receipt on this branch"
+  },
+  "approval": {
+    "G0": "BLOCKED",
+    "G1": "BLOCKED",
+    "G2": "BLOCKED",
+    "A_signoff": null,
+    "E_signoff": null,
+    "V01_accepted": 0,
+    "G3": "BLOCKED"
+  }
+}

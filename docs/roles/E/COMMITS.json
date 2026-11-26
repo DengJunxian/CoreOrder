@@ -1,0 +1,36 @@
+{
+  "contract_version": "coreorder-r4-v1",
+  "baseline_sha": "e2492a4b8317c6674918b13470b577f4d6f8675d",
+  "baseline_is_g0": false,
+  "stages": [
+    {
+      "stage": "E1",
+      "branch": "e/01-protocol",
+      "commit_sha": "d476133adfeba1dfeaef77ba3347b239199e5328",
+      "status": "MODULE_PASS"
+    },
+    {
+      "stage": "E2",
+      "branch": "e/02-oracle",
+      "commit_sha": "fd6ad02e7a8f1d848d14ca987d57a5869bb5db0d",
+      "status": "MODULE_PASS"
+    },
+    {
+      "stage": "E3-independent",
+      "branch": "e/03-system-check",
+      "commit_sha": "52260be7cca066b896de7c7f266552add93a82cb",
+      "status": "MODULE_PASS"
+    }
+  ],
+  "clean_verified_source_sha": "52260be7cca066b896de7c7f266552add93a82cb",
+  "system_gate": "INTEGRATION_PENDING",
+  "formal_performance_status": "NOT_RUN",
+  "remote_write_performed": false,
+  "remote_reason": "Connected GitHub account reports push=false; no explicit remote-write grant in the stage package",
+  "final_evidence_commit": "Obtain via git rev-parse e/03-system-check; evidence-only successor of verified code",
+  "github_delivery_branch": "e/03-github-delivery",
+  "github_verified_source_commit": "533ab8747432a3d0e06c7c0fb248eb049dd0d880",
+  "github_verification": "31 tests and pip check PASS on a clean tree; 26 source/config/test files identical to original delivery",
+  "original_history_location": "CoreOrder_E1-E3.bundle (separate archive)",
+  "current_delivery_commit": "Run git rev-parse e/03-github-delivery; original stage commits above are preserved in archive"
+}

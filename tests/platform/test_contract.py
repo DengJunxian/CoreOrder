@@ -125,16 +125,25 @@ def test_fcn_fixture_matches_abi_and_random_state():
             assert native.flags.aligned and native.flags.c_contiguous
 
 
-@pytest.mark.parametrize("suite", ["smoke", "g0"])
-def test_missing_e1_is_blocked(tmp_path, suite):
-    if (ROOT / "validation/e1.py").is_file():
-        pytest.skip("the missing-E1 path requires a checkout without E1")
+@pytest.mark.parametrize("suite,cases", [
+    ("smoke", ["smoke"]),
+    ("g0", ["smoke", "event-state"]),
+])
+def test_independent_e1_suite(tmp_path, suite, cases):
     out = tmp_path / suite
     invocation = subprocess.run(
         [sys.executable, "-m", "coreorder", "validate", "--suite", suite, "--output", str(out)],
+        cwd=ROOT,
         capture_output=True,
         text=True,
     )
-    assert invocation.returncode == 3
-    assert load_json(out / "status.json")["status"] == "BLOCKED"
-    assert not (out / "e1").exists()
+    assert invocation.returncode == 0, (out / "stderr.log").read_text()
+    assert load_json(out / "status.json")["status"] == "PASS"
+    receipt = load_json(out / "e1/status.json")
+    assert receipt["checks"] == dict.fromkeys(("events", "step_state", "final_rng"), "PASS")
+    assert [case["name"] for case in receipt["cases"]] == cases
+    for case in cases:
+        evidence = out / "e1" / case
+        assert load_json(evidence / "comparison.json")["status"] == "PASS"
+        assert (evidence / "reference.json.gz").is_file()
+        assert (evidence / "candidate.json.gz").is_file()

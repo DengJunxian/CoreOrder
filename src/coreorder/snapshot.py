@@ -136,6 +136,13 @@ class PamsObservations(Logger):
         self.market_steps = 0
         self.initial_accounts = None
 
+    def __getstate__(self):
+        # Upstream spawn copies the simulation graph. File handles and the
+        # parent runner stay in the controlling process.
+        parent_only = {"events_file", "steps_file", "step_states_file", "event_digest", "runner",
+                       "events", "steps", "runner_rng"}
+        return {key: value for key, value in vars(self).items() if key not in parent_only}
+
     def write(self, log):
         kind = EVENT_KIND.get(type(log))
         if kind is not None:

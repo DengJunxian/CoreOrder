@@ -1,3 +1,5 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
 CoreOrder G0 P04 execution transcript
 2026-11-25 (Asia/Shanghai) | coreorder-r4-v1
 Executed source candidate: 040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb
@@ -17,9 +19,9 @@ HEAD is now at 040cfe9 feat: establish the R4-v1 team contracts and PAMS fixture
 [exit=0]
 
 + git submodule update --init --recursive --depth 1
-Cloning into '/private/tmp/coreorder-p04-clean.OrVmqX/vendor/pams'...
-Cloning into '/private/tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11'...
-Cloning into '/private/tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow'...
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/pams'...
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11'...
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow'...
 Submodule path 'vendor/pams': checked out '6cd53810103780770c5b5d6ee0069ccab9f4b358'
 From https://github.com/pybind/pybind11
  * branch            a2e59f0e7065404b44dfe92a28aca47ba1378dc4 -> FETCH_HEAD
@@ -124,7 +126,7 @@ Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23
 Processing ./vendor/pams
   Preparing metadata (pyproject.toml): started
   Preparing metadata (pyproject.toml): finished with status 'done'
-Obtaining file:///private/tmp/coreorder-p04-clean.OrVmqX
+Obtaining file:///tmp/coreorder-p04-clean.OrVmqX
   Checking if build backend supports build_editable: started
   Checking if build backend supports build_editable: finished with status 'done'
   Preparing editable metadata (pyproject.toml): started
@@ -133,11 +135,11 @@ Building wheels for collected packages: pams, coreorder
   Building wheel for pams (pyproject.toml): started
   Building wheel for pams (pyproject.toml): finished with status 'done'
   Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
-  Stored in directory: /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4b/02/9d/8579dc3572bac7b7df8c7d777c5aa8d0fce7280a59cafc7cc1
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4b/02/9d/8579dc3572bac7b7df8c7d777c5aa8d0fce7280a59cafc7cc1
   Building editable for coreorder (pyproject.toml): started
   Building editable for coreorder (pyproject.toml): finished with status 'done'
   Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=5168 sha256=ca2d998335cc446515da6522609e5b4f5f2d946b74e95a90b271c4121b41fd51
-  Stored in directory: /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4f/bc/d1/cc0b8979752f6c74f33ab3dbf25cd2c21b6c02dc8139a9f2c9
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4f/bc/d1/cc0b8979752f6c74f33ab3dbf25cd2c21b6c02dc8139a9f2c9
 Successfully built pams coreorder
 Installing collected packages: pams, coreorder
 
@@ -220,8 +222,8 @@ bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70  requirements.l
 0942b21338e9a190e0057ad37d18f62799796b9a054f19d08f6a06b3e9d7a137  UPSTREAM.lock.json
 [exit=0]
 
-+ python -m coreorder environment --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
-/Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
++ python -m coreorder environment --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
+$COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
 [exit=0]
 
 + python -m pytest -q tests/platform/test_foundation.py
@@ -242,14 +244,14 @@ cmake version 3.31.6
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 [exit=0]
 
-+ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE=/private/tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
++ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE=/tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 -- The CXX compiler identification is AppleClang 21.0.0.21000099
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found Python: /private/tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python (found suitable version "3.12.13", required range is "3.12...<3.13") found components: Interpreter Development.Module
+-- Found Python: /tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python (found suitable version "3.12.13", required range is "3.12...<3.13") found components: Interpreter Development.Module
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE
@@ -273,14 +275,14 @@ CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_re
 + cmake --build build --config Release --parallel 2 --verbose
 Change Dir: '/tmp/coreorder-p04-clean.OrVmqX/build'
 
-Run Build Command(s): /private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile -j2
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -S/tmp/coreorder-p04-clean.OrVmqX -B/tmp/coreorder-p04-clean.OrVmqX/build --check-build-system CMakeFiles/Makefile.cmake 0
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles /tmp/coreorder-p04-clean.OrVmqX/build//CMakeFiles/progress.marks
+Run Build Command(s): /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile -j2
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -S/tmp/coreorder-p04-clean.OrVmqX -B/tmp/coreorder-p04-clean.OrVmqX/build --check-build-system CMakeFiles/Makefile.cmake 0
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles /tmp/coreorder-p04-clean.OrVmqX/build//CMakeFiles/progress.marks
 /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/Makefile2 all
 /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/_coreorder_toolchain_smoke.dir/build.make CMakeFiles/_coreorder_toolchain_smoke.dir/depend
 /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/coreorder_contract_smoke.dir/build.make CMakeFiles/coreorder_contract_smoke.dir/depend
-cd /tmp/coreorder-p04-clean.OrVmqX/build && /private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/_coreorder_toolchain_smoke.dir/DependInfo.cmake "--color="
-cd /tmp/coreorder-p04-clean.OrVmqX/build && /private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/coreorder_contract_smoke.dir/DependInfo.cmake "--color="
+cd /tmp/coreorder-p04-clean.OrVmqX/build && /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/_coreorder_toolchain_smoke.dir/DependInfo.cmake "--color="
+cd /tmp/coreorder-p04-clean.OrVmqX/build && /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/coreorder_contract_smoke.dir/DependInfo.cmake "--color="
 /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/_coreorder_toolchain_smoke.dir/build.make CMakeFiles/_coreorder_toolchain_smoke.dir/build
 /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/coreorder_contract_smoke.dir/build.make CMakeFiles/coreorder_contract_smoke.dir/build
 [ 50%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
@@ -288,14 +290,14 @@ cd /tmp/coreorder-p04-clean.OrVmqX/build && /private/tmp/coreorder-p04-clean.OrV
 /Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_toolchain_smoke_EXPORTS -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -MD -MT CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -MF CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o.d -o CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/toolchain_smoke.cpp
 /Library/Developer/CommandLineTools/usr/bin/c++  -I/tmp/coreorder-p04-clean.OrVmqX/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -MD -MT CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -MF CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o.d -o CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/contract_smoke.cpp
 [ 75%] Linking CXX executable coreorder_contract_smoke
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/coreorder_contract_smoke.dir/link.txt --verbose=1
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/coreorder_contract_smoke.dir/link.txt --verbose=1
 /Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -o coreorder_contract_smoke
 [ 75%] Built target coreorder_contract_smoke
 [100%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/_coreorder_toolchain_smoke.dir/link.txt --verbose=1
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/_coreorder_toolchain_smoke.dir/link.txt --verbose=1
 /Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -o _coreorder_toolchain_smoke.cpython-312-darwin.so CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
 [100%] Built target _coreorder_toolchain_smoke
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles 0
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles 0
 
 [exit=0]
 
@@ -337,7 +339,7 @@ InputRow 112 bytes align 8, OutputRow 16 bytes align 8
 =============================== warnings summary ===============================
 vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_handle_orders
 vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_run_execution_logs_processed_once
-  /private/tmp/coreorder-p04-clean.OrVmqX/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  /tmp/coreorder-p04-clean.OrVmqX/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
     log: OrderLog = market._add_order(order=order)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
@@ -355,75 +357,75 @@ ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6  configs/worklo
 + python vendor/pams/samples/CI2002/main.py --config vendor/pams/samples/CI2002/config.json --seed 42
 [exit=0] stdout=official.stdout.log stderr=official.stderr.log
 
-+ python -m coreorder.reference --config vendor/pams/samples/CI2002/config.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-official
++ python -m coreorder.reference --config vendor/pams/samples/CI2002/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-official
 PASS d024600153d2401b9630c1b3ce742008: 600 orders, 207 executions
 [exit=0; expected=0]
 
-+ python -m coreorder run --backend py-seq --book-restore upstream --config vendor/pams/samples/CI2002/config.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-official
++ python -m coreorder run --backend py-seq --book-restore upstream --config vendor/pams/samples/CI2002/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-official
 PASS f648543e1f244fe991cf62d5f748ef73: 600 orders, 207 executions
 [exit=0; expected=0]
 
-+ python -m coreorder.reference --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-smoke
++ python -m coreorder.reference --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-smoke
 PASS 3bb6473505d74ef198a5483ba33432cc: 80 orders, 14 executions
 [exit=0; expected=0]
 
-+ python -m coreorder run --backend py-seq --book-restore upstream --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
++ python -m coreorder run --backend py-seq --book-restore upstream --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
 PASS ac9863d0d6de4147867911ad0dc2169b: 80 orders, 14 executions
 [exit=0; expected=0]
 
-+ python -m coreorder.reference --config fixtures/pams/event-state/config.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-event-state
++ python -m coreorder.reference --config fixtures/pams/event-state/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-event-state
 PASS 55ca7ee51cce40439322132efec7d121: 24 orders, 0 executions
 [exit=0; expected=0]
 
-+ python -m coreorder run --backend py-seq --book-restore upstream --config fixtures/pams/event-state/config.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-event-state
++ python -m coreorder run --backend py-seq --book-restore upstream --config fixtures/pams/event-state/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-event-state
 PASS 3e246669e77d4a16b80b10bee1c12bd6: 24 orders, 0 executions
 [exit=0; expected=0]
 
-+ python -m coreorder validate --suite smoke --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke
++ python -m coreorder validate --suite smoke --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke
 BLOCKED: E1 independent validator is missing at validation/e1.py
 [exit=3; expected=3]
 
-+ cat /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke/status.json
++ cat $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke/status.json
 {"contract_version": "coreorder-r4-v1", "git_sha": "040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb", "reason": "E1 independent validator is missing at validation/e1.py", "status": "BLOCKED", "suite": "smoke"}
 [exit=0; expected=0]
 
-+ python -m coreorder validate --suite g0 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0
++ python -m coreorder validate --suite g0 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0
 BLOCKED: E1 independent validator is missing at validation/e1.py
 [exit=3; expected=3]
 
-+ cat /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0/status.json
++ cat $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0/status.json
 {"contract_version": "coreorder-r4-v1", "git_sha": "040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb", "reason": "E1 independent validator is missing at validation/e1.py", "status": "BLOCKED", "suite": "g0"}
 [exit=0; expected=0]
 
-+ python -m coreorder run --backend py-thread --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread
-UNSUPPORTED: backend 'py-thread' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread/stderr.log)
++ python -m coreorder run --backend py-thread --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread
+UNSUPPORTED: backend 'py-thread' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --backend py-process --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process
-UNSUPPORTED: backend 'py-process' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process/stderr.log)
++ python -m coreorder run --backend py-process --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process
+UNSUPPORTED: backend 'py-process' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --backend native-serial --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial
-UNSUPPORTED: backend 'native-serial' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial/stderr.log)
++ python -m coreorder run --backend native-serial --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial
+UNSUPPORTED: backend 'native-serial' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --backend native-parallel --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel
-UNSUPPORTED: backend 'native-parallel' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel/stderr.log)
++ python -m coreorder run --backend native-parallel --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel
+UNSUPPORTED: backend 'native-parallel' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --backend native-parallel --layout soa --workers 4 --grain 128 --schedule static --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit
-UNSUPPORTED: backend 'native-parallel' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit/stderr.log)
++ python -m coreorder run --backend native-parallel --layout soa --workers 4 --grain 128 --schedule static --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit
+UNSUPPORTED: backend 'native-parallel' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --book-restore incremental --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental
-UNSUPPORTED: book restore 'incremental' is not implemented (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental/stderr.log)
++ python -m coreorder run --book-restore incremental --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental
+UNSUPPORTED: book restore 'incremental' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental/stderr.log)
 [exit=2; expected=2]
 
-+ python -m coreorder run --workers 0 --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers
-FAIL: ValueError: seed must be nonnegative, and workers and grain must be positive (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers/stderr.log)
++ python -m coreorder run --workers 0 --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers
+FAIL: ValueError: seed must be nonnegative, and workers and grain must be positive (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers/stderr.log)
 [exit=1; expected=1]
 
-+ python -m coreorder run --config /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/invalid.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload
++ python -m coreorder run --config $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/invalid.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload
 FAIL: ValidationError: 'sessions' is a required property
 
 Failed validating 'required' in schema['properties']['simulation']:
@@ -455,25 +457,25 @@ Failed validating 'required' in schema['properties']['simulation']:
      'required': ['markets', 'agents', 'sessions']}
 
 On instance['simulation']:
-    {'markets': [], 'agents': []} (see /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload/stderr.log)
+    {'markets': [], 'agents': []} (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload/stderr.log)
 [exit=1; expected=1]
 
-+ shasum -a 256 /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
-da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
++ shasum -a 256 $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
 [exit=0; expected=0]
 
-+ python -m coreorder run --config configs/workloads/smoke.json --seed 42 --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
-cannot create run directory /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke: File exists
++ python -m coreorder run --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
+cannot create run directory $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke: File exists
 [exit=1; expected=1]
 
-+ shasum -a 256 /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
-da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
++ shasum -a 256 $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
 [exit=0; expected=0]
 
-+ python fixtures/generate.py --output /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/regenerated-fixtures
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
++ python fixtures/generate.py --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/regenerated-fixtures
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
   _ = [func(**kwargs) for func, kwargs in self._pending_setups]
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
   log: OrderLog = market._add_order(order=order)
 # INITIALIZATION TIME 0.000502
 # EXECUTION TIME 0.080655
@@ -487,20 +489,20 @@ da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  /Users/DengJun
 [exit=0; expected=0]
 
 --- official.stderr.log ---
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
   _ = [func(**kwargs) for func, kwargs in self._pending_setups]
-/private/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
   log: OrderLog = market._add_order(order=order)
 
 --- 05-audit.log ---
 
-+ c++ -std=c++17 -O3 -Iinclude /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi.cpp -o /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe
++ c++ -std=c++17 -O3 -Iinclude $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi.cpp -o $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe
 [exit=0]
 
-+ /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe > /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/cxx-layout.txt
++ $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe > $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/cxx-layout.txt
 [exit=0]
 
-+ python /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426
++ python $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426
 Imported PAMS wheel: 38 package files byte-match the clean vendor checkout
 ref-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
 py-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
@@ -571,7 +573,7 @@ FCN consumption: 24 real rows and complete linked RNG, native AoS and scalar SoA
 [exit=0]
 
 --- 05b-audit-replay.log ---
-+ /private/tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py /Users/DengJunxian/Documents/ChatGPT/CoreOrder/results/acceptance/g0/p04-20261125-151426
++ /tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426
 Imported PAMS wheel: 38 package files byte-match the clean vendor checkout
 ref-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
 py-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7

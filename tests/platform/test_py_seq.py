@@ -67,17 +67,15 @@ def test_py_seq_records_real_market_and_matches_upstream(tmp_path):
 
 
 @pytest.mark.parametrize("flags", [
-    ("--backend", "py-thread"),
-    ("--backend", "py-process"),
-    ("--backend", "native-serial"),
-    ("--backend", "native-parallel", "--layout", "soa", "--workers", "4", "--grain", "128", "--schedule", "static"),
-    ("--book-restore", "incremental"),
+    ("--backend", "py-thread", "--layout", "soa"),
+    ("--backend", "py-process", "--grain", "2"),
+    ("--backend", "native-serial", "--workers", "4"),
 ])
-def test_unimplemented_run_is_rejected_without_execution(tmp_path, flags):
+def test_invalid_backend_combination_is_rejected_without_execution(tmp_path, flags):
     output = tmp_path / "unsupported"
     result = invoke(output, "run", *flags)
     assert result.returncode == 2
-    assert "not implemented" in result.stderr
+    assert "UNSUPPORTED" in result.stderr
     assert read(output / "status.json")["status"] == "UNSUPPORTED"
     manifest = read(output / "manifest.json")
     assert manifest["backend_effective"] is None

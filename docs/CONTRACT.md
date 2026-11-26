@@ -31,7 +31,7 @@ C++17 消费者链接 CMake 接口目标 `coreorder_contracts` 并包含 [contra
 
 ## 运行配置与证据
 
-[workload](../schemas/workload.schema.json) 是 PAMS JSON，保留原字段和业务参数。[run_config](../schemas/run_config.schema.json) 独立声明 backend、book_restore、layout、workers、grain、schedule 和 seed。Python 后端的 layout 为 `not_applicable`，py-seq 和 native-serial 均用一个 worker，native-serial 不建 executor。现有可执行组合为 `py-seq/upstream`，不支持的组合退出非零并记录请求与空有效后端。
+[workload](../schemas/workload.schema.json) 是 PAMS JSON，保留原字段和业务参数。[run_config](../schemas/run_config.schema.json) 独立声明 backend、book_restore、layout、workers、grain、schedule 和 seed。Python 后端的 layout 为 `not_applicable`，py-seq 和 native-serial 均用一个 worker，native-serial 不建 executor。统一入口支持五种后端和两种堆恢复，两种原生后端均支持 AoS 与 SoA。原生并行默认 grain=128、schedule=static。进程后端固定 spawn，复制诊断读取实际 dispatch 任务。增量路径的有效配置只替换所用市场组的类名。无法执行的组合与类型显式退出，并记录请求与是否进入对应运行路径。 [恢复方法和诊断](roles/A/HEAP_METHOD.md) · [P09 能力表与证据](roles/A/INTEGRATION.md)
 
 [records.schema.json](../schemas/records.schema.json) 的 `$defs` 提供 `manifest`、`metrics`、`status`、`environment`、`event`、`market_frame`、`step_state`、`final_state`、`final_rng` 和 `fcn_row`。可用 `coreorder.schema.validate_record(kind, parsed_json)` 检查相应记录。manifest 记录原始和有效配置 hash、源码和上游 SHA、模式及工作量。诊断 run 的四个配对字段为 null 并附原因。metrics 未采指标为 null 并记录原因，环境记录实际导入路径和依赖、机器及工具链，未加载 native 扩展时相应字段为空。
 

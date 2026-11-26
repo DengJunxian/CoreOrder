@@ -5,12 +5,29 @@ add_library(coreorder_contracts INTERFACE)
 target_include_directories(coreorder_contracts INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_compile_features(coreorder_contracts INTERFACE cxx_std_17)
 
+find_package(Python 3.12...<3.13 REQUIRED COMPONENTS Interpreter Development.Module)
+set(PYBIND11_FINDPYTHON ON)
+add_subdirectory(vendor/pybind11 EXCLUDE_FROM_ALL)
+add_subdirectory(native/runtime)
+
+pybind11_add_module(_coreorder_fcn NO_EXTRAS
+    native/coreorder_module.cpp
+    native/bindings/fcn_binding.cpp
+    native/fcn/evaluate.cpp
+)
+target_include_directories(_coreorder_fcn PRIVATE native/bindings)
+target_link_libraries(_coreorder_fcn PRIVATE coreorder_contracts coreorder_runtime)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(_coreorder_fcn PRIVATE -fno-fast-math -ffp-contract=off)
+elseif(MSVC)
+    target_compile_options(_coreorder_fcn PRIVATE /fp:strict)
+else()
+    message(FATAL_ERROR "The FCN serial extension requires a supported strict floating-point compiler")
+endif()
+
 include(CTest)
 if(BUILD_TESTING)
-    find_package(Python 3.12...<3.13 REQUIRED COMPONENTS Interpreter Development.Module)
     find_package(Threads REQUIRED)
-    set(PYBIND11_FINDPYTHON ON)
-    add_subdirectory(vendor/pybind11 EXCLUDE_FROM_ALL)
 
     pybind11_add_module(_coreorder_toolchain_smoke NO_EXTRAS tests/platform/toolchain_smoke.cpp)
     set_target_properties(_coreorder_toolchain_smoke PROPERTIES

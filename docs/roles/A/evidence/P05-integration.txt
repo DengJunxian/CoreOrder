@@ -1,0 +1,324 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P05 local integration | 2026-11-25 (Asia/Shanghai)
+Base: 835de4755b253a63b709b7a4cc446141a2ca8f46
+Reused P05: 29042c469e74c4391f128ff88b94e5a138633878
+Executed source: 3effd9afd4ae9887adb398086e13ad885fadd463
+Raw commands, trace output, and replay aids: results/acceptance/p05-integration/
+
+--- cherry-pick.log ---
+Auto-merging README.md
+Auto-merging docs/roles/A/STATUS.md
+CONFLICT (content): Merge conflict in docs/roles/A/STATUS.md
+Auto-merging src/coreorder/runner.py
+CONFLICT (content): Merge conflict in src/coreorder/runner.py
+error: could not apply 29042c4... feat: preserve PAMS matching with incremental heap restore
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git cherry-pick --continue".
+hint: You can instead skip this commit with "git cherry-pick --skip".
+hint: To abort and get back to the state before "git cherry-pick",
+hint: run "git cherry-pick --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+
+--- cherry-pick-stages.txt ---
+100644 129915e652afb6157d891766274ee7160c300180 1	docs/roles/A/STATUS.md
+100644 ea4b288c36e6be549fe5b66aa16231dbfec26778 2	docs/roles/A/STATUS.md
+100644 abcd5443a7d3e326281be7dc7362b6bc9d865b9d 3	docs/roles/A/STATUS.md
+100644 673b309cce11cc53510100d4999091eb07bff2da 1	src/coreorder/runner.py
+100644 a90f75a6189eccf96c49aee1679d6be87771d8e6 2	src/coreorder/runner.py
+100644 ef0792e2e08bb9f1c0d674808ada48fcf9cafe37 3	src/coreorder/runner.py
+
+--- mixed-import-trial.log ---
+E.                                                                       [100%]
+==================================== ERRORS ====================================
+_________________ ERROR at setup of test_upstream_repeat_exact _________________
+
+    @pytest.fixture(scope="session")
+    def pams_root():
+        root = Path(os.environ.get("COREORDER_PAMS_ROOT", "vendor/pams")).resolve()
+>       load(root)
+
+tests/differential/conftest.py:11:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = PosixPath('$COREORDER_ARCHIVES/CoreOrder-P05/vendor/pams')
+
+    def load(root):
+        root = verify_source(root)
+        for name, module in list(sys.modules.items()):
+            if name == "pams" or name.startswith("pams."):
+                path = getattr(module, "__file__", None)
+                if path and not Path(path).resolve().is_relative_to(root):
+>                   raise RuntimeError("Another PAMS is already imported")
+E                   RuntimeError: Another PAMS is already imported
+
+validation/upstream.py:37: RuntimeError
+=============================== warnings summary ===============================
+tests/heap/test_market_adapter.py::test_execution_edges[partial_multi_level]
+  $COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/differential/test_e1.py::test_upstream_repeat_exact - RuntimeErro...
+1 passed, 1 warning, 1 error in 11.74s
+
+exit=1
+
+--- mixed-import-retry.log ---
+..                                                                       [100%]
+=============================== warnings summary ===============================
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/heap/test_market_adapter.py::test_execution_edges[partial_multi_level]
+  $COREORDER_ARCHIVES/CoreOrder-P05/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+  $COREORDER_ARCHIVES/CoreOrder-P05/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 3 warnings in 0.32s
+
+exit=0
+
+--- restore-source-and-calls.log ---
++zsh:62> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:63> git diff --exit-code 835de47 HEAD -- validation experiments tests/differential native vendor
++zsh:64> PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P05/tests/heap .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/audit_restore.py
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+pams/market.py SHA-256 5d97291fc216d6e7c2691058dddaffe6f3ba7a7f7ff0a435e17c92aef88b1e1a (vendor and installed bytes match)
+pams/order.py SHA-256 b7b68086a71d0df500a8d1ba2754db258be83d9fa9dea7a0d20dca392978c4e7 (vendor and installed bytes match)
+pams/order_book.py SHA-256 8d9decd69a71a12e8a84befb9ce6e03c5108ab7b0b3876401420b96820ed3cce (vendor and installed bytes match)
+pams/simulator.py SHA-256 a9bd140bc9e2b8d8adc4a6a56a4d7963a78d4f336541f95ec6908a4b97898ac4 (vendor and installed bytes match)
+pams/runners/sequential.py SHA-256 1c45594ea28b5061b02916df7513de73a25a821724756f1b738f324773ddef3b (vendor and installed bytes match)
+PAMS 6cd53810103780770c5b5d6ee0069ccab9f4b358, EPL-1.0; inherited matching, price, execute, add and cancel methods
+--- pams/market.py@6cd53810103780770c5b5d6ee0069ccab9f4b358
++++ src/coreorder/market_adapter.py
+@@ -1,37 +1,24 @@
+-    def _execution(self) -> List[ExecutionLog]:
+-        """Execute for market (usually, only triggered by runner).
++    def _execution(self) -> list[ExecutionLog]:
++        if self.book_restore == "upstream":
++            return super()._execution()
++        if self.book_restore != "incremental":
++            raise ValueError(f"unknown book_restore mode: {self.book_restore!r}")
+
+-        The best buy and sell orders are matched as long as their prices cross, and all
+-        the matched volumes are executed at a single price, which is determined by the
+-        last matched pair including a limit order.
+-
+-        Returns:
+-            List[:class:`pams.logs.base.ExecutionLog`]: execution logs.
+-
+-        """
+         if not self.remain_executable_orders():
+             return []
+-        popped_buy_orders: List[Order] = []
+-        popped_sell_orders: List[Order] = []
+-        pending: List[Tuple[int, Order, Order]]
+-        price: Optional[float]
++        popped_buy_orders: list[Order] = []
++        popped_sell_orders: list[Order] = []
+         pending, price = self._collect_pending_executions(
+             popped_buy_orders=popped_buy_orders, popped_sell_orders=popped_sell_orders
+         )
+         if price is None:
+             raise AssertionError
+-        # TODO: faster impl
+-        self.buy_order_book.priority_queue = [
+-            *popped_buy_orders,
+-            *self.buy_order_book.priority_queue,
+-        ]
+-        self.sell_order_book.priority_queue = [
+-            *popped_sell_orders,
+-            *self.sell_order_book.priority_queue,
+-        ]
+-        heapq.heapify(self.buy_order_book.priority_queue)
+-        heapq.heapify(self.sell_order_book.priority_queue)
+-        logs: List[ExecutionLog] = [
++        # Collect only pops roots, leaving both remaining queues as heaps.
++        for order in popped_buy_orders:
++            heapq.heappush(self.buy_order_book.priority_queue, order)
++        for order in popped_sell_orders:
++            heapq.heappush(self.sell_order_book.priority_queue, order)
++        logs: list[ExecutionLog] = [
+             self._execute_orders(
+                 price=cast(float, price), volume=x[0], buy_order=x[1], sell_order=x[2]
+             )
+cancel_and_expire/upstream: restore_heapify=2, other_heapify={'OrderBook.__init__': 2, 'OrderBook._remove': 1, 'OrderBook._check_expired_orders': 1}
+cancel_and_expire/incremental: restore_heapify=0, other_heapify={'OrderBook.__init__': 2, 'OrderBook._remove': 1, 'OrderBook._check_expired_orders': 1}
+[exit=0]
+
+--- c01-representatives.log ---
++zsh:102> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:103> PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P05 .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/audit_c01.py $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/c01-representatives
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+{'case': 'C01a-M1-101', 'seed': 101, 'input_sha256': 'e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14', 'events': 28, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01a-M1-202', 'seed': 202, 'input_sha256': 'e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14', 'events': 27, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01a-M1-303', 'seed': 303, 'input_sha256': 'e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14', 'events': 27, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01a-M1-404', 'seed': 404, 'input_sha256': 'e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14', 'events': 28, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01a-M1-505', 'seed': 505, 'input_sha256': 'e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14', 'events': 28, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+{'case': 'C01b-normal-101', 'seed': 101, 'input_sha256': '0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01b-normal-202', 'seed': 202, 'input_sha256': '0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22', 'events': 44, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01b-normal-303', 'seed': 303, 'input_sha256': '0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01b-normal-404', 'seed': 404, 'input_sha256': '0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22', 'events': 45, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01b-normal-505', 'seed': 505, 'input_sha256': '0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P05/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+{'case': 'C01g-fundamental-shock-101', 'seed': 101, 'input_sha256': '055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01g-fundamental-shock-202', 'seed': 202, 'input_sha256': '055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7', 'events': 47, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01g-fundamental-shock-303', 'seed': 303, 'input_sha256': '055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01g-fundamental-shock-404', 'seed': 404, 'input_sha256': '055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+{'case': 'C01g-fundamental-shock-505', 'seed': 505, 'input_sha256': '055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7', 'events': 46, 'checkpoints': 7, 'status': 'PASS', 'scopes': ['events', 'steps', 'final', 'rng', 'initial']}
+
+exit=0
+
+--- g0-cli.log ---
++zsh:2> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:3> git status --porcelain
++zsh:4> suite=smoke
++zsh:5> .venv/bin/python -B -m coreorder validate --suite smoke --output $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/validate-smoke
+PASS: E1 confirmed events, per-step state and complete final RNG
++zsh:6> jq -e '.status=="PASS" and .git_sha=="3effd9afd4ae9887adb398086e13ad885fadd463"' $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/validate-smoke/e1/status.json
+true
++zsh:4> suite=g0
++zsh:5> .venv/bin/python -B -m coreorder validate --suite g0 --output $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/validate-g0
+PASS: E1 confirmed events, per-step state and complete final RNG
++zsh:6> jq -e '.status=="PASS" and .git_sha=="3effd9afd4ae9887adb398086e13ad885fadd463"' $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/validate-g0/e1/status.json
+true
+[exit=0]
+
+--- root-build.log ---
++zsh:2> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:3> git status --porcelain
++zsh:4> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P05/.venv/bin/python'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P05/.venv/bin/python (found suitable version "3.12.13", required range is "3.12...<3.13") found components: Interpreter Development.Module
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P05/build
++zsh:5> .venv/bin/cmake --build build --config Release --parallel 2
+[ 50%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 50%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 75%] Linking CXX executable coreorder_contract_smoke
+[ 75%] Built target coreorder_contract_smoke
+[100%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[100%] Built target _coreorder_toolchain_smoke
++zsh:6> .venv/bin/ctest --test-dir build -C Release --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P05/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P05/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.29 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.31 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.60 sec
+[exit=0]
+
+--- upstream-regression.log ---
++zsh:2> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:3> git status --porcelain
++zsh:4> cd vendor/pams
++zsh:5> PYTHONDONTWRITEBYTECODE=1 ../../.venv/bin/python -m pytest -q -p no:cacheprovider tests/pams/runners/test_sequential.py tests/pams/test_market.py tests/pams/test_order_book.py tests/pams/test_order.py tests/pams/test_simulator.py tests/pams/agents/test_fcn_agent.py -k 'collect_orders_from_normal_agents or handle_orders or run_execution_logs_processed_once or execution_order_pattern or expiration_orrder_pattern or get_price_volume or test_gt or test_update_agents_for_execution or test_triggers or test_submit_orders'
+...................................                                      [100%]
+=============================== warnings summary ===============================
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_handle_orders
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_run_execution_logs_processed_once
+  $COREORDER_ARCHIVES/CoreOrder-P05/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+35 passed, 302 deselected, 2 warnings in 0.76s
+[exit=0]
+
+--- pip and pinned checkouts ---
++zsh:4> git submodule update --init --recursive --depth 1
+Submodule path 'vendor/pams': checked out '6cd53810103780770c5b5d6ee0069ccab9f4b358'
+Submodule path 'vendor/pybind11': checked out 'a2e59f0e7065404b44dfe92a28aca47ba1378dc4'
+Submodule path 'vendor/taskflow': checked out '816b4ad53b44196c88f409eb7b4a25a0e3bfdf42'
++zsh:5> git submodule status --recursive
+Successfully built pams coreorder
++zsh:10> python -m pip check
+No broken requirements found.
+[exit=0]
+
+--- project-regression.log (selected output) ---
++zsh:2> git rev-parse HEAD
+3effd9afd4ae9887adb398086e13ad885fadd463
++zsh:3> git status --porcelain
++zsh:4> PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B -m pytest -v -s --basetemp $COREORDER_ARCHIVES/CoreOrder-P05/results/acceptance/p05-integration/pytest-artifacts
+tests/heap/test_heap_runs.py::test_probe_full_simulations[short-fixed-42] ci2002-probe-fixed-3-6 seed=42: events/step/final/RNG equal; steps=60 orders=960 fills=0 expirations=895 trace_sha256=22731d27c6f45bed8b0b1c7e57576203a5ba0ac60a06e8661aec517f074cc6d6
+tests/heap/test_heap_runs.py::test_probe_full_simulations[short-fixed-20261125] ci2002-probe-fixed-3-6 seed=20261125: events/step/final/RNG equal; steps=60 orders=960 fills=8 expirations=879 trace_sha256=3c7cb583205beb8278ac41ae162a58f7626eff500614850173b40186e7003aae
+tests/heap/test_heap_runs.py::test_probe_full_simulations[short-normal-42] ci2002-probe-normal-3-6 seed=42: events/step/final/RNG equal; steps=60 orders=960 fills=404 expirations=147 trace_sha256=c22a5ad1cf029147de5c81eebbb6a8f00867f73a48d5bf2e32541dbbd3106713
+tests/heap/test_heap_runs.py::test_probe_full_simulations[short-normal-20261125] ci2002-probe-normal-3-6 seed=20261125: events/step/final/RNG equal; steps=60 orders=960 fills=395 expirations=159 trace_sha256=de7cc63f6e91e7a14142f4d3c7c69e1c8e9109a42a29e64da22cf18b4df25456
+tests/heap/test_heap_runs.py::test_probe_full_simulations[long-fixed-42] ci2002-probe-fixed-100-200 seed=42: events/step/final/RNG equal; steps=60 orders=960 fills=339 expirations=0 trace_sha256=bc98bd9232019b2126f8dcf8a3693259e08e984fb705e345f214e7cec7cb92f9
+tests/heap/test_heap_runs.py::test_probe_full_simulations[long-fixed-20261125] ci2002-probe-fixed-100-200 seed=20261125: events/step/final/RNG equal; steps=60 orders=960 fills=353 expirations=0 trace_sha256=87631cdfc87885e76753915e8cb4639df342e6dd39cfd5a25cbba165c6c32c73
+tests/heap/test_heap_runs.py::test_probe_full_simulations[long-normal-42] ci2002-probe-normal-100-200 seed=42: events/step/final/RNG equal; steps=60 orders=960 fills=479 expirations=0 trace_sha256=ad48d2a14bfe096577b504203394f66fa14a3e67aaf739eeab33c51fa5795cf6
+tests/heap/test_heap_runs.py::test_probe_full_simulations[long-normal-20261125] ci2002-probe-normal-100-200 seed=20261125: events/step/final/RNG equal; steps=60 orders=960 fills=478 expirations=0 trace_sha256=559a5676f8169096aab28d14820b610bd217e82a458ac5c50d0bab2df90e4976
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[ci2002-smoke-101] config seed=101: events/step/final/RNG equal; steps=80 orders=80 fills=36 expirations=0 trace_sha256=e7ef6f1a5d85eb65e97f98335ad18048fc032959f27e1cb6de67ddab3f220c28
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[ci2002-smoke-202] config seed=202: events/step/final/RNG equal; steps=80 orders=80 fills=24 expirations=0 trace_sha256=fc396fb8e284a2dbfd025ddc093832094ac718537be6554fe48226ed82ef59a8
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[ci2002-smoke-303] config seed=303: events/step/final/RNG equal; steps=80 orders=80 fills=28 expirations=0 trace_sha256=71102c1d36b2017572fd8ca962a317035c33464936326700ea98dc5a0c3d2ed7
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[ci2002-smoke-404] config seed=404: events/step/final/RNG equal; steps=80 orders=80 fills=26 expirations=0 trace_sha256=957ac5c4f98fc2fb7628b83048716db2e983df88dee3895b22b7b3eda42ede5f
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[ci2002-smoke-505] config seed=505: events/step/final/RNG equal; steps=80 orders=80 fills=28 expirations=0 trace_sha256=8d49260a5fc89d648cd73c0027d6b03265dc47657e581f2706b032433dd5dc3d
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[event-state-101] config seed=101: events/step/final/RNG equal; steps=24 orders=24 fills=0 expirations=21 trace_sha256=c5ca41f67585f3327b34c6ccc73b3aacdb6d52e6239f11e4e0000c3ecfb4166f
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[event-state-202] config seed=202: events/step/final/RNG equal; steps=24 orders=24 fills=0 expirations=21 trace_sha256=5f705793f956b61dfb32e3a5217f0f016101e6627855446617f1dbb216c2a725
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[event-state-303] config seed=303: events/step/final/RNG equal; steps=24 orders=24 fills=0 expirations=20 trace_sha256=fcca8dae86a56750291ebba8533148621d50407cd6e1cd9e86500f46bf118d74
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[event-state-404] config seed=404: events/step/final/RNG equal; steps=24 orders=24 fills=0 expirations=20 trace_sha256=69f07ca12ae2fa102e001933595d6a395ba6d442f1a2253a121b8aa80307830b
+tests/heap/test_heap_runs.py::test_c01_serial_representatives[event-state-505] config seed=505: events/step/final/RNG equal; steps=24 orders=24 fills=0 expirations=22 trace_sha256=ff1aab9e05c21802b66e3913f835475d8aaecaa04a53a6df7f55e6731d2cc419
+tests/heap/test_heap_runs.py::test_heap_diagnostic_switches diagnostics buy: calls=12 sum(n,h,k)=(268, 242, 26) k/max(n,1) min/p50/p90/max=(0.06896551724137931, 0.08514492753623187, 0.2, 0.3076923076923077)
+diagnostics sell: calls=12 sum(n,h,k)=(233, 207, 26) k/max(n,1) min/p50/p90/max=(0.08695652173913043, 0.09090909090909091, 0.18181818181818182, 0.5)
+diagnostics upstream: {'heapify': 24, 'heappush': 0}; Order.__lt__ {'buy': 433, 'sell': 377}
+diagnostics incremental: {'heapify': 0, 'heappush': 52}; Order.__lt__ {'buy': 97, 'sell': 93}
+tests/heap/test_heap_runs.py::test_incremental_rejects_unsupported_market PASSED
+tests/heap/test_heap_runs.py::test_first_difference_keeps_order_and_rng_references PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[partial_multi_level] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[same_price_time_ties] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[market_against_limit] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[equal_market_orders_noncrossing_limits] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[unpriced_market_orders] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[cancel_and_expire] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[noncrossing] PASSED
+tests/heap/test_market_adapter.py::test_execution_edges[subsequent_crossings] PASSED
+tests/heap/test_market_adapter.py::test_no_price_assertion_still_precedes_restore PASSED
+tests/heap/test_market_adapter.py: 9 warnings
+======================= 80 passed, 39 warnings in 39.17s =======================
+[exit=0]

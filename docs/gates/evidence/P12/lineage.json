@@ -1,0 +1,124 @@
+{
+  "scope": "P12 development diagnostics only",
+  "runs": [
+    {
+      "run_id": "15a3e5f3ff284edfb5cdb56375557868",
+      "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+      "seed": 11,
+      "raw_path": "raw/py-seq-upstream-not_applicable",
+      "command_status": "PASS",
+      "hashes": {
+        "manifest.json": "bffa845302d6b9a7ef2198fb94b31f67ba62d45ab394b57faf99ce929ee025b2",
+        "metrics.json": "a2c7816ba0304c55b23c0aa292c5b9dc07f0decf55193220324adc2b465e0cc9",
+        "status.json": "4b9a3f5a46f1eea1d08fd8e439519a182899e9c25287eace3f380d9f488d7687",
+        "effective_config.json": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+        "validation-trace.json.gz": "98fddf699f4c7e82d8ded9262f72b15972e8218c5823751715f3699e9e8f52cc"
+      },
+      "shared_schema": "PASS",
+      "structural": {
+        "status": "PASS",
+        "scopes": [
+          "events",
+          "steps",
+          "final",
+          "rng",
+          "initial"
+        ]
+      },
+      "E_gate": {
+        "status": "FAIL",
+        "reason": "Candidate manifest identity mismatch",
+        "field": "input_hash"
+      },
+      "E_records": {
+        "status": "FAIL",
+        "reason": "Unproven/zero-filled metric setup_s"
+      },
+      "formal_eligible": false,
+      "manifest_input_hash": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "reference_config_hash": "f52e72b414fdd05c6a04d3cc0ab1853dea68e9cdc1299f4b404d9a0ff0eab982",
+      "native_module": null
+    },
+    {
+      "run_id": "8333aa5d87cc447985229a10876d0e58",
+      "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+      "seed": 11,
+      "raw_path": "raw/py-seq-incremental-not_applicable",
+      "command_status": "PASS",
+      "hashes": {
+        "manifest.json": "3d36adfb371832119ff47b4b4bd0a530187646f556f93ee7584cb2d1384f5e2b",
+        "metrics.json": "4ab964a3669be803f9be0a0a5fe65c601e4d4091e627586772ca460791a3bb25",
+        "status.json": "ddba8ac951069f54b79997ac31b410d7282a3f42073890a5782b3d2d6b5125eb",
+        "effective_config.json": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+        "validation-trace.json.gz": "bcfdab2ad33d011b93ecc01ad089e73bb4a27b06d08ef4bd1b8fea114972922b"
+      },
+      "shared_schema": "PASS",
+      "structural": {
+        "status": "PASS",
+        "scopes": [
+          "events",
+          "steps",
+          "final",
+          "rng",
+          "initial"
+        ]
+      },
+      "E_gate": {
+        "status": "FAIL",
+        "reason": "Candidate manifest identity mismatch",
+        "field": "input_hash"
+      },
+      "E_records": {
+        "status": "FAIL",
+        "reason": "Unproven/zero-filled metric setup_s"
+      },
+      "formal_eligible": false,
+      "manifest_input_hash": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "reference_config_hash": "f52e72b414fdd05c6a04d3cc0ab1853dea68e9cdc1299f4b404d9a0ff0eab982",
+      "native_module": null
+    },
+    {
+      "run_id": "a75fbddf2f464ec49fb67a21e3ee132d",
+      "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+      "seed": 11,
+      "raw_path": "raw/native-serial-incremental-soa",
+      "command_status": "PASS",
+      "hashes": {
+        "manifest.json": "66a44145cadf64dafd12b2a7d599e5160190adf0240b86be5c524d9d6427c509",
+        "metrics.json": "68cb9128c3ffcf13f7032cec5f976af9a7d5f9914449b28627f5036138b54ae5",
+        "status.json": "c423955045c8eb472287b80c4525a12aa6e107764384d26b2a7ec3617a8f20c2",
+        "effective_config.json": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+        "validation-trace.json.gz": "024cad2d665837e7d3ea3fdd260d0998189438441f3d93863fac52e166d707ed"
+      },
+      "shared_schema": "PASS",
+      "structural": {
+        "status": "PASS",
+        "scopes": [
+          "events",
+          "steps",
+          "final",
+          "rng",
+          "initial"
+        ]
+      },
+      "E_gate": {
+        "status": "FAIL",
+        "reason": "Candidate manifest identity mismatch",
+        "field": "input_hash"
+      },
+      "E_records": {
+        "status": "FAIL",
+        "reason": "Unproven/zero-filled metric setup_s"
+      },
+      "formal_eligible": false,
+      "manifest_input_hash": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "reference_config_hash": "f52e72b414fdd05c6a04d3cc0ab1853dea68e9cdc1299f4b404d9a0ff0eab982",
+      "native_module": {
+        "contract_version": "coreorder-r4-v1",
+        "path": "$COREORDER_ARCHIVES/CoreOrder-P12/build/_coreorder_fcn.cpython-312-darwin.so",
+        "sha256": "f680634422bfc56d3155498d1d3bb272755843fd2bd407e937bc6c114b615dad"
+      }
+    }
+  ],
+  "reference_sha256": "814ba2aa7381eca7208f78c325918a729b0c270efe6bfb4e6c790b4b42acdbef"
+}

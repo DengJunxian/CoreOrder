@@ -2,6 +2,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from pams.utils.json_extends import json_extends
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -12,6 +14,16 @@ def load_workload(raw):
     # The JSON decoder accepts non-finite values that the run records cannot represent.
     json.dumps(settings, allow_nan=False)
     return settings
+
+
+def incremental_workload(settings):
+    effective = settings.copy()
+    for name in settings["simulation"]["markets"]:
+        group = json_extends(settings, name, settings[name], excludes_fields=["from", "to"])
+        if group.get("class") != "Market":
+            raise NotImplementedError(f"incremental restore requires PAMS Market in group {name!r}")
+        effective[name] = {**settings[name], "class": "CoreOrderMarket"}
+    return effective
 
 
 def json_bytes(value):

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CoreOrder R4 run manifest",
+  "type": "object",
+  "required": [
+    "run_id",
+    "experiment_id",
+    "workload_id",
+    "protocol_hash",
+    "git_sha",
+    "dirty",
+    "upstream_sha",
+    "contract_version",
+    "backend_requested",
+    "backend_effective",
+    "book_restore",
+    "numeric_mode",
+    "layout",
+    "workers",
+    "seed",
+    "repeat",
+    "warmup",
+    "host_id",
+    "input_hash",
+    "environment_hash",
+    "block_id",
+    "pairing_group_id",
+    "order_seed",
+    "order_position"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workload_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "git_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "dirty": {
+      "type": "boolean"
+    },
+    "upstream_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "contract_version": {
+      "const": "coreorder-r4-v1"
+    },
+    "backend_requested": {
+      "enum": [
+        "py-seq",
+        "py-thread",
+        "py-process",
+        "native-serial",
+        "native-parallel"
+      ]
+    },
+    "backend_effective": {
+      "enum": [
+        "py-seq",
+        "py-thread",
+        "py-process",
+        "native-serial",
+        "native-parallel"
+      ]
+    },
+    "book_restore": {
+      "enum": [
+        "upstream",
+        "incremental"
+      ]
+    },
+    "numeric_mode": {
+      "const": "libm"
+    },
+    "layout": {
+      "enum": [
+        "not_applicable",
+        "aos",
+        "soa"
+      ]
+    },
+    "workers": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "repeat": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warmup": {
+      "type": "boolean"
+    },
+    "host_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "block_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "pairing_group_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "order_seed": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "order_position": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "pairing_not_applicable_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "description": "正式配对timing的四个区组字段必须非null；非配对诊断允许null但必须说明原因，由实验启动器作跨字段语义校验。"
+}

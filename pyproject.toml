@@ -13,3 +13,5 @@ license-files = ["LICENSE"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# In-process tests share the locked source; CLI tests exercise the installed package in subprocesses.
+pythonpath = ["vendor/pams"]

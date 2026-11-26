@@ -1,0 +1,769 @@
+{
+  "tested_checkout": "66630a8a9d803c7bb6563bd24d70d276d19fd8ef",
+  "contract": "coreorder-r4-v1",
+  "scope": "separate local worktree and clean clone on the same physical machine",
+  "host": {
+    "architecture": "arm64",
+    "os": "macOS-27.0-arm64-arm-64bit",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.0.123.102)",
+    "python": "3.12.13",
+    "cpu": {
+      "logical_cpus": 10,
+      "physical_cpus": 10,
+      "processor": "Apple M5",
+      "ram_bytes": 25769803776
+    }
+  },
+  "dependency_lock_sha256": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+  "gitlinks": {
+    "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+    "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+  },
+  "production_extension": {
+    "name": "_coreorder_fcn.cpython-312-darwin.so",
+    "sha256": "6063e31c146abe0d189b1f815cc4e22df556d09153755cc6017640f8d6228983",
+    "observed_flags": [
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ]
+  },
+  "fresh_clone": {
+    "exit_code": 0,
+    "pip_check": "PASS",
+    "license_copies": "PASS",
+    "ctest_passed": 2,
+    "pytest_passed": 92,
+    "pytest_warnings": 39,
+    "E1_smoke": "PASS"
+  },
+  "independent_person_reproduction": "NOT_RUN",
+  "formal_workload_reproduction": "BLOCKED",
+  "demo_runs": [
+    {
+      "trial": 1,
+      "exit_code": 0,
+      "whole_demo_wall_seconds": 13.26,
+      "seed": 42,
+      "semantic_sha256": {
+        "events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489",
+        "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e",
+        "initial": "8a6fa31f7766eacd22d829fe70e23785d4005579297fb50d9016ff478bfde693",
+        "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0",
+        "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"
+      },
+      "counts": {
+        "SimulationBeginLog": 1,
+        "SessionBeginLog": 2,
+        "MarketStepBeginLog": 18,
+        "MarketStepEndLog": 18,
+        "SessionEndLog": 2,
+        "OrderLog": 89,
+        "ExecutionLog": 28,
+        "ExpirationLog": 25,
+        "SimulationEndLog": 1
+      },
+      "variants": [
+        {
+          "variant": "py-upstream",
+          "id": "303f6584d5704503998b1af2b1fd11f5",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "upstream",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "py-incremental",
+          "id": "e27f061bb11b4d899c2a2ed3b4d5a3d4",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "incremental",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "serial-aos",
+          "id": "03ccd9f126d5424da9fb81c7fd4ac6ba",
+          "parameters": {
+            "backend_requested": "native-serial",
+            "backend_effective": "native-serial",
+            "book_restore": "incremental",
+            "layout": "aos",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w1",
+          "id": "48dd11e398854dcd9bd2e8616df19fd9",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 1,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa",
+          "id": "341f77bf433a40b49d31c0c9d0dd46fc",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 2,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w4",
+          "id": "10432d1a1de2478e84a3592fa81de4d5",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 4,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "exit_code": 0,
+      "whole_demo_wall_seconds": 14.02,
+      "seed": 42,
+      "semantic_sha256": {
+        "events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489",
+        "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e",
+        "initial": "8a6fa31f7766eacd22d829fe70e23785d4005579297fb50d9016ff478bfde693",
+        "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0",
+        "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"
+      },
+      "counts": {
+        "SimulationBeginLog": 1,
+        "SessionBeginLog": 2,
+        "MarketStepBeginLog": 18,
+        "MarketStepEndLog": 18,
+        "SessionEndLog": 2,
+        "OrderLog": 89,
+        "ExecutionLog": 28,
+        "ExpirationLog": 25,
+        "SimulationEndLog": 1
+      },
+      "variants": [
+        {
+          "variant": "py-upstream",
+          "id": "f0b780d0aa114dc9a332193f865e646d",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "upstream",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "py-incremental",
+          "id": "66376649aa09419a8f555b9aa18a1f27",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "incremental",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "serial-aos",
+          "id": "dbe79bc28ac040c7a25ef81d9f4e596f",
+          "parameters": {
+            "backend_requested": "native-serial",
+            "backend_effective": "native-serial",
+            "book_restore": "incremental",
+            "layout": "aos",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w1",
+          "id": "72d9b2781eb9466091b6367a5d9fd444",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 1,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa",
+          "id": "00546fe5963b484a909c54459b4bdf13",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 2,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w4",
+          "id": "1ebcaf799efb4dedb06f3c08966149bf",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 4,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "exit_code": 0,
+      "whole_demo_wall_seconds": 11.16,
+      "seed": 42,
+      "semantic_sha256": {
+        "events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489",
+        "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e",
+        "initial": "8a6fa31f7766eacd22d829fe70e23785d4005579297fb50d9016ff478bfde693",
+        "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0",
+        "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"
+      },
+      "counts": {
+        "SimulationBeginLog": 1,
+        "SessionBeginLog": 2,
+        "MarketStepBeginLog": 18,
+        "MarketStepEndLog": 18,
+        "SessionEndLog": 2,
+        "OrderLog": 89,
+        "ExecutionLog": 28,
+        "ExpirationLog": 25,
+        "SimulationEndLog": 1
+      },
+      "variants": [
+        {
+          "variant": "py-upstream",
+          "id": "dffc293992424f3aa0e8fad17e9ee3c1",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "upstream",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "py-incremental",
+          "id": "1f64d8deb0744e02a26fde9a256e458e",
+          "parameters": {
+            "backend_requested": "py-seq",
+            "backend_effective": "py-seq",
+            "book_restore": "incremental",
+            "layout": "not_applicable",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "3475157afe29aaf786e737b6db2669e050d1a2cd2d6e77a4c6b70c85f5b7da65",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "serial-aos",
+          "id": "1cfe66f8eba844b1ae9743390d9c5606",
+          "parameters": {
+            "backend_requested": "native-serial",
+            "backend_effective": "native-serial",
+            "book_restore": "incremental",
+            "layout": "aos",
+            "workers": 1,
+            "grain": null,
+            "schedule": null
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w1",
+          "id": "47d675f7e0614fa5bc931ea66a25bcc2",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 1,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa",
+          "id": "44d78f52a5374ff1b52ac0640a166867",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 2,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        },
+        {
+          "variant": "parallel-soa-w4",
+          "id": "caf4795146e14cf1a721592a4472459f",
+          "parameters": {
+            "backend_requested": "native-parallel",
+            "backend_effective": "native-parallel",
+            "book_restore": "incremental",
+            "layout": "soa",
+            "workers": 4,
+            "grain": 2,
+            "schedule": "static"
+          },
+          "raw_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+          "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+          "environment_sha256": "1f343d1f5cfaee1ea07a28f2147f8a18c3c1337282df8ba62876a329fc7cd419",
+          "structural_receipt": {
+            "status": "PASS",
+            "scopes": [
+              "events",
+              "steps",
+              "final",
+              "rng",
+              "initial"
+            ]
+          },
+          "E_gate": {
+            "status": "FAIL",
+            "reason": "Candidate manifest identity mismatch",
+            "field": "input_hash"
+          },
+          "E_records": {
+            "status": "FAIL",
+            "reason": "Unproven/zero-filled metric setup_s"
+          }
+        }
+      ]
+    }
+  ],
+  "offline": {
+    "exit_code": 0,
+    "network": "denied by local sandbox-exec",
+    "sha256": {
+      "reference.json.gz": "541f8514c772b222f75ee0ae9e164cbf986786c4fc9ca60f7f20827ddfbf9a5f",
+      "candidate.json.gz": "98953dd89ab95be3d074fa71f693428cc607776223ba2a87afdfa6292b7fed43",
+      "compare.json": "8efcfb4d0f5812b28f49d81459c88ea67f114bcbd51737cc6bd84a55f5253ffa"
+    }
+  },
+  "formal": {
+    "V01_accepted": 0,
+    "formal_raw": 0,
+    "G2": "BLOCKED",
+    "G3": "BLOCKED",
+    "PMU": "NOT_RUN"
+  }
+}

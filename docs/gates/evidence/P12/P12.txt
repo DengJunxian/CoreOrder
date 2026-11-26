@@ -1,0 +1,342 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+P12 G3 protocol review | 2026-11-26 Asia/Shanghai
+Candidate production source 92f8bbf08da514dcb24e27b6a815d3947c352798
+Clean audit checkout 1bb8e081e3b7ad348b7807bcd5870e8e22098a36
+Raw root $COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12
+
+[build.log]
++zsh:5> uv venv --python 3.12 --seed .venv
+Using CPython 3.12.11
+Creating virtual environment with seed packages at: .venv
+ + pip==26.3
+Activate with: source .venv/bin/activate
++zsh:6> .venv/bin/python -m pip install '--only-binary=:all:' -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting attrs==25.3.0 (from -r requirements.lock (line 2))
+Collecting cmake==3.31.6 (from -r requirements.lock (line 3))
+Collecting iniconfig==2.0.0 (from -r requirements.lock (line 5))
+Collecting jsonschema-specifications==2024.10.1 (from -r requirements.lock (line 6))
+Collecting jsonschema==4.23.0 (from -r requirements.lock (line 7))
+Collecting numpy==1.26.4 (from -r requirements.lock (line 8))
+Collecting packaging==24.2 (from -r requirements.lock (line 9))
+Collecting pip==26.1.2 (from -r requirements.lock (line 10))
+Collecting pluggy==1.5.0 (from -r requirements.lock (line 11))
+Collecting pytest==7.4.4 (from -r requirements.lock (line 12))
+Collecting referencing==0.36.2 (from -r requirements.lock (line 13))
+Collecting rpds-py==0.23.1 (from -r requirements.lock (line 14))
+Collecting scipy==1.14.1 (from -r requirements.lock (line 15))
+Collecting tqdm==4.66.6 (from -r requirements.lock (line 16))
+Collecting typing-extensions==4.16.0 (from -r requirements.lock (line 17))
+Collecting uv-build==0.12.19 (from -r requirements.lock (line 18))
+Installing collected packages: uv-build, typing-extensions, tqdm, rpds-py, pluggy, pip, packaging, numpy, iniconfig, cmake, attrs, scipy, referencing, pytest, jsonschema-specifications, jsonschema
+  Attempting uninstall: pip
+    Found existing installation: pip 26.3
+    Uninstalling pip-26.3:
+      Successfully uninstalled pip-26.3
+
+Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 numpy-1.26.4 packaging-24.2 pip-26.1.2 pluggy-1.5.0 pytest-7.4.4 referencing-0.36.2 rpds-py-0.23.1 scipy-1.14.1 tqdm-4.66.6 typing-extensions-4.16.0 uv-build-0.12.19
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://$COREORDER_ARCHIVES/CoreOrder-P12
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-xnt8i21t/wheels/41/6a/d8/3291db08842090b71340fc77d7b73c435cf8077c2450f986af
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=6855 sha256=502b5be749479b4dbb1e87e0a45569ec99347ffa822c3a5503df2b46bc7f59f3
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-xnt8i21t/wheels/b6/38/48/b9c8416bee9e9f7253284f89f0a5d5d3edbc477f4dd718983a
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
++zsh:8> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:9> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python (found suitable version "3.12.11", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P12/build
++zsh:10> .venv/bin/cmake --build build --parallel 2
+[ 20%] Building CXX object native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o
+[ 20%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 30%] Linking CXX static library libcoreorder_runtime.a
+[ 30%] Built target coreorder_runtime
+[ 40%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 50%] Linking CXX executable coreorder_contract_smoke
+[ 50%] Built target coreorder_contract_smoke
+[ 60%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o
+[ 70%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[ 70%] Built target _coreorder_toolchain_smoke
+[ 80%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 90%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-darwin.so
+[100%] Built target _coreorder_fcn
++zsh:11> .venv/bin/ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P12/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P12/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.29 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.34 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.63 sec
+
+[identity.log]
++zsh:4> r12=results/acceptance/g3/p12
++zsh:5> git status --porcelain
++zsh:6> git rev-parse HEAD
+1bb8e081e3b7ad348b7807bcd5870e8e22098a36
++zsh:7> git diff --exit-code 92f8bbf HEAD -- src native validation experiments schemas include vendor requirements.lock
++zsh:8> git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
++zsh:9> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:10> .venv/bin/python -VV
+Python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ]
++zsh:11> clang++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
++zsh:12> sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
++zsh:13> sysctl machdep.cpu.brand_string hw.physicalcpu hw.logicalcpu hw.memsize hw.perflevel0.physicalcpu hw.perflevel1.physicalcpu
+machdep.cpu.brand_string: Apple M5
+hw.physicalcpu: 10
+hw.logicalcpu: 10
+hw.memsize: 25769803776
+hw.perflevel0.physicalcpu: 4
+hw.perflevel1.physicalcpu: 6
++zsh:14> .venv/bin/python -B -m coreorder environment --output results/acceptance/g3/p12/environment.json
+results/acceptance/g3/p12/environment.json
++zsh:15> shasum -a 256 requirements.lock UPSTREAM.lock.json build/_coreorder_fcn.cpython-312-darwin.so build/compile_commands.json
+bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70  requirements.lock
+0942b21338e9a190e0057ad37d18f62799796b9a054f19d08f6a06b3e9d7a137  UPSTREAM.lock.json
+f680634422bfc56d3155498d1d3bb272755843fd2bd407e937bc6c114b615dad  build/_coreorder_fcn.cpython-312-darwin.so
+0ad7e2e9b742d4c36d3caedb5f9727727e2508e675f4684552da3eb23eb8813b  build/compile_commands.json
++zsh:16> git diff --exit-code b05d555 HEAD -- experiments/capture.py experiments/diagnostic.py
+
+[chain.log]
++zsh:4> r12=$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12
++zsh:6> export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++zsh:7> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/audit_chain_p12.py collect $COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain
+py-seq-upstream-not_applicable 15a3e5f3ff284edfb5cdb56375557868 PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
+py-seq-incremental-not_applicable 8333aa5d87cc447985229a10876d0e58 PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
+native-serial-incremental-soa a75fbddf2f464ec49fb67a21e3ee132d PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
++zsh:8> MPLCONFIGDIR=$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/plot-cache $LOCAL_HOME/.codex/venvs/research-skills/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/audit_chain_p12.py plot $COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain
+Matplotlib is building the font cache; this may take a moment.
+$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain/diagnostic-workload.png 2767c117ee0eedb09cc710225adaa5b8cd0836fcf938fa3f9a75fc88944bbf6f
+
+[entrypoints.log]
++zsh:4> .venv/bin/python -B -
+formal-run exit 1 $COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python: No module named experiments.run
+formal-analysis exit 1 $COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python: Error while finding module specification for 'analysis.report' (ModuleNotFoundError: No module named 'analysis')
+g3-cli exit 2 python -m coreorder validate: error: argument --suite: invalid choice: 'g3' (choose from smoke, g0, g2)
+
+[protocol-reviewed.log]
++zsh:40> .venv/bin/python -B results/acceptance/g3/p12/freeze_p12.py results/acceptance/g3/p12/protocol-reviewed ../CoreOrder-P11/results/pilot/p11/runs/workloads results/acceptance/g3/p12
+BLOCKED 8 31 420 170 527 108
+
+[verify-protocol.log]
+PASS candidate bytes, workload hashes, 8 groups, 120 randomized blocks, 527 timing/warmup rows,
+420 C01 rows, 140 V01 candidate cells + 30 oracles, 108 E05 rows, primary 480 min, Mac 60 min.
+G3 BLOCKED. No study row is executable.
++zsh:126> .venv/bin/python -m py_compile docs/gates/evidence/P12/audit_chain_p12.py docs/gates/evidence/P12/freeze_p12.py docs/gates/evidence/P12/verify_protocol_p12.py
++zsh:127> shasum -a 256 configs/experiments/frozen.json configs/experiments/protocol_lock.json configs/experiments/P12-SHA256SUMS
+f55ab54ede5c0769c7121232bd84be769a27251b5ffc13a4a016e969e486b191  configs/experiments/frozen.json
+162c8e51f14e0917391c34ab4384c6cdd0277cc78091d601a675fba2acdea92c  configs/experiments/protocol_lock.json
+a5cec7a9c8ca844c48c4cef14e9dd4db640a7453e4285dfa8926f910a4912e25  configs/experiments/P12-SHA256SUMS
+
+[chain/oracle-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python",
+    "-B",
+    "-m",
+    "validation",
+    "collect",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/configs/workloads/native-serial-normal.json",
+    "--seed",
+    "11",
+    "--pams-root",
+    "vendor/pams",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain/raw/reference.json.gz"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P12",
+  "timestamp_utc": "2026-11-25T16:10:11.896098+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.3339653327129781,
+  "timeout_s": 30,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[chain/py-seq-upstream-not_applicable-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/configs/workloads/native-serial-normal.json",
+    "--seed",
+    "11",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain/raw/py-seq-upstream-not_applicable",
+    "--backend",
+    "py-seq",
+    "--book-restore",
+    "upstream",
+    "--workers",
+    "1",
+    "--validation-trace"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P12",
+  "timestamp_utc": "2026-11-25T16:10:12.307965+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.4717365000396967,
+  "timeout_s": 30,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[chain/py-seq-incremental-not_applicable-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/configs/workloads/native-serial-normal.json",
+    "--seed",
+    "11",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain/raw/py-seq-incremental-not_applicable",
+    "--backend",
+    "py-seq",
+    "--book-restore",
+    "incremental",
+    "--workers",
+    "1",
+    "--validation-trace"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P12",
+  "timestamp_utc": "2026-11-25T16:10:12.902425+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.4772976660169661,
+  "timeout_s": 30,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[chain/native-serial-incremental-soa-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P12/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/configs/workloads/native-serial-normal.json",
+    "--seed",
+    "11",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P12/results/acceptance/g3/p12/chain/raw/native-serial-incremental-soa",
+    "--backend",
+    "native-serial",
+    "--book-restore",
+    "incremental",
+    "--workers",
+    "1",
+    "--validation-trace",
+    "--layout",
+    "soa"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P12",
+  "timestamp_utc": "2026-11-25T16:10:13.505849+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 0.8174779578112066,
+  "timeout_s": 30,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "1bb8e081e3b7ad348b7807bcd5870e8e22098a36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[chain/figure-receipt.json]
+{
+  "image_sha256": "2767c117ee0eedb09cc710225adaa5b8cd0836fcf938fa3f9a75fc88944bbf6f",
+  "table_sha256": "348eb1613ef8f393849c634e6083493b225815d96d3e9f4b0d1a88248b1d62f0",
+  "matplotlib": "3.11.2",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "python_path": "$LOCAL_HOME/.codex/venvs/research-skills/bin/python",
+  "run_ids": [
+    "15a3e5f3ff284edfb5cdb56375557868",
+    "8333aa5d87cc447985229a10876d0e58",
+    "a75fbddf2f464ec49fb67a21e3ee132d"
+  ]
+}
+
+Root CTest 2/2. All three diagnostics and independent oracle exit 0.
+Shared schema and structural comparisons passed. E gate and E records failed on all three.
+No formal run eligible or launched. No primary-host record or accepted V01 execution.
+Candidate static and SHA audit exit 0. G3 BLOCKED.

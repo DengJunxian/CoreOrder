@@ -1,0 +1,136 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+P13 read-only evidence audit (2026-11-26, Asia/Shanghai)
+Source tree: $COREORDER_ARCHIVES/CoreOrder-P13
+Protocol source: fef940ec3d9c9ffbed0d7732fd9f8a8243b1b9bb
+Diagnostic execution host: Apple M5, arm64, macOS 27.0 build 26A428.
+P12 venv pip check: No broken requirements found.
+Production diff including upstream gitlinks and dependency lock vs 92f8bbf: empty.
+P12 candidate protocol diff vs fef940e: empty.
+The two Downloads CoreOrder_Distribution and Leader trees had no H01/E05 manifests or bundles. The general Downloads/Desktop filename inventory returned assignment packages, not CoreOrder E4 formal raw.
+The first P11 exporter invocation reported ModuleNotFoundError for local validation. Retried with PYTHONPATH set to the P11 root and the same venv. No simulations were invoked.
+No H01/E05 formal run started or accepted. No E4 allocation for A was available.
+
+Inputs: task A4, public experiment protocol, member E4 task
+2426419fb016934e807b4b70d0918d77e85a9a989bcf4ee7068330eb50873b06  $COREORDER_LEADER_PACK/CoreOrder_Member_A/04_Stage_A4.md
+4c4bfa043a94da6e40eb622a7b5316d619fe3e1cba7f13e5268a74e3851b486e  $COREORDER_LEADER_PACK/CoreOrder_Member_A/common/09_Experiments.md
+246ce0658af5422be40fe1932076789c5c4197cf9c22ef081cd9bfaccb2b4540  $COREORDER_LEADER_PACK/CoreOrder_Full_Distribution/members/E/04_Stage_E4.md
+
+P12 verifier, file hashes, formal ledgers, and actual local entrypoints
+PASS candidate bytes, workload hashes, 8 groups, 120 randomized blocks, 527 timing/warmup rows,
+420 C01 rows, 140 V01 candidate cells + 30 oracles, 108 E05 rows, primary 480 min, Mac 60 min.
+G3 BLOCKED. No study row is executable.
+f55ab54ede5c0769c7121232bd84be769a27251b5ffc13a4a016e969e486b191  configs/experiments/frozen.json
+162c8e51f14e0917391c34ab4384c6cdd0277cc78091d601a675fba2acdea92c  configs/experiments/protocol_lock.json
+a5cec7a9c8ca844c48c4cef14e9dd4db640a7453e4285dfa8926f910a4912e25  configs/experiments/P12-SHA256SUMS
+f680634422bfc56d3155498d1d3bb272755843fd2bd407e937bc6c114b615dad  build/_coreorder_fcn.cpython-312-darwin.so
+0ad7e2e9b742d4c36d3caedb5f9727727e2508e675f4684552da3eb23eb8813b  build/compile_commands.json
+bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70  requirements.lock
+40ed68277eb32cf2eaaea90ed263bbb5f5f4e144f7db00a03863debc17ac8415  docs/gates/evidence/P12/mac-environment.json
+formal plan seeds/repeats/warmups [101, 202, 303, 404, 505] 3 2
+H01 timed/warmup/pair blocks 90 12 45
+E05 planned {'E05-profile': 4, 'E05-PMU': 24, 'E05-replay': 80}
+formal hash / code / authorizations None None []
+formal approvals {'G0': 'BLOCKED', 'G1': 'BLOCKED', 'G2': 'BLOCKED', 'A_signoff': None, 'E_signoff': None, 'V01_accepted': 0, 'G3': 'BLOCKED'}
+target host {'host_id': None, 'code_sha': None, 'environment_sha256': None, 'native_module': None, 'compiler': None, 'actual_compile_flags': None, 'frequency': None, 'affinity': None, 'actual_pmu_events': None, 'reason': 'no qualified target-host receipt on this branch'}
+experiments.capture present
+experiments.diagnostic present
+experiments.run absent
+analysis absent
+
+P13 candidate production/source equality and gitlinks
+160000 commit 6cd53810103780770c5b5d6ee0069ccab9f4b358	vendor/pams
+160000 commit a2e59f0e7065404b44dfe92a28aca47ba1378dc4	vendor/pybind11
+160000 commit 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42	vendor/taskflow
+25:        pending, price = self._collect_pending_executions(
+32:            heapq.heappush(self.buy_order_book.priority_queue, order)
+34:            heapq.heappush(self.sell_order_book.priority_queue, order)
+
+Remote: advertised heads, PR inventory, Actions artifacts, E handoff and source
+f8d2be9f1391ac5e430112665efaff7bb844c507	refs/heads/b/01-03-native
+5ad1ecb78272ff2564075cf01a90df252ae7e7ba	refs/heads/c/01-03-runtime
+f867a4fb07c928f459fa8b6d3e84a95ee88b1742	refs/heads/codex/g0-candidate
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75	refs/heads/d/01-03-layout
+b05d5555fa5cc756a91ab61c644e797ca227c26f	refs/heads/e/03-github-delivery
+e2492a4b8317c6674918b13470b577f4d6f8675d	refs/heads/main
+[{"headRefName":"codex/g0-candidate","headRefOid":"f867a4fb07c928f459fa8b6d3e84a95ee88b1742","number":1,"state":"OPEN","title":"[G0 candidate / BLOCKED] R4-v1 公共开发基线"}]
+{"artifacts":[],"total_count":0}
+experiments/__init__.py
+experiments/capture.py
+experiments/diagnostic.py
+experiments/validator_microbench.py
+79:动态调度若启用另验；真实HFT支持仅覆盖内置MarketMakerAgent。费用模型明确未纳入本模块守恒支持。跨ISA/libm、原生sanitizer、真实PMU均未运行。正式pilot/G3/性能统计属于E4，当前停止。
+86:- `results/diagnostics/E3`：profile/低开销诊断与验证器微基准，全部标明开发用途，不能进正式系统性能图。
+b05d5555fa5cc756a91ab61c644e797ca227c26f
+
+Manifest census: Documents/ChatGPT/CoreOrder*/results/**/manifest.json, match H01/E05 in path or experiment/phase/group/plan/run/workload identity
+manifest census 852 parse failures []
+CoreOrder results/acceptance 280
+CoreOrder-P04.5 results/acceptance 153
+CoreOrder-P05 results/acceptance 50
+CoreOrder-P06 results/acceptance 52
+CoreOrder-P07 results/acceptance 68
+CoreOrder-P08 results/acceptance 14
+CoreOrder-P09 results/acceptance 60
+CoreOrder-P10 results/acceptance 87
+CoreOrder-P11 results/pilot 85
+CoreOrder-P12 results/acceptance 3
+formal-named manifest candidates []
+
+P12 diagnostic manifests and E independent gate/record refusals
+lineage keys ['scope', 'runs', 'reference_sha256']
+receipt keys [['run_id', 'git_sha', 'seed', 'raw_path', 'command_status', 'hashes', 'shared_schema', 'structural', 'E_gate', 'E_records', 'formal_eligible', 'manifest_input_hash', 'reference_config_hash', 'native_module']]
+native-serial-incremental-soa 11 None None 66a44145cadf64dafd12b2a7d599e5160190adf0240b86be5c524d9d6427c509
+py-seq-incremental-not_applicable 11 None None 3d36adfb371832119ff47b4b4bd0a530187646f556f93ee7584cb2d1384f5e2b
+py-seq-upstream-not_applicable 11 None None bffa845302d6b9a7ef2198fb94b31f67ba62d45ab394b57faf99ce929ee025b2
+5:py-seq-upstream-not_applicable 15a3e5f3ff284edfb5cdb56375557868 PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
+6:py-seq-incremental-not_applicable 8333aa5d87cc447985229a10876d0e58 PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
+7:native-serial-incremental-soa a75fbddf2f464ec49fb67a21e3ee132d PASS {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'} {'status': 'FAIL', 'reason': 'Unproven/zero-filled metric setup_s'}
+
+P11 replay of the existing table exporter, not a simulator invocation
+{
+  "attempts": {
+    "PASS": 71,
+    "TIMEOUT": 2
+  },
+  "purposes": {
+    "verify": 26,
+    "timing": 26,
+    "heap": 14,
+    "profile": 3,
+    "phases": 3,
+    "capture": 1
+  },
+  "heap_observations": 30380
+}
+313e9e091667a5cea8a413b4a1e855afc7fbd72923c8c828d21e3648e590d082  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/tables/heap-summary.csv
+d9db9664b75c7ab7d95684aa0d54ec5c3f076c983ebb2c71e6e3d66ebcae3447  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/tables/heap-events.csv
+823fe1117b37e5ca020edcbf618019ac72c0f5623b6c44c6ee05439125358be6  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/tables/phase-spans.csv
+58ebedce969191b5052f4b9e08414f2212b654b9685e35a1ae0af15d347d1466  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/tables/cprofile.csv
+4c55ce4fa3c4a6d802c2b343639ad33eb6d08a53d1e7c6e5b6d706a3e139474c  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/tables/runs.csv
+26bbeaeeaec2c9a0e1a861edce1cab614f30879ee0a9777c9768e59c03eaf6f0  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/chronological-final.json
+db43a1d26cab92a5df0d366ee0849b31656ac9ab739596e97172b13eb537d044  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/supplement/replay.json
+b7ab275e37886da1e4a469d1dcae28b1c1a97449b046d8785b930a143a9e591f  $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/environment.json
+PASS raw re-export comparison and tracked CSV checks
+
+P11 six paired events.jsonl files compared byte-for-byte, plus order count, event, final state and RNG receipt fields, and P11 Mac binary hash
+W0-CI2002 11 944 1d3885fbc21ededb69739bedc2000a74c3b262a58c8c266ce633bdc9b771d159 {'order': 600, 'execution': 223, 'expiration': 121}
+W0-CI2002 29 932 1f18e334d1a2d4af78791b3ac21274f49a4583ae311c1bedd5b26ffff9a62634 {'order': 600, 'execution': 218, 'expiration': 114}
+W1-H 11 5216 1634c03e316d92aaebfb6995fffcb0aeca98a86270c7ffbd18963cb659877d20 {'order': 3840, 'execution': 1358, 'expiration': 18}
+W1-H 29 5227 9833b89a16488aab7fb96ec17db3343dc443bb196f6e618d342c1ac706846912 {'order': 3840, 'execution': 1360, 'expiration': 27}
+W2-H 11 11102 13f5f4ccc8cfdb444accf677ab6245d6f6fa261ee305dc2549d1c881ce576c3f {'order': 8192, 'execution': 2910}
+W2-H 29 10988 8b0f687a73ff3254c31517ab13ec83252010167727e996792b2080e487028997 {'order': 8192, 'execution': 2796}
+06b8437036d4111e105274805d0586774150a2009a75d9080c749f3f23ae0593  build/_coreorder_fcn.cpython-312-darwin.so
+1bb8e081e3b7ad348b7807bcd5870e8e22098a36
+
+Plot identity and font check
+734705de715d4b5c1e5cbf175baa66e0cf4795140a326e31f07effdd95567072  docs/roles/A/evidence/P11-heap.csv
+159fb755d2e019fbd23909f1ca5739b65961523715a85d700f66e69233c27b3b  docs/roles/A/evidence/P13/figures/gen_fig_heap_mechanism.py
+2948d876e57631805f8e35cc07885ef37465fbccbf44d4c0177f577ec486f34f  docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.csv
+d77dde76b08aaf4043306c7edd324c7bcaa52bdec45c02a21904c3ee5e3f86b0  docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.pdf
+982748334e63764718fcb96bd101772e3da527f6bca9c4672d5a899827aa1857  docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.png
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+GCBKKA+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     15  0
+GNUHNW+DejaVuSans-Oblique            CID TrueType      Identity-H       yes yes yes     22  0
+EETOWE+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     29  0

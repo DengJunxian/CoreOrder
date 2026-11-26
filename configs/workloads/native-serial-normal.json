@@ -1,0 +1,83 @@
+{
+  "simulation": {
+    "markets": ["MarketA", "MarketB"],
+    "agents": ["Quiet", "Active", "Sparse", "NoAccess", "Maker"],
+    "sessions": [
+      {
+        "sessionName": "zero-quota",
+        "iterationSteps": 1,
+        "withOrderPlacement": true,
+        "withOrderExecution": false,
+        "withPrint": false,
+        "maxNormalOrders": 0
+      },
+      {
+        "sessionName": "trading",
+        "iterationSteps": 8,
+        "withOrderPlacement": true,
+        "withOrderExecution": true,
+        "withPrint": false,
+        "maxNormalOrders": 3,
+        "maxHighFrequencyOrders": 1,
+        "highFrequencySubmitRate": 1.0,
+        "events": ["Shock"]
+      }
+    ]
+  },
+  "MarketA": {
+    "class": "Market",
+    "tickSize": 0.00001,
+    "marketPrice": 300.0
+  },
+  "MarketB": {
+    "extends": "MarketA",
+    "marketPrice": 200.0
+  },
+  "Quiet": {
+    "class": "FCNAgent",
+    "numAgents": 4,
+    "markets": ["MarketA", "MarketB"],
+    "assetVolume": 50,
+    "cashAmount": 10000,
+    "fundamentalWeight": 0.0,
+    "chartWeight": 0.0,
+    "noiseWeight": 1.0,
+    "noiseScale": 0.0,
+    "timeWindowSize": 3,
+    "orderMargin": 0.01,
+    "marginType": "normal"
+  },
+  "Active": {
+    "extends": "Quiet",
+    "numAgents": 4,
+    "fundamentalWeight": 1.0,
+    "chartWeight": 0.5,
+    "noiseScale": 0.002
+  },
+  "Sparse": {
+    "extends": "Active",
+    "numAgents": 2,
+    "markets": ["MarketB"]
+  },
+  "NoAccess": {
+    "extends": "Quiet",
+    "numAgents": 2,
+    "markets": []
+  },
+  "Maker": {
+    "class": "MarketMakerAgent",
+    "numAgents": 1,
+    "markets": ["MarketA", "MarketB"],
+    "assetVolume": 50,
+    "cashAmount": 10000,
+    "targetMarket": "MarketA",
+    "netInterestSpread": 0.01,
+    "orderTimeLength": 1
+  },
+  "Shock": {
+    "class": "FundamentalPriceShock",
+    "target": "MarketA",
+    "triggerTime": 2,
+    "priceChangeRate": -0.1
+  }
+}

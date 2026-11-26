@@ -11,6 +11,10 @@ from .environment import git
 
 def run_validation(args):
     output = args.output.resolve()
+    if args.suite == "g2":
+        return subprocess.run(
+            [sys.executable, "-B", "-m", "coreorder.validate_g2", str(output)], cwd=ROOT, check=False,
+        ).returncode
     try:
         output.mkdir(parents=True, exist_ok=False)
     except OSError as error:
