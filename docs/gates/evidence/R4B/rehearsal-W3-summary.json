@@ -1,0 +1,40 @@
+[
+  {
+    "id": "r4b-rehearsal-oracle-W3-LARGE-MULTI-11",
+    "workload": "W3-LARGE-MULTI",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "7021ac14b41c4a7aaf9c2f3bf459c4ae",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 72.32240126398392,
+    "bytes": 62731221,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal-W3/raw/r4b-rehearsal-oracle-W3-LARGE-MULTI-11/7021ac14b41c4a7aaf9c2f3bf459c4ae"
+  },
+  {
+    "id": "r4b-rehearsal-W3-LARGE-MULTI-11",
+    "workload": "W3-LARGE-MULTI",
+    "seed": 11,
+    "oracle": false,
+    "status": {
+      "run_id": "6a70fc2e5a634b6aa6dbe23f24a9ca2d",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "7021ac14b41c4a7aaf9c2f3bf459c4ae",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "60c1e027e08c945f1820d198a960d52fda9aa992d7ced19d05741c1b25d177a6",
+      "rng_hash": "3b1faba7a05787d4ec9cbe0a2bdadbc599946d9f04556536d7043172fa73ed54"
+    },
+    "elapsed_s": 34.95538784889504,
+    "bytes": 207872260,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal-W3/raw/r4b-rehearsal-W3-LARGE-MULTI-11/6a70fc2e5a634b6aa6dbe23f24a9ca2d"
+  }
+]

@@ -3,17 +3,21 @@
 import random
 from concurrent.futures import ProcessPoolExecutor
 from contextlib import nullcontext
+from functools import partial
 from time import perf_counter
 
 from pams.runners import MultiProcessAgentParallelRunner, MultiThreadAgentParallelRunner, SequentialRunner
 from pams.simulator import Simulator
 
 from .market_adapter import CoreOrderMarket
+from .native_serial import NativeSerialRunner
 
 
 class MeasuredSpawnPool(ProcessPoolExecutor):
-    def __init__(self, **kwargs):
+    def __init__(self, *, measure_copy=True, **kwargs):
         super().__init__(**kwargs)
+        if not measure_copy:
+            return
         self.copied_calls = 0
         self.copied_bytes = 0
         self.send_s = 0.0
@@ -39,7 +43,7 @@ class SpawnRunner(MultiProcessAgentParallelRunner):
         return self.copy_metrics_pool
 
 
-def upstream_parallel_factory(backend, workers, **kwargs):
+def upstream_parallel_factory(backend, workers, *, measure_copy=True, **kwargs):
     cls = MultiThreadAgentParallelRunner if backend == "py-thread" else SpawnRunner
     runner = cls(**kwargs)
     settings = runner.settings["simulation"]
@@ -47,6 +51,8 @@ def upstream_parallel_factory(backend, workers, **kwargs):
         raise ValueError("simulation.numParallel conflicts with --workers")
     if backend == "py-process" and settings.get("startMethod", "spawn") != "spawn":
         raise ValueError("py-process requires spawn")
+    if backend == "py-process" and not measure_copy:
+        runner._parallel_pool_provider = partial(MeasuredSpawnPool, measure_copy=False)
     runner.num_parallel = workers
     return runner
 
@@ -54,12 +60,14 @@ def upstream_parallel_factory(backend, workers, **kwargs):
 def run_py_seq(
     config_path, seed, observer, *, book_restore="upstream", heap_diagnostics=None,
     simulator_class=Simulator, after_setup=None, runner_factory=SequentialRunner,
+    profile=None, close_native=False,
 ):
     started = perf_counter()
     runner = runner_factory(
         settings=config_path, prng=random.Random(seed), logger=observer, simulator_class=simulator_class,
     )
-    observer.runner = runner
+    if observer is not None:
+        observer.runner = runner
     try:
         if book_restore == "incremental":
             runner.class_register(CoreOrderMarket)
@@ -72,11 +80,15 @@ def run_py_seq(
         if after_setup is not None:
             after_setup(runner)
         initialized = perf_counter()
-        with heap_diagnostics.capture() if heap_diagnostics is not None else nullcontext():
+        instrumentation = heap_diagnostics.capture() if heap_diagnostics is not None else profile
+        with instrumentation if instrumentation is not None else nullcontext():
             runner._run()
     finally:
         # Break the logger's backreference even when setup fails.
-        observer.runner = None
+        if observer is not None:
+            observer.runner = None
         if isinstance(runner, MultiThreadAgentParallelRunner):
             runner._shutdown_executor()
+        if close_native and isinstance(runner, NativeSerialRunner):
+            runner._shutdown_evaluator()
     return runner, {"setup_s": initialized - started, "simulation_s": perf_counter() - initialized}

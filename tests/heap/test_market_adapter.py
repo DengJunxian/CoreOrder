@@ -3,6 +3,7 @@
 import heapq
 import json
 import random
+from collections import Counter
 from io import BytesIO
 from traceback import extract_tb
 from unittest.mock import patch
@@ -13,7 +14,7 @@ from pams.runners import SequentialRunner
 
 from coreorder.config import ROOT
 from coreorder.market_adapter import CoreOrderMarket
-from coreorder.snapshot import PamsObservations, final_rng, final_state, market_history
+from coreorder.snapshot import PamsObservations, WorkloadCounts, final_rng, final_state, market_history
 
 BUY, SELL = True, False
 
@@ -115,8 +116,13 @@ def edge(market_class, book_restore, operations):
                 add(market, orders, *op)
             frames.append((check_books(market, orders), final_state(simulator)))
 
-    return ([json.loads(line) for line in events.getvalue().splitlines()],
-            frames, market_history(simulator), final_rng(runner))
+    rows = [json.loads(line) for line in events.getvalue().splitlines()]
+    counts = WorkloadCounts()
+    counts.bulk_write(runner.logger.pending_logs)
+    counts._process()
+    expected = Counter(row["event_kind"] for row in rows)
+    assert counts.counts == {key: expected[key] for key in counts.counts}
+    return rows, frames, market_history(simulator), final_rng(runner)
 
 
 @pytest.mark.parametrize(("case", "operations", "fills"), CASES, ids=[case[0] for case in CASES])

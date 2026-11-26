@@ -1,0 +1,14 @@
+{
+  "repo": "DengJunxian/CoreOrder",
+  "observed_prs": [
+    {
+      "number": 1,
+      "url": "https://github.com/DengJunxian/CoreOrder/pull/1",
+      "title": "[G0 candidate / BLOCKED] R4-v1 公共开发基线",
+      "reviews": 0,
+      "discussion": 0
+    }
+  ],
+  "references_file": "github-heads.txt",
+  "conclusion": "No same-version team signoff or effective G3 evidence was found in the observed repository."
+}

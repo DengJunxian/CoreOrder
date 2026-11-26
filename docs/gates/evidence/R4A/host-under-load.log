@@ -1,0 +1,11 @@
++ date -u --iso-8601=ns
+2026-11-26T02:54:26,237671513+00:00
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode profile --cprofile --timeout 30 --config configs/experiments/workloads/W3-LARGE-MULTI.json --seed 11 --output ../thermal-profile --book-restore incremental --backend native-parallel --layout aos --workers 8 --grain 128 --schedule static
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/thermal-profile/status.json)
++ echo workload_exit=0
+workload_exit=0
++ date -u --iso-8601=ns
+2026-11-26T02:54:37,913895467+00:00
++ wait 483018
++ echo monitor_exit=0
+monitor_exit=0

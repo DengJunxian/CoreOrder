@@ -1,0 +1,27 @@
+{
+  "scope": "real production FCN rows in original order",
+  "path": "replay-source/input.aos",
+  "rows": 8192,
+  "stride": 112,
+  "byteorder": "little",
+  "capture_sha256": "0878c64707646dd00b6a88e25a42283c16c74196cfeb31d6a3d210e7741b7cc3",
+  "input_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+  "seed": 101,
+  "source_settings": {
+    "backend": "native-serial",
+    "book_restore": "incremental",
+    "workers": 1,
+    "layout": "aos",
+    "grain": null,
+    "schedule": null
+  },
+  "host_id": "7fd1261e162f2fef",
+  "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+  "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "profile_run_id": "ddafaa9c32f74c1eac616b3f4baeffa7",
+  "production_final": {
+    "final_state_hash": "39f6b61c85876273bbc165c4add853db5d4690d463212c397ca2ed4e6d302f1f",
+    "rng_hash": "be48df92aae67487ba9319cd8b934b57ee54b65f8803a947c077f0f8d7c81b2b"
+  },
+  "validation_run_id": "6d10cadf6ca44b87b8e40221f4e24bea"
+}

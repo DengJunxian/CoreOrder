@@ -1,0 +1,59 @@
+smoke PASS 7.669811197090894 31671280
+oracle-C01b-normal-11 PASS 0.3267447669059038 798992
+validation-C01b-normal-11-py-process-incremental-na-4 PASS 0.9719002051278949 949808
+validation-C01b-normal-11-native-serial-incremental-aos-1 PASS 0.725862800842151 949010
+validation-C01b-normal-11-native-serial-incremental-soa-1 PASS 0.7475386599544436 949011
+validation-C01b-normal-11-native-parallel-incremental-aos-4 PASS 0.7433903801720589 949150
+validation-C01b-normal-11-native-parallel-incremental-soa-4 PASS 0.7331050080247223 949151
+timing-W0-CI2002-11-py-seq-upstream-na-1 PASS 0.5584740859922022 892141
+timing-W0-CI2002-11-native-serial-upstream-aos-1 PASS 0.599534128094092 892309
+timing-W0-CI2002-29-py-seq-upstream-na-1 PASS 0.5777187119238079 894195
+timing-W0-CI2002-29-native-serial-upstream-aos-1 PASS 0.5820217330474406 894358
+timing-W0-CI2002-11-py-thread-upstream-na-4 PASS 0.6692338241264224 892730
+timing-W0-CI2002-11-py-process-upstream-na-4 PASS None 890852
+timing-W0-H-11-py-seq-incremental-na-1 PASS 0.5572247051168233 892043
+timing-W1-H-11-py-seq-upstream-na-1 PASS 2.164116906002164 31846612
+timing-W1-H-11-py-seq-incremental-na-1 PASS 1.176574090961367 31846220
+timing-W2-H-11-py-seq-upstream-na-1 PASS 6.226609765086323 32027929
+timing-W2-H-11-py-seq-incremental-na-1 PASS 1.28409269801341 32027540
+timing-W1-SMALL-BATCH-11-py-seq-incremental-na-1 PASS 2.7159064798615873 31905141
+timing-W1-SMALL-BATCH-11-native-serial-incremental-aos-1 PASS 2.8331054251175374 31905320
+timing-W1-SMALL-BATCH-11-native-parallel-incremental-aos-4 PASS 2.868549688020721 31905452
+timing-W1-SMALL-BATCH-11-native-parallel-incremental-soa-4 PASS 2.844616583082825 31905453
+timing-W2-MEDIUM-BATCH-29-py-seq-incremental-na-1 PASS 3.0703404298983514 32910258
+timing-W2-MEDIUM-BATCH-29-native-serial-incremental-aos-1 PASS 3.3624258080963045 32910433
+timing-W2-MEDIUM-BATCH-29-native-parallel-incremental-aos-4 PASS 3.3068518498912454 32910565
+timing-W2-MEDIUM-BATCH-29-native-parallel-incremental-soa-4 PASS 3.3652640311047435 32910569
+timing-W3-LARGE-MULTI-11-py-seq-incremental-na-1 PASS 4.711113629862666 128573781
+timing-W3-LARGE-MULTI-11-native-serial-incremental-aos-1 PASS 4.9044756658840925 128573959
+timing-W3-LARGE-MULTI-11-native-parallel-incremental-aos-4 PASS 4.981896489858627 128574095
+timing-W3-LARGE-MULTI-11-native-parallel-incremental-soa-4 PASS 4.989481484051794 128574094
+Traceback (most recent call last):
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/../pilot.py", line 189, in <module>
+    run()
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/../pilot.py", line 142, in run
+    core("W3-LARGE-MULTI", 11, "native-parallel", "aos", 8)
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/../pilot.py", line 105, in core
+    return attempt(label, [PYTHON, "-m", "coreorder", "run", *config], timeout + 10, kind=mode, workload=workload,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/../pilot.py", line 61, in attempt
+    launch = execute(argv, driver, min(timeout, remaining), scope="R4A x86 development pilot")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/experiments/capture.py", line 42, in execute
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1885, in _execute_child
+    self.pid = _fork_exec(
+               ^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not int
+timing-W3-LARGE-MULTI-11-native-parallel-incremental-aos-8 PASS 4.982471690047532 128574095
+oracle-W0-CI2002-11 PASS 92.17893498507328 417908404
+validation-W0-CI2002-11-native-serial-upstream-aos-1 FAIL 101.9779925851617 442593222
+oracle-W1-SMALL-BATCH-11 FAIL 78.01440580212511 4646
+oracle-W2-MEDIUM-BATCH-29 FAIL 89.59477122710086 4878
+oracle-W3-LARGE-MULTI-11 FAIL 101.3345184349455 4573
+profile-W2-H-11-native-parallel-incremental-aos-4 FAIL 5.153289332985878 14198
+capture FAIL 0.3689249660819769 6609
+exit=0

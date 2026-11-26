@@ -1,0 +1,3 @@
+stage,reference_configs,seeds,oracle_pass,candidate_pass,total_pass,total_planned,scope,source_index,source_sha256,source_code_sha,host_id
+C01,12,5,60,360,420,420,semantic validation; no performance timing,docs/gates/evidence/R4B/c01-index.json,2b4c09e555b1e9d47b28110b395a8329a46c14701e596ff25dbaf8922971208c,58ec5764c21833142c50abacd9e2302404ffdb06,7fd1261e162f2fef
+V01,4,5,20,125,145,145,semantic validation; no performance timing,docs/gates/evidence/R4B/v01-index.json,51fca18078a1234f2b69a11489abdee1aaa15e0bf578c19bbde6c8f287c2519d,58ec5764c21833142c50abacd9e2302404ffdb06,7fd1261e162f2fef

@@ -1,0 +1,49 @@
+{
+  "format": "r4-validation-receipt-v1",
+  "identity": {
+    "git_sha": "b5808b5383bfc170fcb972ee77f1c3c0eac5659f",
+    "dirty": false,
+    "host_id": "7fd1261e162f2fef",
+    "architecture": "x86_64",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "environment_sha256": "53e540c32fa80843ce011ae858e0f7107882fd171617483c0d49948524e336a2",
+    "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+    "upstream_shas": {
+      "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    },
+    "native_sha256": "a246234c5f604fd97789af5ac8c24abfeb4a104b29683f80db97a8b76f735366",
+    "schemas_sha256": {
+      "schemas/records.schema.json": "fda7b32435842eab4693ff8bfca22637521e5cb8399c364b830e42093129619c",
+      "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+      "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+    },
+    "input_hash": "fa92b3446a3282cbbe2370878d85254a67cc43c03526babf83b49d7aa27fd37a",
+    "canonical_input_hash": "eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c",
+    "effective_config_hash": "8426e08f5386a7a5473465ad0ab5bb1941eda5e8f65715848098004025b3e8eb",
+    "seed": 29,
+    "numeric_mode": "libm",
+    "backend": "native-serial",
+    "book_restore": "incremental",
+    "layout": "aos",
+    "workers": 1,
+    "grain": null,
+    "schedule": null
+  },
+  "case_id": "pilot-validation-29-native-direct",
+  "run_id": "4e35ea1043da4b3d9d0cdb7d26206402",
+  "reference_case_id": "pilot-oracle-29",
+  "reference_run_id": "ed875a865c554a6c8aee438904ed4710",
+  "production_final": {
+    "final_state_hash": "7c1667f16ebe1f15d6f05aef6b23d165a388020b22e8d9e21d0e619782e1ca84",
+    "rng_hash": "a2fd41071c4a3c583cf95487f9547af7fd5b1d5a987d288bbf2d68cd904bc614"
+  },
+  "evidence": {
+    "trace": "2cd5d019465918e8ec6df840ff1eb2c02bd3e029904840754e6d66091831f6da",
+    "reference": "fe9ed18af30aeb30036e736ce48d0bf5d4ab8abff03094daebfb0149b09383c2",
+    "comparison": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+    "invariants": "bd4f76e38309712f7027bd1f6fbc629ef271ddb30791e26566fea638c7d2eae2",
+    "oracle_invariants": "bd4f76e38309712f7027bd1f6fbc629ef271ddb30791e26566fea638c7d2eae2"
+  }
+}

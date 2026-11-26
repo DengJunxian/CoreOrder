@@ -2,11 +2,15 @@
 
 SPDX-License-Identifier: EPL-1.0
 """
+from contextvars import ContextVar
 import hashlib
 import json
 import random
 
 import numpy as np
+
+
+PYTHON_RNG = ContextVar("validation_python_rng", default=None)
 
 
 def dumps(value):
@@ -18,8 +22,6 @@ def digest(value):
 
 
 def encode(value):
-    from pams.order import Order, Cancel, OrderKind
-    from pams.order_book import OrderBook
     if value is None or type(value) in (bool, int, str):
         return value
     if isinstance(value, (float, np.floating)):
@@ -29,19 +31,15 @@ def encode(value):
     if isinstance(value, np.bool_):
         return bool(value)
     if isinstance(value, random.Random):
-        return {"python_random": encode(value.getstate())}
+        custom = PYTHON_RNG.get()
+        if custom is not None:
+            return custom(value)
+        version, words, gaussian = value.getstate()
+        return {"python_random": [version, list(words), encode(gaussian)]}
     if isinstance(value, np.random.Generator):
         return {"numpy_generator": encode(value.bit_generator.state)}
     if isinstance(value, np.ndarray):
         return {"ndarray": encode(value.tolist()), "dtype": value.dtype.str, "shape": list(value.shape)}
-    if isinstance(value, OrderKind):
-        return {"kind_id": value.kind_id, "name": value.name}
-    if isinstance(value, (Order, Cancel)):
-        return {"type": type(value).__name__, "fields": encode(vars(value))}
-    if isinstance(value, OrderBook):
-        # Sorting a COPY uses the upstream comparator and never mutates its heap.
-        return {"type": "OrderBook", "fields": encode({
-            **vars(value), "priority_queue": sorted(value.priority_queue)})}
     if isinstance(value, dict):
         if all(type(k) is str for k in value):
             return {k: encode(v) for k, v in sorted(value.items())}
@@ -50,6 +48,17 @@ def encode(value):
         return [encode(x) for x in value]
     if isinstance(value, (set, frozenset)):
         return {"set": sorted([encode(x) for x in value], key=dumps)}
+    from pams.order import Order, Cancel, OrderKind
+    from pams.order_book import OrderBook
+
+    if isinstance(value, OrderKind):
+        return {"kind_id": value.kind_id, "name": value.name}
+    if isinstance(value, (Order, Cancel)):
+        return {"type": type(value).__name__, "fields": encode(vars(value))}
+    if isinstance(value, OrderBook):
+        # Sorting a COPY uses the upstream comparator and never mutates its heap.
+        return {"type": "OrderBook", "fields": encode({
+            **vars(value), "priority_queue": sorted(value.priority_queue)})}
     for field in ("agent_id", "market_id", "session_id", "event_id"):
         if hasattr(value, field):
             return {"ref": field, "id": getattr(value, field)}
@@ -90,7 +99,15 @@ def rng_states(simulator, runner_rng):
     return result
 
 
-def snapshot(simulator, runner_rng):
+def snapshot(simulator, runner_rng, *, python_rng=None):
+    token = PYTHON_RNG.set(python_rng)
+    try:
+        return _snapshot(simulator, runner_rng)
+    finally:
+        PYTHON_RNG.reset(token)
+
+
+def _snapshot(simulator, runner_rng):
     return {
         "agents": [fields(x) for x in simulator.agents],
         "markets": [fields(x) for x in simulator.markets],

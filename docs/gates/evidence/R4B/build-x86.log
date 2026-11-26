@@ -1,0 +1,238 @@
+
+$ git clone --branch codex/r4b-freeze ./r4b-source.bundle source
+Cloning into 'source'...
+exit=0
+
+$ test 58ec5764c21833142c50abacd9e2302404ffdb06 = 58ec5764c21833142c50abacd9e2302404ffdb06
+exit=0
+
+$ git config submodule.vendor/pams.url <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pams
+exit=0
+
+$ git config submodule.vendor/taskflow.url <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/taskflow
+exit=0
+
+$ git config submodule.vendor/pybind11.url <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pybind11
+exit=0
+
+$ git -c protocol.file.allow=always submodule update --init --recursive
+Cloning into '<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pams'...
+Cloning into '<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pybind11'...
+Cloning into '<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/taskflow'...
+Submodule path 'vendor/pams': checked out '6cd53810103780770c5b5d6ee0069ccab9f4b358'
+Submodule path 'vendor/pybind11': checked out 'a2e59f0e7065404b44dfe92a28aca47ba1378dc4'
+Submodule path 'vendor/taskflow': checked out '816b4ad53b44196c88f409eb7b4a25a0e3bfdf42'
+exit=0
+
+$ git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+exit=0
+
+$ test -z ''
+exit=0
+
+$ python3.12 -m venv .venv
+exit=0
+
+$ timeout --kill-after=5s 240s python -m pip install --only-binary=:all: -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting attrs==25.3.0 (from -r requirements.lock (line 2))
+  Using cached attrs-25.3.0-py3-none-any.whl.metadata (10 kB)
+Collecting cmake==3.31.6 (from -r requirements.lock (line 3))
+  Using cached cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.3 kB)
+Collecting iniconfig==2.0.0 (from -r requirements.lock (line 5))
+  Using cached iniconfig-2.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting jsonschema-specifications==2024.10.1 (from -r requirements.lock (line 6))
+  Using cached jsonschema_specifications-2024.10.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting jsonschema==4.23.0 (from -r requirements.lock (line 7))
+  Using cached jsonschema-4.23.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting numpy==1.26.4 (from -r requirements.lock (line 8))
+  Using cached numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting packaging==24.2 (from -r requirements.lock (line 9))
+  Using cached packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pip==26.1.2 (from -r requirements.lock (line 10))
+  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting pluggy==1.5.0 (from -r requirements.lock (line 11))
+  Using cached pluggy-1.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pytest==7.4.4 (from -r requirements.lock (line 12))
+  Using cached pytest-7.4.4-py3-none-any.whl.metadata (7.9 kB)
+Collecting referencing==0.36.2 (from -r requirements.lock (line 13))
+  Using cached referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py==0.23.1 (from -r requirements.lock (line 14))
+  Using cached rpds_py-0.23.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting scipy==1.14.1 (from -r requirements.lock (line 15))
+  Using cached scipy-1.14.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting tqdm==4.66.6 (from -r requirements.lock (line 16))
+  Using cached tqdm-4.66.6-py3-none-any.whl.metadata (57 kB)
+Collecting typing-extensions==4.16.0 (from -r requirements.lock (line 17))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting uv-build==0.12.19 (from -r requirements.lock (line 18))
+  Using cached uv_build-0.12.19-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.7 kB)
+Using cached attrs-25.3.0-py3-none-any.whl (63 kB)
+Using cached cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (27.8 MB)
+Using cached iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Using cached jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+Using cached jsonschema-4.23.0-py3-none-any.whl (88 kB)
+Using cached numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.0 MB)
+Using cached packaging-24.2-py3-none-any.whl (65 kB)
+Using cached pip-26.1.2-py3-none-any.whl (1.8 MB)
+Using cached pluggy-1.5.0-py3-none-any.whl (20 kB)
+Using cached pytest-7.4.4-py3-none-any.whl (325 kB)
+Using cached referencing-0.36.2-py3-none-any.whl (26 kB)
+Using cached rpds_py-0.23.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (391 kB)
+Using cached scipy-1.14.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (40.8 MB)
+Using cached tqdm-4.66.6-py3-none-any.whl (78 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached uv_build-0.12.19-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+Installing collected packages: uv-build, typing-extensions, tqdm, rpds-py, pluggy, pip, packaging, numpy, iniconfig, cmake, attrs, scipy, referencing, pytest, jsonschema-specifications, jsonschema
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+    Uninstalling pip-24.0:
+      Successfully uninstalled pip-24.0
+Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 numpy-1.26.4 packaging-24.2 pip-26.1.2 pluggy-1.5.0 pytest-7.4.4 referencing-0.36.2 rpds-py-0.23.1 scipy-1.14.1 tqdm-4.66.6 typing-extensions-4.16.0 uv-build-0.12.19
+exit=0
+
+$ timeout --kill-after=5s 240s python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://<LINUX_HOME>/coreorder-r4b-sPvokUVq/source
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ufo0dwkx/wheels/7a/88/68/605f72a65c08fc95c75d644da39c475bb45561c596d1600338
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=9641 sha256=d5ae25d60223e5d0493b1ae554e0031a0c54ff71416e19f51f72a0c98d1ed46a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ufo0dwkx/wheels/d4/1f/7d/ea49a97aad0756521fb2d5c87aeaba32669ba471062f202df6
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+exit=0
+
+$ python -m pip check
+No broken requirements found.
+exit=0
+
+$ c++ --version
+c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+exit=0
+
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPython_EXECUTABLE=<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/.venv/bin/python
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/.venv/bin/python (found suitable version "3.12.3", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO
+-- Performing Test HAS_FLTO - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build
+exit=0
+
+$ timeout --kill-after=5s 180s cmake --build build --config Release --parallel 4
+[ 11%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 11%] Building CXX object native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o
+[ 22%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 22%] Building CXX object CMakeFiles/coreorder_layout_abi.dir/tests/layout/abi_check.cpp.o
+[ 27%] Linking CXX executable coreorder_contract_smoke
+[ 33%] Linking CXX executable coreorder_layout_abi
+[ 33%] Built target coreorder_contract_smoke
+[ 33%] Built target coreorder_layout_abi
+[ 38%] Linking CXX static library libcoreorder_runtime.a
+[ 38%] Built target coreorder_runtime
+[ 50%] Building CXX object CMakeFiles/c2_executor_test.dir/tests/platform/c2_executor_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o
+[ 55%] Building CXX object CMakeFiles/c3_determinism_test.dir/tests/platform/c3_determinism_test.cpp.o
+[ 61%] Building CXX object CMakeFiles/c2_executor_test.dir/native/fcn/evaluate.cpp.o
+[ 66%] Building CXX object CMakeFiles/c3_determinism_test.dir/native/fcn/evaluate.cpp.o
+[ 72%] Linking CXX executable c2_executor_test
+[ 72%] Built target c2_executor_test
+[ 77%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 83%] Linking CXX executable c3_determinism_test
+[ 83%] Built target c3_determinism_test
+[ 88%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[ 94%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-x86_64-linux-gnu.so
+[ 94%] Built target _coreorder_toolchain_smoke
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-x86_64-linux-gnu.so
+[100%] Built target _coreorder_fcn
+exit=0
+
+$ sha256sum build/_coreorder_fcn.cpython-312-x86_64-linux-gnu.so build/compile_commands.json
+a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e  build/_coreorder_fcn.cpython-312-x86_64-linux-gnu.so
+c3a31e7e74cdad1bb103cb6a1cc61a91db8e2b977a9d29d129946f30c1fb8a00  build/compile_commands.json
+exit=0
+
+$ ctest --test-dir build -C Release --output-on-failure
+Internal ctest changing into directory: <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build
+Test project <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build
+    Start 1: contract_smoke
+1/7 Test #1: contract_smoke ...................   Passed    0.00 sec
+    Start 2: toolchain_smoke
+2/7 Test #2: toolchain_smoke ..................   Passed    0.01 sec
+    Start 3: c2_executor_test
+3/7 Test #3: c2_executor_test .................   Passed    0.06 sec
+    Start 4: c3_determinism_test
+4/7 Test #4: c3_determinism_test ..............   Passed    0.09 sec
+    Start 5: layout_abi
+5/7 Test #5: layout_abi .......................   Passed    0.09 sec
+    Start 6: layout_replay_binding
+6/7 Test #6: layout_replay_binding ............   Passed    0.10 sec
+    Start 7: layout_replay_live_event
+7/7 Test #7: layout_replay_live_event .........   Passed    0.16 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =   0.52 sec
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 python -m pytest -q tests/platform/test_checkpoint_stream.py tests/platform/test_measurement_modes.py tests/platform/test_experiment_pipeline.py
+................................                                         [100%]
+=============================== warnings summary ===============================
+tests/platform/test_checkpoint_stream.py::test_real_pams_checkpoint_stream_roundtrip_and_rng_fault
+  <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/platform/test_checkpoint_stream.py::test_real_pams_checkpoint_stream_roundtrip_and_rng_fault
+tests/platform/test_measurement_modes.py::test_timing_keeps_snapshot_and_profiling_outside_simulation
+  <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+32 passed, 3 warnings in 43.69s
+exit=0
+
+$ python -m experiments.run --stage check
+G3 BLOCKED {'C01': 420, 'V01': 170, 'timing': 527, 'E05': 108}
+exit=0

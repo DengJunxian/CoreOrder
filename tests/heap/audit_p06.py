@@ -300,6 +300,7 @@ def run(config, seed, mode, output, operations=None):
             effective.write_text(json.dumps(settings), encoding="utf-8")
             if operations is None:
                 runner, _ = run_py_seq(effective, seed, observer, book_restore=mode)
+                observer.runner = runner
             else:
                 runner = SequentialRunner(effective, random.Random(seed), observer)
                 runner.class_register(CoreOrderMarket)
@@ -440,18 +441,27 @@ def check_failure_report(source, output, seed):
     print(f"First-difference self-test (injected order ID): row={index}, field=order_id, report={report}")
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, required=True)
-    output = parser.parse_args().output.resolve()
-    output.mkdir(parents=True)
+def verify_candidate(current):
+    revision = git("rev-parse", "HEAD")
     assert git("-C", str(VENDOR), "rev-parse", "HEAD") == PAMS
     assert not git("-C", str(VENDOR), "status", "--porcelain")
     assert not git("status", "--porcelain")
-    assert not git("diff", "--name-only", P05, "--", "src/coreorder", "vendor", "requirements.lock", "UPSTREAM.lock.json")
+    scope = "src/coreorder/market_adapter.py" if current else "src/coreorder"
+    assert not git("diff", "--name-only", P05, "--", scope, "vendor", "requirements.lock", "UPSTREAM.lock.json")
+    return revision if current else P05
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--current", action="store_true", help="re-run P06 checks on the current integrated candidate")
+    args = parser.parse_args()
+    output = args.output.resolve()
+    output.mkdir(parents=True)
+    tested = verify_candidate(args.current)
     assert (VENDOR / "LICENSE").read_bytes() == (ROOT / "licenses/PAMS-EPL-1.0.txt").read_bytes()
     assert Path(inspect.getfile(Market)).resolve() == VENDOR / "pams/market.py"
-    print(f"production_source={P05} audit_checkout={git('rev-parse', 'HEAD')} "
+    print(f"production_source={tested} audit_checkout={git('rev-parse', 'HEAD')} "
           f"pams={PAMS} license=EPL-1.0 interpreter={sys.version} reference={inspect.getfile(Market)}")
 
     from coreorder.market_adapter import CoreOrderMarket
@@ -462,7 +472,7 @@ def main():
     diff = difflib.unified_diff(
         inspect.getsource(Market._execution).splitlines(),
         inspect.getsource(CoreOrderMarket._execution).splitlines(),
-        fromfile="PAMS Market._execution", tofile="P05 CoreOrderMarket._execution", lineterm="", n=2,
+        fromfile="PAMS Market._execution", tofile="tested CoreOrderMarket._execution", lineterm="", n=2,
     )
     (output / "source.diff").write_text("\n".join(diff) + "\n", encoding="utf-8")
 

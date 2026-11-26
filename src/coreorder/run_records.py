@@ -1,40 +1,56 @@
-"""Diagnostic run artifacts shared by the production and upstream entry points."""
+"""Run artifacts shared by the production and upstream entry points."""
 
 import json
 import sys
 import traceback
 import uuid
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from datetime import UTC, datetime
 from functools import partial
 from pathlib import Path
 
-from .config import ROOT, incremental_workload, json_bytes, load_workload, sha256
+from .config import ROOT, canonical_workload_hash, incremental_workload, json_bytes, load_workload, sha256
 from .environment import environment
 from .market_adapter import CoreOrderMarket
 from .native_serial import NativeSerialRunner, load_native_serial
 from .runner import upstream_parallel_factory
 from .schema import validate_record
-from .snapshot import PamsObservations, final_rng, final_state, market_history
+from .snapshot import PamsObservations, WorkloadCounts, final_rng, final_state, market_history
 
 
 def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
+    mode = getattr(args, "mode", None)
+    lean = mode in ("timing", "profile", "pmu")
+    streamed = getattr(args, "stream_validation", False)
+    trace = mode == "validation" or getattr(args, "validation_trace", False)
+    output = args.output
+    status_path = output / "status.json"
     try:
-        args.output.mkdir(parents=True, exist_ok=False)
+        if not getattr(args, "_measurement_child", False):
+            output.mkdir(parents=True, exist_ok=False)
+        status_pending = status_path.open("xb")
     except OSError as error:
-        print(f"cannot create run directory {args.output}: {error.strerror}", file=sys.stderr)
+        print(f"cannot create run directory {output}: {error.strerror}", file=sys.stderr)
         return 1
 
     protocol = {
-        "version": "P03",
-        "measurement_mode": "diagnostic",
-        "account_scope": "initial, each global step boundary and final",
-        "step_scope": "first MarketStepEndLog after orders, before any market after-step hook at that step",
-        "timing_scope": "PAMS run with diagnostic observation enabled",
+        "version": "R2A" if mode else "P03",
+        "measurement_mode": mode or "diagnostic",
+        "account_scope": "final only" if lean else "initial, each global step boundary and final",
+        "step_scope": None if lean else (
+            "first MarketStepEndLog after orders, before any market after-step hook at that step"
+        ),
+        "timing_scope": {
+            "timing": "production simulation and executor shutdown with aggregate workload counts",
+            "profile": "production simulation with diagnostic profiling enabled",
+            "pmu": "production simulation with external PMU observation",
+        }.get(mode, "PAMS run with diagnostic observation enabled"),
     }
+    if mode == "profile":
+        protocol["profiler"] = "cProfile" if args.cprofile else "targeted function and phase spans"
     if heap_diagnostics is not None:
         protocol.update(heap_diagnostics=heap_diagnostics.sizes, count_heap_comparisons=heap_diagnostics.comparisons)
-    run_id = uuid.uuid4().hex
+    run_id = getattr(args, "_run_id", None) or uuid.uuid4().hex
     native = args.backend in ("native-serial", "native-parallel")
     parallel_native = args.backend == "native-parallel"
     grain = (128 if args.grain is None else args.grain) if parallel_native else args.grain
@@ -43,7 +59,7 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
         "run_id": run_id,
         "timestamp": datetime.now(UTC).isoformat(),
         "entry_point": entry_point,
-        "experiment_id": "P03",
+        "experiment_id": protocol["version"],
         "workload_id": args.config.stem,
         "protocol_version": protocol["version"],
         "protocol": protocol,
@@ -64,7 +80,9 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
         "pairing_group_id": None,
         "order_seed": None,
         "order_position": None,
-        "pairing_not_applicable_reason": "standalone diagnostic run",
+        "pairing_not_applicable_reason": (
+            "standalone measurement with no G3 admission" if mode else "standalone diagnostic run"
+        ),
     }
     status = {
         "run_id": run_id,
@@ -73,11 +91,15 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
         "reference_run_id": None,
         "comparison_scope": None,
     }
-    metrics = {"measurement_mode": "diagnostic"}
+    if mode:
+        status["measurement_mode"] = mode
+    metrics = {"measurement_mode": protocol["measurement_mode"], "scope": protocol["timing_scope"]}
     unmeasured = {
         "setup_s": "phase duration unavailable through this entry point",
         "simulation_s": "phase duration unavailable through this entry point",
-        "process_wall_s": "requires a parent process",
+        "process_wall_s": "requires a direct parent process timer" if mode != "pmu" else (
+            "parent observes the perf wrapper and worker together"
+        ),
         "draw_pack_s": "no phase instrumentation",
         "native_compute_s": "no phase instrumentation",
         "rebuild_orders_s": "no phase instrumentation",
@@ -88,7 +110,7 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
         "gauss_api_calls": "upstream random streams are uninstrumented",
         "batch_widths": "upstream runner is uninstrumented",
         "rss_bytes": "not collected",
-        "pmu": "not collected",
+        "pmu": "requires Linux perf collection" if mode == "pmu" else "not collected",
     }
     for key in ("orders", "cancels", "expirations", "executions", "market_steps", "native_rows"):
         unmeasured[key] = "simulation did not complete"
@@ -96,11 +118,12 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
         unmeasured.update(dict.fromkeys(
             ("agent_calls", "decision_rows", "gauss_api_calls", "batch_widths"), "simulation did not complete",
         ))
+        if lean:
+            unmeasured["batch_widths"] = "per-batch history disabled in this mode"
     metrics.update(dict.fromkeys(unmeasured))
     exit_code = 1
-    output = args.output
-    status_path = output / "status.json"
-    status_path.write_bytes(json_bytes({**status, "status": "NOT_RUN"}))
+    with status_pending:
+        status_pending.write(json_bytes({**status, "status": "NOT_RUN"}))
 
     with (output / "stdout.log").open("w") as stdout, (output / "stderr.log").open("w") as stderr:
         with redirect_stdout(stdout), redirect_stderr(stderr):
@@ -110,6 +133,7 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                 manifest["input_hash"] = sha256(raw)
                 settings = load_workload(raw)
                 validate_record("workload", settings)
+                manifest["canonical_input_hash"] = canonical_workload_hash(settings)
                 effective = output / "effective_config.json"
                 effective.write_bytes(raw)
                 manifest["effective_config_hash"] = manifest["input_hash"]
@@ -117,6 +141,10 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                 env = environment()
                 upstream = env["upstream"]
                 try:
+                    if mode == "pmu":
+                        from .measurement import perf_tool
+                        if perf_tool() is None:
+                            raise NotImplementedError("PMU collection requires Linux perf on the measurement host")
                     if args.seed < 0 or args.workers < 1 or (args.grain is not None and args.grain < 1):
                         raise ValueError("seed must be nonnegative, and workers and grain must be positive")
                     if args.backend in ("py-seq", "native-serial") and args.workers != 1:
@@ -152,8 +180,14 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
 
                         def factory(**kwargs):
                             evaluator = module.Evaluator(parallel=parallel_native, workers=args.workers, **options)
+                            evaluate = getattr(evaluator, manifest["layout"])
+                            if mode:
+                                manifest["native_binding"] = (
+                                    f"{type(evaluator).__module__}.{type(evaluator).__qualname__}.{evaluate.__name__}"
+                                )
                             return NativeSerialRunner(
-                                evaluate=getattr(evaluator, manifest["layout"]), layout=manifest["layout"],
+                                evaluate=phase.wrap_evaluator(evaluate) if phase is not None else evaluate,
+                                layout=manifest["layout"], record_batch_widths=not lean,
                                 market_adapter=CoreOrderMarket if args.book_restore == "incremental" else None,
                                 **kwargs,
                             )
@@ -161,7 +195,8 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                         execute = partial(execute, runner_factory=factory)
                     elif args.backend in ("py-thread", "py-process"):
                         execute = partial(
-                            execute, runner_factory=partial(upstream_parallel_factory, args.backend, args.workers),
+                            execute, runner_factory=partial(upstream_parallel_factory, args.backend, args.workers,
+                                                           measure_copy=not lean),
                         )
                 finally:
                     validate_record("environment", env)
@@ -178,25 +213,68 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                     ).encode()
                     effective.write_bytes(effective_bytes)
                     manifest["effective_config_hash"] = sha256(effective_bytes)
-                trace = getattr(args, "validation_trace", False)
-                if trace:
-                    from .validation_trace import ObservedSimulator, ValidationObservations
-                    observer_type = ValidationObservations
-                else:
-                    observer_type = PamsObservations
-                manifest["backend_effective"] = args.backend
-                with (
-                    (output / "events.jsonl").open("wb") as events,
-                    (output / "market_steps.jsonl").open("wb") as steps,
-                    (output / "step_states.jsonl").open("wb") as step_states,
-                ):
-                    observer = observer_type(events, steps, step_states, run_id)
+                phase = profiler = None
+                if mode == "profile":
+                    if args.cprofile:
+                        import cProfile
+                        profiler = cProfile.Profile()
+                        execute = partial(execute, profile=profiler)
+                    else:
+                        from .phase_profile import PhaseProfile
+                        phase = PhaseProfile()
+                        execute = partial(execute, profile=phase.capture())
+                with ExitStack() as files:
+                    if lean:
+                        observer = WorkloadCounts()
+                    else:
+                        observer_type = PamsObservations
+                        if trace:
+                            from .validation_trace import ObservedSimulator, ValidationObservations
+                            observer_type = ValidationObservations
+                        streams = [files.enter_context((output / name).open("wb")) for name in
+                                   ("events.jsonl", "market_steps.jsonl", "step_states.jsonl")]
+                        observer = observer_type(*streams, run_id)
+                        if trace:
+                            observer.restore = args.book_restore
+                        if streamed:
+                            from validation.stream import Checkpoints
+                            observer.stream = files.enter_context(Checkpoints(
+                                output / "validation-trace.json.gz", observer.trace_metadata(settings, args.seed, manifest)))
+
+                    def after_setup(runner):
+                        if mode:
+                            cls = type(runner)
+                            manifest["runner_class"] = f"{cls.__module__}.{cls.__qualname__}"
+                            pool = getattr(runner, "executor", None)
+                            if pool is not None:
+                                cls = type(pool)
+                                manifest["python_executor_class"] = f"{cls.__module__}.{cls.__qualname__}"
+                        if trace:
+                            observer.after_setup(runner)
+
                     if trace:
-                        execute = partial(execute, simulator_class=ObservedSimulator, after_setup=observer.after_setup)
+                        execute = partial(execute, simulator_class=ObservedSimulator)
+                    if trace or mode:
+                        execute = partial(execute, after_setup=after_setup)
+                    manifest["backend_effective"] = args.backend
                     runner, timings = execute(effective, args.seed, observer)
-                if trace:
-                    observer.write_trace(output, settings, args.seed, manifest, runner)
+                    if trace:
+                        observer.write_trace(output, settings, args.seed, manifest, runner)
+                if profiler is not None:
+                    profiler.dump_stats(str(output / "profile.prof"))
+                if phase is not None:
+                    if native and runner.native_rows and not (
+                        phase.calls["draw_pack_s"] == phase.calls["native_compute_s"]
+                        == phase.calls["rebuild_orders_s"] > 0
+                    ):
+                        raise RuntimeError("profile did not observe every native phase")
+                    (output / "phases.json").write_bytes(json_bytes({
+                        "nanoseconds": dict(phase.totals), "calls": dict(phase.calls),
+                    }))
+                    timings.update(phase.metrics(native))
                 if args.backend == "py-process":
+                    manifest["process_start_method"] = runner.start_method
+                if args.backend == "py-process" and not lean:
                     pool = runner.copy_metrics_pool
                     (output / "process_copy.json").write_bytes(json_bytes({
                         "start_method": runner.start_method, "tasks_sent": pool.copied_calls,
@@ -207,7 +285,7 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                     (output / "heap_diagnostics.json").write_bytes(json_bytes(heap_diagnostics.report()))
                 simulator = runner.simulator
                 state_data = json_bytes({
-                    "initial_accounts": observer.initial_accounts,
+                    **({"initial_accounts": observer.initial_accounts} if not mode else {}),
                     **final_state(simulator),
                     "market_history": market_history(simulator),
                 })
@@ -223,12 +301,13 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                     max_normal_orders_by_session=quotas,
                     measurement_tool="time.perf_counter" if timings else "PAMS SequentialRunner.main",
                 )
+                counts = observer.counts
                 metrics.update(timings)
                 metrics.update(
-                    orders=observer.counts["order"],
-                    cancels=observer.counts["cancel"],
-                    expirations=observer.counts["expiration"],
-                    executions=observer.counts["execution"],
+                    orders=counts["order"],
+                    cancels=counts["cancel"],
+                    expirations=counts["expiration"],
+                    executions=counts["execution"],
                     market_steps=observer.market_steps,
                     native_rows=0,
                 )
@@ -241,12 +320,21 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
                     )
                 status.update(
                     status="PASS",
-                    trace_hash=observer.event_digest.hexdigest(),
                     final_state_hash=sha256(state_data),
                     rng_hash=sha256(rng_data),
                 )
+                if not lean:
+                    status["trace_hash"] = observer.event_digest.hexdigest()
                 print(f"orders={metrics['orders']} executions={metrics['executions']} market_steps={metrics['market_steps']}")
                 exit_code = 0
+                if mode == "validation":
+                    from .validation_trace import compare_upstream
+                    report = compare_upstream(output, args.seed, args.reference_trace, streamed=streamed)
+                    (output / "comparison.json").write_bytes(json_bytes(report))
+                    status.update(validation_status=report["status"], comparison_scope="independent PAMS trace")
+                    if report["status"] != "PASS":
+                        status["reason"] = "independent comparison failed"
+                        exit_code = 1
             except NotImplementedError as error:
                 # Errors from an attempted simulation are failures, not backend rejection.
                 if manifest["backend_effective"] is None:
@@ -257,15 +345,21 @@ def run_recorded(args, execute, *, entry_point, heap_diagnostics=None):
             except Exception as error:
                 status["reason"] = f"{type(error).__name__}: {error}"
                 traceback.print_exc()
+                exit_code = 1
 
     metrics["unmeasured"] = {key: reason for key, reason in unmeasured.items() if metrics[key] is None}
+    metrics["missing_reasons"] = metrics["unmeasured"]
+    metrics["metric_sources"] = {key: "measured" for key in unmeasured if metrics[key] is not None}
+    if not native and metrics["native_rows"] == 0:
+        metrics["metric_sources"]["native_rows"] = "derived"
     (output / "manifest.json").write_bytes(json_bytes(manifest))
     (output / "metrics.json").write_bytes(json_bytes(metrics))
     status_pending = output / ".status.json.tmp"
     status_pending.write_bytes(json_bytes(status))
     status_pending.replace(status_path)
     if exit_code:
-        print(f"{status['status']}: {status['reason']} (see {output / 'stderr.log'})", file=sys.stderr)
+        failure = status["validation_status"] if status["status"] == "PASS" else status["status"]
+        print(f"{failure}: {status['reason']} (see {output / 'stderr.log'})", file=sys.stderr)
     else:
         print(f"PASS {run_id}: {metrics['orders']} orders, {metrics['executions']} executions")
     return exit_code

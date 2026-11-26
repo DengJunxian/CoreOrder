@@ -1,0 +1,33 @@
+{
+  "started_utc": "2026-11-26T02:43:06.217944+00:00",
+  "control": {
+    "affinity": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "loadavg": "0.14 0.13 0.04 1/351 479322",
+    "guest_cpu_stat": "cpu  42754443 5678 2727391 2165342839 1357938 0 834425 0 0 0",
+    "sensors": {
+      "/sys/class/power_supply/AC1/online": "1",
+      "/sys/class/power_supply/BAT1/status": "Full"
+    }
+  },
+  "RLIMIT_AS": [
+    7516192768,
+    -1
+  ],
+  "external_threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "BLIS_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  }
+}

@@ -10,7 +10,8 @@ import subprocess
 import sys
 import tarfile
 
-from audit_p06 import C01_SEEDS, E_SHA, P05, PAMS, ROOT, VENDOR, c01_config, digest, git, json_bytes, probe_config
+from audit_p06 import (C01_SEEDS, E_SHA, PAMS, ROOT, VENDOR, c01_config, digest, git, json_bytes,
+                       probe_config, verify_candidate)
 
 HEAP_FIXTURES = (
     "C01a-M1", "C01b-normal", "C01e-four-markets",
@@ -79,12 +80,11 @@ def workloads():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    output = parser.parse_args().output.resolve()
+    parser.add_argument("--current", action="store_true", help="re-run Member E's checks on the integrated candidate")
+    args = parser.parse_args()
+    output = args.output.resolve()
     output.mkdir(parents=True)
-    assert git("-C", str(VENDOR), "rev-parse", "HEAD") == PAMS
-    assert not git("-C", str(VENDOR), "status", "--porcelain")
-    assert not git("status", "--porcelain")
-    assert not git("diff", "--name-only", P05, "--", "src/coreorder", "vendor", "requirements.lock", "UPSTREAM.lock.json")
+    tested = verify_candidate(args.current)
     e_source = export_e(output)
     sys.path.insert(0, str(e_source))
 
@@ -98,7 +98,7 @@ def main():
     assert PAMS_SHA == PAMS
     assert verify_source(VENDOR) == VENDOR
     info = {
-        "member_e_sha": E_SHA, "candidate_source_sha": P05, "runner_checkout_sha": git("rev-parse", "HEAD"),
+        "member_e_sha": E_SHA, "candidate_source_sha": tested, "runner_checkout_sha": git("rev-parse", "HEAD"),
         "pams_sha": PAMS, "contract": CONTRACT, "python": platform.python_version(),
         "platform": platform.platform(), "member_e_validation_tree": git("rev-parse", f"{E_SHA}:validation"),
     }

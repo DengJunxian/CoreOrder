@@ -25,13 +25,22 @@ jobs:
           python -m pip install --only-binary=:all: -r requirements.lock
           python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
           python -m pip check
-      - name: Compile and test the C++17 ABI and toolchain
+      - name: Test the production binding, runtime and layout ABI
         run: |
           .venv/bin/cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE="$PWD/.venv/bin/python"
           .venv/bin/cmake --build build --config Release --parallel 2
           .venv/bin/ctest --test-dir build -C Release --output-on-failure
-      - name: Test the serial runners, public schemas and fixtures
+      - name: Test the production runners, public schemas and independent regressions
         run: PYTHONPATH="$PWD/build" .venv/bin/python -m pytest -q
+      - name: Verify independent G0 and representative G2 records
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+          MKL_NUM_THREADS: '1'
+        run: |
+          export PYTHONPATH="$PWD/build"
+          .venv/bin/python -m coreorder validate --suite g0 --output results/ci/g0
+          .venv/bin/python -m coreorder validate --suite g2 --output results/ci/g2
       - name: Run selected upstream regression tests
         working-directory: vendor/pams
         run: |

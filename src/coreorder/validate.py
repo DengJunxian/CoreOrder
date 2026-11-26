@@ -11,6 +11,9 @@ from .environment import git
 
 def run_validation(args):
     output = args.output.resolve()
+    if args.suite == "g1":
+        from .validate_g1 import run
+        return run(output)
     if args.suite == "g2":
         return subprocess.run(
             [sys.executable, "-B", "-m", "coreorder.validate_g2", str(output)], cwd=ROOT, check=False,

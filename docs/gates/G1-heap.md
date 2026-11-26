@@ -1,5 +1,11 @@
 # G1-heap 增量堆恢复验收
 
+## R3 当前候选验收 · 2026-11-26
+
+**本机技术 PASS，正式 G1-heap BLOCKED。** 在 `88fee6f1dafeeabc44750913fa2e59d518a3e1e5` 重跑 P06 的 23 对完整仿真和 8 个定向边界。独立成员 E 工具另完成 38 对真实对照。交易顺序、后续出堆、逻辑簿、账本、历史及 RNG 相同。生产撮合、账户更新及事件入口继续由原 PAMS 提供。待同版本 G0 和 E 签认。 [R3 证据](evidence/R3/README.md)
+
+## P06 历史记录
+
 **2026-11-25（上海时间） · P06 本地独立验收 PASS · 正式 G1-heap BLOCKED**
 
 受测生产源码为 P05 `2db0c2b9bed127b72119b83c6bf23293d5e5ee58`，契约 `coreorder-r4-v1`。参考为 EPL-1.0 的 PAMS `6cd53810103780770c5b5d6ee0069ccab9f4b358`，从干净 vendor 直接调用原 `SequentialRunner.main()` 和原 `Market`。生产增量路径通过 `run_py_seq` 驱动实际 `CoreOrderMarket`。两套审计的 checkout 分别为组长 `1306f2addf1e59d825bf4ca0b55c27f98ec1c054` 与 E 工具复跑 `457094ea5ca14068cfa723053243a5056a74ff7f`，生产源码、依赖锁及三个 gitlink 均与 P05 一致。本机为 macOS 27.0 ARM64、CPython 3.12.13，`pip check` 通过。 [运行日志](evidence/P06.txt)

@@ -1,0 +1,4 @@
+{"Name":"AMD Ryzen AI 7 H 350 w/ Radeon 860M ","NumberOfCores":8,"NumberOfLogicalProcessors":16,"CurrentClockSpeed":2000,"MaxClockSpeed":2000,"L2CacheSize":8192,"L3CacheSize":16384}
+{"Caption":"Microsoft Windows 11 专业版","Version":"10.0.26200","BuildNumber":"26200","TotalVisibleMemorySize":32630636}
+{"Manufacturer":"ASUSTeK COMPUTER INC.","Model":"TX Air FA401KM_FA401KM","TotalPhysicalMemory":33413771264}
+电源方案 GUID: 64a64f24-65b9-4b56-befd-5ec1eaced9b3  (Silent)exit=0

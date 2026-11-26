@@ -40,7 +40,7 @@ def validate_record(manifest, metrics, status):
         raise ValueError("Incomplete run cannot have successful simulation time")
     if status["status"] == "TIMEOUT" and status.get("censoring") != "right":
         raise ValueError("TIMEOUT must retain right censoring")
-    paired = metrics.get("measurement_mode") == "timing"
+    paired = metrics.get("measurement_mode") == "timing" and not manifest["warmup"]
     for key in ("block_id", "pairing_group_id", "order_seed", "order_position"):
         if paired and manifest[key] is None:
             raise ValueError("Formal timing requires planned pairing identity")

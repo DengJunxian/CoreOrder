@@ -1,0 +1,1123 @@
+{
+  "status": "BLOCKED",
+  "runnable": false,
+  "reason": "Await complete x86 C01/V01 evidence, E05 replay identity and team signoffs",
+  "contract_version": "coreorder-r4-v1",
+  "pilot_seeds": [
+    11,
+    29
+  ],
+  "formal_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "timing_repeats_per_seed": 3,
+  "warmups_per_variant": 2,
+  "timeout_s": 30,
+  "primary_budget_minutes": 480,
+  "reserve_minutes": 20,
+  "mac_reproduction_budget_minutes": 60,
+  "pairing_keys": [
+    "workload_id",
+    "seed",
+    "repeat",
+    "block_id",
+    "pairing_group_id"
+  ],
+  "formal_code_sha": null,
+  "protocol_lock_hash": null,
+  "stages": [
+    {
+      "id": "P01",
+      "budget_minutes": 30,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "C01",
+      "budget_minutes": 40,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V01",
+      "budget_minutes": 80,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E01",
+      "budget_minutes": 45,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "H01",
+      "budget_minutes": 55,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E02",
+      "budget_minutes": 105,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E03",
+      "budget_minutes": 70,
+      "enabled": true,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "E05",
+      "budget_minutes": 35,
+      "enabled": true,
+      "status": "NOT_RUN"
+    }
+  ],
+  "optional": [
+    {
+      "id": "E04",
+      "enabled": false,
+      "enable_rule": "G3\u524d\u91cd\u5206\u914d\u9884\u7b97\u53ca\u5b8c\u6574\u9a8c\u8bc1\uff1b\u4e0d\u5f97\u8d85\u8fc7480\u5206\u949f"
+    }
+  ],
+  "workloads": {
+    "W0-CI2002": {
+      "path": "vendor/pams/samples/CI2002/config.json",
+      "source": "pinned unmodified PAMS CI2002",
+      "input_sha256": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+      "effective_sha256": {
+        "upstream": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+        "incremental": "eee5464aab66ad161641f34237bbfe13323ec6d707590e370abeaaba370be573"
+      },
+      "N": 100,
+      "M_by_session": [
+        1,
+        1
+      ],
+      "K": 1,
+      "steps_by_session": [
+        100,
+        500
+      ]
+    },
+    "W0-H": {
+      "path": "vendor/pams/samples/CI2002/config.json",
+      "source": "identical W0 bytes, separate H01 pairing group",
+      "input_sha256": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+      "effective_sha256": {
+        "upstream": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+        "incremental": "eee5464aab66ad161641f34237bbfe13323ec6d707590e370abeaaba370be573"
+      },
+      "N": 100,
+      "M_by_session": [
+        1,
+        1
+      ],
+      "K": 1,
+      "steps_by_session": [
+        100,
+        500
+      ]
+    },
+    "W1-H": {
+      "path": "configs/experiments/workloads/W1-H.json",
+      "source": {
+        "pilot_reference": "W1-H",
+        "pilot_input_sha256": "582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d",
+        "provisional_trade_steps": null
+      },
+      "input_sha256": "582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d",
+      "effective_sha256": {
+        "upstream": "582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d",
+        "incremental": "6dfc39f0e512c8d4be210b6c8030cf5c5b4ecf9ae02c6fea41d53565490a7e75"
+      },
+      "N": 4096,
+      "M_by_session": [
+        32,
+        32
+      ],
+      "K": 1,
+      "steps_by_session": [
+        20,
+        100
+      ]
+    },
+    "W2-H": {
+      "path": "configs/experiments/workloads/W2-H.json",
+      "source": {
+        "pilot_reference": "W2-H",
+        "pilot_input_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+        "provisional_trade_steps": null
+      },
+      "input_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+      "effective_sha256": {
+        "upstream": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+        "incremental": "3b7ecc23198dc680177ddf95e5067c2f30e18dc68dbdbcf4955dbf96991feaa0"
+      },
+      "N": 4096,
+      "M_by_session": [
+        256,
+        256
+      ],
+      "K": 1,
+      "steps_by_session": [
+        8,
+        24
+      ]
+    },
+    "W1-SMALL-BATCH": {
+      "path": "configs/experiments/workloads/W1-SMALL-BATCH.json",
+      "source": {
+        "pilot_reference": "W1-H",
+        "pilot_input_sha256": "582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d",
+        "provisional_trade_steps": 500
+      },
+      "input_sha256": "ea713236b7b8257547c17bcf49f2b03793a01ec1c965539f33d70adf8846fd3d",
+      "effective_sha256": {
+        "upstream": "ea713236b7b8257547c17bcf49f2b03793a01ec1c965539f33d70adf8846fd3d",
+        "incremental": "e42d031daf2789615918d4cfca64658a1e3548c89d4a30850909cad5b6526705"
+      },
+      "N": 4096,
+      "M_by_session": [
+        32,
+        32
+      ],
+      "K": 1,
+      "steps_by_session": [
+        20,
+        500
+      ]
+    },
+    "W2-MEDIUM-BATCH": {
+      "path": "configs/experiments/workloads/W2-MEDIUM-BATCH.json",
+      "source": {
+        "pilot_reference": "W2-H",
+        "pilot_input_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+        "provisional_trade_steps": 120
+      },
+      "input_sha256": "eeec23818fa2c75324f10ea149293122bb3e6711e24a5ed707d969d39536c087",
+      "effective_sha256": {
+        "upstream": "eeec23818fa2c75324f10ea149293122bb3e6711e24a5ed707d969d39536c087",
+        "incremental": "6bb460c1595a0b7dbefee5acf3e649b047c9d3e3fd4ad8bdf123cb46d1f461d7"
+      },
+      "N": 4096,
+      "M_by_session": [
+        256,
+        256
+      ],
+      "K": 1,
+      "steps_by_session": [
+        8,
+        120
+      ]
+    },
+    "W3-LARGE-MULTI": {
+      "path": "configs/experiments/workloads/W3-LARGE-MULTI.json",
+      "source": {
+        "pilot_reference": "W3-START",
+        "pilot_input_sha256": "7c0de6a027fe3f39d4047c77ccc88f4c4d49a7353c97c70014c400749c8a3a2a",
+        "provisional_trade_steps": null
+      },
+      "input_sha256": "7c0de6a027fe3f39d4047c77ccc88f4c4d49a7353c97c70014c400749c8a3a2a",
+      "effective_sha256": {
+        "upstream": "7c0de6a027fe3f39d4047c77ccc88f4c4d49a7353c97c70014c400749c8a3a2a",
+        "incremental": "28f0c2b8ee92188c7a50d2787041bb38e6bc3ab0304c01729b1d3ba77b43347a"
+      },
+      "N": 16384,
+      "M_by_session": [
+        1024,
+        1024
+      ],
+      "K": 4,
+      "steps_by_session": [
+        2,
+        8
+      ]
+    },
+    "C01a-M1": {
+      "path": "configs/experiments/workloads/c01/C01a-M1.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "1c4393638342af7d1f7093ec2f5733501b84356d5a1cfe5bf6beaed6e81e23ec",
+      "effective_sha256": {
+        "upstream": "1c4393638342af7d1f7093ec2f5733501b84356d5a1cfe5bf6beaed6e81e23ec",
+        "incremental": "8bcba6a62f84df2581d1bd6987555a6239192741b571e4940d73dd73ebf44e41"
+      },
+      "N": 8,
+      "M_by_session": [
+        1,
+        1
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01b-normal": {
+      "path": "configs/experiments/workloads/c01/C01b-normal.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "fa92b3446a3282cbbe2370878d85254a67cc43c03526babf83b49d7aa27fd37a",
+      "effective_sha256": {
+        "upstream": "fa92b3446a3282cbbe2370878d85254a67cc43c03526babf83b49d7aa27fd37a",
+        "incremental": "8426e08f5386a7a5473465ad0ab5bb1941eda5e8f65715848098004025b3e8eb"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01c-all-empty": {
+      "path": "configs/experiments/workloads/c01/C01c-all-empty.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "f00c7a86d4c4975b61139bf69b7c1cc5a3d831778f134cbed24c342df8887be7",
+      "effective_sha256": {
+        "upstream": "f00c7a86d4c4975b61139bf69b7c1cc5a3d831778f134cbed24c342df8887be7",
+        "incremental": "0af8c9da691554ba29ebf64d4d117859a7acd07bb9a381b537c8cd59ba39a65a"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01d-sparse-access": {
+      "path": "configs/experiments/workloads/c01/C01d-sparse-access.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "5f73b10e3c0c55f41c5a3508c3ba682d9e071a4f633bbc27883ee03e096cfd95",
+      "effective_sha256": {
+        "upstream": "5f73b10e3c0c55f41c5a3508c3ba682d9e071a4f633bbc27883ee03e096cfd95",
+        "incremental": "257992c52f7d67386c990876b12259fce78656328be882eeee1ced0264c144c7"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 2,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01e-four-markets": {
+      "path": "configs/experiments/workloads/c01/C01e-four-markets.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "70509cab6beb8fcaa518994967907ff6d408ded995cc85a8c10bdd3e9f11dd7a",
+      "effective_sha256": {
+        "upstream": "70509cab6beb8fcaa518994967907ff6d408ded995cc85a8c10bdd3e9f11dd7a",
+        "incremental": "2fefecc24d617adabe2a6e6c0e4922906b599a567ad1a98b1e1ba47f7b8b9489"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 4,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01f-M0": {
+      "path": "configs/experiments/workloads/c01/C01f-M0.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "b4be97da01eb48485ad5d713947b3178f8511066ff6aa9d34c9788df9acd8bfd",
+      "effective_sha256": {
+        "upstream": "b4be97da01eb48485ad5d713947b3178f8511066ff6aa9d34c9788df9acd8bfd",
+        "incremental": "9000c0cbb10eb29c9641927e71b7136f54c205f03a5d8ca3e539e4b2826c95b1"
+      },
+      "N": 8,
+      "M_by_session": [
+        0,
+        0
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01f-MequalsN": {
+      "path": "configs/experiments/workloads/c01/C01f-MequalsN.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "143b85ba9017c01f5b68e95fac8dbc5d2484cc5c2164fd3dfca5e4c3d4b8a7d9",
+      "effective_sha256": {
+        "upstream": "143b85ba9017c01f5b68e95fac8dbc5d2484cc5c2164fd3dfca5e4c3d4b8a7d9",
+        "incremental": "8e6c0a346b5083dc92b015cc571c5bb59123507dbfb8b9e4307200e53782e9c2"
+      },
+      "N": 8,
+      "M_by_session": [
+        8,
+        8
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01f-MaboveN": {
+      "path": "configs/experiments/workloads/c01/C01f-MaboveN.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "67b168d673bf314c2317c95ec5a575179bd426ca5b513c602c00f0c26cf64cdf",
+      "effective_sha256": {
+        "upstream": "67b168d673bf314c2317c95ec5a575179bd426ca5b513c602c00f0c26cf64cdf",
+        "incremental": "d60d74993e73142e3c86c92c697f878ac79dc89a1139e6ae8ec376a4eccc47f0"
+      },
+      "N": 8,
+      "M_by_session": [
+        12,
+        12
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01c-mixed-empty": {
+      "path": "configs/experiments/workloads/c01/C01c-mixed-empty.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "240110249d4e299f592ba4b62e4957a24cd3534208974c9d5f455b701ea2cf86",
+      "effective_sha256": {
+        "upstream": "240110249d4e299f592ba4b62e4957a24cd3534208974c9d5f455b701ea2cf86",
+        "incremental": "d3ca6432db9adc57ca092dddd5a0f7dfe847aa956338b9c802da263d083b46f9"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01h-MarketMaker": {
+      "path": "configs/experiments/workloads/c01/C01h-MarketMaker.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "5f42c8128122af8c5ac61786dc98f95d84062ef1539d8075f52b78ebb1b74612",
+      "effective_sha256": {
+        "upstream": "5f42c8128122af8c5ac61786dc98f95d84062ef1539d8075f52b78ebb1b74612",
+        "incremental": "fbd7f26152a0c5b9b8a4dbffdb155140c85eddd90f64a87f201a6fd7016ec0eb"
+      },
+      "N": 9,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01g-fundamental-shock": {
+      "path": "configs/experiments/workloads/c01/C01g-fundamental-shock.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "ce809c52813a9b29df0cb707abd1cfd6bd62e9bcc2a6f27b94a72c630225eaa3",
+      "effective_sha256": {
+        "upstream": "ce809c52813a9b29df0cb707abd1cfd6bd62e9bcc2a6f27b94a72c630225eaa3",
+        "incremental": "65a61139585b77ebc903898ecb2023249dc9814ea38564191cdb41b8724f1a00"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    },
+    "C01g-placement-stopped": {
+      "path": "configs/experiments/workloads/c01/C01g-placement-stopped.json",
+      "source": "unchanged E validation.cases",
+      "input_sha256": "f24958e7e36597827a679c7b846992205560897f0f170123d4dfc9f9f56f1e52",
+      "effective_sha256": {
+        "upstream": "f24958e7e36597827a679c7b846992205560897f0f170123d4dfc9f9f56f1e52",
+        "incremental": "5e364f1585b075300e12121a926a9eeb2e05f909ecb8b6b3945262d2569a153c"
+      },
+      "N": 8,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "K": 1,
+      "steps_by_session": [
+        3,
+        3
+      ]
+    }
+  },
+  "time_boundaries": {
+    "simulation": "after setup through last business event; RNG+packing+compute+rebuild+matching included",
+    "process": "spawn through successful exit",
+    "kernel": "diagnostic only"
+  },
+  "missing_rule": "null plus reason; no zero fill",
+  "timeout_rule": "right censored, not exact runtime",
+  "statistics": {
+    "unit": "seed",
+    "within_seed": "median of 3 paired log ratios in predefined blocks",
+    "across_seeds": "exp(mean(seed effects))",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 73021,
+    "confidence_level": 0.95,
+    "practical_threshold_fraction": 0.05,
+    "show": "raw paired times, median/IQR, and five seed effects",
+    "complete_pairing_requirement": "3 matching blocks for each of 5 seeds",
+    "missing_policy": "no point estimate for incomplete required comparison"
+  },
+  "correctness_settings": [
+    {
+      "backend": "py-seq",
+      "book_restore": "upstream"
+    },
+    {
+      "backend": "py-thread",
+      "book_restore": "upstream",
+      "workers": 2
+    },
+    {
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "aos"
+    },
+    {
+      "backend": "native-serial",
+      "book_restore": "upstream",
+      "layout": "soa"
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 1
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "aos",
+      "workers": 2
+    },
+    {
+      "backend": "native-parallel",
+      "book_restore": "incremental",
+      "layout": "soa",
+      "workers": 4
+    }
+  ],
+  "process_policy": "attempt separately within timeout; retain true status",
+  "authorized_formal_runs": [],
+  "candidate_id": "r4b-leader-approved-candidate",
+  "candidate_production_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "protocol_lock_path": "configs/experiments/protocol_lock.json",
+  "hash_receipt": "configs/experiments/R4B-SHA256SUMS",
+  "pairing_groups": [
+    {
+      "id": "E01-W0-CI2002",
+      "experiment": "E01",
+      "workload": "W0-CI2002",
+      "variants": [
+        {
+          "id": "seq",
+          "backend": "py-seq",
+          "book_restore": "upstream",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "thread-4",
+          "backend": "py-thread",
+          "book_restore": "upstream",
+          "workers": 4,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "process-4",
+          "backend": "py-process",
+          "book_restore": "upstream",
+          "workers": 4,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-direct",
+          "backend": "native-serial",
+          "book_restore": "upstream",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-4",
+          "backend": "native-parallel",
+          "book_restore": "upstream",
+          "workers": 4,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "seq",
+          "thread-4"
+        ],
+        [
+          "seq",
+          "process-4"
+        ],
+        [
+          "seq",
+          "native-direct"
+        ],
+        [
+          "seq",
+          "native-4"
+        ]
+      ]
+    },
+    {
+      "id": "H01-W0-H",
+      "experiment": "H01",
+      "workload": "W0-H",
+      "variants": [
+        {
+          "id": "upstream",
+          "backend": "py-seq",
+          "book_restore": "upstream",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "incremental",
+          "backend": "py-seq",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "upstream",
+          "incremental"
+        ]
+      ]
+    },
+    {
+      "id": "H01-W1-H",
+      "experiment": "H01",
+      "workload": "W1-H",
+      "variants": [
+        {
+          "id": "upstream",
+          "backend": "py-seq",
+          "book_restore": "upstream",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "incremental",
+          "backend": "py-seq",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "upstream",
+          "incremental"
+        ]
+      ]
+    },
+    {
+      "id": "H01-W2-H",
+      "experiment": "H01",
+      "workload": "W2-H",
+      "variants": [
+        {
+          "id": "upstream",
+          "backend": "py-seq",
+          "book_restore": "upstream",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "incremental",
+          "backend": "py-seq",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "upstream",
+          "incremental"
+        ]
+      ]
+    },
+    {
+      "id": "E02-W1-H",
+      "experiment": "E02",
+      "workload": "W1-H",
+      "variants": [
+        {
+          "id": "seq",
+          "backend": "py-seq",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-direct",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-1",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "native-2",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 2,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "native-4",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "seq",
+          "native-direct"
+        ],
+        [
+          "native-direct",
+          "native-1"
+        ],
+        [
+          "native-direct",
+          "native-2"
+        ],
+        [
+          "native-direct",
+          "native-4"
+        ]
+      ]
+    },
+    {
+      "id": "E02-W3-LARGE-MULTI",
+      "experiment": "E02",
+      "workload": "W3-LARGE-MULTI",
+      "variants": [
+        {
+          "id": "seq",
+          "backend": "py-seq",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "not_applicable",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-direct",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "native-1",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "native-2",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 2,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "native-4",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "seq",
+          "native-direct"
+        ],
+        [
+          "native-direct",
+          "native-1"
+        ],
+        [
+          "native-direct",
+          "native-2"
+        ],
+        [
+          "native-direct",
+          "native-4"
+        ]
+      ]
+    },
+    {
+      "id": "E03-W2-H",
+      "experiment": "E03",
+      "workload": "W2-H",
+      "variants": [
+        {
+          "id": "direct-aos",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "direct-soa",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "soa",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "parallel-4-aos",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "parallel-4-soa",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "soa",
+          "grain": 128,
+          "schedule": "static"
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "direct-aos",
+          "direct-soa"
+        ],
+        [
+          "parallel-4-aos",
+          "parallel-4-soa"
+        ]
+      ]
+    },
+    {
+      "id": "E03-W3-LARGE-MULTI",
+      "experiment": "E03",
+      "workload": "W3-LARGE-MULTI",
+      "variants": [
+        {
+          "id": "direct-aos",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "direct-soa",
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "soa",
+          "grain": null,
+          "schedule": null
+        },
+        {
+          "id": "parallel-4-aos",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "aos",
+          "grain": 128,
+          "schedule": "static"
+        },
+        {
+          "id": "parallel-4-soa",
+          "backend": "native-parallel",
+          "book_restore": "incremental",
+          "workers": 4,
+          "layout": "soa",
+          "grain": 128,
+          "schedule": "static"
+        }
+      ],
+      "ordered_pairs": [
+        [
+          "direct-aos",
+          "direct-soa"
+        ],
+        [
+          "parallel-4-aos",
+          "parallel-4-soa"
+        ]
+      ]
+    }
+  ],
+  "order_master_seed": 20261126,
+  "warmup_seeds": [
+    101,
+    202
+  ],
+  "core_condition_count": 29,
+  "timing_attempts": 493,
+  "C01_count": 420,
+  "V01_unique_candidate_conditions": 25,
+  "V01_candidate_receipts_required": 125,
+  "V01_candidate_receipts_accepted": 0,
+  "V01_oracles_required": 20,
+  "E05_rows": 76,
+  "notes": {
+    "host_assumption": "WSL guest one vCPU per exposed core, p*=4",
+    "core_grain": "128, static",
+    "steps": "E02 W1-H 20+100, E03/E05 W2-H 8+24, original W3 2+8.",
+    "formal_bench": "keep all required V01; remove E04/W4 and excess thread points before shrinking core workloads"
+  },
+  "mac_plan": {
+    "limit_minutes": 60,
+    "environment_and_chain": 8,
+    "semantic_validation": 32,
+    "representative_checks": 15,
+    "reserve": 5,
+    "cross_host_ratios": false,
+    "workloads": [
+      "W0-CI2002",
+      "W2-H"
+    ],
+    "W0": [
+      {
+        "backend": "py-seq",
+        "book_restore": "upstream",
+        "workers": 1,
+        "layout": "not_applicable",
+        "grain": null,
+        "schedule": null
+      },
+      {
+        "backend": "py-seq",
+        "book_restore": "incremental",
+        "workers": 1,
+        "layout": "not_applicable",
+        "grain": null,
+        "schedule": null
+      }
+    ],
+    "W2_small": [
+      {
+        "backend": "py-seq",
+        "book_restore": "upstream",
+        "workers": 1,
+        "layout": "not_applicable",
+        "grain": null,
+        "schedule": null
+      },
+      {
+        "backend": "py-seq",
+        "book_restore": "incremental",
+        "workers": 1,
+        "layout": "not_applicable",
+        "grain": null,
+        "schedule": null
+      },
+      {
+        "backend": "native-serial",
+        "book_restore": "incremental",
+        "workers": 1,
+        "layout": "aos",
+        "grain": null,
+        "schedule": null
+      },
+      {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "workers": 4,
+        "layout": "aos",
+        "grain": 128,
+        "schedule": "static"
+      },
+      {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "workers": 4,
+        "layout": "soa",
+        "grain": 128,
+        "schedule": "static"
+      }
+    ],
+    "requires_separate_C01_and_V01_receipts": true
+  },
+  "primary": {
+    "stage_budgets_minutes": {
+      "P01": 30,
+      "C01": 40,
+      "V01": 80,
+      "E01": 45,
+      "H01": 55,
+      "E02": 105,
+      "E03": 70,
+      "E05": 35
+    },
+    "planned_minutes": 460,
+    "rerun_reserve_minutes": 20,
+    "max_minutes": 480
+  },
+  "execution": {
+    "V01_attempt_timeout_s": 180,
+    "C01_attempt_timeout_s": 30,
+    "timing_attempt_timeout_s": 30,
+    "phase_clock": "use monotonic elapsed including setup, output, cleanup and cooling; cap each attempt by remaining phase and host budget",
+    "py_process": "upstream spawn; retain all outcomes; stop case after timeout",
+    "interference": "no concurrent timing; pause on independent thermal/power/background evidence",
+    "reruns": "preserve result and reason; correctness requires new SHA and validation before timing; no arbitrary slow-run replacement",
+    "timing": "identify direct compute + all business work under matched low-overhead mode; final digest outside simulation time",
+    "qualification_scope": "Validated no-fee markets; reject unsupported automatic execution"
+  },
+  "diagnostics": {
+    "max_minutes": 35,
+    "PMU": 12,
+    "profile": 4,
+    "replay": {
+      "source": {
+        "workload": "W2-H",
+        "seed": 101,
+        "mode": {
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "workers": 1,
+          "layout": "aos",
+          "grain": null,
+          "schedule": null
+        },
+        "receipt": null,
+        "input_sha256": null
+      },
+      "rows": [
+        2048,
+        4096,
+        8192
+      ],
+      "layouts": [
+        "aos",
+        "soa"
+      ],
+      "samples_per_variant": 3,
+      "warmups_per_variant": 1,
+      "source_rule": "capture distinct real rows in original order, take prefixes, never manufacture rows",
+      "kernel_repeat_count": null,
+      "kernel_repeats_reason": "target calibration required before G3"
+    },
+    "setup": 9,
+    "PMU_enabled": true,
+    "actual_events": {
+      "cpu-work": [
+        "cycles:u",
+        "instructions:u"
+      ],
+      "L1-data": [
+        "L1-dcache-loads:u",
+        "L1-dcache-load-misses:u"
+      ],
+      "branch": [
+        "branches:u",
+        "branch-misses:u"
+      ]
+    },
+    "PMU_event_groups": {
+      "cpu-work": "cycles and retired instructions",
+      "L1-data": "AMD data accesses and L2 requests from L1D misses",
+      "branch": "retired branches and mispredictions; LLC unavailable in target WSL2"
+    },
+    "PMU_scope": "whole process unless a separate verified enable/disable measurement scope is recorded",
+    "invalid_events": "null plus reason; preserve enabled and running time"
+  }
+}

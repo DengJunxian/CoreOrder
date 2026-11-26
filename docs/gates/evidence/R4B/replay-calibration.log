@@ -1,0 +1,15 @@
+2026-11-26T03:25:20+00:00
+taskset -c 0,2,4,6,8,10,12,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/replay_capture.py --plan <LINUX_HOME>/coreorder-r4b-sPvokUVq/approved --output <LINUX_HOME>/coreorder-r4b-sPvokUVq/replay-calibration --seed 11 --calibrate 3000
+2048 native-serial aos 0.185s
+2048 native-serial soa 0.198s
+2048 native-parallel aos 0.246s
+2048 native-parallel soa 0.260s
+4096 native-serial aos 0.388s
+4096 native-serial soa 0.404s
+4096 native-parallel aos 0.337s
+4096 native-parallel soa 0.350s
+8192 native-serial aos 0.802s
+8192 native-serial soa 0.826s
+8192 native-parallel aos 0.492s
+8192 native-parallel soa 0.545s
+exit=0

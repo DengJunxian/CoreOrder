@@ -1,0 +1,34 @@
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+.........................                                                [100%]
+=============================== warnings summary ===============================
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+tests/heap/test_market_adapter.py: 9 warnings
+tests/platform/test_checkpoint_stream.py: 1 warning
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 2 warnings
+tests/differential/test_e3.py: 4 warnings
+tests/platform/test_checkpoint_stream.py: 1 warning
+tests/platform/test_measurement_modes.py: 1 warning
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/validation/reference.py:28: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/tests/differential/test_e3.py:134: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner=cls(settings=copy.deepcopy(config),prng=random.Random(303),logger=logger,simulator_class=ObservedSimulator)
+
+tests/native/test_fcn.py::test_live_original[aos]
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/vendor/pams/pams/agents/fcn_agent.py:196: UserWarning: price should be positive
+    Order(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+169 passed, 43 warnings in 97.58s (0:01:37)

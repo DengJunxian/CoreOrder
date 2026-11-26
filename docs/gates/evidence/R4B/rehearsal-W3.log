@@ -1,0 +1,7 @@
+taskset -c 0,2,4,6,8,10,12,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/calibrate-supplement.py <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal-W3 58ec5764c21833142c50abacd9e2302404ffdb06 W3-LARGE-MULTI
+2026-11-26T03:22:16+00:00
+r4b-rehearsal-oracle-W3-LARGE-MULTI-11 PASS 72.322 62731221 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal-W3/raw/r4b-rehearsal-W3-LARGE-MULTI-11/6a70fc2e5a634b6aa6dbe23f24a9ca2d/core/status.json)
+r4b-rehearsal-W3-LARGE-MULTI-11 PASS 34.955 207872260 None
+exit=0
+2026-11-26T03:24:04+00:00

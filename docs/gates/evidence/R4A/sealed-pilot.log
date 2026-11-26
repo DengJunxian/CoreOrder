@@ -1,0 +1,36 @@
+pilot-oracle-11 PASS 47f3624f8fff468a81e99ddcacfb1068
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-validation-11-native-direct/79e826fe5f284ac6ab96c52fdba9dc25/core/status.json)
+pilot-validation-11-native-direct PASS 79e826fe5f284ac6ab96c52fdba9dc25
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-validation-11-native-2/dc092b938fd349fc9b4c33aa9a487a48/core/status.json)
+pilot-validation-11-native-2 PASS dc092b938fd349fc9b4c33aa9a487a48
+pilot-oracle-29 PASS ed875a865c554a6c8aee438904ed4710
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-validation-29-native-direct/4e35ea1043da4b3d9d0cdb7d26206402/core/status.json)
+pilot-validation-29-native-direct PASS 4e35ea1043da4b3d9d0cdb7d26206402
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-validation-29-native-2/cb306b8c3a3046ecb284b901d5827344/core/status.json)
+pilot-validation-29-native-2 PASS cb306b8c3a3046ecb284b901d5827344
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-warmup-native-direct/b73216a531e6491890b4d3621032f1a4/core/status.json)
+pilot-warmup-native-direct PASS b73216a531e6491890b4d3621032f1a4
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-warmup-native-2/dfb9779dd3d841c6b546c4396112ff5b/core/status.json)
+pilot-warmup-native-2 PASS dfb9779dd3d841c6b546c4396112ff5b
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-11-1-native-2/0a3a8dbc159f462ca128bebdac8a1d85/core/status.json)
+pilot-C01b-normal-11-1-native-2 PASS 0a3a8dbc159f462ca128bebdac8a1d85
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-11-1-native-direct/92038fc65dc34a4cb885ee4572b96f59/core/status.json)
+pilot-C01b-normal-11-1-native-direct PASS 92038fc65dc34a4cb885ee4572b96f59
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-11-2-native-direct/e1d6f4d2392345088c5e51548f78f0f4/core/status.json)
+pilot-C01b-normal-11-2-native-direct PASS e1d6f4d2392345088c5e51548f78f0f4
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-11-2-native-2/cb56e4a274be4dbb9700e2617908ec0d/core/status.json)
+pilot-C01b-normal-11-2-native-2 PASS cb56e4a274be4dbb9700e2617908ec0d
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-29-1-native-2/913c03e442494520ab06d571345b8e8c/core/status.json)
+pilot-C01b-normal-29-1-native-2 PASS 913c03e442494520ab06d571345b8e8c
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-29-1-native-direct/9972dd9c8e8f4cab82bf0e44fd9babcd/core/status.json)
+pilot-C01b-normal-29-1-native-direct PASS 9972dd9c8e8f4cab82bf0e44fd9babcd
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-29-2-native-2/40584406b9db43919919230738d3d60e/core/status.json)
+pilot-C01b-normal-29-2-native-2 PASS 40584406b9db43919919230738d3d60e
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-C01b-normal-29-2-native-direct/93e30a044b1d4b37bd763bc0d2b6ca3c/core/status.json)
+pilot-C01b-normal-29-2-native-direct PASS 93e30a044b1d4b37bd763bc0d2b6ca3c
+FAIL (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-profile-native-direct/9537bb9ff98c4541a454d4589b08745f/core/launch/stderr.log)
+pilot-profile-native-direct FAIL 9537bb9ff98c4541a454d4589b08745f
+FAIL (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/raw/pilot-profile-native-2/c41bf013dbc945238feefcb3bb281d5e/core/launch/stderr.log)
+pilot-profile-native-2 FAIL c41bf013dbc945238feefcb3bb281d5e
+development-pilot {'PASS': 16, 'FAIL': 2, 'NOT_RUN': 0}
+exit=1

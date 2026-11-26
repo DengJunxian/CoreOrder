@@ -1,0 +1,72 @@
+{
+  "scope": "read-only admission, no experiment launch",
+  "runtime": {
+    "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+    "dirty": false,
+    "host_id": "7fd1261e162f2fef",
+    "architecture": "x86_64",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "environment_sha256": "66efa4e180a9c83500d1ebc9ced921938d0651913c811dd07e2e9084f197d163",
+    "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+    "upstream_shas": {
+      "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    },
+    "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+    "schemas_sha256": {
+      "schemas/records.schema.json": "fda7b32435842eab4693ff8bfca22637521e5cb8399c364b830e42093129619c",
+      "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+      "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+    }
+  },
+  "workload_digests_verified": 19,
+  "candidate_identity": "8113c98d7c108b8fd33dd86d35c7c63e890cf6f05fd731ded36551c26ce0219c",
+  "candidate_state": "BLOCKED",
+  "locked_for_execution": false,
+  "effective_lock_sha256": null,
+  "formal_code_sha": null,
+  "authorized_formal_rows": 0,
+  "gates": {
+    "G0": "BLOCKED",
+    "G1": "BLOCKED",
+    "G2": "BLOCKED",
+    "G3": "BLOCKED"
+  },
+  "signoffs": {
+    "A_signoff": null,
+    "E_signoff": null
+  },
+  "validation": {
+    "attempts": 145,
+    "candidate_receipts": 125,
+    "oracle_attempts": 20,
+    "status": {
+      "PASS": 145
+    }
+  },
+  "planned_schedule": {
+    "timing": {
+      "E01": 85,
+      "H01": 102,
+      "E02": 170,
+      "E03": 136
+    },
+    "E05": {
+      "E05-profile": 4,
+      "E05-PMU": 24,
+      "E05-replay": 48
+    }
+  },
+  "formal_admission": {
+    "timing": {
+      "eligible_rows": 0,
+      "reason": "G3 BLOCKED: formal execution requires an effective G3 lock"
+    },
+    "E05": {
+      "eligible_rows": 0,
+      "reason": "G3 BLOCKED: formal execution requires an effective G3 lock"
+    },
+    "approval": "G3 BLOCKED: formal execution and formal analysis require an effective G3 lock"
+  }
+}

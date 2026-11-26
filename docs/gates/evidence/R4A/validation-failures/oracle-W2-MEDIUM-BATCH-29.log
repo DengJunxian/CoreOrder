@@ -1,0 +1,44 @@
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/__main__.py", line 49, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/__main__.py", line 30, in main
+    result = collect(read(args.config), args.seed, args.pams_root, args.backend, args.workers)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/reference.py", line 31, in collect
+    runner._run()
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pams/pams/runners/sequential.py", line 766, in _run
+    self._iterate_market_updates(session=session)
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/vendor/pams/pams/runners/sequential.py", line 747, in _iterate_market_updates
+    self.simulator._update_times_on_markets(self.simulator.markets)  # t++
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/collector.py", line 55, in _update_times_on_markets
+    self.logger.checkpoint()
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/collector.py", line 48, in checkpoint
+    "state": snapshot(self.simulator, self.runner_rng)})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 95, in snapshot
+    "agents": [fields(x) for x in simulator.agents],
+               ^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 67, in fields
+    return encode({k: v for k, v in vars(obj).items() if k not in ("simulator", "logger")})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 47, in encode
+    return {k: encode(v) for k, v in sorted(value.items())}
+               ^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 32, in encode
+    return {"python_random": encode(value.getstate())}
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 50, in encode
+    return [encode(x) for x in value]
+            ^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/codec.py", line 50, in encode
+    return [encode(x) for x in value]
+            ^^^^^^^^^
+MemoryError

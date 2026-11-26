@@ -1,0 +1,21 @@
+{
+  "suite": "smoke",
+  "contract_version": "coreorder-r4-v1",
+  "git_sha": "b5808b5383bfc170fcb972ee77f1c3c0eac5659f",
+  "seed": 42,
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "smoke",
+      "status": "PASS",
+      "config_sha256": "ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6",
+      "events": 260,
+      "checkpoints": 81
+    }
+  ],
+  "checks": {
+    "events": "PASS",
+    "step_state": "PASS",
+    "final_rng": "PASS"
+  }
+}

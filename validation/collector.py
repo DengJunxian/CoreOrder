@@ -16,12 +16,29 @@ class TraceLogger(Logger):
         self.events = []
         self.steps = []
         self.runner_rng = None
+        self.stream = None
+        self.sequence = 0
 
     def capture(self, log):
         session = getattr(self.simulator, "current_session", None)
         step = min((m.get_time() for m in self.simulator.markets), default=-1)
-        self.events.append({"event_seq": len(self.events), "session": getattr(session, "session_id", None),
-                            "step": step, "type": type(log).__name__, "fields": encode(vars(log))})
+        self.record("events", {"event_seq": self.sequence, "session": getattr(session, "session_id", None),
+                               "step": step, "type": type(log).__name__, "fields": encode(vars(log))})
+        self.sequence += 1
+
+    def record(self, channel, frame):
+        stream = getattr(self, "stream", None)
+        if stream is None:
+            getattr(self, channel).append(frame)
+        else:
+            stream.emit(channel, frame)
+
+    def state(self):
+        stream = getattr(self, "stream", None)
+        if stream is None:
+            return {"state": snapshot(self.simulator, self.runner_rng)}
+        state, words = stream.state(self.simulator, self.runner_rng)
+        return {"state": state, "mt_words": words}
 
     def write(self, log):
         self.capture(log)
@@ -43,9 +60,9 @@ class TraceLogger(Logger):
 
     def checkpoint(self):
         session = self.simulator.current_session
-        self.steps.append({"session": getattr(session, "session_id", None),
-                           "next_market_times": [m.get_time() for m in self.simulator.markets],
-                           "state": snapshot(self.simulator, self.runner_rng)})
+        self.record("steps", {"session": getattr(session, "session_id", None),
+                              "next_market_times": [m.get_time() for m in self.simulator.markets],
+                              **self.state()})
 
 
 class ObservedSimulator(Simulator):

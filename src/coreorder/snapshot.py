@@ -4,7 +4,7 @@ import hashlib
 from collections import Counter
 
 from pams.agents.fcn_agent import FCNAgent
-from pams.logs.base import CancelLog, ExecutionLog, ExpirationLog, Logger, OrderLog
+from pams.logs.base import CancelLog, ExecutionLog, ExpirationLog, Logger, MarketStepEndLog, OrderLog
 
 from .config import json_bytes, sha256
 
@@ -121,6 +121,30 @@ def final_rng(runner):
         "sessions": {s.session_id: random_state(s.prng) for s in simulator.sessions},
         "events": {e.event_id: random_state(e.prng) for e in simulator.events},
     }
+
+
+class WorkloadCounts(Logger):
+    """Count existing PAMS logs in batches without reading their payloads."""
+
+    def __init__(self):
+        super().__init__()
+        self.log_types = Counter()
+
+    def __getstate__(self):
+        state = vars(self).copy()
+        state.pop("runner", None)
+        return state
+
+    def process(self, logs):
+        self.log_types.update(map(type, logs))
+
+    @property
+    def counts(self):
+        return {kind: self.log_types[cls] for cls, kind in EVENT_KIND.items()}
+
+    @property
+    def market_steps(self):
+        return self.log_types[MarketStepEndLog]
 
 
 class PamsObservations(Logger):

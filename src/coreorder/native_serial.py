@@ -57,7 +57,7 @@ class DecisionBuffer(LayoutBuffer):
 
 
 class NativeSerialRunner(SequentialRunner):
-    def __init__(self, *, evaluate, layout="aos", market_adapter=None, **kwargs):
+    def __init__(self, *, evaluate, layout="aos", market_adapter=None, record_batch_widths=True, **kwargs):
         super().__init__(**kwargs)
         self._evaluate = evaluate
         self._layout_buffer = DecisionBuffer(layout, evaluate)
@@ -65,7 +65,11 @@ class NativeSerialRunner(SequentialRunner):
         self.agent_calls = 0
         self.native_rows = 0
         self.gauss_api_calls = 0
-        self.batch_widths = []
+        self.batch_widths = [] if record_batch_widths else None
+
+    def _shutdown_evaluator(self):
+        # Both bound methods hold the evaluator and its Taskflow executor alive.
+        self._evaluate = self._layout_buffer._evaluate_prefix = None
 
     def _setup(self):
         super()._setup()
@@ -88,7 +92,8 @@ class NativeSerialRunner(SequentialRunner):
             first_call = self.agent_calls
             orders_by_agent = self._evaluate_batch(batch_agents, markets, first_call)
             self.agent_calls += len(batch_agents)
-            self.batch_widths.append(len(batch_agents))
+            if self.batch_widths is not None:
+                self.batch_widths.append(len(batch_agents))
             offset += len(batch_agents)
             for agent, orders in zip(batch_agents, orders_by_agent, strict=True):
                 if orders:
@@ -100,6 +105,7 @@ class NativeSerialRunner(SequentialRunner):
 
     def _evaluate_batch(self, agents, markets, first_call):
         draws = []
+        gauss_calls = 0
         for agent in agents:
             for market in markets:
                 if not agent.is_market_accessible(market.market_id):
@@ -107,7 +113,8 @@ class NativeSerialRunner(SequentialRunner):
                 noise = agent.prng.gauss(mu=0.0, sigma=1.0)
                 margin = agent.prng.gauss(mu=0.0, sigma=1.0) if agent.margin_type == MARGIN_NORMAL else None
                 draws.append(Draw(agent.agent_id, market.market_id, noise, margin))
-                self.gauss_api_calls += 1 + (margin is not None)
+                gauss_calls += 1 + (margin is not None)
+        self.gauss_api_calls += gauss_calls
 
         orders_by_agent = [[] for _ in agents]
         with pack_batch(

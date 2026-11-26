@@ -16,10 +16,12 @@ def main():
     run.add_argument("--backend", choices=("py-seq", "py-thread", "py-process"), default="py-seq")
     run.add_argument("--workers", type=int, default=2)
     run.add_argument("--output", required=True)
+    run.add_argument("--stream", action="store_true")
     diff = commands.add_parser("compare")
     diff.add_argument("--reference", required=True)
     diff.add_argument("--candidate", required=True)
     diff.add_argument("--bundle")
+    diff.add_argument("--stream", action="store_true")
     replay = commands.add_parser("replay")
     replay.add_argument("--bundle", required=True)
     args = parser.parse_args()
@@ -27,11 +29,22 @@ def main():
         if args.workers < 1 or args.seed < 0:
             parser.error("workers must be positive and seed nonnegative")
         from .reference import collect
-        result = collect(read(args.config), args.seed, args.pams_root, args.backend, args.workers)
+        result = collect(read(args.config), args.seed, args.pams_root, args.backend, args.workers,
+                         stream_path=args.output if args.stream else None)
+        if args.stream:
+            print(json.dumps({k: result[k] for k in ("backend_effective", "events", "steps")}))
+            return 0
         write(args.output, result)
         print(json.dumps({"backend_effective": result["backend_effective"], "hashes": result["hashes"],
                           "events": len(result["events"]), "steps": len(result["steps"])}))
         return 0
+    if getattr(args, "stream", False):
+        from .stream import compare_streams, save_difference
+        report = compare_streams(args.reference, args.candidate)
+        if report["status"] != "PASS" and args.bundle:
+            save_difference(report, args.reference, args.candidate, args.bundle)
+        print(json.dumps(report))
+        return int(report["status"] != "PASS")
     from .compare import compare, save_reproducer
     if args.command == "replay":
         root = Path(args.bundle)

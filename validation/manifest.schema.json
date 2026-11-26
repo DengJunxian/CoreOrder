@@ -74,7 +74,8 @@
         "py-thread",
         "py-process",
         "native-serial",
-        "native-parallel"
+        "native-parallel",
+        null
       ]
     },
     "book_restore": {
@@ -115,6 +116,10 @@
     "input_hash": {
       "type": "string",
       "minLength": 1
+    },
+    "canonical_input_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
     },
     "environment_hash": {
       "type": "string",

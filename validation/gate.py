@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 
-def evaluate_cell(reference, candidate, manifest, status, expected):
+def evaluate_cell(reference, candidate, manifest, status, expected, *, compare_traces=compare):
     if candidate is None or manifest is None or status is None:
         return {"status":"NOT_RUN","integration_status":"INTEGRATION_PENDING", "reason":"Missing real production candidate evidence"}
     if status.get("status")!="PASS":
@@ -22,7 +22,10 @@ def evaluate_cell(reference, candidate, manifest, status, expected):
             return {"status":"FAIL","reason":"Requested implementation identity mismatch","field":key}
     if manifest.get("backend_requested")!=manifest.get("backend_effective"):
         return {"status":"FAIL","reason":"Fallback cannot pass requested native cell"}
-    for key,reference_key in (("seed","seed"),("input_hash","input_hash"),("upstream_sha","upstream_sha"),("contract_version","contract_version")):
+    # Production records preserve the submitted bytes separately. E's trace identity
+    # is the digest of the parsed workload; E-only legacy manifests store it in input_hash.
+    input_key = "canonical_input_hash" if "canonical_input_hash" in manifest else "input_hash"
+    for key,reference_key in (("seed","seed"),(input_key,"input_hash"),("upstream_sha","upstream_sha"),("contract_version","contract_version")):
         if manifest.get(key)!=reference[reference_key]:
             return {"status":"FAIL","reason":"Candidate manifest identity mismatch","field":key}
-    return compare(reference,candidate)
+    return compare_traces(reference, candidate)

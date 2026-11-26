@@ -1,0 +1,19 @@
+
+$ date -u --iso-8601=seconds
+2026-11-26T04:29:59+00:00
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/audit_batch.py configs/experiments <LINUX_HOME>/coreorder-r4b-sPvokUVq/C01 <LINUX_HOME>/coreorder-r4b-sPvokUVq/c01-index.json
+C01 {'PASS': 420} 360 candidate bindings 135.29s 73512376 bytes
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/audit_batch.py <LINUX_HOME>/coreorder-r4b-sPvokUVq/approved <LINUX_HOME>/coreorder-r4b-sPvokUVq/V01 <LINUX_HOME>/coreorder-r4b-sPvokUVq/v01-index.json
+V01 {'PASS': 145} 125 candidate bindings 3866.32s 12784541055 bytes
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/replay_capture.py --plan <LINUX_HOME>/coreorder-r4b-sPvokUVq/approved --output <LINUX_HOME>/coreorder-r4b-sPvokUVq/replay-source --seed 101 --v01 <LINUX_HOME>/coreorder-r4b-sPvokUVq/V01
+exit=0
+
+$ date -u --iso-8601=seconds
+2026-11-26T04:30:37+00:00
+exit=0

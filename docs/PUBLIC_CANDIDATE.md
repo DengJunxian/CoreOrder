@@ -1,4 +1,6 @@
-# CoreOrder 研究候选
+# CoreOrder 公开历史候选
+
+此页记录 GitHub 上的 P15 快照。后续本地 R8 候选的技术验证、正式准入、论文和归档见 [FINAL 审计](gates/FINAL.md)。
 
 公开分支 `codex/research-candidate` 提供已集成实现、依赖锁、对照脚本、论文与答辩素材、pilot 图和已完成的审计。生产源码与通过 P15 本机复验的候选一致。当前状态为 **FINAL BLOCKED**，正式实验的授权为空。 [验收矩阵](gates/FINAL.md) · [本机运行回执](gates/evidence/P15/reproduction.json) · [本分支 CI](https://github.com/DengJunxian/CoreOrder/actions/workflows/foundation.yml?query=branch%3Acodex%2Fresearch-candidate)
 

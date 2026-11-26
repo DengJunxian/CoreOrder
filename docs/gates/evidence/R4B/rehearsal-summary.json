@@ -1,0 +1,210 @@
+[
+  {
+    "id": "r4b-rehearsal-oracle-W0-CI2002-11",
+    "workload": "W0-CI2002",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "451d1a6ea0444975a3520a3bcad45e0f",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 6.0061379871331155,
+    "bytes": 10617760,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W0-CI2002-11/451d1a6ea0444975a3520a3bcad45e0f"
+  },
+  {
+    "id": "r4b-rehearsal-W0-CI2002-11",
+    "workload": "W0-CI2002",
+    "seed": 11,
+    "oracle": false,
+    "status": {
+      "run_id": "e3b1fdba97ac4009b973dcdc1a5d6a91",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "451d1a6ea0444975a3520a3bcad45e0f",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "0ba12a7643c3f382f6344b6c2453486b9b259790b59c16443e06ea46fe109ce1",
+      "rng_hash": "a8ec7d00c5401c5367b1ee3bba5ae064b84c8b1dbe2332b4bdb9f690348b5f2e"
+    },
+    "elapsed_s": 6.760864151176065,
+    "bytes": 11791545,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W0-CI2002-11/e3b1fdba97ac4009b973dcdc1a5d6a91"
+  },
+  {
+    "id": "r4b-rehearsal-oracle-W1-H-11",
+    "workload": "W1-H",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "b0da956454544aa19c2a348321f48b9b",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 35.266372425016016,
+    "bytes": 53079033,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W1-H-11/b0da956454544aa19c2a348321f48b9b"
+  },
+  {
+    "id": "r4b-rehearsal-W1-H-11",
+    "workload": "W1-H",
+    "seed": 11,
+    "oracle": false,
+    "status": {
+      "run_id": "32a87a7ce7ec4c02aeab40342cdc0ef8",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "b0da956454544aa19c2a348321f48b9b",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "d200dfa0d17038f444e2268d352d3744e281428db4e77dae2f6048e65a851534",
+      "rng_hash": "f3f27e507d1b8291e29552efc6ad267e1ff01b91e77354f492769d8cafa1af7b"
+    },
+    "elapsed_s": 37.98255187482573,
+    "bytes": 86473388,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W1-H-11/32a87a7ce7ec4c02aeab40342cdc0ef8"
+  },
+  {
+    "id": "r4b-rehearsal-oracle-W2-H-11",
+    "workload": "W2-H",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "136e69dd354f4c529290e59ef9e1eadd",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 18.460351611021906,
+    "bytes": 25005437,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W2-H-11/136e69dd354f4c529290e59ef9e1eadd"
+  },
+  {
+    "id": "r4b-rehearsal-W2-H-11",
+    "workload": "W2-H",
+    "seed": 11,
+    "oracle": false,
+    "status": {
+      "run_id": "f940c3566dbc4ec4bee82e05e6fc7ffa",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "136e69dd354f4c529290e59ef9e1eadd",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "f09c9396202284ed3fa58fe4096ce88ca0903089732f7822e7ab352c1b0af75a",
+      "rng_hash": "0a14216d4da02e3fad71a78c83df89ed59b0faeba707645b1df2c929f948528f"
+    },
+    "elapsed_s": 13.732137550134212,
+    "bytes": 60328541,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W2-H-11/f940c3566dbc4ec4bee82e05e6fc7ffa"
+  },
+  {
+    "id": "r4b-rehearsal-oracle-W1-SMALL-BATCH-11",
+    "workload": "W1-SMALL-BATCH",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "32a9fde0ad3747a6802dcc7799a637d5",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 172.28650282113813,
+    "bytes": 228498002,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W1-SMALL-BATCH-11/32a9fde0ad3747a6802dcc7799a637d5"
+  },
+  {
+    "id": "r4b-rehearsal-W1-SMALL-BATCH-11",
+    "workload": "W1-SMALL-BATCH",
+    "seed": 11,
+    "oracle": false,
+    "status": {
+      "run_id": "74f4c473d0a54ac192dc27c5e5058694",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "32a9fde0ad3747a6802dcc7799a637d5",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "86a3da3bad687bf02d9bd43846622e33d414ebc139bbf4d8c7c0fed580805183",
+      "rng_hash": "aa72d71e37febde029ed71ba49cdd4ffd8a8cc77c252bee4e5a5116154f36b65"
+    },
+    "elapsed_s": 176.40618025604635,
+    "bytes": 268172166,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W1-SMALL-BATCH-11/74f4c473d0a54ac192dc27c5e5058694"
+  },
+  {
+    "id": "r4b-rehearsal-oracle-W2-MEDIUM-BATCH-29",
+    "workload": "W2-MEDIUM-BATCH",
+    "seed": 29,
+    "oracle": true,
+    "status": {
+      "run_id": "d91c044fd31e47cd8abf234f27e485d2",
+      "status": "PASS",
+      "validation_status": "NOT_RUN",
+      "censoring": null,
+      "reference_run_id": null,
+      "exit_code": 0,
+      "reason": null
+    },
+    "elapsed_s": 153.69939250685275,
+    "bytes": 90134893,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W2-MEDIUM-BATCH-29/d91c044fd31e47cd8abf234f27e485d2"
+  },
+  {
+    "id": "r4b-rehearsal-W2-MEDIUM-BATCH-29",
+    "workload": "W2-MEDIUM-BATCH",
+    "seed": 29,
+    "oracle": false,
+    "status": {
+      "run_id": "f1842cbcffb44e4a81b855d93dc22cde",
+      "status": "PASS",
+      "validation_status": "PASS",
+      "censoring": null,
+      "reference_run_id": "d91c044fd31e47cd8abf234f27e485d2",
+      "exit_code": 0,
+      "reason": null,
+      "final_state_hash": "80ff9cd14bbb69b63cb4e42999dc91e01449b7a7dba71ca4d32159e413c34085",
+      "rng_hash": "8084b1faddb4a193f6ba8ffafd09b2d8b09be3e51f53dcd1e56ff8d703b73e6d"
+    },
+    "elapsed_s": 67.16101495409384,
+    "bytes": 136576379,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W2-MEDIUM-BATCH-29/f1842cbcffb44e4a81b855d93dc22cde"
+  },
+  {
+    "id": "r4b-rehearsal-oracle-W3-LARGE-MULTI-11",
+    "workload": "W3-LARGE-MULTI",
+    "seed": 11,
+    "oracle": true,
+    "status": {
+      "run_id": "bbadc891461346de8fc5e917bb16872f",
+      "status": "TIMEOUT",
+      "validation_status": "NOT_RUN",
+      "censoring": "right",
+      "reference_run_id": null,
+      "exit_code": -9,
+      "reason": "attempt deadline exceeded"
+    },
+    "elapsed_s": 32.39328776486218,
+    "bytes": 53584218,
+    "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-oracle-W3-LARGE-MULTI-11/bbadc891461346de8fc5e917bb16872f"
+  }
+]

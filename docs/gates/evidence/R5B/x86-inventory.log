@@ -1,0 +1,18 @@
+2026-11-26T04:55:34+00:00
+
+Source HEAD
+58ec5764c21833142c50abacd9e2302404ffdb06
+
+Candidate plan check
+G3 BLOCKED {'C01': 420, 'V01': 145, 'timing': 493, 'E05': 76}
+
+Existing batches under CoreOrder host directories
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/sealed-pilot/batch.json pilot development-pilot ea98b65575044c2d914f35c44d3a934f632cbf4b4cdf5c5284ad7ac8ca815fcf
+<LINUX_HOME>/coreorder-r4b-sPvokUVq/C01/batch.json C01 candidate-validation ea98b65575044c2d914f35c44d3a934f632cbf4b4cdf5c5284ad7ac8ca815fcf
+<LINUX_HOME>/coreorder-r4b-sPvokUVq/V01/batch.json V01 candidate-validation 82964e38220f755eb5b7e6e20c8530e2cb529fd564f19ed1f058e307db94a935
+Formal runner claims: 0
+
+Guard check using sealed V01 as input to formal reporting
+report refused: report scope must match --development and the batch
+exit=2
+Formal report output not created.

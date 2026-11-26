@@ -52,4 +52,29 @@ if(BUILD_TESTING)
         COMMAND "${CMAKE_COMMAND}" -E env "PYTHONPATH=$<TARGET_FILE_DIR:_coreorder_toolchain_smoke>"
             "${Python_EXECUTABLE}" -c "import _coreorder_toolchain_smoke as probe; raise SystemExit(probe.run() != 42)"
     )
+
+    foreach(test_name IN ITEMS c2_executor_test c3_determinism_test)
+        add_executable(${test_name} tests/platform/${test_name}.cpp native/fcn/evaluate.cpp)
+        target_link_libraries(${test_name} PRIVATE coreorder_runtime)
+        target_compile_features(${test_name} PRIVATE cxx_std_17)
+        target_compile_definitions(${test_name} PRIVATE
+            COREORDER_FIXTURE_PATH="${CMAKE_CURRENT_SOURCE_DIR}/fixtures/pams/fcn/rows.jsonl")
+        if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+            target_compile_options(${test_name} PRIVATE -fno-fast-math -ffp-contract=off)
+        elseif(MSVC)
+            target_compile_options(${test_name} PRIVATE /fp:strict)
+        endif()
+        add_test(NAME ${test_name} COMMAND ${test_name})
+    endforeach()
+
+    add_executable(coreorder_layout_abi tests/layout/abi_check.cpp)
+    target_link_libraries(coreorder_layout_abi PRIVATE coreorder_contracts)
+    add_test(NAME layout_abi COMMAND "${Python_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/layout/compare_abi.py" $<TARGET_FILE:coreorder_layout_abi>)
+    foreach(replay IN ITEMS replay_binding replay_live_event)
+        add_test(NAME layout_${replay}
+            COMMAND "${CMAKE_COMMAND}" -E env "PYTHONPATH=$<TARGET_FILE_DIR:_coreorder_fcn>"
+            "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/layout/${replay}.py"
+            "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/pams")
+    endforeach()
 endif()

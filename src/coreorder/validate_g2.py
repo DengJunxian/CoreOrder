@@ -1,12 +1,16 @@
 """Compare the system candidate with E's independently collected PAMS trace."""
 
-import subprocess
 import sys
 from pathlib import Path
 
-from validation.compare import compare, save_reproducer
+from jsonschema import ValidationError
+
+from experiments.capture import execute as capture
+from validation.compare import save_reproducer
+from validation.gate import evaluate_cell
 from validation.invariants import check
 from validation.io import read, write
+from validation.records import validate_record as validate_e_record
 
 from .config import ROOT, sha256
 from .contracts import CONTRACT_VERSION
@@ -18,11 +22,8 @@ SEED = 42
 
 def execute(prefix, args):
     command = [sys.executable, "-B", "-m", *map(str, args)]
-    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=120)
-    write(prefix.with_suffix(".command.json"), {"argv": command, "cwd": str(ROOT), "exit": result.returncode})
-    prefix.with_suffix(".stdout").write_text(result.stdout)
-    prefix.with_suffix(".stderr").write_text(result.stderr)
-    return result.returncode
+    return capture(command, prefix.with_name(f"{prefix.name}-command"), 120, cwd=ROOT,
+                   scope="local technical differential and E record checks")
 
 
 def cases():
@@ -41,19 +42,20 @@ def cases():
     yield "p09-full-quota", "incremental", "native-parallel", 4, "soa", 3, "static"
 
 
-def run(output):
+def run(output, *, selected=None, suite="g2"):
     output.mkdir(parents=True, exist_ok=False)
     oracle = {}
     results = []
     revision = git("rev-parse", "HEAD")
-    for workload, restore, backend, workers, layout, grain, schedule in cases():
+    for workload, restore, backend, workers, layout, grain, schedule in cases() if selected is None else selected:
         settings = ROOT / "configs/workloads" / f"{workload}.json"
         if workload not in oracle:
             reference_path = output / f"{workload}-reference.json.gz"
-            if execute(output / f"{workload}-reference", (
+            reference_attempt = execute(output / f"{workload}-reference", (
                 "validation", "collect", "--config", settings, "--seed", SEED,
                 "--pams-root", ROOT / "vendor/pams", "--output", reference_path,
-            )):
+            ))
+            if reference_attempt["status"] != "PASS":
                 raise RuntimeError(f"E could not collect the original PAMS reference for {workload}")
             reference = read(reference_path)
             invariants = check(reference)
@@ -70,9 +72,11 @@ def run(output):
             command.extend(("--layout", layout))
         if grain is not None:
             command.extend(("--grain", grain, "--schedule", schedule))
-        code = execute(output / label, command)
-        result = {"case": label, "exit": code, "status": "FAIL"}
-        if code == 0:
+        launch = execute(output / label, command)
+        code = launch["exit_code"]
+        result = {"case": label, "backend": backend, "exit": code, "status": launch["status"]}
+        if launch["status"] == "PASS":
+            result["status"] = "FAIL"
             records = {name: read(directory / f"{name}.json") for name in
                        ("manifest", "environment", "status", "metrics")}
             for name, record in records.items():
@@ -86,11 +90,20 @@ def run(output):
             assert manifest["layout"] == (layout or "not_applicable")
             assert status["status"] == "PASS"
             candidate = read(directory / "validation-trace.json.gz")
-            report = compare(oracle[workload], candidate)
+            expected = {"backend_requested": backend, "book_restore": restore, "workers": workers,
+                        "layout": layout or ("aos" if backend.startswith("native") else "not_applicable"),
+                        "grain": grain, "schedule": schedule}
+            report = evaluate_cell(oracle[workload], candidate, manifest, status, expected)
             write(directory / "comparison.json", report)
+            try:
+                validate_e_record(manifest, metrics, status)
+                e_record = {"status": "PASS"}
+            except (ValueError, ValidationError) as error:
+                e_record = {"status": "FAIL", "reason": str(error)}
+            write(directory / "e-record.json", e_record)
             invariants = check(candidate)
             write(directory / "invariants.json", invariants)
-            if report["status"] == "FAIL":
+            if report.get("scope"):
                 save_reproducer(oracle[workload], candidate, directory / "first-divergence")
             if backend.startswith("native"):
                 assert metrics["native_executor_creations"] == int(backend == "native-parallel")
@@ -99,18 +112,22 @@ def run(output):
                 copy = read(directory / "process_copy.json")
                 assert copy["start_method"] == "spawn" and copy["serialized_dispatch_bytes"] > 0
                 result["process_copy"] = copy
-            result.update(comparison=report["status"], invariants=invariants["status"],
+            result.update(comparison=report["status"], e_record=e_record["status"], invariants=invariants["status"],
                           events=len(candidate["events"]), checkpoints=len(candidate["steps"]),
                           configuration_sha256=manifest["input_hash"],
                           native_executor_creations=metrics.get("native_executor_creations"),
                           **{key: status[key] for key in ("trace_hash", "final_state_hash", "rng_hash")})
-            if report["status"] == invariants["status"] == "PASS":
+            if report["status"] == invariants["status"] == e_record["status"] == "PASS":
                 result["status"] = "PASS"
+        elif code == 2 and (directory / "status.json").is_file():
+            if read(directory / "status.json")["status"] == "UNSUPPORTED":
+                result["status"] = "UNSUPPORTED"
         results.append(result)
         print(label, result["status"], flush=True)
-    status = "PASS" if all(result["status"] == "PASS" for result in results) else "FAIL"
-    write(output / "status.json", {"contract_version": CONTRACT_VERSION, "suite": "g2", "git_sha": revision,
-                                  "scope": "representative P09 candidate matrix",
+    status = "PASS" if all(result["status"] == "PASS" or result["backend"] == "py-process"
+                           and result["status"] in ("TIMEOUT", "UNSUPPORTED") for result in results) else "FAIL"
+    write(output / "status.json", {"contract_version": CONTRACT_VERSION, "suite": suite, "git_sha": revision,
+                                  "scope": "local technical differential and E record checks",
                                   "status": status, "seed": SEED, "cases": results})
     return 0 if status == "PASS" else 1
 

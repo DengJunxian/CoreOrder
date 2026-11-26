@@ -1,0 +1,135 @@
+.......................EEEEEE...                                         [100%]
+==================================== ERRORS ====================================
+__________ ERROR at setup of test_real_pipeline_and_duplicate_resume ___________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+_ ERROR at setup of test_report_rejects_damaged_records[raw-tampered raw data] _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+_ ERROR at setup of test_report_rejects_damaged_records[receipt-validation receipt identity mismatch] _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+_ ERROR at setup of test_report_rejects_damaged_records[pairing-raw schedule identity differs] _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+_ ERROR at setup of test_report_rejects_damaged_records[duplicate-one immutable attempt] _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+____ ERROR at setup of test_resume_preserves_interrupted_raw_and_continues _____
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x107ba1220>, _basetemp=PosixPath...s/r8/4_3ns9tj6bg1fm2jzddw3t2h0000gn/T/pytest-of-DengJunxian/pytest-1835'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def pilot_raw(tmp_path_factory):
+        if not HAS_NATIVE:
+            pytest.skip("build the Release extension for the real pipeline test")
+        output = tmp_path_factory.mktemp("r2b-pilot") / "batch"
+        result = run_cli("experiments.run", "--stage", "pilot", "--budget-seconds", 90, "--output", output)
+>       assert result.returncode == 0, (result.stdout, result.stderr)
+E       AssertionError: ("pilot-oracle-11 PASS 9ce3fca27c01416eaded936e6f1c40b7
+E         PASS (see /private/var/folders/r8/4_3ns9tj6bg1fm2jzddw3t2h000...profile-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5
+E         development-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}
+E         ", '')
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['<MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/.venv/bin/python', '-m', 'experiments.run',...-native-2 FAIL 42c3f33ba67d43fbacec07b0fcc1b5a5\ndevelopment-pilot {'PASS': 4, 'FAIL': 10, 'NOT_RUN': 4}\n", stderr='').returncode
+
+tests/platform/test_experiment_pipeline.py:71: AssertionError
+=============================== warnings summary ===============================
+tests/platform/test_checkpoint_stream.py::test_real_pams_checkpoint_stream_roundtrip_and_rng_fault
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/platform/test_checkpoint_stream.py::test_real_pams_checkpoint_stream_roundtrip_and_rng_fault
+tests/platform/test_measurement_modes.py::test_timing_keeps_snapshot_and_profiling_outside_simulation
+  <MAC_HOME>/Documents/ChatGPT/CoreOrder-R4B/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/platform/test_experiment_pipeline.py::test_real_pipeline_and_duplicate_resume
+ERROR tests/platform/test_experiment_pipeline.py::test_report_rejects_damaged_records[raw-tampered raw data]
+ERROR tests/platform/test_experiment_pipeline.py::test_report_rejects_damaged_records[receipt-validation receipt identity mismatch]
+ERROR tests/platform/test_experiment_pipeline.py::test_report_rejects_damaged_records[pairing-raw schedule identity differs]
+ERROR tests/platform/test_experiment_pipeline.py::test_report_rejects_damaged_records[duplicate-one immutable attempt]
+ERROR tests/platform/test_experiment_pipeline.py::test_resume_preserves_interrupted_raw_and_continues
+26 passed, 3 warnings, 6 errors in 54.26s

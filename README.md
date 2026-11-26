@@ -1,14 +1,17 @@
 # CoreOrder
 Deterministic Multicore Execution and Cache-Aware Optimization for Multi-Agent Financial Market Simulation
 
-**Research candidate · FINAL blocked.** The candidate includes the integrated
-PAMS runners, incremental book restoration, native FCN execution, AoS and SoA
-layouts, and independent functional comparisons. Formal H01/E05 and hardware
-PMU measurements are pending. The included performance figures come from the
-Apple M5 pilot. See the [candidate status and provenance](docs/PUBLIC_CANDIDATE.md)
-and the [FINAL audit](docs/gates/FINAL.md).
+**R8 public review mirror · FINAL blocked.** CoreOrder integrates incremental
+book restoration, direct and Taskflow FCN execution, two layouts, and an
+independent PAMS reference. The pinned x86 candidate passed 420 C01 runs and
+145 V01 runs. Formal timing and E05 are awaiting G3. The paper presents the
+verified correctness and marks diagnostic figures by scope.
 
-## Rebuild the P01 foundation
+[Start here for follow-up analysis](docs/PUBLIC_HANDOFF.md) · [Final audit](docs/gates/FINAL.md) · [Course paper and data index](docs/paper/R6/README.md)
+· [Release review](docs/gates/evidence/R8/RELEASE.md)
+· [Earlier public candidate](docs/PUBLIC_CANDIDATE.md)
+
+## Build and test the pinned system
 
 Use Git, CPython 3.12 with development headers, and a C++17 compiler and linker.
 On macOS, the Xcode Command Line Tools supply the compiler and SDK. The commands
@@ -23,17 +26,17 @@ python3.12 -m venv .venv
 .venv/bin/python -m pip install --only-binary=:all: -r requirements.lock
 PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
 .venv/bin/python -m pip check
-.venv/bin/python -m pytest -q
 
 .venv/bin/cmake -S . -B build -DCMAKE_BUILD_TYPE=Release \
   -DPython_EXECUTABLE="$PWD/.venv/bin/python"
 .venv/bin/cmake --build build --config Release --parallel 2
 .venv/bin/ctest --test-dir build -C Release --output-on-failure
+PYTHONPATH="$PWD/build" .venv/bin/python -m pytest -q
 ```
 
-Use a checkout containing the P01 commit. The Python tests verify the locked
-Git submodules, retained licenses, and installed imports. CTest loads the
-built pybind11 module and checks the output of two real Taskflow tasks.
+The Python checks include the production runners and the independent validator.
+CTest covers the compiled extension, Taskflow ranges and determinism, the
+AoS/SoA ABI, and event-refresh packing. See the [pinned identities](UPSTREAM.lock.json).
 
 For an environment record, capture `.venv/bin/python --version`,
 `.venv/bin/python -m pip list --format=freeze`, `.venv/bin/cmake --version`,
@@ -43,7 +46,7 @@ See [upstream integration notes](docs/roles/A/UPSTREAM.md) and
 
 ## Run the serial baseline
 
-Use the P01 virtual environment. These commands use distinct output directories
+Use the project virtual environment. These commands use distinct output directories
 for the official upstream comparison and the CoreOrder run.
 
 ```sh
@@ -95,16 +98,51 @@ PYTHONPATH="$PWD/build" .venv/bin/python -m coreorder validate --suite g2 \
 
 The CLI exposes `py-seq`, `py-thread`, `py-process`, `native-serial` and
 `native-parallel`. Both native modes support AoS and SoA, and both use the
-same FCN kernel. The process baseline uses PAMS with spawn and records actual
-serialized dispatch bytes in `process_copy.json`. The native modes accept
+same FCN kernel. The process baseline uses PAMS with spawn. Validation and
+legacy diagnostics record serialized dispatch bytes in `process_copy.json`.
+The native modes accept
 exact PAMS FCNAgent decisions and preserve original order processing and the
 MarketMakerAgent HFT path. See the [capability matrix and evidence](docs/roles/A/INTEGRATION.md).
+
+## Select a measurement mode
+
+Use `run --mode validation` for full traces and the independent PAMS
+comparison, `run --mode timing` for the complete low-overhead simulation,
+`run --mode profile` for stage and function spans, or
+`run --mode pmu --pmu-event EVENT` for Linux perf counters. In profile mode,
+add `--cprofile` to collect full Python function statistics in a separate run.
+Omitting `--mode` retains the legacy diagnostic artifacts.
+
+```sh
+PYTHONPATH="$PWD/build" .venv/bin/python -m coreorder run --mode timing \
+  --backend native-parallel --workers 2 --layout soa --book-restore incremental \
+  --config configs/workloads/native-serial-normal.json --seed 11 \
+  --output results/r2a-timing-smoke
+```
+
+Read `setup_s`, `simulation_s` and `process_wall_s` in `metrics.json`.
+The parent records the executed command, exit status and wall time under
+`launch/`. Timing includes business work, worker waits and executor shutdown.
+The final state and complete RNG snapshot are serialized after the simulation
+timer stops. The example is a development check. Formal sampling remains
+blocked by [G3](docs/gates/G3.md). See the [measurement contract](docs/CONTRACT.md#运行模式与计时边界)
+and the [R2A verification record](docs/gates/evidence/R2A/README.md).
+
+## Run a frozen experiment plan
+
+Use `python -m experiments.run --plan configs/experiments/r4b --stage check` to
+verify the reviewed schedule and read its G3 status.
+The pilot runs independent PAMS validation, binds each timing run to its
+receipt and writes sealed raw records. Use `python -m analysis.report` for
+paired statistics and optional PDF/PNG figures. The
+[experiment guide](docs/EXPERIMENTS.md) covers development runs, resume,
+budgets and formal G3 admission.
 
 ## Public interfaces and fixtures
 
 See the [R4-v1 contract](docs/CONTRACT.md), [fixture provenance and replay](fixtures/README.md),
 [team ownership](docs/TEAM.md), and [G0 candidate](docs/roles/A/G0_CANDIDATE.md).
-The current serial runner also records full per-step account and logical book
+Validation and legacy diagnostics record per-step account and logical book
 snapshots, market history and RNG state.
 
 `python -m coreorder validate --suite smoke --output results/validate-smoke` and
@@ -115,13 +153,13 @@ the comparison, and the status receipt. On divergence, it also saves a replay bu
 
 ## Review and reproduce the local candidate
 
-The [reproduction guide](docs/roles/A/p14/REPRODUCE.md) gives the pinned
+The [R8 reproduction receipt](docs/gates/evidence/R8/REPRODUCTION.md) records the
 clean-clone build and representative small-market comparison. The
 [FINAL audit](docs/gates/FINAL.md) records the five-backend capability scope,
 the actual gate status, and the remaining experimental and release requirements.
 
 Use the [three-run demo procedure](docs/gates/evidence/P15/DEMO.md) with an
-already built checkout. The CLI currently accepts `validate --suite smoke`,
-`g0`, and `g2`. Unsupported native inputs fail explicitly. Choose
-`py-seq` before a run to use the upstream Python path. The automatic
-whole-run fallback option and the formal experiment runner are pending.
+already built checkout. The CLI accepts `validate --suite smoke`, `g0`,
+`g1`, and `g2` for local correctness checks. The G1 reproduction script
+retrieves the pinned original E tree needed by its historical heap checks. Unsupported native inputs
+fail explicitly. Choose `py-seq` before a run to use the upstream Python path.

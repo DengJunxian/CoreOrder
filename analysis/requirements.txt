@@ -1,0 +1,2 @@
+# Optional figure rendering only. The experiment runner uses requirements.lock.
+matplotlib==3.11.2

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "R4-v1 diagnostic run and observation records",
+  "title": "R4-v1 run and observation records",
   "$defs": {
     "manifest": {
       "type": "object",
@@ -150,6 +150,10 @@
           "const": "coreorder-r4-v1"
         },
         "input_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "canonical_input_hash": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         },
@@ -330,7 +334,10 @@
         "measurement_mode": {
           "enum": [
             "diagnostic",
-            "timing"
+            "validation",
+            "timing",
+            "profile",
+            "pmu"
           ]
         },
         "setup_s": {
@@ -549,6 +556,9 @@
             "null"
           ]
         },
+        "measurement_mode": {
+          "enum": ["validation", "timing", "profile", "pmu"]
+        },
         "trace_hash": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
@@ -590,10 +600,25 @@
           },
           "then": {
             "required": [
-              "trace_hash",
               "final_state_hash",
               "rng_hash"
             ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {"const": "PASS"}
+            },
+            "not": {
+              "properties": {
+                "measurement_mode": {"enum": ["timing", "profile", "pmu"]}
+              },
+              "required": ["measurement_mode"]
+            }
+          },
+          "then": {
+            "required": ["trace_hash"]
           }
         },
         {
@@ -1430,7 +1455,6 @@
         }
       },
       "required": [
-        "initial_accounts",
         "accounts",
         "markets",
         "market_history"

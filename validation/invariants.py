@@ -3,6 +3,7 @@
 These are supplementary properties, not a replacement for exact differential tests.
 SPDX-License-Identifier: EPL-1.0
 """
+from itertools import chain
 import math
 
 
@@ -27,7 +28,8 @@ def totals(state):
 def check(trace, abs_tol=1e-7, rel_tol=1e-12):
     baseline_cash, baseline_assets = totals(trace["initial"])
     failures = []
-    states = [(f"step/{i}", row["state"]) for i,row in enumerate(trace["steps"])] + [("final",trace["final"])]
+    states = chain(((f"step/{i}", row["state"]) for i, row in enumerate(trace["steps"])),
+                   [("final", trace["final"])])
     for label, state in states:
         cash, holdings = totals(state)
         if not math.isclose(cash, baseline_cash, abs_tol=abs_tol, rel_tol=rel_tol):

@@ -3,6 +3,7 @@
 SPDX-License-Identifier: EPL-1.0
 """
 import argparse
+from contextlib import suppress
 from datetime import datetime, timezone
 import importlib.metadata
 import json
@@ -30,15 +31,15 @@ def environment():
             "power_mode": None, "power_reason": "Not collected; development correctness only"}
 
 
-def execute(command, directory, timeout=30):
+def execute(command, directory, timeout=30, *, cwd=None, scope="development command; not a formal system timing result"):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
-    start = time.perf_counter()
     timestamp = datetime.now(timezone.utc).isoformat()
+    start = time.perf_counter()
     cleanup = None
     try:
         # Process group permits bounded cleanup of spawned PAMS workers on Windows.
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd,
                                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0,
                                    start_new_session=os.name != "nt")
         try:
@@ -55,7 +56,8 @@ def execute(command, directory, timeout=30):
                 if process.poll() is None:
                     process.kill()  # direct owned-process handle when taskkill is restricted
             else:
-                os.killpg(process.pid,signal.SIGKILL)
+                with suppress(ProcessLookupError):
+                    os.killpg(process.pid,signal.SIGKILL)
             try:
                 stdout, stderr = process.communicate(timeout=2)
             except subprocess.TimeoutExpired as error:
@@ -70,13 +72,14 @@ def execute(command, directory, timeout=30):
     elapsed = time.perf_counter() - start
     (directory / "stdout.log").write_bytes(stdout)
     (directory / "stderr.log").write_bytes(stderr)
-    record = {"command": command, "cwd": str(Path.cwd()), "timestamp_utc": timestamp,
+    record = {"command": command, "cwd": str(cwd or Path.cwd()), "timestamp_utc": timestamp,
               "exit_code": process.returncode if process else None, "status": status,
               "elapsed_s_driver": elapsed, "timeout_s": timeout,
               "censoring": "right" if status == "TIMEOUT" else None,
               "timeout_cleanup":cleanup,
-              "git_sha": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain")),
-              "scope": "development command; not a formal system timing result"}
+              "git_sha": git("-C", str(cwd or Path.cwd()), "rev-parse", "HEAD"),
+              "dirty": bool(git("-C", str(cwd or Path.cwd()), "status", "--porcelain")),
+              "scope": scope}
     write(directory / "command.json", record)
     write(directory / "environment.json", environment())
     return record

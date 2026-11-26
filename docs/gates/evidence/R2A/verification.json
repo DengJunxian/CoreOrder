@@ -1,0 +1,947 @@
+{
+  "commands": {
+    "cmake-release": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/cmake",
+        "--build",
+        "build",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "dirty": false,
+      "exit_code": 0,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/cmake-release/command.json",
+      "receipt_sha256": "1b4af5a4d74c9927cafde08918f19d255dc9a02a1879cc002a188ade0a25a179",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T01:49:49.748013+00:00"
+    },
+    "ctest": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/ctest",
+        "--test-dir",
+        "build",
+        "-C",
+        "Release",
+        "--output-on-failure"
+      ],
+      "dirty": false,
+      "exit_code": 0,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/ctest/command.json",
+      "receipt_sha256": "025926886961b4aadf2bcef7c9bdd46ae6668b0c3c1700cfbeec3a64c3cefde8",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T01:50:16.555716+00:00"
+    },
+    "e1-smoke-command": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "validate",
+        "--suite",
+        "smoke",
+        "--output",
+        "results/r2a/verification/e1-smoke"
+      ],
+      "dirty": false,
+      "exit_code": 0,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/e1-smoke-command/command.json",
+      "receipt_sha256": "0f28de79570d594c428cfeb021f45d981c4dd6fdc78cb0cffcac6022644309fe",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T01:51:46.920670+00:00"
+    },
+    "invalid-mode-command": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "run",
+        "--mode",
+        "timing",
+        "--count-heap-comparisons",
+        "--config",
+        "configs/workloads/native-serial-normal.json",
+        "--seed",
+        "11",
+        "--output",
+        "results/r2a/verification/invalid-mode"
+      ],
+      "dirty": false,
+      "exit_code": 2,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/invalid-mode-command/command.json",
+      "receipt_sha256": "6b1c6eb56d456679cbd31d199e1d2cbce40caed4042cc48c87829845b2f575d6",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T01:52:06.908671+00:00"
+    },
+    "logger-command": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "docs/gates/evidence/R2A/logger_probe.py",
+        "results/r2a/verification/logger"
+      ],
+      "dirty": false,
+      "exit_code": 0,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/logger-command/command.json",
+      "receipt_sha256": "873725ce8fb895661e14ae133bf335bb09fd1bfa5366e02d025318587decad79",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T01:51:44.440551+00:00"
+    },
+    "pmu-command": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "run",
+        "--mode",
+        "pmu",
+        "--pmu-event",
+        "cycles:u",
+        "--pmu-event",
+        "instructions:u",
+        "--config",
+        "configs/workloads/native-serial-normal.json",
+        "--seed",
+        "11",
+        "--output",
+        "results/r2a/verification/pmu-mac"
+      ],
+      "dirty": false,
+      "exit_code": 2,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/pmu-command/command.json",
+      "receipt_sha256": "dd4b92a9c7634c69c1518186d4baa85a64b296a6c731c93b8f53a1072a0609db",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T01:52:03.447812+00:00"
+    },
+    "pytest": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "results/r2a/verification/pytest-runs"
+      ],
+      "dirty": false,
+      "exit_code": 0,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/pytest/command.json",
+      "receipt_sha256": "1e447297236ce52a8a99f5e4067bc108d9ddd113076f64ed99d2027a6369ea6e",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T01:50:17.159180+00:00"
+    },
+    "timeout-command": {
+      "censoring": null,
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "run",
+        "--mode",
+        "timing",
+        "--timeout",
+        "2",
+        "--backend",
+        "py-process",
+        "--workers",
+        "2",
+        "--config",
+        "vendor/pams/samples/CI2002/config.json",
+        "--seed",
+        "11",
+        "--output",
+        "results/r2a/verification/timeout-probe"
+      ],
+      "dirty": false,
+      "exit_code": 1,
+      "git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+      "receipt": "results/r2a/verification/timeout-command/command.json",
+      "receipt_sha256": "cfbe7f7b57fefc9638e34eaa9feee34c2ea78e76d74d870c22759daf53920a24",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T01:52:04.513312+00:00"
+    }
+  },
+  "fault_records": {
+    "first_native_profile": {
+      "artifact": "results/r2a/bootstrap/profile-smoke/stderr.log",
+      "observed_pybind_call": "results/r2a/bootstrap/profile-binding-probe/stdout.log",
+      "sha256": "612bec12612d67aaf3865224a4338c5ce25b87a9b65c77f60d9d1cbb78877525"
+    },
+    "initial_focused_pytest": {
+      "artifact": "results/r2a/bootstrap/pytest-focused/stdout.log",
+      "exit_code": 1
+    },
+    "pmu_mac": {
+      "comparison_scope": null,
+      "measurement_mode": "pmu",
+      "reason": "PMU collection requires Linux perf on the measurement host",
+      "reference_run_id": null,
+      "run_id": "0706017ad3304c7caff055a5b837867e",
+      "status": "UNSUPPORTED",
+      "validation_status": "NOT_RUN"
+    },
+    "timeout_probe": {
+      "censoring": "right",
+      "comparison_scope": null,
+      "measurement_mode": "timing",
+      "reason": "worker did not finish writing records; see launch/command.json",
+      "reference_run_id": null,
+      "run_id": "bac63182ddf2430e8ffb00f97b5dde50",
+      "status": "TIMEOUT",
+      "validation_status": "NOT_RUN"
+    }
+  },
+  "host": {
+    "architecture": "arm64",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.0.123.102)",
+    "cpu": {
+      "logical_cpus": 10,
+      "physical_cpus": 10,
+      "processor": "Apple M5",
+      "ram_bytes": 25769803776
+    },
+    "os": "macOS-27.0-arm64-arm-64bit",
+    "python": "3.12.13"
+  },
+  "logger_probe": {
+    "artifact": "results/r2a/verification/logger/logger-probe.json",
+    "rows": [
+      {
+        "backend": "py-seq",
+        "book_restore": "upstream",
+        "counts": {
+          "cancel": 0,
+          "execution": 223,
+          "expiration": 121,
+          "order": 600
+        },
+        "final_rng_sha256": "a8ec7d00c5401c5367b1ee3bba5ae064b84c8b1dbe2332b4bdb9f690348b5f2e",
+        "final_state_sha256": "76884e40e50b82035271d9827aed47f0b7a51ce017bf987d4e9942148a2a0a2e",
+        "first_variant": "plain",
+        "market_steps": 600,
+        "max_ratio": 1.0928424135322694,
+        "median_ratio": 1.03896889401799,
+        "min_ratio": 0.9338586913429869,
+        "pairs_s": [
+          {
+            "counts": 0.05927354097366333,
+            "plain": 0.054237958043813705
+          },
+          {
+            "counts": 0.0355443749576807,
+            "plain": 0.03350650006905198
+          },
+          {
+            "counts": 0.03379137488082051,
+            "plain": 0.03336420888081193
+          },
+          {
+            "counts": 0.033142917323857546,
+            "plain": 0.03549029165878892
+          },
+          {
+            "counts": 0.03304420784115791,
+            "plain": 0.03267350001260638
+          },
+          {
+            "counts": 0.03295750031247735,
+            "plain": 0.03119666688144207
+          },
+          {
+            "counts": 0.03305812506005168,
+            "plain": 0.031288666650652885
+          },
+          {
+            "counts": 0.03348583308979869,
+            "plain": 0.03278120793402195
+          }
+        ]
+      },
+      {
+        "backend": "py-seq",
+        "book_restore": "incremental",
+        "counts": {
+          "cancel": 0,
+          "execution": 223,
+          "expiration": 121,
+          "order": 600
+        },
+        "final_rng_sha256": "a8ec7d00c5401c5367b1ee3bba5ae064b84c8b1dbe2332b4bdb9f690348b5f2e",
+        "final_state_sha256": "76884e40e50b82035271d9827aed47f0b7a51ce017bf987d4e9942148a2a0a2e",
+        "first_variant": "plain",
+        "market_steps": 600,
+        "max_ratio": 1.043071245395937,
+        "median_ratio": 0.9937043564008633,
+        "min_ratio": 0.805977125282837,
+        "pairs_s": [
+          {
+            "counts": 0.02514825016260147,
+            "plain": 0.026855790987610817
+          },
+          {
+            "counts": 0.02450850000604987,
+            "plain": 0.0243325000628829
+          },
+          {
+            "counts": 0.02645487478002906,
+            "plain": 0.026565749663859606
+          },
+          {
+            "counts": 0.025822124909609556,
+            "plain": 0.026041332632303238
+          },
+          {
+            "counts": 0.025740625336766243,
+            "plain": 0.03193716611713171
+          },
+          {
+            "counts": 0.024310332722961903,
+            "plain": 0.024538041092455387
+          },
+          {
+            "counts": 0.024603249970823526,
+            "plain": 0.024272500071674585
+          },
+          {
+            "counts": 0.025083125103265047,
+            "plain": 0.024047374725341797
+          }
+        ]
+      },
+      {
+        "backend": "native-parallel/soa/w2",
+        "book_restore": "incremental",
+        "counts": {
+          "cancel": 0,
+          "execution": 223,
+          "expiration": 121,
+          "order": 600
+        },
+        "final_rng_sha256": "a8ec7d00c5401c5367b1ee3bba5ae064b84c8b1dbe2332b4bdb9f690348b5f2e",
+        "final_state_sha256": "76884e40e50b82035271d9827aed47f0b7a51ce017bf987d4e9942148a2a0a2e",
+        "first_variant": "plain",
+        "market_steps": 600,
+        "max_ratio": 1.0577038864273243,
+        "median_ratio": 0.9937471854766229,
+        "min_ratio": 0.9215537764259165,
+        "pairs_s": [
+          {
+            "counts": 0.04188562510535121,
+            "plain": 0.04200895829126239
+          },
+          {
+            "counts": 0.042320709209889174,
+            "plain": 0.042410959023982286
+          },
+          {
+            "counts": 0.04202366713434458,
+            "plain": 0.04242970887571573
+          },
+          {
+            "counts": 0.04419637518003583,
+            "plain": 0.04795854166150093
+          },
+          {
+            "counts": 0.044943750370293856,
+            "plain": 0.04812208376824856
+          },
+          {
+            "counts": 0.04253770923241973,
+            "plain": 0.042460666969418526
+          },
+          {
+            "counts": 0.04582691611722112,
+            "plain": 0.04332679184153676
+          },
+          {
+            "counts": 0.04233587486669421,
+            "plain": 0.04550874978303909
+          }
+        ]
+      }
+    ],
+    "seed": 11,
+    "sha256": "db6b8853b30e37903f245d7abe643d4f09ee783a0f9175346a930f07acf518e2",
+    "workload_sha256": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7"
+  },
+  "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+  "profiles": [
+    {
+      "artifact": "results/r2a/verification/pytest-runs/test_profile_observes_shared_n0/profile/phases.json",
+      "layout": "aos",
+      "phase_calls": {
+        "account_updates": 89,
+        "draw_pack_s": 15,
+        "gauss": 114,
+        "handle_orders_s": 9,
+        "matching_collect": 28,
+        "native_collect": 9,
+        "native_compute_s": 15,
+        "optional_restore_s": 56,
+        "rebuild_orders_s": 15,
+        "sample": 42
+      },
+      "run_id": "216a1926915647a2a554021dfe786acc",
+      "sha256": "cb15b9b7dc278e0d3e81d78583c0dde65613ded500faeeb2f37165355382a22f"
+    },
+    {
+      "artifact": "results/r2a/verification/pytest-runs/test_profile_observes_shared_n1/profile/phases.json",
+      "layout": "soa",
+      "phase_calls": {
+        "account_updates": 89,
+        "draw_pack_s": 15,
+        "gauss": 114,
+        "handle_orders_s": 9,
+        "matching_collect": 28,
+        "native_collect": 9,
+        "native_compute_s": 15,
+        "optional_restore_s": 95,
+        "rebuild_orders_s": 15,
+        "sample": 42
+      },
+      "run_id": "0360801984904ade8b9643445ee4f8df",
+      "sha256": "3bb9edac6f296579474271e79f2084b32b4ee77988870821f94ffc549a4928ca"
+    }
+  ],
+  "scope": "R2A development and correctness evidence",
+  "tested_dirty": false,
+  "tested_git_sha": "c3a0c527b9c29833b6a8cbb98566164e963b003a",
+  "upstream_shas": {
+    "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+    "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+  },
+  "validation_timing_pairs": [
+    {
+      "condition": {
+        "backend_effective": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 1,
+        "layout": "aos",
+        "native_binding": "_coreorder_fcn.Evaluator.aos",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": "dynamic",
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival11",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "89729211b73261532c5a6ef341a1f9284533c8123ae091cfadcc634cbdec3fbf",
+      "timing_run_id": "18a05c5309104ed7bceea217d41569e7",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "2a0e7eedb160424098642dc33dfa676a",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 1,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 1,
+        "layout": "soa",
+        "native_binding": "_coreorder_fcn.Evaluator.soa",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": "dynamic",
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival13",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "b396ef6557af684c49e7de2ac650f7b8df0e058c9d7c8a53f44b82aa37a47918",
+      "timing_run_id": "0890ea6422874b2ab60f46d3a4d9913b",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "ef96798c9254486b892af1a5217209c7",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 1,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-parallel",
+        "book_restore": "upstream",
+        "grain": 1,
+        "layout": "aos",
+        "native_binding": "_coreorder_fcn.Evaluator.aos",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": "dynamic",
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival10",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "7e58e58f5321a935cb519e3870345b302eac97bbc1c3833ea86a5dea1a432daa",
+      "timing_run_id": "054007e72a5d4ed1b72bc58e09bac6fd",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "cf9b7a4788e44002b3840aa778af3799",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 1,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-parallel",
+        "book_restore": "upstream",
+        "grain": 1,
+        "layout": "soa",
+        "native_binding": "_coreorder_fcn.Evaluator.soa",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": "dynamic",
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival12",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "b0e04b0fd41e16bd5fd5e42c47162e10a4315355c95eca272b6283d072878e85",
+      "timing_run_id": "e7c21d3fbd304f8c9959cce6fc93772b",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "038e87fadf694e1a816d6caf1e0094de",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 1,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-serial",
+        "book_restore": "incremental",
+        "grain": null,
+        "layout": "aos",
+        "native_binding": "_coreorder_fcn.Evaluator.aos",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival7",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "2f0cf8b7378d2109a0ef645f484bc5ff876ffe61355bf647d71b88e37d1f95ac",
+      "timing_run_id": "1eeb48a21ee14d1fbe0ac1564f184e4b",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "76e99c5765f64d12ac5ea7f485dda0dc",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 0,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-serial",
+        "book_restore": "incremental",
+        "grain": null,
+        "layout": "soa",
+        "native_binding": "_coreorder_fcn.Evaluator.soa",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival9",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "240cde795fd922746a3d15db5b6714c3fd2c197261a5f98eca3892b30dad8c29",
+      "timing_run_id": "31c64528eb4b416a98083df2ff66a7a7",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "2cd4618495324d63ae81cf97af6f5cf0",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 0,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-serial",
+        "book_restore": "upstream",
+        "grain": null,
+        "layout": "aos",
+        "native_binding": "_coreorder_fcn.Evaluator.aos",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival6",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "5d1e85a4e28e0c58cc6657e8b88b015e77aab6a6dd0ace07e73919748b821129",
+      "timing_run_id": "22c4463bf4324fa582338b6c48c91496",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "cc34f4b0689c481890b53fd978346c24",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 0,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "native-serial",
+        "book_restore": "upstream",
+        "grain": null,
+        "layout": "soa",
+        "native_binding": "_coreorder_fcn.Evaluator.soa",
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "coreorder.native_serial.NativeSerialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": "526ab0da9438569b3476ec540ae300f69f3a0bcd6e1e9b9b23c5976556e880d6",
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival8",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "4330dbebf312219947194dfa1626ab1fbca10086dc8bf91d6327bd3535d1ae0e",
+      "timing_run_id": "9e6b3ba2c45145ecaecc7d708fda712d",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "9ce101f2c015418c9876301954243771",
+      "work": {
+        "agent_calls": 35,
+        "cancels": 0,
+        "decision_rows": 57,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": 114,
+        "market_steps": 18,
+        "native_executor_creations": 0,
+        "native_rows": 57,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-process",
+        "book_restore": "incremental",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": "spawn",
+        "python_executor_class": "coreorder.runner.MeasuredSpawnPool",
+        "runner_class": "coreorder.runner.SpawnRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival5",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "89e13d4dec1e20eaa6a0f49a4c8145a0ab838e6ae8b14f6949b88bff7c5ba63e",
+      "timing_run_id": "b7f98a15995b49fd95b949af5cb78041",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "2b79120c220946b6ba6953871937a178",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-process",
+        "book_restore": "upstream",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": "spawn",
+        "python_executor_class": "coreorder.runner.MeasuredSpawnPool",
+        "runner_class": "coreorder.runner.SpawnRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival4",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "526ba56620092068980d2b34901fef1bc179cbb874cdb12a5245287b775bdb93",
+      "timing_run_id": "7bd15507cf684b58ad985ebfd8ab5336",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "65df19f781ad4ef7b04776b04136e10a",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-seq",
+        "book_restore": "incremental",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "pams.runners.sequential.SequentialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival1",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "dbd2e4a99c7e5640869a9b145447aa3c5be618b30602315fec109ba13d905c10",
+      "timing_run_id": "779aac45efd7412097c394f95168613a",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "d4f4a383d6844e58a4f15c2e6d1068c1",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-seq",
+        "book_restore": "upstream",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": null,
+        "python_executor_class": null,
+        "runner_class": "pams.runners.sequential.SequentialRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 1
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival0",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "1870b48671f30b6184b19730d575a5f2632911c6827d91165ba6e30156c49f76",
+      "timing_run_id": "5678206906ac40d895ac2aec75bffdd0",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "1490745ac8104ae986f6a31b1eb6d71a",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-thread",
+        "book_restore": "incremental",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": null,
+        "python_executor_class": "concurrent.futures.thread.ThreadPoolExecutor",
+        "runner_class": "pams.runners.agent_parallel.MultiThreadAgentParallelRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "df1ec98d62cd4e36e10fc287e2c167938aa890691e0eb2ca374f9d6b898850e7",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival3",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "bb977297cfd3f3cf5aa618ee1224cdc27232548be6ace289bef86170df3772a5",
+      "timing_run_id": "c4cbb76ac32148419659a8d3dab5f797",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "af089d60f37f4747800bb432538a8c49",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    },
+    {
+      "condition": {
+        "backend_effective": "py-thread",
+        "book_restore": "upstream",
+        "grain": null,
+        "layout": "not_applicable",
+        "native_binding": null,
+        "process_start_method": null,
+        "python_executor_class": "concurrent.futures.thread.ThreadPoolExecutor",
+        "runner_class": "pams.runners.agent_parallel.MultiThreadAgentParallelRunner",
+        "schedule": null,
+        "seed": 42,
+        "workers": 2
+      },
+      "effective_config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "final_state_sha256": "1408e6b600041c0fff6c619c455308c7dd9f6530becd7bc1e49f5a0c7fbeeeed",
+      "native_sha256": null,
+      "raw_directory": "results/r2a/verification/pytest-runs/test_validation_timing_equival2",
+      "rng_sha256": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f",
+      "timing_metrics_sha256": "557ace5fa8ae4171c2208c19e1590ea52686a7df8ce780848b50e60d16d0e5f1",
+      "timing_run_id": "541f52b2312043229f102753af6e1370",
+      "validation_comparison_sha256": "19351b7aefce2866740d9f5aebf5452947589014ab00e658ec84fc709954c09f",
+      "validation_run_id": "7bfa9b21f2ef44a2b597430c896a37ff",
+      "work": {
+        "agent_calls": null,
+        "cancels": 0,
+        "decision_rows": null,
+        "executions": 28,
+        "expirations": 25,
+        "gauss_api_calls": null,
+        "market_steps": 18,
+        "native_executor_creations": null,
+        "native_rows": 0,
+        "orders": 89
+      },
+      "workload_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252"
+    }
+  ]
+}

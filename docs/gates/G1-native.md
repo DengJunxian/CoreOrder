@@ -1,5 +1,11 @@
 # G1-native 生产原生串行验收
 
+## R3 当前候选验收 · 2026-11-26
+
+**本机技术 PASS，正式 G1-native BLOCKED。** `88fee6f1dafeeabc44750913fa2e59d518a3e1e5` 加载严格浮点 Release 扩展。B 的 10,181 行实际 PAMS 数值对照在 AoS 和 SoA 逐位相等，另覆盖 1,019 次不可访问调用、56 个预填 Gaussian 缓存代理及 normal 空结果。三个代表性市场各跑两个布局，6/6 条 direct native-serial 对 E 独立上游完整轨迹通过，串行创建 0 个 executor。D 双向 ABI 字节、真实事件刷新和非法内存布局也通过。待共同 G0 与 A/B/E 的同版本审阅。 [R3 证据](evidence/R3/README.md)
+
+## P08 历史记录
+
 **2026-11-25（上海时间） · 两套有效市场精确差分 PASS · G1-native BLOCKED · 完整 G1 BLOCKED**
 
 P08 从 P07 交付提交 `313ebaba8b59c63fcc4fb5cff1e57d99aaec881f` 建立独立工作树 `codex/p08-g1-native-acceptance`。验收限定 `native-serial / aos / upstream / workers=1`，契约 `coreorder-r4-v1`。受测 PAMS 为 `6cd53810103780770c5b5d6ee0069ccab9f4b358`，vendor 干净。B 的核与绑定、D 的 packing 与各自交付逐字节一致。E 的工具为 P04.5 接收版，P08 未改生产路径或验证规则。环境为 macOS 27.0 arm64、CPython 3.12.11、NumPy 1.26.4、Apple Clang 21.0.0。 [P07 接口](../roles/A/INTEGRATION.md) · [P08 实跑日志](evidence/P08.txt)

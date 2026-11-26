@@ -1,0 +1,24 @@
+{
+  "repo": "DengJunxian/CoreOrder",
+  "query_date_local": "2026-11-26",
+  "candidate_commit": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "pull_requests": [
+    {
+      "number": 1,
+      "url": "https://github.com/DengJunxian/CoreOrder/pull/1",
+      "state": "open",
+      "draft": true,
+      "head": "f867a4fb07c928f459fa8b6d3e84a95ee88b1742",
+      "review_count": 0,
+      "discussion_count": 0
+    }
+  ],
+  "fetched_issue_count": 0,
+  "candidate_pr_workflow_runs": 0,
+  "member_e": {
+    "head": "b05d5555fa5cc756a91ab61c644e797ca227c26f",
+    "url": "https://github.com/DengJunxian/CoreOrder/blob/b05d5555fa5cc756a91ab61c644e797ca227c26f/docs/roles/E/STATUS.md",
+    "status": "E1/E2/E3 MODULE_PASS, integrated gates not signed off in that source"
+  },
+  "coverage": "Repository PR/issue search, PR 1 metadata and reviews/comments, commit PR workflow lookup, remote git refs, E branch gate and status documents."
+}
