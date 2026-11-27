@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "experiment_class": "single supplemental process-transport diagnostic; not a timing observation",
+  "utc_started": "2026-11-27T00:24:40Z",
+  "host_class": "ASUS AMD Ryzen AI 7 H 350, x86_64 WSL2",
+  "kernel": "6.18.33.2-microsoft-standard-WSL2",
+  "python": "3.12.3",
+  "affinity": "0,2,4,6,8,10,12,14",
+  "mains_online": true,
+  "pre_run_loadavg_1_5_15_min": [0.00, 0.00, 0.00],
+  "production_git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "production_clean": true,
+  "pams_git_sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+  "config_sha256": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+  "seed": 101,
+  "configured_processes": 4,
+  "worker_spawns_observed": 1,
+  "command_exit": 0,
+  "run_id": "e3cbc4b6f7164abdb6ac58f59bb8f12e",
+  "comparison_timing_run_id": "e54f700c9d324d9d8eaae7772ce1d230",
+  "comparison_v01_run_id": "c37502cf54814612a520c7ed701d1bb7",
+  "comparison_v01_sha256": "760d30cb9a7613b138d19604b58d2246fd7037315b550ed0f6f92e91cbb6f7d9",
+  "match": {
+    "work_scope": "steps/orders/executions/expirations/cancels",
+    "final_state_equal_after_excluding": "initial_accounts (diagnostic-only field)",
+    "final_rng_byte_identical": true,
+    "final_rng_sha256": "4522941ba2c267af94194d2a648e95df737af10e01ee8de783b2782d01089192",
+    "formal_final_state_sha256": "00c947a5fd90d8eb5daaaa8301fa8b9d52339850058d4f7d9a5b333b162afc0a",
+    "diagnostic_final_state_sha256": "02d2dcfdac1c61c3ef95ff04bc6839c3a3f3a06cfe422213d7c611a8786e4c5b"
+  },
+  "target_raw_hashes": {
+    "command.log": "0838f25e59c1929e27a19e95b1de9727a33825cc2d824383e5422c214026b2cb",
+    "environment.log": "f3f43e860db7863e41796a2cc1d406ab01eab96ea084649937f06c73c5c22774",
+    "raw/manifest.json": "e4ad70764c68e8bad6721abc6d851964abf06b99b191561e43ec3495010c8497"
+  }
+}

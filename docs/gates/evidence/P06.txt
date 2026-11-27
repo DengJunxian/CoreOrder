@@ -1,0 +1,371 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P06 G1-heap | 2026-11-25 (Asia/Shanghai)
+P05 production: 2db0c2b9bed127b72119b83c6bf23293d5e5ee58
+PAMS: 6cd53810103780770c5b5d6ee0069ccab9f4b358 | EPL-1.0 | coreorder-r4-v1
+Raw outputs: results/acceptance/g1-heap/p06/
+
+--- fixed dependencies ---
++zsh:2> git submodule update --init --recursive --depth 1
+Submodule path 'vendor/pams': checked out '6cd53810103780770c5b5d6ee0069ccab9f4b358'
+Submodule path 'vendor/pybind11': checked out 'a2e59f0e7065404b44dfe92a28aca47ba1378dc4'
+Submodule path 'vendor/taskflow': checked out '816b4ad53b44196c88f409eb7b4a25a0e3bfdf42'
++zsh:3> git submodule status --recursive
+Successfully built pams coreorder
++zsh:8> python -m pip check
+No broken requirements found.
+[exit=0]
+
+--- leader-verified.log ---
++zsh:16> git rev-parse HEAD
+1306f2addf1e59d825bf4ca0b55c27f98ec1c054
++zsh:17> git status --porcelain
++zsh:18> .venv/bin/python -B tests/heap/audit_p06.py --output $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified
+production_source=2db0c2b9bed127b72119b83c6bf23293d5e5ee58 audit_checkout=1306f2addf1e59d825bf4ca0b55c27f98ec1c054 pams=6cd53810103780770c5b5d6ee0069ccab9f4b358 license=EPL-1.0 interpreter=3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)] reference=$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/market.py
+probe-fixed-3-6-42 PASS {'OrderLog': 960, 'step': 60, 'ExpirationLog': 895, 'final': 1, 'history': 1} workload=74b58be85c52ff9134560d6434b1ced5aa12da11bc1d8c45e9711e0497fd5c1f timeline=06857a35991fe5071383cf1cbd984a2545264e89a2ddf9d7ea2b149d7088d7d2
+probe-fixed-100-200-42 PASS {'OrderLog': 960, 'step': 60, 'ExecutionLog': 339, 'final': 1, 'history': 1} workload=545778af860f8540ed77b35685a12a4aa7c9bbdd89ffab1deae3572a80b0ab93 timeline=ce732245f8beae5f80add60e0780e869b1595ab04c0df0fae2eb816dfd9ab4e2
+probe-normal-3-6-42 PASS {'OrderLog': 960, 'step': 60, 'ExpirationLog': 147, 'ExecutionLog': 404, 'final': 1, 'history': 1} workload=c869ff01fa85eb177a237d52317359ba05e2940b8055988f549a650770f39843 timeline=7ce2de5900d686839aabcc8cec0d6cc7808c4fab2cd6394d6041dcf453609518
+probe-normal-100-200-42 PASS {'OrderLog': 960, 'step': 60, 'ExecutionLog': 479, 'final': 1, 'history': 1} workload=3b70dc3f370a74511ac8d8240e5b6d1d414792fbb4bb5694eaf913538579b77e timeline=482f0179c2fd6129d6f53858fda294e0992118ba024c01a10addbd332f7646af
+probe-fixed-3-6-20261125 PASS {'OrderLog': 960, 'step': 60, 'ExpirationLog': 879, 'ExecutionLog': 8, 'final': 1, 'history': 1} workload=74b58be85c52ff9134560d6434b1ced5aa12da11bc1d8c45e9711e0497fd5c1f timeline=96edec58928eac045311076c361129b340a7a9b44270831b05bac363cad937a1
+probe-fixed-100-200-20261125 PASS {'OrderLog': 960, 'step': 60, 'ExecutionLog': 353, 'final': 1, 'history': 1} workload=545778af860f8540ed77b35685a12a4aa7c9bbdd89ffab1deae3572a80b0ab93 timeline=f18403f4c31c4233c3778a572ee40255c02af6858332c32d8e591dde630944ca
+probe-normal-3-6-20261125 PASS {'OrderLog': 960, 'step': 60, 'ExpirationLog': 159, 'ExecutionLog': 395, 'final': 1, 'history': 1} workload=c869ff01fa85eb177a237d52317359ba05e2940b8055988f549a650770f39843 timeline=c7f9779cacd3c4d2cfce8bb44c9d7f2cfea9871b2789264c6a194f7b48328718
+probe-normal-100-200-20261125 PASS {'OrderLog': 960, 'step': 60, 'ExecutionLog': 478, 'final': 1, 'history': 1} workload=3b70dc3f370a74511ac8d8240e5b6d1d414792fbb4bb5694eaf913538579b77e timeline=a903d0d39697d09c64a2384c620b9924bc2af1c726b1bc184035f81eaf4f6eff
+C01a-M1-101 PASS {'OrderLog': 6, 'step': 6, 'ExpirationLog': 4, 'final': 1, 'history': 1} workload=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14 timeline=982604948fc663f5068b4e79b9afd6cb54f962fb3928f9fc80a2f439cbbe8a96
+C01a-M1-202 PASS {'OrderLog': 6, 'step': 6, 'ExpirationLog': 3, 'final': 1, 'history': 1} workload=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14 timeline=e8b8d7f66b7d99c9bac9bf716c853989defe1540634cb4979491e6bbeed1e61b
+C01a-M1-303 PASS {'OrderLog': 6, 'step': 6, 'ExpirationLog': 3, 'final': 1, 'history': 1} workload=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14 timeline=bc886a5128ae52d1299e27fc8a094680c6e3c58d61267671e6baf661e199922a
+C01a-M1-404 PASS {'OrderLog': 6, 'step': 6, 'ExpirationLog': 4, 'final': 1, 'history': 1} workload=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14 timeline=2c73707df18cb863e9a64e47f541e09bb3ea763df34d4aa5adb85e3b5696d57a
+C01a-M1-505 PASS {'OrderLog': 6, 'step': 6, 'ExpirationLog': 4, 'final': 1, 'history': 1} workload=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14 timeline=a16a0f63d70cec00fae401ffebed5fb1f9878e3625531706c298f78411325311
+C01b-normal-101 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 4, 'ExecutionLog': 6, 'final': 1, 'history': 1} workload=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22 timeline=eef50cd9b1d8e02cb631010d788854d6a6bcebd12603b2081172b5cbde40dd93
+C01b-normal-202 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 2, 'ExecutionLog': 6, 'final': 1, 'history': 1} workload=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22 timeline=6e4942b60404f872db4e81e360a7c10610f9fe765db14a7815f9a701d2c3e69a
+C01b-normal-303 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 3, 'ExecutionLog': 7, 'final': 1, 'history': 1} workload=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22 timeline=34fb13a62234d1ddcf3faacbb5ad51f2ad9c2700fdc8fc337d41c676e96a18ec
+C01b-normal-404 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 1, 'ExecutionLog': 8, 'final': 1, 'history': 1} workload=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22 timeline=93a1ea181aca824b6e2afebdea254122b6ee59763863be835d4adf8a319c715e
+C01b-normal-505 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 4, 'ExecutionLog': 6, 'final': 1, 'history': 1} workload=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22 timeline=144bb6c5f6c5e95b7dc4a5a79b06f3d162e4c923d5cb819259e30d86ec0c9151
+C01g-fundamental-shock-101 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 10, 'final': 1, 'history': 1} workload=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7 timeline=a9d540d7e69b35931a0a6026f39c061f50c9cc7df629ba2c8f9ed6723667f00f
+C01g-fundamental-shock-202 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 11, 'final': 1, 'history': 1} workload=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7 timeline=9d27869c99d06e9c17753173d93f5004d05cb4e6cbb7b34473a8e57a0b51373b
+C01g-fundamental-shock-303 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 10, 'final': 1, 'history': 1} workload=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7 timeline=3a28455508b6138a587bd850860bac12cfb689ee64598a2dfcdc9cf50b49b21d
+C01g-fundamental-shock-404 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 10, 'final': 1, 'history': 1} workload=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7 timeline=3b14678f84f0f4f55121eeddf8f138ba80465d5d32f7366295496b76ca7459c5
+C01g-fundamental-shock-505 PASS {'OrderLog': 18, 'step': 6, 'ExpirationLog': 10, 'final': 1, 'history': 1} workload=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7 timeline=a5cf29d02382290d601c796f4b2392b16c27f78f2d182de12731ac91b01650f6
+partial_multi_level-42 PASS {'OrderLog': 3, 'edge': 4, 'ExecutionLog': 2, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=c623ca5938b5832fc3f06774a40c7a6b7be2e86f590d52dbd905b10fda3aa26f
+same_price_time_ties-42 PASS {'OrderLog': 3, 'edge': 4, 'ExecutionLog': 2, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=f646d18c72d63840297f6b6923a98a649ef416ff4360db9aaf663d26902dc10b
+market_against_limit-42 PASS {'OrderLog': 3, 'edge': 4, 'ExecutionLog': 2, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=87431ddfa67233c37010d51c036f378311d63c4a38afdb6b4dce69b1ace5308a
+equal_market_orders_with_limits-42 PASS {'OrderLog': 4, 'edge': 5, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=a6ad950c4d994b9f8968d12264fb00d42f3e9bba570f050f1a20fbf8d12f7ddd
+unpriced_market_orders-42 PASS {'OrderLog': 2, 'edge': 3, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=f06a47224f2c70d5004e02cbd00f9672dad61c4625740491db285342ad0bdcc0
+cancel_and_expire-42 PASS {'OrderLog': 3, 'edge': 6, 'ExecutionLog': 1, 'CancelLog': 1, 'ExpirationLog': 1, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=a8652766e2f7f34ce8b4afa7f2ee33ea5952338bae50de01f9c423446423d851
+Other heapify call sites in both modes: {'OrderBook.__init__': 2, 'OrderBook._check_expired_orders': 1, 'OrderBook._remove': 1}
+noncrossing-42 PASS {'OrderLog': 2, 'edge': 3, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=37f33fb99ca2a2208044ae10e4872e5cd49b270603871a7c281d8b6c3e91c4ee
+subsequent_crossings-42 PASS {'OrderLog': 7, 'edge': 10, 'ExecutionLog': 4, 'final': 1, 'history': 1} workload=f8c4c558a1c0ee6fbc2bef7142e38c5ffc0627fd60fc51f4664c7ea35dc3df8b timeline=2d87832e0367f68a6e145cd2def4a7d11dfb14f7cef8bdf5fe4d4c390ad2a2c1
+heap-diagnostics-42 PASS {'OrderLog': 80, 'step': 80, 'ExecutionLog': 14, 'final': 1, 'history': 1} workload=ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6 timeline=e312fc4ddd5e86c7369c8ed1c779d62f21f9831551932ea9277d905011fe5e8c
+buy restore rows [{"market_id": 0, "step": 20, "heap_length_before": 13, "heap_length_remaining": 9, "popped_count": 4, "restore_fraction": 0.3076923076923077}, {"market_id": 0, "step": 26, "heap_length_before": 10, "heap_length_remaining": 8, "popped_count": 2, "restore_fraction": 0.2}, {"market_id": 0, "step": 40, "heap_length_before": 17, "heap_length_remaining": 15, "popped_count": 2, "restore_fraction": 0.11764705882352941}, {"market_id": 0, "step": 51, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}, {"market_id": 0, "step": 56, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}, {"market_id": 0, "step": 59, "heap_length_before": 23, "heap_length_remaining": 21, "popped_count": 2, "restore_fraction": 0.08695652173913043}, {"market_id": 0, "step": 61, "heap_length_before": 24, "heap_length_remaining": 22, "popped_count": 2, "restore_fraction": 0.08333333333333333}, {"market_id": 0, "step": 65, "heap_length_before": 26, "heap_length_remaining": 24, "popped_count": 2, "restore_fraction": 0.07692307692307693}, {"market_id": 0, "step": 69, "heap_length_before": 27, "heap_length_remaining": 25, "popped_count": 2, "restore_fraction": 0.07407407407407407}, {"market_id": 0, "step": 70, "heap_length_before": 27, "heap_length_remaining": 25, "popped_count": 2, "restore_fraction": 0.07407407407407407}, {"market_id": 0, "step": 73, "heap_length_before": 29, "heap_length_remaining": 27, "popped_count": 2, "restore_fraction": 0.06896551724137931}, {"market_id": 0, "step": 75, "heap_length_before": 28, "heap_length_remaining": 26, "popped_count": 2, "restore_fraction": 0.07142857142857142}]
+sell restore rows [{"market_id": 0, "step": 20, "heap_length_before": 8, "heap_length_remaining": 4, "popped_count": 4, "restore_fraction": 0.5}, {"market_id": 0, "step": 26, "heap_length_before": 11, "heap_length_remaining": 9, "popped_count": 2, "restore_fraction": 0.18181818181818182}, {"market_id": 0, "step": 40, "heap_length_before": 16, "heap_length_remaining": 14, "popped_count": 2, "restore_fraction": 0.125}, {"market_id": 0, "step": 51, "heap_length_before": 20, "heap_length_remaining": 18, "popped_count": 2, "restore_fraction": 0.1}, {"market_id": 0, "step": 56, "heap_length_before": 23, "heap_length_remaining": 21, "popped_count": 2, "restore_fraction": 0.08695652173913043}, {"market_id": 0, "step": 59, "heap_length_before": 23, "heap_length_remaining": 21, "popped_count": 2, "restore_fraction": 0.08695652173913043}, {"market_id": 0, "step": 61, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}, {"market_id": 0, "step": 65, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}, {"market_id": 0, "step": 69, "heap_length_before": 23, "heap_length_remaining": 21, "popped_count": 2, "restore_fraction": 0.08695652173913043}, {"market_id": 0, "step": 70, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}, {"market_id": 0, "step": 73, "heap_length_before": 21, "heap_length_remaining": 19, "popped_count": 2, "restore_fraction": 0.09523809523809523}, {"market_id": 0, "step": 75, "heap_length_before": 22, "heap_length_remaining": 20, "popped_count": 2, "restore_fraction": 0.09090909090909091}]
+upstream heapq={'heapify': 24, 'heappush': 0} comparisons={'buy': 433, 'sell': 377}
+incremental heapq={'heapify': 0, 'heappush': 52} comparisons={'buy': 97, 'sell': 93}
+$ ['$COREORDER_ARCHIVES/CoreOrder-P06/.venv/bin/python', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/heap-diagnostics-42/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/heap-diagnostics-42/cli-upstream', '--heap-diagnostics', '--count-heap-comparisons']
+exit=0
+PASS e2cd532ca92442d996a461e8f90be046: 80 orders, 14 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P06/.venv/bin/python', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'incremental', '--config', '$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/heap-diagnostics-42/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/heap-diagnostics-42/cli-incremental', '--heap-diagnostics', '--count-heap-comparisons']
+exit=0
+PASS 6c12f7b71c054b8787090cd0058b6776: 80 orders, 14 executions
+
+P05 CLI counters equal independent per-side rows and comparison counts in both modes.
+First-difference self-test (injected order ID): row=0, field=order_id, report=$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/injected-order-id/first_divergence.json
+P06 local audit PASS: 8 probe pairs, 15 C01 representative pairs, 7 probe edges plus consecutive fills.
+[exit=0]
+
+--- member-e-audit.log ---
++zsh:2> git rev-parse HEAD
+457094ea5ca14068cfa723053243a5056a74ff7f
++zsh:3> git status --porcelain
++zsh:4> .venv/bin/python -B tests/heap/audit_p06_member_e.py --output $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/member-e
+{"member_e_sha": "b05d5555fa5cc756a91ab61c644e797ca227c26f", "candidate_source_sha": "2db0c2b9bed127b72119b83c6bf23293d5e5ee58", "runner_checkout_sha": "457094ea5ca14068cfa723053243a5056a74ff7f", "pams_sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358", "contract": "coreorder-r4-v1", "python": "3.12.13", "platform": "macOS-27.0-arm64-arm-64bit", "member_e_validation_tree": "1795d4e776098c0670868d73e4879a6d0982515b"}
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+probe-fixed-3-6 seed=42 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1981 steps=61 fills=0 expirations=895 config=7bf128ee62951e0073669e840fe36c3cefdd7c90030d715ef7eb5912f7608d9d
+probe-fixed-100-200 seed=42 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1425 steps=61 fills=339 expirations=0 config=46989cff1f0976385ffd05db1bf3848384b387154b3f343965b576c7e235b7fd
+probe-normal-3-6 seed=42 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1637 steps=61 fills=404 expirations=147 config=649d27aec384ed1eead7ae104e93b4b30e29ce793b45504b0edfc15cc763c017
+probe-normal-100-200 seed=42 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1565 steps=61 fills=479 expirations=0 config=b9c053776f1344a13d3b8ac7ed286bd06d2fc20b7346a5bf70dd89d8193b9584
+probe-fixed-3-6 seed=20261125 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1973 steps=61 fills=8 expirations=879 config=7bf128ee62951e0073669e840fe36c3cefdd7c90030d715ef7eb5912f7608d9d
+probe-fixed-100-200 seed=20261125 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1439 steps=61 fills=353 expirations=0 config=46989cff1f0976385ffd05db1bf3848384b387154b3f343965b576c7e235b7fd
+probe-normal-3-6 seed=20261125 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1640 steps=61 fills=395 expirations=159 config=649d27aec384ed1eead7ae104e93b4b30e29ce793b45504b0edfc15cc763c017
+probe-normal-100-200 seed=20261125 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=1564 steps=61 fills=478 expirations=0 config=b9c053776f1344a13d3b8ac7ed286bd06d2fc20b7346a5bf70dd89d8193b9584
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01a-M1 seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=28 steps=7 fills=0 expirations=4 config=16ee4b55606d4c9f1014c83515841638dbd55a31731cc1b782200658ac5ffcf7
+C01a-M1 seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=27 steps=7 fills=0 expirations=3 config=16ee4b55606d4c9f1014c83515841638dbd55a31731cc1b782200658ac5ffcf7
+C01a-M1 seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=27 steps=7 fills=0 expirations=3 config=16ee4b55606d4c9f1014c83515841638dbd55a31731cc1b782200658ac5ffcf7
+C01a-M1 seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=28 steps=7 fills=0 expirations=4 config=16ee4b55606d4c9f1014c83515841638dbd55a31731cc1b782200658ac5ffcf7
+C01a-M1 seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=28 steps=7 fills=0 expirations=4 config=16ee4b55606d4c9f1014c83515841638dbd55a31731cc1b782200658ac5ffcf7
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01b-normal seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=6 expirations=4 config=eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c
+C01b-normal seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=44 steps=7 fills=6 expirations=2 config=eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c
+C01b-normal seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=7 expirations=3 config=eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c
+C01b-normal seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=45 steps=7 fills=8 expirations=1 config=eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c
+C01b-normal seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=6 expirations=4 config=eb74a13e933162bfb00fab19c766fcf686b8d2ff22fc7115f75edd345525b35c
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01e-four-markets seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=170 steps=7 fills=0 expirations=44 config=df9f790ff155086d2b3659ab808e7f88c8342eee70ff8d3b61a337861275682d
+C01e-four-markets seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=166 steps=7 fills=0 expirations=40 config=df9f790ff155086d2b3659ab808e7f88c8342eee70ff8d3b61a337861275682d
+C01e-four-markets seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=174 steps=7 fills=0 expirations=48 config=df9f790ff155086d2b3659ab808e7f88c8342eee70ff8d3b61a337861275682d
+C01e-four-markets seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=166 steps=7 fills=0 expirations=40 config=df9f790ff155086d2b3659ab808e7f88c8342eee70ff8d3b61a337861275682d
+C01e-four-markets seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=166 steps=7 fills=0 expirations=40 config=df9f790ff155086d2b3659ab808e7f88c8342eee70ff8d3b61a337861275682d
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01g-fundamental-shock seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=0 expirations=10 config=9aafd30950c98a47311a7353376655e9c4f96a98ca31d985727715208796d970
+C01g-fundamental-shock seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=47 steps=7 fills=0 expirations=11 config=9aafd30950c98a47311a7353376655e9c4f96a98ca31d985727715208796d970
+C01g-fundamental-shock seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=0 expirations=10 config=9aafd30950c98a47311a7353376655e9c4f96a98ca31d985727715208796d970
+C01g-fundamental-shock seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=0 expirations=10 config=9aafd30950c98a47311a7353376655e9c4f96a98ca31d985727715208796d970
+C01g-fundamental-shock seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=46 steps=7 fills=0 expirations=10 config=9aafd30950c98a47311a7353376655e9c4f96a98ca31d985727715208796d970
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01g-placement-stopped seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=36 steps=7 fills=0 expirations=9 config=95d89cd611ed2bcb4d319484aaa762a97664bf65d272af57acf5cdbadabf194c
+C01g-placement-stopped seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=36 steps=7 fills=0 expirations=9 config=95d89cd611ed2bcb4d319484aaa762a97664bf65d272af57acf5cdbadabf194c
+C01g-placement-stopped seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=36 steps=7 fills=0 expirations=9 config=95d89cd611ed2bcb4d319484aaa762a97664bf65d272af57acf5cdbadabf194c
+C01g-placement-stopped seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=36 steps=7 fills=0 expirations=9 config=95d89cd611ed2bcb4d319484aaa762a97664bf65d272af57acf5cdbadabf194c
+C01g-placement-stopped seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=36 steps=7 fills=0 expirations=9 config=95d89cd611ed2bcb4d319484aaa762a97664bf65d272af57acf5cdbadabf194c
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+C01h-MarketMaker seed=101 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=113 steps=7 fills=0 expirations=41 config=8a73877f2cecfdaac982230429fed73a336080f0506e51885c41af61655dfe10
+C01h-MarketMaker seed=202 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=112 steps=7 fills=0 expirations=40 config=8a73877f2cecfdaac982230429fed73a336080f0506e51885c41af61655dfe10
+C01h-MarketMaker seed=303 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=112 steps=7 fills=0 expirations=40 config=8a73877f2cecfdaac982230429fed73a336080f0506e51885c41af61655dfe10
+C01h-MarketMaker seed=404 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=113 steps=7 fills=0 expirations=41 config=8a73877f2cecfdaac982230429fed73a336080f0506e51885c41af61655dfe10
+C01h-MarketMaker seed=505 diff/upstream/incremental=['PASS', 'PASS', 'PASS'] events=113 steps=7 fills=0 expirations=41 config=8a73877f2cecfdaac982230429fed73a336080f0506e51885c41af61655dfe10
+[exit=0]
+
+--- crosscheck.log ---
++zsh:5> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/crosscheck.py $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06 $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g1-heap/p06-e.y06Cfl/member-e/summary.json
+probe-fixed-3-6-42: 1855 ordered financial events equal across both independent collectors config=74b58be85c52ff9134560d6434b1ced5aa12da11bc1d8c45e9711e0497fd5c1f
+probe-fixed-100-200-42: 1299 ordered financial events equal across both independent collectors config=545778af860f8540ed77b35685a12a4aa7c9bbdd89ffab1deae3572a80b0ab93
+probe-normal-3-6-42: 1511 ordered financial events equal across both independent collectors config=c869ff01fa85eb177a237d52317359ba05e2940b8055988f549a650770f39843
+probe-normal-100-200-42: 1439 ordered financial events equal across both independent collectors config=3b70dc3f370a74511ac8d8240e5b6d1d414792fbb4bb5694eaf913538579b77e
+probe-fixed-3-6-20261125: 1847 ordered financial events equal across both independent collectors config=74b58be85c52ff9134560d6434b1ced5aa12da11bc1d8c45e9711e0497fd5c1f
+probe-fixed-100-200-20261125: 1313 ordered financial events equal across both independent collectors config=545778af860f8540ed77b35685a12a4aa7c9bbdd89ffab1deae3572a80b0ab93
+probe-normal-3-6-20261125: 1514 ordered financial events equal across both independent collectors config=c869ff01fa85eb177a237d52317359ba05e2940b8055988f549a650770f39843
+probe-normal-100-200-20261125: 1438 ordered financial events equal across both independent collectors config=3b70dc3f370a74511ac8d8240e5b6d1d414792fbb4bb5694eaf913538579b77e
+C01a-M1-101: 10 ordered financial events equal across both independent collectors config=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14
+C01a-M1-202: 9 ordered financial events equal across both independent collectors config=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14
+C01a-M1-303: 9 ordered financial events equal across both independent collectors config=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14
+C01a-M1-404: 10 ordered financial events equal across both independent collectors config=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14
+C01a-M1-505: 10 ordered financial events equal across both independent collectors config=e9538d5179b457ee349e670d5ccd9f298f4173b5c978dcc574b9927df7f2ea14
+C01b-normal-101: 28 ordered financial events equal across both independent collectors config=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22
+C01b-normal-202: 26 ordered financial events equal across both independent collectors config=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22
+C01b-normal-303: 28 ordered financial events equal across both independent collectors config=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22
+C01b-normal-404: 27 ordered financial events equal across both independent collectors config=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22
+C01b-normal-505: 28 ordered financial events equal across both independent collectors config=0246cccdc7f7ffdee96b93797578801fb2330a783f41fabce3fd12ea10b16e22
+C01g-fundamental-shock-101: 28 ordered financial events equal across both independent collectors config=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7
+C01g-fundamental-shock-202: 29 ordered financial events equal across both independent collectors config=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7
+C01g-fundamental-shock-303: 28 ordered financial events equal across both independent collectors config=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7
+C01g-fundamental-shock-404: 28 ordered financial events equal across both independent collectors config=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7
+C01g-fundamental-shock-505: 28 ordered financial events equal across both independent collectors config=055d83569ce01b3ad9f1f7389042474c2fec0eb32ecaf71f9d3aeddceb6d1fd7
+23 shared cases agree on exact raw config bytes and ordered financial event fields.
+38/38 historical and current E-validator pairs match configuration identity, structural verdicts, invariants, event/checkpoint and fill/expiry counts.
+[exit=0]
+
+--- environment-and-g0.log ---
++zsh:2> git rev-parse HEAD
+457094ea5ca14068cfa723053243a5056a74ff7f
++zsh:3> git status --porcelain
++zsh:4> .venv/bin/python -B -m coreorder environment --output $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/environment.json
+$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/environment.json
++zsh:5> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:6> suite=smoke
++zsh:7> .venv/bin/python -B -m coreorder validate --suite smoke --output $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/validate-smoke
+PASS: E1 confirmed events, per-step state and complete final RNG
++zsh:8> jq -c '{suite,status,git_sha,cases}' $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/validate-smoke/e1/status.json
+{"suite":"smoke","status":"PASS","git_sha":"457094ea5ca14068cfa723053243a5056a74ff7f","cases":[{"name":"smoke","status":"PASS","config_sha256":"ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6","events":260,"checkpoints":81}]}
++zsh:6> suite=g0
++zsh:7> .venv/bin/python -B -m coreorder validate --suite g0 --output $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/validate-g0
+PASS: E1 confirmed events, per-step state and complete final RNG
++zsh:8> jq -c '{suite,status,git_sha,cases}' $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/validate-g0/e1/status.json
+{"suite":"g0","status":"PASS","git_sha":"457094ea5ca14068cfa723053243a5056a74ff7f","cases":[{"name":"smoke","status":"PASS","config_sha256":"ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6","events":260,"checkpoints":81},{"name":"event-state","status":"PASS","config_sha256":"16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934","events":98,"checkpoints":25}]}
+[exit=0]
+
+--- project-regression.log ---
++zsh:2> git rev-parse HEAD
+457094ea5ca14068cfa723053243a5056a74ff7f
++zsh:3> git status --porcelain
++zsh:4> PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider --basetemp $COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/pytest-artifacts
+........................................................................ [ 90%]
+........                                                                 [100%]
+=============================== warnings summary ===============================
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+tests/heap/test_market_adapter.py: 9 warnings
+  $COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e1.py::test_non_array_event_trace_reports_first_difference
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+tests/differential/test_e3.py::test_diagnostic_business_equivalence
+tests/differential/test_e3.py::test_missing_and_fallback_never_pass
+tests/differential/test_e3.py::test_negative_cash_is_upstream_legal
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  $COREORDER_ARCHIVES/CoreOrder-P06/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  $COREORDER_ARCHIVES/CoreOrder-P06/validation/reference.py:26: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  $COREORDER_ARCHIVES/CoreOrder-P06/tests/differential/test_e3.py:134: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner=cls(settings=copy.deepcopy(config),prng=random.Random(303),logger=logger,simulator_class=ObservedSimulator)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+80 passed, 39 warnings in 69.14s (0:01:09)
+[exit=0]
+
+--- github-read-only.json ---
+{
+  "pr": {
+    "number": 1,
+    "url": "https://github.com/DengJunxian/CoreOrder/pull/1",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "head_sha": "f867a4fb07c928f459fa8b6d3e84a95ee88b1742",
+    "base_sha": "e2492a4b8317c6674918b13470b577f4d6f8675d"
+  },
+  "branches": [
+    [
+      "b/01-03-native",
+      "f8d2be9f1391ac5e430112665efaff7bb844c507"
+    ],
+    [
+      "c/01-03-runtime",
+      "5ad1ecb78272ff2564075cf01a90df252ae7e7ba"
+    ],
+    [
+      "codex/g0-candidate",
+      "f867a4fb07c928f459fa8b6d3e84a95ee88b1742"
+    ],
+    [
+      "d/01-03-layout",
+      "decccbf55955e3fbeb4bbe5266eb0c2b043b3f75"
+    ],
+    [
+      "e/03-github-delivery",
+      "b05d5555fa5cc756a91ab61c644e797ca227c26f"
+    ],
+    [
+      "main",
+      "e2492a4b8317c6674918b13470b577f4d6f8675d"
+    ]
+  ],
+  "pulls": [
+    [
+      1,
+      "open",
+      true,
+      "codex/g0-candidate",
+      "f867a4fb07c928f459fa8b6d3e84a95ee88b1742"
+    ]
+  ],
+  "initial_combined_discussion": {
+    "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request\",\"status\":\"404\"}",
+    "error_code": "NOT_FOUND",
+    "error_data": {
+      "message": "Not Found",
+      "documentation_url": "https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request",
+      "status": "404"
+    }
+  },
+  "issue_comments": [],
+  "review_comments": [],
+  "reviews": [],
+  "p05_actions": {
+    "total_count": 0,
+    "workflow_runs": []
+  }
+}
+
+--- method diff from the two live classes ---
+--- PAMS Market._execution
++++ P05 CoreOrderMarket._execution
+@@ -1,19 +1,12 @@
+-    def _execution(self) -> List[ExecutionLog]:
+-        """Execute for market (usually, only triggered by runner).
++    def _execution(self) -> list[ExecutionLog]:
++        if self.book_restore == "upstream":
++            return super()._execution()
++        if self.book_restore != "incremental":
++            raise ValueError(f"unknown book_restore mode: {self.book_restore!r}")
+
+-        The best buy and sell orders are matched as long as their prices cross, and all
+-        the matched volumes are executed at a single price, which is determined by the
+-        last matched pair including a limit order.
+-
+-        Returns:
+-            List[:class:`pams.logs.base.ExecutionLog`]: execution logs.
+-
+-        """
+         if not self.remain_executable_orders():
+             return []
+-        popped_buy_orders: List[Order] = []
+-        popped_sell_orders: List[Order] = []
+-        pending: List[Tuple[int, Order, Order]]
+-        price: Optional[float]
++        popped_buy_orders: list[Order] = []
++        popped_sell_orders: list[Order] = []
+         pending, price = self._collect_pending_executions(
+             popped_buy_orders=popped_buy_orders, popped_sell_orders=popped_sell_orders
+@@ -21,16 +14,10 @@
+         if price is None:
+             raise AssertionError
+-        # TODO: faster impl
+-        self.buy_order_book.priority_queue = [
+-            *popped_buy_orders,
+-            *self.buy_order_book.priority_queue,
+-        ]
+-        self.sell_order_book.priority_queue = [
+-            *popped_sell_orders,
+-            *self.sell_order_book.priority_queue,
+-        ]
+-        heapq.heapify(self.buy_order_book.priority_queue)
+-        heapq.heapify(self.sell_order_book.priority_queue)
+-        logs: List[ExecutionLog] = [
++        # Collect only pops roots, leaving both remaining queues as heaps.
++        for order in popped_buy_orders:
++            heapq.heappush(self.buy_order_book.priority_queue, order)
++        for order in popped_sell_orders:
++            heapq.heappush(self.sell_order_book.priority_queue, order)
++        logs: list[ExecutionLog] = [
+             self._execute_orders(
+                 price=cast(float, price), volume=x[0], buy_order=x[1], sell_order=x[2]
+
+--- first-difference self-test (deliberate mutation of an audit copy) ---
+{"artifact": "timeline.jsonl", "candidate_nearby": [{"agent_id": 3, "is_buy": false, "kind": {"kind_id": 1, "name": "LIMIT_ORDER"}, "market_id": 0, "order_id": 1, "price": {"hex": "0x1.03056eac86057p+8"}, "record_type": "OrderLog", "seq": 0, "session": 0, "time": 0, "ttl": 198, "volume": 1}, {"accounts": {"0": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "1": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "10": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "11": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "12": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "13": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "14": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "15": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "16": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "17": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "18": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "19": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "2": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "20": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "21": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "22": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "23": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "3": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "4": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "5": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "6": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "7": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "8": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "9": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}]}, "markets": {"0": {"books": {"buy": {"pop_order": [], "ttl_index": {}}, "sell": {"pop_order": [{"agent_id": 3, "is_buy": false, "is_canceled": false, "kind": {"kind_id": 1, "name": "LIMIT_ORDER"}, "market_id": 0, "order_id": 0, "placed_at": 0, "price": {"hex": "0x1.03056eac86057p+8"}, "ttl": 198, "volume": 1}], "ttl_index": {"198": [0]}}}, "executed_volume": 0, "fundamental_price": {"hex": "0x1.2c00000000000p+8"}, "last_executed_price": null, "market_price": {"hex": "0x1.2c00000000000p+8"}, "mid_price": null, "running": false, "step": 0}}, "record_type": "step", "rng_sha256": "25218e551dca1b7bcfa7dae98f81a0bfbe78d78f82dea9b8a945b83ec3098e39", "seq": 1}], "candidate_rng": "$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/injected-order-id/incremental/final_rng.json", "config": "$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/injected-order-id/workload.json", "field": ["order_id"], "reference_nearby": [{"agent_id": 3, "is_buy": false, "kind": {"kind_id": 1, "name": "LIMIT_ORDER"}, "market_id": 0, "order_id": 0, "price": {"hex": "0x1.03056eac86057p+8"}, "record_type": "OrderLog", "seq": 0, "session": 0, "time": 0, "ttl": 198, "volume": 1}, {"accounts": {"0": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "1": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "10": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "11": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "12": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "13": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "14": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "15": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "16": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "17": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "18": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "19": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "2": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "20": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "21": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "22": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "23": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "3": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "4": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "5": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "6": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "7": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "8": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}], "9": [{"hex": "0x1.3880000000000p+13"}, {"0": 50}]}, "markets": {"0": {"books": {"buy": {"pop_order": [], "ttl_index": {}}, "sell": {"pop_order": [{"agent_id": 3, "is_buy": false, "is_canceled": false, "kind": {"kind_id": 1, "name": "LIMIT_ORDER"}, "market_id": 0, "order_id": 0, "placed_at": 0, "price": {"hex": "0x1.03056eac86057p+8"}, "ttl": 198, "volume": 1}], "ttl_index": {"198": [0]}}}, "executed_volume": 0, "fundamental_price": {"hex": "0x1.2c00000000000p+8"}, "last_executed_price": null, "market_price": {"hex": "0x1.2c00000000000p+8"}, "mid_price": null, "running": false, "step": 0}}, "record_type": "step", "rng_sha256": "25218e551dca1b7bcfa7dae98f81a0bfbe78d78f82dea9b8a945b83ec3098e39", "seq": 1}], "reference_rng": "$COREORDER_ARCHIVES/CoreOrder-P06/results/acceptance/g1-heap/p06/leader-verified/injected-order-id/upstream/final_rng.json", "row": 0, "seed": 42}
+
+--- first leader attempt (last lines) ---
+exit=0
+PASS b76623baada84c698f1f30ecabdc2f46: 80 orders, 14 executions
+
+P05 CLI counters equal independent per-side rows and comparison counts in both modes.
+Traceback (most recent call last):
+  File "$COREORDER_ARCHIVES/CoreOrder-P06/tests/heap/audit_p06.py", line 508, in <module>
+    main()
+  File "$COREORDER_ARCHIVES/CoreOrder-P06/tests/heap/audit_p06.py", line 503, in main
+    check_failure_report(folder, output / "injected-order-id", 42)
+  File "$COREORDER_ARCHIVES/CoreOrder-P06/tests/heap/audit_p06.py", line 423, in check_failure_report
+    index = next(i for i, row in enumerate(rows) if row["kind"] == "OrderLog")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+[exit=1]

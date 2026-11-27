@@ -1,0 +1,494 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P11 | 2026-11-25/26 Asia/Shanghai | Diagnostic and preparatory pilot
+Production source 92f8bbf08da514dcb24e27b6a815d3947c352798
+Clean tested checkout 3c344f765c6ff288abad2faa6081c921f0ee0f36
+Raw root $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11
+
+[host.log]
++zsh:4> date -Iseconds
+2026-11-25T23:53:49+08:00
++zsh:5> sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
++zsh:6> uname -m
+arm64
++zsh:7> clang++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
++zsh:8> sysctl hw.model hw.memsize machdep.cpu.brand_string hw.physicalcpu hw.logicalcpu hw.nperflevels
+hw.model: Mac17,3
+hw.memsize: 25769803776
+machdep.cpu.brand_string: Apple M5
+hw.physicalcpu: 10
+hw.logicalcpu: 10
+hw.nperflevels: 2
++zsh:9> sysctl hw.perflevel0.name hw.perflevel0.physicalcpu hw.perflevel1.name hw.perflevel1.physicalcpu
+hw.perflevel0.name: Super
+hw.perflevel0.physicalcpu: 4
+hw.perflevel1.name: Efficiency
+hw.perflevel1.physicalcpu: 6
++zsh:10> sysctl hw.perflevel0.l1dcachesize hw.perflevel0.l2cachesize hw.perflevel1.l1dcachesize hw.perflevel1.l2cachesize
+hw.perflevel0.l1dcachesize: 131072
+hw.perflevel0.l2cachesize: 16777216
+hw.perflevel1.l1dcachesize: 65536
+hw.perflevel1.l2cachesize: 6291456
++zsh:11> sysctl hw.cpufrequency hw.cpufrequency_min hw.cpufrequency_max
++zsh:12> pmset -g batt
+Now drawing from 'AC Power'
++zsh:13> pmset -g therm
+Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
++zsh:14> command -v perf
++zsh:15> command -v valgrind
++zsh:16> xcode-select -p
+/Library/Developer/CommandLineTools
++zsh:17> xctrace list templates
+xcode-select: error: tool 'xctrace' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
++zsh:18> powermetrics --samplers cpu_power -i 1000 -n 1
+powermetrics must be invoked as the superuser
+
+[build.log]
++zsh:5> uv venv --python 3.12 --seed .venv
+Using CPython 3.12.11
+Creating virtual environment with seed packages at: .venv
+ + pip==26.3
+Activate with: source .venv/bin/activate
++zsh:6> .venv/bin/python -m pip install '--only-binary=:all:' -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting attrs==25.3.0 (from -r requirements.lock (line 2))
+Collecting cmake==3.31.6 (from -r requirements.lock (line 3))
+Collecting iniconfig==2.0.0 (from -r requirements.lock (line 5))
+Collecting jsonschema-specifications==2024.10.1 (from -r requirements.lock (line 6))
+Collecting jsonschema==4.23.0 (from -r requirements.lock (line 7))
+Collecting numpy==1.26.4 (from -r requirements.lock (line 8))
+Collecting packaging==24.2 (from -r requirements.lock (line 9))
+Collecting pip==26.1.2 (from -r requirements.lock (line 10))
+Collecting pluggy==1.5.0 (from -r requirements.lock (line 11))
+Collecting pytest==7.4.4 (from -r requirements.lock (line 12))
+Collecting referencing==0.36.2 (from -r requirements.lock (line 13))
+Collecting rpds-py==0.23.1 (from -r requirements.lock (line 14))
+Collecting scipy==1.14.1 (from -r requirements.lock (line 15))
+Collecting tqdm==4.66.6 (from -r requirements.lock (line 16))
+Collecting typing-extensions==4.16.0 (from -r requirements.lock (line 17))
+Collecting uv-build==0.12.19 (from -r requirements.lock (line 18))
+Installing collected packages: uv-build, typing-extensions, tqdm, rpds-py, pluggy, pip, packaging, numpy, iniconfig, cmake, attrs, scipy, referencing, pytest, jsonschema-specifications, jsonschema
+  Attempting uninstall: pip
+    Found existing installation: pip 26.3
+    Uninstalling pip-26.3:
+      Successfully uninstalled pip-26.3
+
+Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 numpy-1.26.4 packaging-24.2 pip-26.1.2 pluggy-1.5.0 pytest-7.4.4 referencing-0.36.2 rpds-py-0.23.1 scipy-1.14.1 tqdm-4.66.6 typing-extensions-4.16.0 uv-build-0.12.19
++zsh:7> PATH=$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin:/Library/Frameworks/Python.framework/Versions/3.14/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/TeX/texbin:/opt/homebrew/bin:$LOCAL_HOME/.local/bin:$LOCAL_HOME/Library/Python/3.9/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:$LOCAL_HOME/.codex/tmp/arg0-macos/codex-arg0kwHNcj:$LOCAL_HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/opt/anaconda3/bin:/opt/anaconda3/condabin:$LOCAL_HOME/.antigravity/antigravity/bin:/Library/Frameworks/Python.framework/Versions/3.14/bin:$LOCAL_HOME/.lmstudio/bin:$LOCAL_HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS .venv/bin/python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://$COREORDER_ARCHIVES/CoreOrder-P11
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-exnac153/wheels/50/ef/4d/96ead2ed9c861e4f1978b0b8fbd78449f4793ecd310db43686
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=6855 sha256=d562d9b66a361fff2f1c44d979f4521c05fe72dbb4b172c1a44c9d55f327f857
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-exnac153/wheels/19/75/e1/70f8d771de6a51d149ed899bd9908d5aece734b8d126f1fc21
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
++zsh:8> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:9> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python (found suitable version "3.12.11", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P11/build
++zsh:10> .venv/bin/cmake --build build --parallel 2
+[ 20%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 20%] Building CXX object native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o
+[ 30%] Linking CXX static library libcoreorder_runtime.a
+[ 30%] Built target coreorder_runtime
+[ 40%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 50%] Linking CXX executable coreorder_contract_smoke
+[ 50%] Built target coreorder_contract_smoke
+[ 60%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o
+[ 70%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[ 70%] Built target _coreorder_toolchain_smoke
+[ 80%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 90%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-darwin.so
+[100%] Built target _coreorder_fcn
++zsh:11> .venv/bin/ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P11/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P11/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.31 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.36 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.67 sec
+
+[identity.log]
++zsh:4> .venv/bin/python -B -m coreorder environment --output results/pilot/p11/environment.json
+results/pilot/p11/environment.json
++zsh:5> git rev-parse HEAD
+3c344f765c6ff288abad2faa6081c921f0ee0f36
++zsh:6> git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
++zsh:7> git diff --exit-code 92f8bbf HEAD -- src native validation vendor schemas include CMakeLists.txt
++zsh:8> git diff --exit-code b05d555 HEAD -- experiments/capture.py experiments/diagnostic.py
++zsh:9> .venv/bin/python -VV
+Python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ]
++zsh:10> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:11> shasum -a 256 build/_coreorder_fcn.cpython-312-darwin.so results/pilot/p11/runs/workloads/W0-CI2002.json results/pilot/p11/runs/workloads/W1-H.json results/pilot/p11/runs/workloads/W2-H.json results/pilot/p11/runs/workloads/W3-START.json results/pilot/p11/runs/workloads/W4-START.json
+06b8437036d4111e105274805d0586774150a2009a75d9080c749f3f23ae0593  build/_coreorder_fcn.cpython-312-darwin.so
+580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7  results/pilot/p11/runs/workloads/W0-CI2002.json
+582c7771eaaefdb5f2916791a441a0883e10bf5c9853c373e908dfdefba19a3d  results/pilot/p11/runs/workloads/W1-H.json
+5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a  results/pilot/p11/runs/workloads/W2-H.json
+7c0de6a027fe3f39d4047c77ccc88f4c4d49a7353c97c70014c400749c8a3a2a  results/pilot/p11/runs/workloads/W3-START.json
+75a02ed832ab9435cf99f175de0d9439f9a3bee3ec8a78600fa605abec76dcc8  results/pilot/p11/runs/workloads/W4-START.json
++zsh:12> /usr/bin/pmset -g therm
+Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+
+[pilot.log]
++zsh:15> export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++zsh:16> .venv/bin/python -B results/pilot/p11/pilot_p11.py results/pilot/p11/runs
+W4-START-11-py-seq-upstream-verify PASS 1.109
+W4-START-11-py-seq-incremental-verify PASS 0.355
+W4-START-11-native-serial-incremental-verify PASS 0.369
+W4-START-11-py-seq-upstream-timing PASS 1.043
+W4-START-11-py-seq-incremental-timing PASS 0.366
+W4-START-11-native-serial-incremental-timing PASS 0.321
+W4-START-29-py-seq-upstream-verify PASS 1.068
+W4-START-29-py-seq-incremental-verify PASS 0.335
+W4-START-29-native-serial-incremental-verify PASS 0.353
+W4-START-29-native-serial-incremental-timing PASS 0.326
+W4-START-29-py-seq-incremental-timing PASS 0.301
+W4-START-29-py-seq-upstream-timing PASS 1.06
+W0-CI2002-11-py-seq-upstream-verify PASS 0.19
+W0-CI2002-11-py-seq-incremental-verify PASS 0.185
+W0-CI2002-11-py-seq-upstream-timing PASS 0.182
+W0-CI2002-11-py-seq-incremental-timing PASS 0.177
+W0-CI2002-29-py-seq-upstream-verify PASS 0.191
+W0-CI2002-29-py-seq-incremental-verify PASS 0.186
+W0-CI2002-29-py-seq-incremental-timing PASS 0.431
+W0-CI2002-29-py-seq-upstream-timing PASS 0.198
+W1-H-11-py-seq-upstream-verify PASS 1.294
+W1-H-11-py-seq-incremental-verify PASS 0.536
+W1-H-11-py-seq-upstream-timing PASS 1.265
+W1-H-11-py-seq-incremental-timing PASS 0.486
+W1-H-29-py-seq-upstream-verify PASS 1.261
+W1-H-29-py-seq-incremental-verify PASS 0.529
+W1-H-29-py-seq-incremental-timing PASS 0.483
+W1-H-29-py-seq-upstream-timing PASS 1.21
+W2-H-11-py-seq-upstream-verify PASS 4.554
+W2-H-11-py-seq-incremental-verify PASS 0.624
+W2-H-11-native-serial-incremental-verify PASS 0.669
+W2-H-11-py-seq-upstream-timing PASS 4.53
+W2-H-11-py-seq-incremental-timing PASS 0.571
+W2-H-11-native-serial-incremental-timing PASS 0.651
+W2-H-29-py-seq-upstream-verify PASS 4.642
+W2-H-29-py-seq-incremental-verify PASS 0.624
+W2-H-29-native-serial-incremental-verify PASS 0.654
+W2-H-29-native-serial-incremental-timing PASS 0.591
+W2-H-29-py-seq-incremental-timing PASS 0.553
+W2-H-29-py-seq-upstream-timing PASS 4.325
+W3-START-11-py-seq-upstream-verify PASS 25.383
+W3-START-11-py-seq-incremental-verify PASS 2.583
+W3-START-11-native-serial-incremental-verify PASS 2.791
+W3-START-11-py-seq-upstream-timing PASS 26.429
+W3-START-11-py-seq-incremental-timing PASS 2.454
+W3-START-11-native-serial-incremental-timing PASS 2.472
+W3-START-29-py-seq-upstream-verify PASS 26.174
+W3-START-29-py-seq-incremental-verify PASS 2.736
+W3-START-29-native-serial-incremental-verify PASS 2.792
+W3-START-29-native-serial-incremental-timing PASS 2.458
+W3-START-29-py-seq-incremental-timing PASS 2.286
+W3-START-29-py-seq-upstream-timing PASS 27.303
+W0-CI2002-11-py-seq-upstream-heap PASS 0.382
+W0-CI2002-11-py-seq-incremental-heap PASS 0.296
+W0-CI2002-29-py-seq-upstream-heap PASS 0.333
+W0-CI2002-29-py-seq-incremental-heap PASS 0.29
+W1-H-11-py-seq-upstream-heap PASS 7.144
+W1-H-11-py-seq-incremental-heap PASS 1.323
+W1-H-29-py-seq-upstream-heap PASS 7.181
+W1-H-29-py-seq-incremental-heap PASS 1.538
+W2-H-11-py-seq-upstream-heap TIMEOUT 30.005
+W2-H-11-py-seq-incremental-heap PASS 1.852
+W2-H-29-py-seq-upstream-heap TIMEOUT 30.006
+W2-H-29-py-seq-incremental-heap PASS 1.836
+W1-H-11-py-seq-upstream-profile PASS 3.245
+W1-H-11-py-seq-upstream-phases PASS 13.826
+W1-H-11-py-seq-incremental-profile PASS 0.815
+W1-H-11-py-seq-incremental-phases PASS 2.707
+W1-H-11-native-serial-incremental-profile PASS 0.909
+W1-H-11-native-serial-incremental-phases PASS 2.659
+W2-H-11-native-serial-incremental-capture PASS 4.011
+outcomes {'PASS': 69, 'TIMEOUT': 2}
+
+[supplement.log]
++zsh:12> export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 BLIS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++zsh:13> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/supplement_p11.py $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11 $COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py
+W2-H-11-py-seq-upstream-heap-60s PASS 29.938
+W2-H-29-py-seq-upstream-heap-60s PASS 31.541
+W0-CI2002 E stock profile/summary matched ordered events, final state and RNG; A event counts agree.
+W1-H E stock profile/summary matched ordered events, final state and RNG; A event counts agree.
+Production bare kernel replay matched binding output {'scope': 'serial evaluate_range only on warm captured AoS', 'rows': 8192, 'repeats': 2048, 'kernel_s': 0.346748, 'input_sha256': 'f8894cd3585c9afe2b61ea2f3003751be21de19bd6012a69e4ff6a7845b0cf16', 'output_sha256': 'ec213338b8bf43151406915af1bf7e64c99e9b84c3c9dd6d4e0f748f860e00b7', 'replay_row_evaluations': 16777216}
+
+[aggregation.log]
++zsh:4> PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P11 .venv/bin/python -B results/pilot/p11/summarize_p11.py results/pilot/p11/runs results/pilot/p11/tables
+{
+  "attempts": {
+    "PASS": 71,
+    "TIMEOUT": 2
+  },
+  "purposes": {
+    "verify": 26,
+    "timing": 26,
+    "heap": 14,
+    "profile": 3,
+    "phases": 3,
+    "capture": 1
+  },
+  "heap_observations": 30380
+}
++zsh:5> .venv/bin/python -
+Production rows capture agrees with verified run on state/RNG, order count, native rows and Gaussian calls.
+All timing runs came from clean checkout.
+
+[pilot-initial.log, driver exit 1 retained after 12 child attempts]
+W4-START-29-native-serial-incremental-timing PASS 0.322
+W4-START-29-py-seq-incremental-timing PASS 0.309
+W4-START-29-py-seq-upstream-timing PASS 1.042
+Traceback (most recent call last):
+  File "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py", line 320, in <module>
+    pilot(Path(sys.argv[1]).resolve())
+  File "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py", line 300, in pilot
+    write(root / "chronological.json", records)
+  File "$COREORDER_ARCHIVES/CoreOrder-P11/validation/io.py", line 23, in write
+    with path.open("x", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: '$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/preflight/chronological.json'
+
+[runs/W2-H-11-py-seq-upstream-heap-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python",
+    "-B",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py",
+    "child",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/workloads/W2-H.json",
+    "11",
+    "py-seq",
+    "upstream",
+    "heap",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/W2-H-11-py-seq-upstream-heap"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P11",
+  "timestamp_utc": "2026-11-25T16:00:06.918341+00:00",
+  "exit_code": -9,
+  "status": "TIMEOUT",
+  "elapsed_s_driver": 30.004926584195346,
+  "timeout_s": 30,
+  "censoring": "right",
+  "timeout_cleanup": null,
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[supplement/W2-H-11-py-seq-upstream-heap-60s-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python",
+    "-B",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py",
+    "child",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/workloads/W2-H.json",
+    "11",
+    "py-seq",
+    "upstream",
+    "heap",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/supplement/W2-H-11-py-seq-upstream-heap-60s"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P11",
+  "timestamp_utc": "2026-11-25T16:01:40.971767+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 29.938199708238244,
+  "timeout_s": 60,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[runs/W2-H-29-py-seq-upstream-heap-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python",
+    "-B",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py",
+    "child",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/workloads/W2-H.json",
+    "29",
+    "py-seq",
+    "upstream",
+    "heap",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/W2-H-29-py-seq-upstream-heap"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P11",
+  "timestamp_utc": "2026-11-25T16:00:38.898657+00:00",
+  "exit_code": -9,
+  "status": "TIMEOUT",
+  "elapsed_s_driver": 30.00583262508735,
+  "timeout_s": 30,
+  "censoring": "right",
+  "timeout_cleanup": null,
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[supplement/W2-H-29-py-seq-upstream-heap-60s-command/command.json]
+{
+  "command": [
+    "$COREORDER_ARCHIVES/CoreOrder-P11/.venv/bin/python",
+    "-B",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/pilot_p11.py",
+    "child",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/runs/workloads/W2-H.json",
+    "29",
+    "py-seq",
+    "upstream",
+    "heap",
+    "$COREORDER_ARCHIVES/CoreOrder-P11/results/pilot/p11/supplement/W2-H-29-py-seq-upstream-heap-60s"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P11",
+  "timestamp_utc": "2026-11-25T16:02:10.989377+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 31.54139224998653,
+  "timeout_s": 60,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "scope": "development command; not a formal system timing result"
+}
+
+[supplement/E-W0-CI2002-profile/diagnostic.json]
+{
+  "measurement_mode": "profile",
+  "setup_s": 0.0011610421352088451,
+  "simulation_s": 0.12194920796900988,
+  "event_counts": {
+    "SimulationBeginLog": 1,
+    "SessionBeginLog": 2,
+    "MarketStepBeginLog": 600,
+    "OrderLog": 600,
+    "MarketStepEndLog": 600,
+    "SessionEndLog": 2,
+    "ExecutionLog": 223,
+    "ExpirationLog": 121,
+    "SimulationEndLog": 1
+  },
+  "event_stream_hash": "eb2191636296fa47d01e0e3aa0be5fef5f587ed8b7c803f01d187052146b8472",
+  "final_hash": "c4cb065e90c0673dcd041c4c891432c426112a4fd470309397e4e35fb2d015b5",
+  "rng_hash": "ac44c3b84b094379555fca93165ffe953763275d4dcc42765a27135f8d62e760",
+  "scope": "DEVELOPMENT ONLY; streaming event encoding remains in timed business path",
+  "counters_missing": {
+    "agent_calls": "not instrumented",
+    "decision_rows": "not instrumented",
+    "native_rows": "not applicable",
+    "gauss_api_calls": "not instrumented"
+  },
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "seed": 11,
+  "input_hash": "6836b94b4aebd60b9c907eec231d8d4e9dfb8ebbec87cf745411de51e3a118ce"
+}
+
+[supplement/E-W1-H-profile/diagnostic.json]
+{
+  "measurement_mode": "profile",
+  "setup_s": 0.05744062503799796,
+  "simulation_s": 3.0547423330135643,
+  "event_counts": {
+    "SimulationBeginLog": 1,
+    "SessionBeginLog": 2,
+    "MarketStepBeginLog": 120,
+    "OrderLog": 3840,
+    "MarketStepEndLog": 120,
+    "SessionEndLog": 2,
+    "ExecutionLog": 1358,
+    "ExpirationLog": 18,
+    "SimulationEndLog": 1
+  },
+  "event_stream_hash": "c5e01633ecf9db69c8bd616045f5ccf94d4e4ac59033c7ed8afb446977889518",
+  "final_hash": "e4d207e9bb627ee704287d86630de7395ba2754c4fd22e6ca868757612392755",
+  "rng_hash": "a28ddc0d705ca0c4b1823faaaaaca8bd6ebdcba949e92d093c5b50e45b47e751",
+  "scope": "DEVELOPMENT ONLY; streaming event encoding remains in timed business path",
+  "counters_missing": {
+    "agent_calls": "not instrumented",
+    "decision_rows": "not instrumented",
+    "native_rows": "not applicable",
+    "gauss_api_calls": "not instrumented"
+  },
+  "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+  "dirty": false,
+  "seed": 11,
+  "input_hash": "a0385403769de9392774b56d0b2997fb2fda9be9733b868a2d8f86311ee0a2e2"
+}
+
+[Full ledger inventory]
+73 matrix and retry attempts: 71 completed, 2 right-censored 30-second counter runs.
+Timing: 26 complete, 0 timeouts. Ordered financial event/state/RNG comparison: 26 complete.
+Comparator accounting: 30,380 buy/sell records across the pair variants.
+Separate E verification: 4 complete compact/profile runs.
+Captured native rows: 8192 with output verified by a bare Release replay (2048 repetitions).
+No formal timing, actual PMU event, or x86 evidence. No G2 acceptance status changed.

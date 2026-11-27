@@ -1,0 +1,148 @@
+{
+  "date_local": "2026-11-27",
+  "scope": "automated same-host functional demo",
+  "arch": "x86_64",
+  "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+  "upstream_shas": {
+    "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+    "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+  },
+  "seed": 42,
+  "fixture_file_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+  "archive_sha256": "0658893fe444b2cff2a95adcfec0fee8aa7da1a2040dbee81d8f4cf2e31fe42d",
+  "exit": 0,
+  "status": "PASS",
+  "scopes": [
+    "events",
+    "steps",
+    "final",
+    "rng",
+    "initial"
+  ],
+  "runs": {
+    "parallel-soa": {
+      "run_id": "9f76c7b89eee494f86ae1e75417535a9",
+      "backend": "native-parallel",
+      "heap": "incremental",
+      "layout": "soa",
+      "workers": 2,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    },
+    "parallel-soa-w1": {
+      "run_id": "e7450e8db4c74f02951313775ded5106",
+      "backend": "native-parallel",
+      "heap": "incremental",
+      "layout": "soa",
+      "workers": 1,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    },
+    "parallel-soa-w4": {
+      "run_id": "a886e2d8f6cd4e9e89d8d01cdff54871",
+      "backend": "native-parallel",
+      "heap": "incremental",
+      "layout": "soa",
+      "workers": 4,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    },
+    "py-incremental": {
+      "run_id": "721dcae7c70f48cf870e8ca2cf29255c",
+      "backend": "py-seq",
+      "heap": "incremental",
+      "layout": "not_applicable",
+      "workers": 1,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    },
+    "py-upstream": {
+      "run_id": "4fbc5b95944a415b8a462bbf52afb41d",
+      "backend": "py-seq",
+      "heap": "upstream",
+      "layout": "not_applicable",
+      "workers": 1,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    },
+    "serial-aos": {
+      "run_id": "ba3f615ea6544aefb4e01a42a49fa6b8",
+      "backend": "native-serial",
+      "heap": "incremental",
+      "layout": "aos",
+      "workers": 1,
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    }
+  },
+  "oracle": {
+    "counts": {
+      "SimulationBeginLog": 1,
+      "SessionBeginLog": 2,
+      "MarketStepBeginLog": 18,
+      "MarketStepEndLog": 18,
+      "SessionEndLog": 2,
+      "OrderLog": 89,
+      "ExecutionLog": 28,
+      "ExpirationLog": 25,
+      "SimulationEndLog": 1
+    },
+    "events": 184,
+    "sample_events": [
+      {
+        "event_seq": 10,
+        "session": 1,
+        "step": 1,
+        "type": "OrderLog",
+        "fields": {
+          "agent_id": 9,
+          "is_buy": false,
+          "kind": {
+            "kind_id": 1,
+            "name": "LIMIT_ORDER"
+          },
+          "market_id": 1,
+          "order_id": 0,
+          "price": {
+            "float_hex": "0x1.8eede69ad42c4p+7"
+          },
+          "time": 1,
+          "ttl": 3,
+          "volume": 1
+        }
+      },
+      {
+        "event_seq": 17,
+        "session": 1,
+        "step": 1,
+        "type": "ExecutionLog",
+        "fields": {
+          "buy_agent_id": 5,
+          "buy_order_id": 2,
+          "buy_transaction_fee": {
+            "float_hex": "0x0.0p+0"
+          },
+          "market_id": 0,
+          "price": {
+            "float_hex": "0x1.2c12e3e6c4c5ap+8"
+          },
+          "sell_agent_id": 12,
+          "sell_order_id": 4,
+          "sell_transaction_fee": {
+            "float_hex": "0x0.0p+0"
+          },
+          "time": 1,
+          "volume": 1
+        }
+      }
+    ]
+  },
+  "offline": {
+    "status": "PASS",
+    "scope": "Mac with network denied by sandbox-exec",
+    "reference_sha256": "541f8514c772b222f75ee0ae9e164cbf986786c4fc9ca60f7f20827ddfbf9a5f",
+    "candidate_sha256": "98953dd89ab95be3d074fa71f693428cc607776223ba2a87afdfa6292b7fed43"
+  }
+}

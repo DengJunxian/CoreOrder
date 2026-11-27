@@ -1,0 +1,13 @@
+{
+  "scope": "P01 real ordered rows; instrumented production native serial",
+  "rows": 8192,
+  "input_stride": 112,
+  "output_stride": 16,
+  "byteorder": "little",
+  "config_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+  "sha256": "22c2643c15528b26309d39a5bc8233a1fcbbea546052c3cdc7be0ba617b479e1",
+  "native_sha256": "a246234c5f604fd97789af5ac8c24abfeb4a104b29683f80db97a8b76f735366",
+  "git_sha": "b5808b5383bfc170fcb972ee77f1c3c0eac5659f",
+  "run_id": "d226694d0345493590846d09a8e3291c",
+  "seed": 11
+}

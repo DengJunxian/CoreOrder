@@ -1,0 +1,18 @@
+$ cc -std=c17 -Wall -Wextra -O2 probe-cpuid.c -o probe-cpuid
+cpu=0 highest_extended=0x80000021
+cpu=1 highest_extended=0x80000021
+cpu=2 highest_extended=0x80000021
+cpu=3 highest_extended=0x80000021
+cpu=4 highest_extended=0x80000021
+cpu=5 highest_extended=0x80000021
+cpu=6 highest_extended=0x80000021
+cpu=7 highest_extended=0x80000021
+cpu=8 highest_extended=0x80000021
+cpu=9 highest_extended=0x80000021
+cpu=10 highest_extended=0x80000021
+cpu=11 highest_extended=0x80000021
+cpu=12 highest_extended=0x80000021
+cpu=13 highest_extended=0x80000021
+cpu=14 highest_extended=0x80000021
+cpu=15 highest_extended=0x80000021
+exit=0

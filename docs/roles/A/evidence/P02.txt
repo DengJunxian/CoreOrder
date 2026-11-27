@@ -1,0 +1,159 @@
+CoreOrder R4 P02 candidate verification
+Date: 2026-11-25 (Asia/Shanghai)
+Candidate ran on the P01 base plus the P02 working-tree changes.
+Raw outputs and command logs: results/acceptance/P02/run-vDE2Hz/candidate
+Local checkout paths are abbreviated.
+
++ (cd <checkout> && git status --porcelain=v2 --branch --untracked-files=all)
+exit=0 expected=0
++ (cd <checkout> && git submodule status --recursive)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m pip check)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder environment --output results/acceptance/P02/run-vDE2Hz/candidate/environment.json)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python <checkout>/vendor/pams/samples/CI2002/main.py --config <checkout>/vendor/pams/samples/CI2002/config.json --seed 42)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder.reference --config <checkout>/vendor/pams/samples/CI2002/config.json --seed 42 --output results/acceptance/P02/run-vDE2Hz/candidate/reference-full)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder.reference --config <checkout>/configs/workloads/smoke.json --seed 42 --output results/acceptance/P02/run-vDE2Hz/candidate/reference-smoke)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder run --backend py-seq --book-restore upstream --config <checkout>/configs/workloads/smoke.json --seed 42 --output results/acceptance/P02/run-vDE2Hz/candidate/py-seq-smoke)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder run --backend py-seq --book-restore upstream --config <checkout>/configs/workloads/smoke.json --seed 42 --output results/acceptance/P02/run-vDE2Hz/candidate/py-seq-repeat)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m coreorder run --config <checkout>/configs/workloads/smoke.json --seed 42 --output results/acceptance/P02/run-vDE2Hz/candidate/unsupported-native --backend native-parallel --book-restore incremental --layout soa --workers 4 --grain 128 --schedule static)
+exit=2 expected=2
+PYTHONDONTWRITEBYTECODE=1 for upstream pytest
++ (cd <checkout>/vendor/pams && <checkout>/.venv/bin/python -m pytest -q -p no:cacheprovider tests/pams/runners/test_sequential.py tests/pams/test_market.py tests/pams/test_order_book.py tests/pams/test_order.py tests/pams/test_simulator.py tests/pams/agents/test_fcn_agent.py -k 'collect_orders_from_normal_agents or handle_orders or run_execution_logs_processed_once or execution_order_pattern or expiration_orrder_pattern or get_price_volume or test_gt or test_update_agents_for_execution or test_triggers or test_submit_orders')
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/python -m pytest -q)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/cmake --build build --config Release --parallel 2)
+exit=0 expected=0
++ (cd <checkout> && <checkout>/.venv/bin/ctest --test-dir build -C Release --output-on-failure)
+exit=0 expected=0
++ (cd <checkout> && git submodule foreach --quiet 'git status --porcelain=v1 --untracked-files=all --ignored=matching')
+exit=0 expected=0
++ (cd <checkout> && git diff --check)
+exit=0 expected=0
+{
+  "cash_initial_final": [
+    240000.0,
+    240000.0
+  ],
+  "changed_account_example": [
+    {
+      "agent_id": 0,
+      "cash_hex": "0x1.3880000000000p+13",
+      "holdings": {
+        "0": 50
+      }
+    },
+    {
+      "agent_id": 0,
+      "cash_hex": "0x1.4b4f340f66a55p+13",
+      "holdings": {
+        "0": 48
+      }
+    }
+  ],
+  "ctest": "100% tests passed, 0 tests failed out of 1",
+  "dirty": true,
+  "final_market_price": 301.25584000000003,
+  "full_reference_counts": {
+    "executions": 207,
+    "expirations": 144,
+    "market_steps": 600,
+    "orders": 600
+  },
+  "git_sha": "6ec33312cbc4f98f5e5f24e098aa21745e63669d",
+  "holding_initial_final": [
+    1200,
+    1200
+  ],
+  "official_config_sha256": "580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7",
+  "official_market_observations_match_reference": 600,
+  "project_tests": "11 passed in 2.94s",
+  "seed": 42,
+  "smoke_config_sha256": "ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6",
+  "smoke_counts": {
+    "cancels": 0,
+    "executions": 14,
+    "expirations": 0,
+    "market_steps": 80,
+    "orders": 80
+  },
+  "smoke_execution_volume": 14,
+  "smoke_sha256": {
+    "final_state_hash": "ed562d3b0272ab9784245b730a44d043e59d025f1a19b7f7d101619769c4570f",
+    "rng_hash": "9aeb65d7f46ba3afe46cda4a469f9abcb95200f91739931b418eeaba6293622c",
+    "trace_hash": "9805f9c715075910acf8fbeacbe66b52fc94bf315d471ac3eb63d3b7cd73cab8"
+  },
+  "smoke_state_matches": [
+    "reference-smoke",
+    "py-seq-repeat"
+  ],
+  "unsupported_exit": 2,
+  "upstream_tests": "35 passed, 302 deselected, 2 warnings in 0.39s"
+}
+
+identity.stdout.log
+# branch.oid 6ec33312cbc4f98f5e5f24e098aa21745e63669d
+# branch.head a/01-foundation
+1 .M N... 100644 100644 100644 9e21cf382fc000390e84a78731ea51b887afad57 9e21cf382fc000390e84a78731ea51b887afad57 .gitignore
+? configs/workloads/smoke.json
+? src/coreorder/__main__.py
+? src/coreorder/cli.py
+? src/coreorder/config.py
+? src/coreorder/environment.py
+? src/coreorder/reference.py
+? src/coreorder/run_records.py
+? src/coreorder/runner.py
+? src/coreorder/snapshot.py
+? tests/platform/test_py_seq.py
+
+upstream-shas.stdout.log
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+
+pip-check.stdout.log
+No broken requirements found.
+
+official.stderr.log
+<checkout>/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+<checkout>/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+
+upstream-pytest.stdout.log
+...................................                                      [100%]
+=============================== warnings summary ===============================
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_handle_orders
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_run_execution_logs_processed_once
+  <checkout>/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+35 passed, 302 deselected, 2 warnings in 0.39s
+
+project-pytest.stdout.log
+...........                                                              [100%]
+11 passed in 2.94s
+
+unsupported-native.stderr.log
+UNSUPPORTED: backend 'native-parallel' is not implemented (see results/acceptance/P02/run-vDE2Hz/candidate/unsupported-native/stderr.log)
+
+build.stdout.log
+[100%] Built target _coreorder_toolchain_smoke
+
+ctest.stdout.log
+Internal ctest changing into directory: <checkout>/build
+Test project <checkout>/build
+    Start 1: toolchain_smoke
+1/1 Test #1: toolchain_smoke ..................   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.02 sec

@@ -1,0 +1,14 @@
+$ cc -O2 -std=gnu17 -Wall -Wextra probe-pmu.c -o probe-pmu
+$ taskset -c 0 ./probe-pmu
+task-clock type=1 config=1 value=53354644 enabled_ns=53354644 running_ns=53354644 coverage=1.000000
+cycles type=0 config=0 value=183736842 enabled_ns=41285630 running_ns=41285630 coverage=1.000000
+instructions type=0 config=1 value=44000084 enabled_ns=48156386 running_ns=48156386 coverage=1.000000
+branches type=0 config=4 value=4000045 enabled_ns=35443860 running_ns=35443860 coverage=1.000000
+branch-misses type=0 config=5 value=242 enabled_ns=35270321 running_ns=35270321 coverage=1.000000
+L1D-read-access type=3 config=0 value=12097163 enabled_ns=39508357 running_ns=39508357 coverage=1.000000
+L1D-read-miss type=3 config=65536 value=3998886 enabled_ns=35101480 running_ns=35101480 coverage=1.000000
+LL-read-access type=3 config=2 open_errno=2 (No such file or directory)
+LL-read-miss type=3 config=65538 open_errno=2 (No such file or directory)
+generic-cache-misses type=0 config=3 value=4072398 enabled_ns=36478545 running_ns=36478545 coverage=1.000000
+scope=calling-thread user-space pid=0 cpu=-1 inherited=false checksum=35545835
+exit=0

@@ -1,0 +1,335 @@
+
+$ date -u --iso-8601=seconds
+2026-11-26T02:40:13+00:00
+exit=0
+
+$ uname -srmo
+Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+exit=0
+
+$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+exit=0
+
+$ lscpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           48 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  16
+On-line CPU(s) list:                     0-15
+Vendor ID:                               AuthenticAMD
+Model name:                              AMD Ryzen AI 7 H 350 w/ Radeon 860M
+CPU family:                              26
+Model:                                   96
+Thread(s) per core:                      2
+Core(s) per socket:                      8
+Socket(s):                               1
+Stepping:                                0
+BogoMIPS:                                3992.40
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect
+Virtualization:                          AMD-V
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               384 KiB (8 instances)
+L1i cache:                               256 KiB (8 instances)
+L2 cache:                                8 MiB (8 instances)
+L3 cache:                                16 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-15
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+exit=0
+
+$ lscpu -e=CPU\,CORE\,SOCKET\,NODE\,ONLINE\,MHZ\,MAXMHZ\,MINMHZ
+CPU CORE SOCKET NODE ONLINE       MHZ MAXMHZ MINMHZ
+  0    0      0    0    yes 1996.2030      -      -
+  1    0      0    0    yes 1996.2030      -      -
+  2    1      0    0    yes 1996.2030      -      -
+  3    1      0    0    yes 1996.2030      -      -
+  4    2      0    0    yes 1996.2030      -      -
+  5    2      0    0    yes 1996.2030      -      -
+  6    3      0    0    yes 1996.2030      -      -
+  7    3      0    0    yes 1996.2030      -      -
+  8    4      0    0    yes 1996.2030      -      -
+  9    4      0    0    yes 1996.2030      -      -
+ 10    5      0    0    yes 1996.2030      -      -
+ 11    5      0    0    yes 1996.2030      -      -
+ 12    6      0    0    yes 1996.2030      -      -
+ 13    6      0    0    yes 1996.2030      -      -
+ 14    7      0    0    yes 1996.2030      -      -
+ 15    7      0    0    yes 1996.2030      -      -
+exit=0
+
+$ lscpu -C
+NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+L1d       48K     384K   12 Data            1    64        1             64
+L1i       32K     256K    8 Instruction     1    64        1             64
+L2         1M       8M   16 Unified         2  1024        1             64
+L3        16M      16M   16 Unified         3 16384        1             64
+exit=0
+
+$ taskset -pc 477333
+pid 477333's current affinity list: 0-15
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 python3 -c import\ os\;\ print\(sorted\(os.sched_getaffinity\(0\)\)\)
+[0, 2, 4, 6, 8, 10, 12, 14]
+exit=0
+
+$ free -b
+               total        used        free      shared  buff/cache   available
+Mem:     16300789760  1165463552 13981306880     2777088  1408565248 15135326208
+Swap:     4294967296    86073344  4208893952
+exit=0
+
+$ df -B1 .
+Filesystem         1B-blocks         Used    Available Use% Mounted on
+/dev/sdd       1081101176832 283737120768 742371700736  28% /
+exit=0
+
+$ gcc --version
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+exit=0
+
+$ cat /proc/sys/kernel/perf_event_paranoid /proc/sys/kernel/nmi_watchdog
+2
+0
+exit=0
+
+$ ls -1 /sys/bus/event_source/devices/
+breakpoint
+cpu
+kprobe
+msr
+software
+tracepoint
+uprobe
+exit=0
+
+$ ls -1 /sys/bus/event_source/devices/cpu/events /sys/bus/event_source/devices/cpu/caps /sys/bus/event_source/devices/cpu/format
+/sys/bus/event_source/devices/cpu/caps:
+max_precise
+
+/sys/bus/event_source/devices/cpu/events:
+branch-instructions
+branch-misses
+cache-misses
+cache-references
+cpu-cycles
+instructions
+ref-cycles
+stalled-cycles-frontend
+
+/sys/bus/event_source/devices/cpu/format:
+cmask
+edge
+event
+inv
+umask
+exit=0
+
+$ sh -c head\ -35\ /proc/cpuinfo\;\ command\ -v\ perf\;\ ls\ -d\ /usr/lib/linux-tools/\*
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 26
+model		: 96
+model name	: AMD Ryzen AI 7 H 350 w/ Radeon 860M
+stepping	: 0
+microcode	: 0xffffffff
+cpu MHz		: 1996.203
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect
+bugs		: sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso spectre_v2_user
+bogomips	: 3992.40
+TLB size	: 192 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: AuthenticAMD
+cpu family	: 26
+model		: 96
+model name	: AMD Ryzen AI 7 H 350 w/ Radeon 860M
+stepping	: 0
+microcode	: 0xffffffff
+ls: cannot access '/usr/lib/linux-tools/*': No such file or directory
+exit=2
+
+cpu0 core_id=0 thread_siblings_list=0-1
+  index0 level=1 type=Data size=48K shared_cpu_list=0-1 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=0-1 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=0-1 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu1 core_id=0 thread_siblings_list=0-1
+  index0 level=1 type=Data size=48K shared_cpu_list=0-1 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=0-1 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=0-1 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu10 core_id=5 thread_siblings_list=10-11
+  index0 level=1 type=Data size=48K shared_cpu_list=10-11 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=10-11 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=10-11 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu11 core_id=5 thread_siblings_list=10-11
+  index0 level=1 type=Data size=48K shared_cpu_list=10-11 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=10-11 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=10-11 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu12 core_id=6 thread_siblings_list=12-13
+  index0 level=1 type=Data size=48K shared_cpu_list=12-13 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=12-13 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=12-13 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu13 core_id=6 thread_siblings_list=12-13
+  index0 level=1 type=Data size=48K shared_cpu_list=12-13 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=12-13 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=12-13 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu14 core_id=7 thread_siblings_list=14-15
+  index0 level=1 type=Data size=48K shared_cpu_list=14-15 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=14-15 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=14-15 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu15 core_id=7 thread_siblings_list=14-15
+  index0 level=1 type=Data size=48K shared_cpu_list=14-15 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=14-15 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=14-15 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu2 core_id=1 thread_siblings_list=2-3
+  index0 level=1 type=Data size=48K shared_cpu_list=2-3 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=2-3 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=2-3 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu3 core_id=1 thread_siblings_list=2-3
+  index0 level=1 type=Data size=48K shared_cpu_list=2-3 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=2-3 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=2-3 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu4 core_id=2 thread_siblings_list=4-5
+  index0 level=1 type=Data size=48K shared_cpu_list=4-5 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=4-5 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=4-5 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu5 core_id=2 thread_siblings_list=4-5
+  index0 level=1 type=Data size=48K shared_cpu_list=4-5 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=4-5 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=4-5 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu6 core_id=3 thread_siblings_list=6-7
+  index0 level=1 type=Data size=48K shared_cpu_list=6-7 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=6-7 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=6-7 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu7 core_id=3 thread_siblings_list=6-7
+  index0 level=1 type=Data size=48K shared_cpu_list=6-7 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=6-7 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=6-7 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu8 core_id=4 thread_siblings_list=8-9
+  index0 level=1 type=Data size=48K shared_cpu_list=8-9 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=8-9 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=8-9 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+cpu9 core_id=4 thread_siblings_list=8-9
+  index0 level=1 type=Data size=48K shared_cpu_list=8-9 coherency_line_size=64
+  index1 level=1 type=Instruction size=32K shared_cpu_list=8-9 coherency_line_size=64
+  index2 level=2 type=Unified size=1024K shared_cpu_list=8-9 coherency_line_size=64
+  index3 level=3 type=Unified size=16384K shared_cpu_list=0-15 coherency_line_size=64
+
+$ ls -1 /sys/class/thermal /sys/devices/system/cpu/cpufreq
+/sys/class/thermal:
+cooling_device0
+cooling_device1
+cooling_device10
+cooling_device11
+cooling_device12
+cooling_device13
+cooling_device14
+cooling_device15
+cooling_device2
+cooling_device3
+cooling_device4
+cooling_device5
+cooling_device6
+cooling_device7
+cooling_device8
+cooling_device9
+
+/sys/devices/system/cpu/cpufreq:
+exit=0
+/sys/class/hwmon/hwmon0/name=AC1
+/sys/class/hwmon/hwmon1/name=BAT1
+/sys/class/power_supply/AC1/type=Mains
+/sys/class/power_supply/BAT1/type=Battery
+/sys/class/power_supply/AC1/online=1
+/sys/class/power_supply/BAT1/status=Full
+/sys/class/power_supply/BAT1/capacity=100
+
+$ cat /proc/loadavg
+0.12 0.06 0.01 1/354 477729
+exit=0
+
+$ uptime
+ 10:40:13 up 16 days, 9 min,  6 users,  load average: 0.12, 0.06, 0.01
+exit=0

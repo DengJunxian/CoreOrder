@@ -1,0 +1,66 @@
+{
+  "scope": "R4A seed 11/29 planning projection; no confidence interval or completion guarantee",
+  "row_counts": {
+    "C01": 420,
+    "V01": 170,
+    "timing": 527,
+    "E05": 108
+  },
+  "timing": {
+    "warmups": 62,
+    "minutes": {
+      "E01": 4.771073881168074,
+      "H01": 3.3961287818461035,
+      "E02": 13.198270478565245,
+      "E03": 9.425123239145615
+    },
+    "total_minutes": 30.790596380725038,
+    "exact_config_rows": {
+      "E01": 68,
+      "H01": 102,
+      "E02": 119,
+      "E03": 102
+    },
+    "workload_proxy_rows": {
+      "E01": 17,
+      "E02": 85,
+      "E03": 34
+    },
+    "recovered_outer_overhead_proxy_s": 0.2753158430568874,
+    "raw_bytes_at_sample_workload_max": 29627994689
+  },
+  "C01_C01b_only_proxy_minutes": 6.158145997673273,
+  "V01_measured_cases": [
+    {
+      "id": "oracle-W0-CI2002-11",
+      "status": "PASS",
+      "elapsed_s_driver": 92.17893498507328,
+      "raw_bytes": 417908404
+    },
+    {
+      "id": "validation-W0-CI2002-11-native-serial-upstream-aos-1",
+      "status": "FAIL",
+      "elapsed_s_driver": 101.9779925851617,
+      "raw_bytes": 442593222
+    },
+    {
+      "id": "oracle-W1-SMALL-BATCH-11",
+      "status": "FAIL",
+      "elapsed_s_driver": 78.01440580212511,
+      "raw_bytes": 4646
+    },
+    {
+      "id": "oracle-W2-MEDIUM-BATCH-29",
+      "status": "FAIL",
+      "elapsed_s_driver": 89.59477122710086,
+      "raw_bytes": 4878
+    },
+    {
+      "id": "oracle-W3-LARGE-MULTI-11",
+      "status": "FAIL",
+      "elapsed_s_driver": 101.3345184349455,
+      "raw_bytes": 4573
+    }
+  ],
+  "matching_config_seed_groups": 7
+}

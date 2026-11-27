@@ -1,0 +1,454 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P10 | 2026-11-25 Asia/Shanghai | coreorder-r4-v1
+Tested clean SHA: 92f8bbf08da514dcb24e27b6a815d3947c352798
+Raw artifact root: $COREORDER_ARCHIVES/CoreOrder-P10/results/acceptance/g2/p10
+
+[build.log]
++zsh:5> uv venv --python 3.12 --seed .venv
+Using CPython 3.12.11
+Creating virtual environment with seed packages at: .venv
+ + pip==26.3
+Activate with: source .venv/bin/activate
++zsh:6> .venv/bin/python -m pip install '--only-binary=:all:' -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Installing collected packages: uv-build, typing-extensions, tqdm, rpds-py, pluggy, pip, packaging, numpy, iniconfig, cmake, attrs, scipy, referencing, pytest, jsonschema-specifications, jsonschema
+  Attempting uninstall: pip
+    Found existing installation: pip 26.3
+    Uninstalling pip-26.3:
+      Successfully uninstalled pip-26.3
+
+Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 numpy-1.26.4 packaging-24.2 pip-26.1.2 pluggy-1.5.0 pytest-7.4.4 referencing-0.36.2 rpds-py-0.23.1 scipy-1.14.1 tqdm-4.66.6 typing-extensions-4.16.0 uv-build-0.12.19
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://$COREORDER_ARCHIVES/CoreOrder-P10
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-drgcng1q/wheels/06/e4/ea/f77646b32796f5a57a3459579fc0c6d13d6748c0361033cff8
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=6442 sha256=bcde63bcba9076d7e476a828d596682a2cc8ffae10d49de7de9d3e304d031a8e
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-drgcng1q/wheels/7d/69/16/c62167b354a33dbe810b3bed2bca02783ab24b8e2ff6c8ade4
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
++zsh:8> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:9> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P10/.venv/bin/python'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P10/.venv/bin/python (found suitable version "3.12.11", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P10/build
++zsh:10> .venv/bin/cmake --build build --parallel 2
+[ 20%] Building CXX object native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o
+[ 20%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 30%] Linking CXX static library libcoreorder_runtime.a
+[ 30%] Built target coreorder_runtime
+[ 40%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 50%] Linking CXX executable coreorder_contract_smoke
+[ 50%] Built target coreorder_contract_smoke
+[ 60%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o
+[ 70%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[ 70%] Built target _coreorder_toolchain_smoke
+[ 80%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 90%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-darwin.so
+[100%] Built target _coreorder_fcn
++zsh:11> .venv/bin/ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P10/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P10/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.29 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.32 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.61 sec
+
+[identity.log]
++zsh:5> git status --porcelain
++zsh:6> git rev-parse HEAD
+92f8bbf08da514dcb24e27b6a815d3947c352798
++zsh:7> git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
++zsh:8> .venv/bin/python -VV
+Python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ]
++zsh:9> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:10> .venv/bin/python -m coreorder environment --output results/acceptance/g2/p10/environment.json
+results/acceptance/g2/p10/environment.json
++zsh:11> c++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
++zsh:12> sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
++zsh:13> shasum -a 256 requirements.lock UPSTREAM.lock.json schemas/records.schema.json schemas/run_config.schema.json schemas/workload.schema.json validation/manifest.schema.json configs/workloads/native-serial-normal.json configs/workloads/p09-full-quota.json configs/workloads/smoke.json build/_coreorder_fcn.cpython-312-darwin.so
+bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70  requirements.lock
+0942b21338e9a190e0057ad37d18f62799796b9a054f19d08f6a06b3e9d7a137  UPSTREAM.lock.json
+54672cf8789e681628c523d0c4ba35b24c3bf853794293cb7ed22aa80169367a  schemas/records.schema.json
+bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc  schemas/run_config.schema.json
+005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa  schemas/workload.schema.json
+adf3270013aa31b67da288cb0b6781c376c9096263351ef3caa10483378e69cb  validation/manifest.schema.json
+f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252  configs/workloads/native-serial-normal.json
+f3f1f1d160f18c6b49fda2d8442724ac481684de1de23f48a2b0ba4036a01efd  configs/workloads/p09-full-quota.json
+ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6  configs/workloads/smoke.json
+5ed73ea144f1c5413c8327acc5a5313c2b52c8cf188d0b6e0e94bce99ef73b2c  build/_coreorder_fcn.cpython-312-darwin.so
++zsh:14> cmp vendor/pams/LICENSE licenses/PAMS-EPL-1.0.txt
++zsh:15> cmp vendor/taskflow/LICENSE licenses/Taskflow-MIT.txt
++zsh:16> cmp vendor/pybind11/LICENSE licenses/pybind11-BSD-3-Clause.txt
++zsh:17> git diff --exit-code f8d2be9 HEAD -- native/fcn native/bindings
++zsh:18> git diff --exit-code 5ad1ecb HEAD -- native/runtime
++zsh:19> git diff --exit-code decccbf HEAD -- src/coreorder/packing.py
++zsh:20> git diff --exit-code 835de47 HEAD -- validation
++zsh:21> .venv/bin/python -
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P10/native/bindings -I$COREORDER_ARCHIVES/CoreOrder-P10/include -I$COREORDER_ARCHIVES/CoreOrder-P10/native/runtime -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P10/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P10/native/coreorder_module.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P10/native/bindings -I$COREORDER_ARCHIVES/CoreOrder-P10/include -I$COREORDER_ARCHIVES/CoreOrder-P10/native/runtime -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P10/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P10/native/bindings/fcn_binding.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P10/native/bindings -I$COREORDER_ARCHIVES/CoreOrder-P10/include -I$COREORDER_ARCHIVES/CoreOrder-P10/native/runtime -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P10/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P10/native/fcn/evaluate.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++  -I$COREORDER_ARCHIVES/CoreOrder-P10/include -I$COREORDER_ARCHIVES/CoreOrder-P10/native/runtime -isystem $COREORDER_ARCHIVES/CoreOrder-P10/vendor/taskflow -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fno-fast-math -ffp-contract=off -Wall -Wextra -Werror -o CMakeFiles/coreorder_runtime.dir/executor.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P10/native/runtime/executor.cpp
++zsh:34> cat build/CMakeFiles/_coreorder_fcn.dir/link.txt
+/Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -o _coreorder_fcn.cpython-312-darwin.so CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o  native/runtime/libcoreorder_runtime.a
+
+[remote-and-binary.log]
+f8d2be9f1391ac5e430112665efaff7bb844c507	refs/heads/b/01-03-native
+5ad1ecb78272ff2564075cf01a90df252ae7e7ba	refs/heads/c/01-03-runtime
+f867a4fb07c928f459fa8b6d3e84a95ee88b1742	refs/heads/codex/g0-candidate
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75	refs/heads/d/01-03-layout
+b05d5555fa5cc756a91ab61c644e797ca227c26f	refs/heads/e/03-github-delivery
+e2492a4b8317c6674918b13470b577f4d6f8675d	refs/heads/main
+{"headRefOid":"f867a4fb07c928f459fa8b6d3e84a95ee88b1742","isDraft":true,"state":"OPEN","url":"https://github.com/DengJunxian/CoreOrder/pull/1"}
+[]
+5ed73ea144f1c5413c8327acc5a5313c2b52c8cf188d0b6e0e94bce99ef73b2c  build/_coreorder_fcn.cpython-312-darwin.so
+fc68cbeee0caf58e9f248de1d210dc69ad875ced0f20c99110b9af6f395893d7  ../CoreOrder-P09/build/_coreorder_fcn.cpython-312-darwin.so
+$COREORDER_ARCHIVES/CoreOrder-P10/vendor/taskflow/taskflow/algorithm/../core/executor.hpp
+$COREORDER_ARCHIVES/CoreOrder-P10/vendor/taskflow/taskflow/algorithm/../core/semaphore.hpp
+$COREORDER_ARCHIVES/CoreOrder-P09/vendor/taskflow/taskflow/algorithm/../core/executor.hpp
+$COREORDER_ARCHIVES/CoreOrder-P09/vendor/taskflow/taskflow/algorithm/../core/semaphore.hpp
+
+[core-matrix.log]
++zsh:4> git status --porcelain
++zsh:5> git rev-parse HEAD
+92f8bbf08da514dcb24e27b6a815d3947c352798
+native-serial-normal-upstream-py-seq-w1-na PASS
+native-serial-normal-upstream-py-thread-w2-na PASS
+native-serial-normal-upstream-py-process-w2-na PASS
+native-serial-normal-upstream-native-serial-w1-aos PASS
+native-serial-normal-upstream-native-parallel-w1-aos PASS
+native-serial-normal-upstream-native-parallel-w2-aos PASS
+native-serial-normal-upstream-native-parallel-w4-aos PASS
+native-serial-normal-upstream-native-serial-w1-soa PASS
+native-serial-normal-upstream-native-parallel-w1-soa PASS
+native-serial-normal-upstream-native-parallel-w2-soa PASS
+native-serial-normal-upstream-native-parallel-w4-soa PASS
+native-serial-normal-incremental-py-seq-w1-na PASS
+native-serial-normal-incremental-py-thread-w2-na PASS
+native-serial-normal-incremental-py-process-w2-na PASS
+native-serial-normal-incremental-native-serial-w1-aos PASS
+native-serial-normal-incremental-native-parallel-w1-aos PASS
+native-serial-normal-incremental-native-parallel-w2-aos PASS
+native-serial-normal-incremental-native-parallel-w4-aos PASS
+native-serial-normal-incremental-native-serial-w1-soa PASS
+native-serial-normal-incremental-native-parallel-w1-soa PASS
+native-serial-normal-incremental-native-parallel-w2-soa PASS
+native-serial-normal-incremental-native-parallel-w4-soa PASS
+smoke-upstream-py-seq-w1-na PASS
+smoke-upstream-native-serial-w1-aos PASS
+smoke-incremental-native-parallel-w4-soa PASS
+p09-full-quota-upstream-py-seq-w1-na PASS
+p09-full-quota-incremental-native-parallel-w4-soa PASS
+
+[boundary-matrix.log]
++zsh:28> .venv/bin/python -B results/acceptance/g2/p10/audit_p10.py results/acceptance/g2/p10/boundary-matrix results/acceptance/g2/p10/core-matrix
+C01a-M1-101-w4-soa-dynamic PASS
+C01b-normal-101-w4-soa-dynamic PASS
+C01c-all-empty-101-w4-soa-dynamic PASS
+C01d-sparse-access-101-w4-soa-dynamic PASS
+C01e-four-markets-101-w4-soa-dynamic PASS
+C01f-M0-101-w4-soa-dynamic PASS
+C01f-MequalsN-101-w4-soa-dynamic PASS
+C01f-MaboveN-101-w4-soa-dynamic PASS
+C01c-mixed-empty-101-w4-soa-dynamic PASS
+C01h-MarketMaker-101-w4-soa-dynamic PASS
+C01g-fundamental-shock-101-w4-soa-dynamic PASS
+C01g-placement-stopped-101-w4-soa-dynamic PASS
+C01b-prefilled-cache-101-w4-soa-dynamic PASS
+C01d-zero-access-101-w4-soa-dynamic PASS
+C01k-fixed-zero-price-101-w4-soa-dynamic PASS
+C01e-four-markets-202-w1-aos-static PASS
+C01e-four-markets-202-w1-aos-dynamic PASS
+C01e-four-markets-202-w1-soa-static PASS
+C01e-four-markets-202-w1-soa-dynamic PASS
+C01e-four-markets-202-w2-aos-static PASS
+C01e-four-markets-202-w2-aos-dynamic PASS
+C01e-four-markets-202-w2-soa-static PASS
+C01e-four-markets-202-w2-soa-dynamic PASS
+C01e-four-markets-202-w4-aos-static PASS
+C01e-four-markets-202-w4-aos-dynamic PASS
+C01e-four-markets-202-w4-soa-static PASS
+C01e-four-markets-202-w4-soa-dynamic PASS
+C01b-prefilled-cache-303-w2-aos-static PASS
+C01h-MarketMaker-303-w2-aos-static PASS
+{'semantic': {'PASS': 56}, 'E_gate': {'FAIL': 56}, 'E_record': {'FAIL': 56}}
+
+[proposals.log]
++zsh:103> .venv/bin/python -B results/acceptance/g2/p10/audit_proposals_p10.py results/acceptance/g2/p10/proposals
+smoke PASS 11 80 80
+native-serial-normal PASS 11 48 9
+PASS 22 production executions matched raw Order identity, TTL, side and floating-point prices.
+
+[schema-probe.log]
++zsh:4> .venv/bin/python -
+{'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'}
+manifest raw input SHA256 ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6
+reference normalized input SHA256 422bef642abf026f7b0f06ab81f3d5dceb842ab869aae4fd4178bd1107811907
+E metrics rejection ValueError Unproven/zero-filled metric setup_s
+
+[interfaces.log]
++zsh:154> .venv/bin/python -B results/acceptance/g2/p10/audit_interfaces_p10.py results/acceptance/g2/p10/interfaces
+minimal_record_failure {'status': 'FAIL', 'seed': 42, 'markets': 1, 'agents': 1, 'steps': 1, 'first_location': 'manifest.input_hash (before first event)', 'manifest_raw_sha256': '752c46c00a828661bbbf46b3e08f7534b5cb52d5e55e26b2e31de0719df430c2', 'reference_normalized_sha256': '6741e70be699f243372ccc89bb5c4b229a25cff26eacbb829783c67f1288f6a3', 'E_result': {'status': 'FAIL', 'reason': 'Candidate manifest identity mismatch', 'field': 'input_hash'}}
+unsupported_native-serial ValueError: native mode requires exact PAMS FCNAgent for ordinary agents
+unsupported_native-parallel ValueError: native mode requires exact PAMS FCNAgent for ordinary agents
+unsupported_index ValueError: native mode requires exact PAMS Market or the selected CoreOrderMarket adapter
+explicit_fallback {'status': 'NOT_RUN', 'reason': 'parser rejects --unsupported-policy upstream (exit 2)'}
+explicit_upstream_request PASS
+missing_extension PASS
+fee {'production_differential': 'PASS', 'executions': 28, 'E_full_trace': 'BLOCKED', 'reason': 'TypeError: Unsupported state type: pams.transaction_fees.ProportionalTransactionFee'}
+
+[abi-gil.log]
++zsh:5> d=$COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D
++zsh:7> c++ '-std=c++17' -I $COREORDER_ARCHIVES/CoreOrder-P10/include $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/abi_check.cpp -o results/acceptance/g2/p10/abi_check
++zsh:8> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/compare_abi.py results/acceptance/g2/p10/abi_check
+PASS NumPy-to-C++ all fields, descending market IDs preserved
+input 112 8
+output 16 8
+metadata 24 8
+p_now 0
+p_fund 8
+p_then 16
+w_f 24
+w_c 32
+w_n 40
+noise_scale 48
+order_margin 56
+z_noise 64
+z_margin 72
+window 80
+effective_window 88
+mean_reversion 96
+margin_type 104
+chart_sign 108
+price 0
+side 8
+error 12
+agent_id 0
+market_id 8
+call_index 16
+PASS numpy=1.26.4 python=3.12.11 fields=21
++zsh:9> .venv/bin/python -B -
+PASS production GIL release and overlapping re-entry rejection, successful result owns data, reuse after rejected call.
+
+[build-asan.log]
++zsh:4> .venv/bin/cmake -S . -B build-asan-p10 '-DCMAKE_BUILD_TYPE=RelWithDebInfo' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DBUILD_TESTING=OFF' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P10/.venv/bin/python' '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' '-DCMAKE_SHARED_LINKER_FLAGS=-fsanitize=address,undefined' '-DCMAKE_MODULE_LINKER_FLAGS=-fsanitize=address,undefined'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P10/.venv/bin/python (found suitable version "3.12.11", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P10/build-asan-p10
++zsh:5> .venv/bin/cmake --build build-asan-p10 --parallel 2
+[ 16%] Building CXX object native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o
+[ 33%] Linking CXX static library libcoreorder_runtime.a
+[ 33%] Built target coreorder_runtime
+[ 66%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o
+[ 66%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 83%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-darwin.so
+[100%] Built target _coreorder_fcn
+
+[asan.log]
++zsh:5> asan_runtime=+zsh:5> clang++ --print-resource-dir
++zsh:5> asan_runtime=/Library/Developer/CommandLineTools/usr/lib/clang/21/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
++zsh:6> test -f /Library/Developer/CommandLineTools/usr/lib/clang/21/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
++zsh:7> export DYLD_INSERT_LIBRARIES=/Library/Developer/CommandLineTools/usr/lib/clang/21/lib/darwin/libclang_rt.asan_osx_dynamic.dylib
++zsh:8> export ASAN_OPTIONS='detect_leaks=0:halt_on_error=1'
++zsh:9> export UBSAN_OPTIONS='halt_on_error=1:print_stacktrace=1'
++zsh:11> .venv/bin/python -B -c 'import _coreorder_fcn as m; print("Loaded", m.__file__, m.contract_version); assert "build-asan-p10" in m.__file__'
+Loaded $COREORDER_ARCHIVES/CoreOrder-P10/build-asan-p10/_coreorder_fcn.cpython-312-darwin.so coreorder-r4-v1
+......
+6 passed, 26 deselected in 0.08s
++zsh:13> .venv/bin/python -B -m coreorder run --config configs/workloads/native-serial-normal.json --seed 42 --backend native-parallel --workers 4 --layout soa --grain 2 --schedule dynamic --book-restore incremental --validation-trace --output results/acceptance/g2/p10/asan-native-market
+PASS deaae59ec2514edb987a903e832b068d: 89 orders, 28 executions
++zsh:14> .venv/bin/python -B -m validation compare --reference results/acceptance/g2/p10/core-matrix/native-serial-normal-reference.json.gz --candidate results/acceptance/g2/p10/asan-native-market/validation-trace.json.gz
+{"status": "PASS", "scopes": ["events", "steps", "final", "rng", "initial"]}
+
+[tsan.log]
++zsh:111> clang++ '-std=c++17' -O1 -g -pthread -fno-omit-frame-pointer '-fsanitize=thread' -fno-fast-math '-ffp-contract=off' -I include -I native/runtime -isystem vendor/taskflow native/runtime/executor.cpp native/fcn/evaluate.cpp results/acceptance/g2/p10/audit_ranges_p10.cpp -o results/acceptance/g2/p10/tsan-ranges
++zsh:112> TSAN_OPTIONS='halt_on_error=1' .venv/bin/python -B -c 'import subprocess,sys; sys.exit(subprocess.run(sys.argv[1:], timeout=45).returncode)' results/acceptance/g2/p10/tsan-ranges
+PASS actual workers=1 batches=21 exact row ownership, strict barrier, smallest thrown range, re-entry
+PASS actual workers=2 batches=21 exact row ownership, strict barrier, smallest thrown range, re-entry
+PASS actual workers=4 batches=21 exact row ownership, strict barrier, smallest thrown range, re-entry
+
+[project.log]
+============================= test session starts ==============================
+platform darwin -- Python 3.12.11, pytest-7.4.4, pluggy-1.5.0
+rootdir: $COREORDER_ARCHIVES/CoreOrder-P10
+configfile: pyproject.toml
+testpaths: tests
+collected 92 items
+
+tests/differential/test_e1.py ........                                   [  8%]
+tests/differential/test_e2.py ........                                   [ 17%]
+tests/differential/test_e3.py ................                           [ 34%]
+tests/heap/test_heap_runs.py .....................                       [ 57%]
+tests/heap/test_market_adapter.py .........                              [ 67%]
+tests/platform/test_contract.py ........                                 [ 76%]
+tests/platform/test_foundation.py ....                                   [ 80%]
+tests/platform/test_native_serial.py .............                       [ 94%]
+tests/platform/test_py_seq.py .....                                      [100%]
+
+=============================== warnings summary ===============================
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+tests/heap/test_market_adapter.py: 9 warnings
+
+
+
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 92 passed, 39 warnings in 56.13s =======================
+
+[gate-verdict.json]
+{
+  "candidate_sha": "92f8bbf08da514dcb24e27b6a815d3947c352798",
+  "formal_G2": "BLOCKED",
+  "technical_matrix": {
+    "PASS": 56
+  },
+  "E_gate": {
+    "FAIL": 56
+  },
+  "E_record": {
+    "FAIL": 56
+  },
+  "pre_tick_orders": {
+    "PASS": 22
+  },
+  "interfaces": {
+    "minimal_record_failure": {
+      "status": "FAIL",
+      "seed": 42,
+      "markets": 1,
+      "agents": 1,
+      "steps": 1,
+      "first_location": "manifest.input_hash (before first event)",
+      "manifest_raw_sha256": "752c46c00a828661bbbf46b3e08f7534b5cb52d5e55e26b2e31de0719df430c2",
+      "reference_normalized_sha256": "6741e70be699f243372ccc89bb5c4b229a25cff26eacbb829783c67f1288f6a3",
+      "E_result": {
+        "status": "FAIL",
+        "reason": "Candidate manifest identity mismatch",
+        "field": "input_hash"
+      }
+    },
+    "unsupported_native-serial": "ValueError: native mode requires exact PAMS FCNAgent for ordinary agents",
+    "unsupported_native-parallel": "ValueError: native mode requires exact PAMS FCNAgent for ordinary agents",
+    "unsupported_index": "ValueError: native mode requires exact PAMS Market or the selected CoreOrderMarket adapter",
+    "explicit_fallback": {
+      "status": "NOT_RUN",
+      "reason": "parser rejects --unsupported-policy upstream (exit 2)"
+    },
+    "explicit_upstream_request": "PASS",
+    "missing_extension": "PASS",
+    "fee": {
+      "production_differential": "PASS",
+      "executions": 28,
+      "E_full_trace": "BLOCKED",
+      "reason": "TypeError: Unsupported state type: pams.transaction_fees.ProportionalTransactionFee"
+    }
+  }
+}
+
+[boundary inventory]
+{"agent_calls": 6, "case": "reference-C01a-M1-101", "decision_rows": 6, "empty_calls": 0, "executions": 0, "expirations": 4, "gauss_api_calls": 6, "gaussian_cache_hits": 0, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 6}
+{"agent_calls": 18, "case": "reference-C01b-normal-101", "decision_rows": 18, "empty_calls": 0, "executions": 6, "expirations": 4, "gauss_api_calls": 36, "gaussian_cache_hits": 18, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 18}
+{"agent_calls": 18, "case": "reference-C01b-prefilled-cache-101", "decision_rows": 18, "empty_calls": 0, "executions": 8, "expirations": 2, "gauss_api_calls": 36, "gaussian_cache_hits": 18, "inaccessible_visits": 0, "initial_cached_agents": 8, "orders": 18}
+{"agent_calls": 18, "case": "reference-C01b-prefilled-cache-303", "decision_rows": 18, "empty_calls": 0, "executions": 7, "expirations": 2, "gauss_api_calls": 36, "gaussian_cache_hits": 18, "inaccessible_visits": 0, "initial_cached_agents": 8, "orders": 18}
+{"agent_calls": 48, "case": "reference-C01c-all-empty-101", "decision_rows": 48, "empty_calls": 48, "executions": 0, "expirations": 0, "gauss_api_calls": 48, "gaussian_cache_hits": 24, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 0}
+{"agent_calls": 37, "case": "reference-C01c-mixed-empty-101", "decision_rows": 18, "empty_calls": 19, "executions": 1, "expirations": 9, "gauss_api_calls": 18, "gaussian_cache_hits": 9, "inaccessible_visits": 19, "initial_cached_agents": 0, "orders": 18}
+{"agent_calls": 18, "case": "reference-C01d-sparse-access-101", "decision_rows": 18, "empty_calls": 0, "executions": 0, "expirations": 10, "gauss_api_calls": 18, "gaussian_cache_hits": 8, "inaccessible_visits": 18, "initial_cached_agents": 0, "orders": 18}
+{"agent_calls": 48, "case": "reference-C01d-zero-access-101", "decision_rows": 0, "empty_calls": 48, "executions": 0, "expirations": 0, "gauss_api_calls": 0, "gaussian_cache_hits": 0, "inaccessible_visits": 48, "initial_cached_agents": 0, "orders": 0}
+{"agent_calls": 18, "case": "reference-C01e-four-markets-101", "decision_rows": 72, "empty_calls": 0, "executions": 0, "expirations": 44, "gauss_api_calls": 72, "gaussian_cache_hits": 36, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 72}
+{"agent_calls": 18, "case": "reference-C01e-four-markets-202", "decision_rows": 72, "empty_calls": 0, "executions": 0, "expirations": 40, "gauss_api_calls": 72, "gaussian_cache_hits": 36, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 72}
+{"agent_calls": 0, "case": "reference-C01f-M0-101", "decision_rows": 0, "empty_calls": 0, "executions": 0, "expirations": 0, "gauss_api_calls": 0, "gaussian_cache_hits": 0, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 0}
+{"agent_calls": 48, "case": "reference-C01f-MaboveN-101", "decision_rows": 48, "empty_calls": 0, "executions": 0, "expirations": 27, "gauss_api_calls": 48, "gaussian_cache_hits": 24, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 48}
+{"agent_calls": 48, "case": "reference-C01f-MequalsN-101", "decision_rows": 48, "empty_calls": 0, "executions": 0, "expirations": 27, "gauss_api_calls": 48, "gaussian_cache_hits": 24, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 48}
+{"agent_calls": 18, "case": "reference-C01g-fundamental-shock-101", "decision_rows": 18, "empty_calls": 0, "executions": 0, "expirations": 10, "gauss_api_calls": 18, "gaussian_cache_hits": 8, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 18}
+{"agent_calls": 9, "case": "reference-C01g-placement-stopped-101", "decision_rows": 9, "empty_calls": 0, "executions": 0, "expirations": 9, "gauss_api_calls": 9, "gaussian_cache_hits": 2, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 9}
+{"agent_calls": 18, "case": "reference-C01h-MarketMaker-101", "decision_rows": 18, "empty_calls": 0, "executions": 0, "expirations": 41, "gauss_api_calls": 18, "gaussian_cache_hits": 6, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 54}
+{"agent_calls": 18, "case": "reference-C01h-MarketMaker-303", "decision_rows": 18, "empty_calls": 0, "executions": 0, "expirations": 40, "gauss_api_calls": 18, "gaussian_cache_hits": 6, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 54}
+{"agent_calls": 6, "case": "reference-C01k-fixed-zero-price-101", "decision_rows": 6, "empty_calls": 0, "executions": 0, "expirations": 4, "gauss_api_calls": 6, "gaussian_cache_hits": 0, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 6}
+{"agent_calls": 35, "case": "reference-native-serial-normal-42", "decision_rows": 57, "empty_calls": 11, "executions": 28, "expirations": 25, "gauss_api_calls": 114, "gaussian_cache_hits": 57, "inaccessible_visits": 13, "initial_cached_agents": 0, "orders": 89}
+{"agent_calls": 24, "case": "reference-p09-full-quota-42", "decision_rows": 24, "empty_calls": 0, "executions": 10, "expirations": 0, "gauss_api_calls": 24, "gaussian_cache_hits": 12, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 24}
+{"agent_calls": 80, "case": "reference-smoke-42", "decision_rows": 80, "empty_calls": 0, "executions": 14, "expirations": 0, "gauss_api_calls": 80, "gaussian_cache_hits": 34, "inaccessible_visits": 0, "initial_cached_agents": 0, "orders": 80}
+
+build, core-matrix, boundary-matrix, proposals, interfaces, ABI/GIL, ASan/UBSan, TSan and pytest wrappers exited 0.
+Core matrix wrapper 0 means the P09 representative candidate scope and does not resolve the E gate failures.
+Initial audit driver exited 1 with TypeError: unhashable type: 'list'; raw initial log and outputs retained.
+Pre-tick supplemental tests ran after fast-forward to ae9dcf4 with a verified empty candidate-source diff.

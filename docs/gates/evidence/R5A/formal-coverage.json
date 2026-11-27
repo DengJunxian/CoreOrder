@@ -1,0 +1,68 @@
+{
+  "scope": "R5A admission and coverage, no formal run launched",
+  "candidate_identity": "8113c98d7c108b8fd33dd86d35c7c63e890cf6f05fd731ded36551c26ce0219c",
+  "formal_state": "BLOCKED",
+  "formal_authorized_rows": 0,
+  "formal_raw_attempts": 0,
+  "formal_rejected_v01_receipts": 0,
+  "phases": {
+    "E01": {
+      "planned": 85,
+      "warmup": 10,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 85
+    },
+    "H01": {
+      "planned": 102,
+      "warmup": 12,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 102
+    },
+    "E02": {
+      "planned": 170,
+      "warmup": 20,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 170
+    },
+    "E03": {
+      "planned": 136,
+      "warmup": 16,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 136
+    },
+    "E05-profile": {
+      "planned": 4,
+      "warmup": 0,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 4
+    },
+    "E05-PMU": {
+      "planned": 24,
+      "warmup": 0,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 24
+    },
+    "E05-replay": {
+      "planned": 48,
+      "warmup": 12,
+      "valid": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not_run": 48
+    }
+  },
+  "missing_data_reason": "G3 has no effective lock or formal authorization",
+  "snapshot_utc": "2026-11-26T04:37:42+00:00"
+}

@@ -1,0 +1,4 @@
+G3 BLOCKED {'C01': 420, 'V01': 150, 'timing': 493, 'E05': 76}
+experiment refused: G3 BLOCKED: formal execution requires an effective G3 lock
+rejection_exit=2
+output directory absent

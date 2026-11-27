@@ -1,0 +1,375 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P07 | 2026-11-25 (Asia/Shanghai) | coreorder-r4-v1
+Base: 74af43df602d6ac95220c107790e0900abd4a649
+Executed source: da29dd6d4d80ffd1afebb059941a27e790a10070
+Raw commands and traces: results/acceptance/p07/
+
+--- remote-heads.tsv ---
+f8d2be9f1391ac5e430112665efaff7bb844c507	refs/heads/b/01-03-native
+5ad1ecb78272ff2564075cf01a90df252ae7e7ba	refs/heads/c/01-03-runtime
+f867a4fb07c928f459fa8b6d3e84a95ee88b1742	refs/heads/codex/g0-candidate
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75	refs/heads/d/01-03-layout
+b05d5555fa5cc756a91ab61c644e797ca227c26f	refs/heads/e/03-github-delivery
+e2492a4b8317c6674918b13470b577f4d6f8675d	refs/heads/main
+
+--- github-pr-read-only.json ---
+{
+  "url": "https://github.com/DengJunxian/CoreOrder/pull/1",
+  "state": "open",
+  "draft": true,
+  "head_sha": "f867a4fb07c928f459fa8b6d3e84a95ee88b1742",
+  "base_sha": "e2492a4b8317c6674918b13470b577f4d6f8675d",
+  "merged": false
+}
+
+--- build-and-abi.log ---
++zsh:2> git rev-parse HEAD
+da29dd6d4d80ffd1afebb059941a27e790a10070
++zsh:3> git status --porcelain
++zsh:4> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python'
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P07/build
++zsh:5> .venv/bin/cmake --build build --config Release --parallel 2
+[ 50%] Built target _coreorder_fcn
+[ 75%] Built target _coreorder_toolchain_smoke
+[100%] Built target coreorder_contract_smoke
++zsh:6> .venv/bin/ctest --test-dir build -C Release --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P07/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P07/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.00 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.11 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.12 sec
++zsh:7> c++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
++zsh:8> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:9> git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+[exit=0]
+
+--- source-runtime-check.log ---
+da29dd6d4d80ffd1afebb059941a27e790a10070
+normal order counts by agent ID: {9: 5, 12: 48, 5: 10, 6: 10, 7: 6, 4: 8, 8: 2}
+normal distinct ordinary agents and ordinary order counts by step: [(1, 3, 5), (2, 3, 6), (3, 3, 6), (4, 3, 5), (5, 3, 5), (6, 3, 5), (7, 3, 4), (8, 3, 5)]
+MarketA fundamental price by step: [(0, 300.0), (1, 300.0), (2, 300.0), (3, 270.0), (4, 270.0), (5, 270.0), (6, 270.0), (7, 270.0), (8, 270.0)]
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P07/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P07/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/module.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P07/native/bindings/module.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P07/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P07/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P07/native/bindings/fcn_binding.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P07/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P07/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P07/native/fcn/evaluate.cpp
+
+test_native_failure_stops_run_0
+{"status":"FAIL","reason":"ValueError: native-serial requires exact PAMS FCNAgent for ordinary agents"}
+{"backend_requested":"native-serial","backend_effective":"native-serial"}
+
+test_native_failure_stops_run_1
+{"status":"FAIL","reason":"ValueError: FCN row 0 failed with error 1"}
+{"backend_requested":"native-serial","backend_effective":"native-serial"}
+
+test_native_serial_requires_a_0
+{"status":"UNSUPPORTED","reason":"native-serial requires the built _coreorder_fcn extension on PYTHONPATH"}
+{"backend_requested":"native-serial","backend_effective":null}
+
+--- market-comparisons.log ---
++zsh:133> git rev-parse HEAD
+da29dd6d4d80ffd1afebb059941a27e790a10070
++zsh:134> git status --porcelain
++zsh:135> PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P07/build:$COREORDER_ARCHIVES/CoreOrder-P07 .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/audit_p07.py $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/cli-py-seq']
+exit=0
+PASS b48ed5b1e4344960b89dc57fcf3da924: 80 orders, 14 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/cli-native-serial']
+exit=0
+PASS 17b26df77df349bd84401c41c24e7e4d: 80 orders, 14 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'validation', 'collect', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/workload.json', '--seed', '42', '--pams-root', '$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/smoke/reference.json.gz']
+exit=0
+{"backend_effective": "py-seq", "hashes": {"events": "be8151a618e06f8ac7f24b5519e990a0b7b6371357deb54574fd3a1b57072973", "steps": "c75a50a288670ef7c04d19a134f21571a500df20f0c19c46f62caaac23f2b197", "final": "17c8b0200518cff25931be6d65d9e171ebd614c39558458bf24c6a1dc0c32326", "rng": "bdfd1873a9fb75ade4581658d4d16a5516d54a55ac7e2b46ddf703c4389f09e4"}, "events": 260, "steps": 81}
+
+$COREORDER_ARCHIVES/CoreOrder-P07/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P07/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+{'status': 'PASS', 'workload': 'smoke.json', 'input_sha256': 'ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6', 'events': 260, 'checkpoints': 81, 'market_steps': 80, 'agent_calls': 80, 'native_rows': 80, 'gauss_api_calls': 80, 'batch_widths': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'orders': 80, 'executions': 14, 'expirations': 0, 'trace_hash': '9805f9c715075910acf8fbeacbe66b52fc94bf315d471ac3eb63d3b7cd73cab8', 'final_state_hash': '5a0a6df88b746796e60f450163a9988240fd90587d0e8677513f807cc58a7c12', 'rng_hash': '9aeb65d7f46ba3afe46cda4a469f9abcb95200f91739931b418eeaba6293622c'}
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/cli-py-seq']
+exit=0
+PASS f9e073a162e447f7b9eb78f182fd78d3: 89 orders, 28 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/cli-native-serial']
+exit=0
+PASS e7ce012c8f624b87ba3b0a0cb58dbb94: 89 orders, 28 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python', '-B', '-m', 'validation', 'collect', '--config', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/workload.json', '--seed', '42', '--pams-root', '$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams', '--output', '$COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/full-markets/native-serial-normal/reference.json.gz']
+exit=0
+{"backend_effective": "py-seq", "hashes": {"events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489", "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e", "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0", "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"}, "events": 184, "steps": 10}
+
+{'status': 'PASS', 'workload': 'native-serial-normal.json', 'input_sha256': 'f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252', 'events': 184, 'checkpoints': 10, 'market_steps': 18, 'agent_calls': 35, 'native_rows': 57, 'gauss_api_calls': 114, 'batch_widths': [3, 1, 3, 1, 3, 2, 3, 3, 1, 3, 3, 3, 3, 2, 1], 'orders': 89, 'executions': 28, 'expirations': 25, 'trace_hash': 'fb2bdd53b3a88969101ebe52f726bc6dd1b5114be6b0cac48c10bfc7d60e8bc9', 'final_state_hash': '378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e', 'rng_hash': '4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f'}
+
+--- scope-rejections.log ---
+UNSUPPORTED: native-serial supports AoS with upstream book restore (see $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/reject-soa/stderr.log)
+soa exit=2
+true
+UNSUPPORTED: native-serial supports AoS with upstream book restore (see $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/reject-incremental/stderr.log)
+incremental exit=2
+true
+UNSUPPORTED: serial backends support one worker and no grain or schedule (see $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/reject-workers/stderr.log)
+workers exit=2
+true
+
+--- project-regression.log ---
++zsh:2> git rev-parse HEAD
+da29dd6d4d80ffd1afebb059941a27e790a10070
++zsh:3> git status --porcelain
++zsh:4> PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P07/build PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider --basetemp $COREORDER_ARCHIVES/CoreOrder-P07/results/acceptance/p07/project-artifacts
+........................................................................ [ 85%]
+............                                                             [100%]
+=============================== warnings summary ===============================
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+tests/heap/test_market_adapter.py: 9 warnings
+  $COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+    _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e1.py::test_non_array_event_trace_reports_first_difference
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+tests/differential/test_e3.py::test_diagnostic_business_equivalence
+tests/differential/test_e3.py::test_missing_and_fallback_never_pass
+tests/differential/test_e3.py::test_negative_cash_is_upstream_legal
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  $COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+  $COREORDER_ARCHIVES/CoreOrder-P07/validation/reference.py:26: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner = classes[backend](settings=effective, prng=random.Random(seed), logger=logger,
+
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+  $COREORDER_ARCHIVES/CoreOrder-P07/tests/differential/test_e3.py:134: UserWarning: MultiThreadAgentParallelRunner is experimental. Future changes may occur disruptively.
+    runner=cls(settings=copy.deepcopy(config),prng=random.Random(303),logger=logger,simulator_class=ObservedSimulator)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+84 passed, 39 warnings in 45.97s
+[exit=0]
+
+--- member-b-serial.log ---
++zsh:2> git rev-parse HEAD
+f8d2be9f1391ac5e430112665efaff7bb844c507
++zsh:3> git status --porcelain
++zsh:4> export PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P07/build:$COREORDER_ARCHIVES/CoreOrder-P07/src:$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams
++zsh:5> COREORDER_FCN_TEST_MODULE=_coreorder_fcn $COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python -B -m pytest -q -s -p no:cacheprovider tests/native/test_fcn.py
+.PUBLIC_RNG_CROSS_HOST []
+...LIVE_PAMS {"empty": 2387, "inaccessible": 910, "margin_0_chart_-1": 2270, "margin_0_chart_1": 2270, "margin_1_chart_-1": 2274, "margin_1_chart_1": 2276, "mean_reversion_zero": 575, "normal_empty": 1217, "prefilled_agents": 50, "rows": 9090, "time_zero": 1820, "unclipped_forecast": 3640, "window_zero": 1818}
+...............sssssssssssss
+=============================== warnings summary ===============================
+tests/native/test_fcn.py::test_live_original[aos]
+  $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/vendor/pams/pams/agents/fcn_agent.py:196: UserWarning: price should be positive
+    Order(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+19 passed, 13 skipped, 1 warning in 1.66s
+[exit=0]
+
+--- member-d-layout.log ---
++zsh:2> git rev-parse HEAD
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75
++zsh:3> git status --porcelain
++zsh:4> export PYTHONPATH=$COREORDER_ARCHIVES/CoreOrder-P07/build:$COREORDER_ARCHIVES/CoreOrder-P07/src:$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams
++zsh:5> export COREORDER_PAMS_FIXTURE=$COREORDER_ARCHIVES/CoreOrder-P07/fixtures/pams
++zsh:6> $COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python -B -m pytest -q -p no:cacheprovider tests/layout
+.............                                                            [100%]
+13 passed in 0.78s
++zsh:7> $COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python -B tests/layout/replay_binding.py $COREORDER_ARCHIVES/CoreOrder-P07/fixtures/pams
+python 3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)] numpy 1.26.4 host macOS-27.0-arm64-arm-64bit
+production binding $COREORDER_ARCHIVES/CoreOrder-P07/build/_coreorder_fcn.cpython-312-darwin.so
+input SHA256 c7bd6c091b008534c8b0978128b41141acd3cfb643de0ee95165c12a0002c6aa rows 24 PAMS 6cd53810103780770c5b5d6ee0069ccab9f4b358 fixture environment {'architecture': 'arm64', 'os': 'macOS-27.0-arm64-arm-64bit', 'packages': {'numpy': '1.26.4', 'scipy': '1.14.1', 'tqdm': '4.66.6'}, 'python': '3.12.13'} seed 42
+aos output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"rows": 2688}, "buffer_capacity_nbytes": {"rows": 2688}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+soa output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "buffer_capacity_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+AoS vs SoA: all output bytes identical
+B vs recorded oracle mismatching row indices []
++zsh:8> $COREORDER_ARCHIVES/CoreOrder-P07/.venv/bin/python -B tests/layout/replay_live_event.py $COREORDER_ARCHIVES/CoreOrder-P07/fixtures/pams
+$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P07/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Python 3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)] NumPy 1.26.4 binding $COREORDER_ARCHIVES/CoreOrder-P07/build/_coreorder_fcn.cpython-312-darwin.so
+input sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934 pams_sha 6cd53810103780770c5b5d6ee0069ccab9f4b358 seed 42
+# INITIALIZATION TIME 0.00131
+# EXECUTION TIME 0.008286
+counts {'calls': 24, 'before': 10, 'gauss': 24, 'orders': 24, 'shock_hooks': 1, 'after': 14}
+before steps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] fundamental prices ['0x1.2c00000000000p+8']
+after steps [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] fundamental prices ['0x1.0e00000000000p+8']
+all live outputs matched PAMS including price bytes and identity; observed agent RNG unchanged
+ordered outputs sha256 7107a3fcb0564c8d2ef3d0f7033a5cf137f9446b447d190a709bd550ddd2709d
+[exit=0]
+
+--- E and CLI summary ---
+{
+  "status": "PASS",
+  "git_sha": "da29dd6d4d80ffd1afebb059941a27e790a10070",
+  "seed": 42,
+  "native_module": {
+    "path": "$COREORDER_ARCHIVES/CoreOrder-P07/build/_coreorder_fcn.cpython-312-darwin.so",
+    "sha256": "6575e0176fd3d8bfe1e9985fc380f7d31e7d1e38882ce1325b41d7b9a15ed26c",
+    "contract_version": "coreorder-r4-v1"
+  },
+  "cases": [
+    {
+      "status": "PASS",
+      "workload": "smoke.json",
+      "input_sha256": "ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6",
+      "events": 260,
+      "checkpoints": 81,
+      "market_steps": 80,
+      "agent_calls": 80,
+      "native_rows": 80,
+      "gauss_api_calls": 80,
+      "batch_widths": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "orders": 80,
+      "executions": 14,
+      "expirations": 0,
+      "trace_hash": "9805f9c715075910acf8fbeacbe66b52fc94bf315d471ac3eb63d3b7cd73cab8",
+      "final_state_hash": "5a0a6df88b746796e60f450163a9988240fd90587d0e8677513f807cc58a7c12",
+      "rng_hash": "9aeb65d7f46ba3afe46cda4a469f9abcb95200f91739931b418eeaba6293622c"
+    },
+    {
+      "status": "PASS",
+      "workload": "native-serial-normal.json",
+      "input_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+      "events": 184,
+      "checkpoints": 10,
+      "market_steps": 18,
+      "agent_calls": 35,
+      "native_rows": 57,
+      "gauss_api_calls": 114,
+      "batch_widths": [
+        3,
+        1,
+        3,
+        1,
+        3,
+        2,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        2,
+        1
+      ],
+      "orders": 89,
+      "executions": 28,
+      "expirations": 25,
+      "trace_hash": "fb2bdd53b3a88969101ebe52f726bc6dd1b5114be6b0cac48c10bfc7d60e8bc9",
+      "final_state_hash": "378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e",
+      "rng_hash": "4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f"
+    }
+  ]
+}
+[market comparisons exit=0]

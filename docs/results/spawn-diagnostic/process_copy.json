@@ -1,0 +1,1 @@
+{"dispatch_send_s": 0.6065548388287425, "scope": "parent call queue; pipe send time excludes pickle, receiving and unpickle", "serialized_dispatch_bytes": 294586418, "start_method": "spawn", "tasks_sent": 601}

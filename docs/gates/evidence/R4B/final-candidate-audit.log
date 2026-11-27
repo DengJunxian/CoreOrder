@@ -1,0 +1,7 @@
+PASS identity, hashes, exact schedule, 125 V01 bindings, 493 timing bindings and 76 diagnostic rows: 8113c98d7c108b8fd33dd86d35c7c63e890cf6f05fd731ded36551c26ce0219c
+C01 {'PASS': 420} wall_attempts_s 135.289 raw_bytes 73512376
+V01 {'PASS': 145} wall_attempts_s 3866.324 raw_bytes 12784541055
+Replay source: 8192 actual FCN rows; retained settings/seed match sealed V01; calibration 3000 calls.
+G3 BLOCKED {'C01': 420, 'V01': 145, 'timing': 493, 'E05': 76}
+experiment refused: G3 BLOCKED: formal execution requires an effective G3 lock
+formal_timing_rejection_exit=2

@@ -1,0 +1,3 @@
+FAIL: RuntimeError: profile did not observe every native phase (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/profile-reproducer/stderr.log)
+event, callback type, same object, rich equality, same receiver = ('c_return', 'builtin_function_or_method', True, True, True) count = 6
+exit=1

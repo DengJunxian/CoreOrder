@@ -1,0 +1,36 @@
+{
+  "date_local": "2026-11-26",
+  "role": "Parallel team leader and member A",
+  "source": "user decisions in the R4B task conversation",
+  "approved_research_scope": "no-fee markets; explicit rejection and manually selected py-seq; whole-run automatic fallback outside G2 scope",
+  "approved_steps": {
+    "E02_W1": "reuse W1-H at 20+100",
+    "E03_E05_W2": "reuse W2-H at 8+24",
+    "W3": "original 2+8"
+  },
+  "approved_E02_workers": [
+    1,
+    2,
+    4
+  ],
+  "approved_E05_events": [
+    "cpu-work",
+    "L1-data",
+    "branch"
+  ],
+  "approved_E05_rows": [
+    2048,
+    4096,
+    8192
+  ],
+  "V01_limit_minutes": 80,
+  "approved_counts": {
+    "C01": 420,
+    "V01_candidates": 125,
+    "V01_references": 20,
+    "timing": 435,
+    "warmup": 58,
+    "E05": 76
+  },
+  "delegation": "The leader approved all outstanding decisions in their scope and requested autonomous execution without further questions."
+}

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["uv_build==0.12.19"]
+build-backend = "uv_build"
+
+[project]
+name = "coreorder"
+version = "0.1.0.dev0"
+description = "Research on deterministic multicore execution for financial market simulation"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "EPL-1.0"
+license-files = ["LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# In-process tests share the locked source; CLI tests exercise the installed package in subprocesses.
+pythonpath = ["vendor/pams"]

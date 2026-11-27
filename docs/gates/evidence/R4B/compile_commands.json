@@ -1,0 +1,68 @@
+[
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/bindings -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -isystem /usr/include/python3.12 -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pybind11/include -O3 -DNDEBUG -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/coreorder_module.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/coreorder_module.cpp",
+  "output": "CMakeFiles/_coreorder_fcn.dir/native/coreorder_module.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/bindings -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -isystem /usr/include/python3.12 -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pybind11/include -O3 -DNDEBUG -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/bindings/fcn_binding.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/bindings/fcn_binding.cpp",
+  "output": "CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/bindings -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -isystem /usr/include/python3.12 -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pybind11/include -O3 -DNDEBUG -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "output": "CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -D_coreorder_toolchain_smoke_EXPORTS -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/taskflow -isystem /usr/include/python3.12 -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pybind11/include -O3 -DNDEBUG -std=c++17 -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/toolchain_smoke.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/toolchain_smoke.cpp",
+  "output": "CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++  -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -O3 -DNDEBUG -std=c++17 -o CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/contract_smoke.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/contract_smoke.cpp",
+  "output": "CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -DCOREORDER_FIXTURE_PATH=\\\"<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/fixtures/pams/fcn/rows.jsonl\\\" -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -O3 -DNDEBUG -fno-fast-math -ffp-contract=off -o CMakeFiles/c2_executor_test.dir/tests/platform/c2_executor_test.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/c2_executor_test.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/c2_executor_test.cpp",
+  "output": "CMakeFiles/c2_executor_test.dir/tests/platform/c2_executor_test.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -DCOREORDER_FIXTURE_PATH=\\\"<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/fixtures/pams/fcn/rows.jsonl\\\" -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -O3 -DNDEBUG -fno-fast-math -ffp-contract=off -o CMakeFiles/c2_executor_test.dir/native/fcn/evaluate.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "output": "CMakeFiles/c2_executor_test.dir/native/fcn/evaluate.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -DCOREORDER_FIXTURE_PATH=\\\"<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/fixtures/pams/fcn/rows.jsonl\\\" -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -O3 -DNDEBUG -fno-fast-math -ffp-contract=off -o CMakeFiles/c3_determinism_test.dir/tests/platform/c3_determinism_test.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/c3_determinism_test.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/platform/c3_determinism_test.cpp",
+  "output": "CMakeFiles/c3_determinism_test.dir/tests/platform/c3_determinism_test.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++ -DCOREORDER_FIXTURE_PATH=\\\"<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/fixtures/pams/fcn/rows.jsonl\\\" -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -O3 -DNDEBUG -fno-fast-math -ffp-contract=off -o CMakeFiles/c3_determinism_test.dir/native/fcn/evaluate.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/fcn/evaluate.cpp",
+  "output": "CMakeFiles/c3_determinism_test.dir/native/fcn/evaluate.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build",
+  "command": "/usr/bin/c++  -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -O3 -DNDEBUG -o CMakeFiles/coreorder_layout_abi.dir/tests/layout/abi_check.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/layout/abi_check.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/tests/layout/abi_check.cpp",
+  "output": "CMakeFiles/coreorder_layout_abi.dir/tests/layout/abi_check.cpp.o"
+},
+{
+  "directory": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/build/native/runtime",
+  "command": "/usr/bin/c++  -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/include -I<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime -isystem <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/taskflow -O3 -DNDEBUG -std=c++17 -fPIC -fno-fast-math -ffp-contract=off -Wall -Wextra -Werror -o CMakeFiles/coreorder_runtime.dir/executor.cpp.o -c <LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime/executor.cpp",
+  "file": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/native/runtime/executor.cpp",
+  "output": "native/runtime/CMakeFiles/coreorder_runtime.dir/executor.cpp.o"
+}
+]

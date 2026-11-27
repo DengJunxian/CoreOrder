@@ -1,0 +1,28 @@
+3.12.13 3.11.2
+Regenerate the evidence in a fresh directory
+PASS: 565 validation records, 19 planned comparisons, 285 expected pair slots, 0 observed pairs; 12 replay calibration launches
+Artifact byte comparison: PASS
+docs/gates/evidence/R5B/artifacts/validation/configuration.pdf
+Pages:           1
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+FQFHIC+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     15  0
+ECSWBS+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     22  0
+docs/gates/evidence/R5B/artifacts/validation/correctness.pdf
+Pages:           1
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+ERNYFM+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     15  0
+ECSWBS+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     22  0
+docs/gates/evidence/R5B/artifacts/pilot/instrumented-spans.pdf
+Pages:           1
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+CHJTGA+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     15  0
+BXCTDP+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     22  0
+docs/gates/evidence/R5B/artifacts/pilot/replay-calibration.pdf
+Pages:           1
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+CVBVPN+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     19  0
+GLCHNY+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     26  0

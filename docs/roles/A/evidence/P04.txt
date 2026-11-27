@@ -1,0 +1,705 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder G0 P04 execution transcript
+2026-11-25 (Asia/Shanghai) | coreorder-r4-v1
+Executed source candidate: 040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb
+Full raw evidence: results/acceptance/g0/p04-20261125-151426/
+Trailing whitespace trimmed in this Git copy. Original logs and streams are in the raw archive.
+
+--- worktree.txt ---
+HEAD is now at 040cfe9 feat: establish the R4-v1 team contracts and PAMS fixtures
+
+--- 01-fresh-install.log ---
+
++ git rev-parse HEAD
+040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb
+[exit=0]
+
++ git status --porcelain=v1 --untracked-files=all
+[exit=0]
+
++ git submodule update --init --recursive --depth 1
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/pams'...
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11'...
+Cloning into '/tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow'...
+Submodule path 'vendor/pams': checked out '6cd53810103780770c5b5d6ee0069ccab9f4b358'
+From https://github.com/pybind/pybind11
+ * branch            a2e59f0e7065404b44dfe92a28aca47ba1378dc4 -> FETCH_HEAD
+Submodule path 'vendor/pybind11': checked out 'a2e59f0e7065404b44dfe92a28aca47ba1378dc4'
+From https://github.com/taskflow/taskflow
+ * branch            816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 -> FETCH_HEAD
+Submodule path 'vendor/taskflow': checked out '816b4ad53b44196c88f409eb7b4a25a0e3bfdf42'
+[exit=0]
+
++ git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+[exit=0]
+
++ uname -smr
+Darwin 27.0.0 arm64
+[exit=0]
+
++ sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
+[exit=0]
+
++ c++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+[exit=0]
+
++ git --version
+git version 2.50.1 (Apple Git-155)
+[exit=0]
+
++ python3.12 -m venv .venv
+[exit=0]
+
++ python --version
+Python 3.12.13
+[exit=0]
+
++ python -m pip install --only-binary=:all: -r requirements.lock
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Collecting attrs==25.3.0 (from -r requirements.lock (line 2))
+  Downloading attrs-25.3.0-py3-none-any.whl.metadata (10 kB)
+Collecting cmake==3.31.6 (from -r requirements.lock (line 3))
+  Downloading cmake-3.31.6-py3-none-macosx_10_10_universal2.whl.metadata (6.3 kB)
+Collecting iniconfig==2.0.0 (from -r requirements.lock (line 5))
+  Downloading iniconfig-2.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting jsonschema-specifications==2024.10.1 (from -r requirements.lock (line 6))
+  Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting jsonschema==4.23.0 (from -r requirements.lock (line 7))
+  Downloading jsonschema-4.23.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting numpy==1.26.4 (from -r requirements.lock (line 8))
+  Downloading numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl.metadata (61 kB)
+Collecting packaging==24.2 (from -r requirements.lock (line 9))
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Requirement already satisfied: pip==26.1.2 in ./.venv/lib/python3.12/site-packages (from -r requirements.lock (line 10)) (26.1.2)
+Collecting pluggy==1.5.0 (from -r requirements.lock (line 11))
+  Downloading pluggy-1.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pytest==7.4.4 (from -r requirements.lock (line 12))
+  Downloading pytest-7.4.4-py3-none-any.whl.metadata (7.9 kB)
+Collecting referencing==0.36.2 (from -r requirements.lock (line 13))
+  Downloading referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py==0.23.1 (from -r requirements.lock (line 14))
+  Downloading rpds_py-0.23.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (4.1 kB)
+Collecting scipy==1.14.1 (from -r requirements.lock (line 15))
+  Downloading scipy-1.14.1-cp312-cp312-macosx_14_0_arm64.whl.metadata (60 kB)
+Collecting tqdm==4.66.6 (from -r requirements.lock (line 16))
+  Downloading tqdm-4.66.6-py3-none-any.whl.metadata (57 kB)
+Collecting typing-extensions==4.16.0 (from -r requirements.lock (line 17))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting uv-build==0.12.19 (from -r requirements.lock (line 18))
+  Downloading uv_build-0.12.19-py3-none-macosx_11_0_arm64.whl.metadata (1.7 kB)
+Downloading attrs-25.3.0-py3-none-any.whl (63 kB)
+Downloading cmake-3.31.6-py3-none-macosx_10_10_universal2.whl (47.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.2/47.2 MB 9.7 MB/s  0:00:04
+Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
+Downloading numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl (13.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.7/13.7 MB 8.1 MB/s  0:00:01
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading pluggy-1.5.0-py3-none-any.whl (20 kB)
+Downloading pytest-7.4.4-py3-none-any.whl (325 kB)
+Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+Downloading rpds_py-0.23.1-cp312-cp312-macosx_11_0_arm64.whl (349 kB)
+Downloading scipy-1.14.1-cp312-cp312-macosx_14_0_arm64.whl (23.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.1/23.1 MB 8.6 MB/s  0:00:02
+Downloading tqdm-4.66.6-py3-none-any.whl (78 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading uv_build-0.12.19-py3-none-macosx_11_0_arm64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 13.4 MB/s  0:00:00
+Installing collected packages: uv-build, typing-extensions, tqdm, rpds-py, pluggy, packaging, numpy, iniconfig, cmake, attrs, scipy, referencing, pytest, jsonschema-specifications, jsonschema
+
+Successfully installed attrs-25.3.0 cmake-3.31.6 iniconfig-2.0.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 numpy-1.26.4 packaging-24.2 pluggy-1.5.0 pytest-7.4.4 referencing-0.36.2 rpds-py-0.23.1 scipy-1.14.1 tqdm-4.66.6 typing-extensions-4.16.0 uv-build-0.12.19
+[exit=0]
+
++ python -m pip install --no-deps --no-build-isolation ./vendor/pams -e .
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file:///tmp/coreorder-p04-clean.OrVmqX
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4b/02/9d/8579dc3572bac7b7df8c7d777c5aa8d0fce7280a59cafc7cc1
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=5168 sha256=ca2d998335cc446515da6522609e5b4f5f2d946b74e95a90b271c4121b41fd51
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-ekv7h9a6/wheels/4f/bc/d1/cc0b8979752f6c74f33ab3dbf25cd2c21b6c02dc8139a9f2c9
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+[exit=0]
+
++ python -m pip check
+No broken requirements found.
+[exit=0]
+
++ python -m pip list --format=freeze
+attrs==25.3.0
+cmake==3.31.6
+coreorder==0.1.0.dev0
+iniconfig==2.0.0
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+numpy==1.26.4
+packaging==24.2
+pams==0.3.0
+pip==26.1.2
+pluggy==1.5.0
+pytest==7.4.4
+referencing==0.36.2
+rpds-py==0.23.1
+scipy==1.14.1
+tqdm==4.66.6
+typing_extensions==4.16.0
+uv-build==0.12.19
+[exit=0]
+
++ git status --porcelain=v1 --untracked-files=all
+[exit=0]
+
+--- 02-integrity.log ---
+
++ git status --short --branch
+## HEAD (no branch)
+[exit=0]
+
++ git ls-tree HEAD vendor/
+160000 commit 6cd53810103780770c5b5d6ee0069ccab9f4b358	vendor/pams
+160000 commit a2e59f0e7065404b44dfe92a28aca47ba1378dc4	vendor/pybind11
+160000 commit 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42	vendor/taskflow
+[exit=0]
+
++ git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (heads/main)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (a2e59f0)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (816b4ad)
+[exit=0]
+
++ git submodule foreach --quiet --recursive git remote get-url origin && git rev-parse HEAD && git fsck --no-dangling && git status --porcelain=v1 --untracked-files=all --ignored=matching
+https://github.com/masanorihirano/pams.git
+6cd53810103780770c5b5d6ee0069ccab9f4b358
+https://github.com/pybind/pybind11.git
+a2e59f0e7065404b44dfe92a28aca47ba1378dc4
+https://github.com/taskflow/taskflow.git
+816b4ad53b44196c88f409eb7b4a25a0e3bfdf42
+[exit=0]
+
++ cmp LICENSE vendor/pams/LICENSE
+[exit=0]
+
++ cmp licenses/PAMS-EPL-1.0.txt vendor/pams/LICENSE
+[exit=0]
+
++ cmp licenses/Taskflow-MIT.txt vendor/taskflow/LICENSE
+[exit=0]
+
++ cmp licenses/pybind11-BSD-3-Clause.txt vendor/pybind11/LICENSE
+[exit=0]
+
++ shasum -a 256 LICENSE licenses/PAMS-EPL-1.0.txt licenses/Taskflow-MIT.txt licenses/pybind11-BSD-3-Clause.txt requirements.lock UPSTREAM.lock.json
+ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a  LICENSE
+ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a  licenses/PAMS-EPL-1.0.txt
+f5c1283bb02d9064ee9d8be64d3bf2dfd3c3ce4c781032885c61af7b5dc7d0d9  licenses/Taskflow-MIT.txt
+83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb  licenses/pybind11-BSD-3-Clause.txt
+bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70  requirements.lock
+0942b21338e9a190e0057ad37d18f62799796b9a054f19d08f6a06b3e9d7a137  UPSTREAM.lock.json
+[exit=0]
+
++ python -m coreorder environment --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
+$COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/environment.json
+[exit=0]
+
++ python -m pytest -q tests/platform/test_foundation.py
+....                                                                     [100%]
+4 passed in 0.41s
+[exit=0]
+
+--- 03-ci-local.log ---
+
++ python -m pytest -q
+...................                                                      [100%]
+19 passed in 17.00s
+[exit=0]
+
++ cmake --version
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[exit=0]
+
++ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE=/tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: /tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python (found suitable version "3.12.13", required range is "3.12...<3.13") found components: Interpreter Development.Module
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/coreorder-p04-clean.OrVmqX/build
+[exit=0]
+
++ cmake --build build --config Release --parallel 2 --verbose
+Change Dir: '/tmp/coreorder-p04-clean.OrVmqX/build'
+
+Run Build Command(s): /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile -j2
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -S/tmp/coreorder-p04-clean.OrVmqX -B/tmp/coreorder-p04-clean.OrVmqX/build --check-build-system CMakeFiles/Makefile.cmake 0
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles /tmp/coreorder-p04-clean.OrVmqX/build//CMakeFiles/progress.marks
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/Makefile2 all
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/_coreorder_toolchain_smoke.dir/build.make CMakeFiles/_coreorder_toolchain_smoke.dir/depend
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/coreorder_contract_smoke.dir/build.make CMakeFiles/coreorder_contract_smoke.dir/depend
+cd /tmp/coreorder-p04-clean.OrVmqX/build && /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/_coreorder_toolchain_smoke.dir/DependInfo.cmake "--color="
+cd /tmp/coreorder-p04-clean.OrVmqX/build && /tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_depends "Unix Makefiles" /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles/coreorder_contract_smoke.dir/DependInfo.cmake "--color="
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/_coreorder_toolchain_smoke.dir/build.make CMakeFiles/_coreorder_toolchain_smoke.dir/build
+/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/coreorder_contract_smoke.dir/build.make CMakeFiles/coreorder_contract_smoke.dir/build
+[ 50%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 50%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_toolchain_smoke_EXPORTS -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -MD -MT CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -MF CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o.d -o CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/toolchain_smoke.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++  -I/tmp/coreorder-p04-clean.OrVmqX/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -MD -MT CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -MF CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o.d -o CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/contract_smoke.cpp
+[ 75%] Linking CXX executable coreorder_contract_smoke
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/coreorder_contract_smoke.dir/link.txt --verbose=1
+/Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -o coreorder_contract_smoke
+[ 75%] Built target coreorder_contract_smoke
+[100%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/_coreorder_toolchain_smoke.dir/link.txt --verbose=1
+/Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -o _coreorder_toolchain_smoke.cpython-312-darwin.so CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[100%] Built target _coreorder_toolchain_smoke
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/cmake/data/bin/cmake -E cmake_progress_start /tmp/coreorder-p04-clean.OrVmqX/build/CMakeFiles 0
+
+[exit=0]
+
++ ctest --test-dir build -C Release --output-on-failure
+Internal ctest changing into directory: /tmp/coreorder-p04-clean.OrVmqX/build
+Test project /tmp/coreorder-p04-clean.OrVmqX/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.27 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.30 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.57 sec
+[exit=0]
+
++ build/coreorder_contract_smoke
+InputRow 112 bytes align 8, OutputRow 16 bytes align 8
+[exit=0]
+
++ cat build/compile_commands.json
+[
+{
+  "directory": "/tmp/coreorder-p04-clean.OrVmqX/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_toolchain_smoke_EXPORTS -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/taskflow -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /tmp/coreorder-p04-clean.OrVmqX/vendor/pybind11/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/toolchain_smoke.cpp",
+  "file": "/tmp/coreorder-p04-clean.OrVmqX/tests/platform/toolchain_smoke.cpp",
+  "output": "CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o"
+},
+{
+  "directory": "/tmp/coreorder-p04-clean.OrVmqX/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/tmp/coreorder-p04-clean.OrVmqX/include -O3 -DNDEBUG -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -o CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o -c /tmp/coreorder-p04-clean.OrVmqX/tests/platform/contract_smoke.cpp",
+  "file": "/tmp/coreorder-p04-clean.OrVmqX/tests/platform/contract_smoke.cpp",
+  "output": "CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o"
+}
+][exit=0]
+
++ env PYTHONDONTWRITEBYTECODE=1 ../../.venv/bin/python -m pytest -q -p no:cacheprovider tests/pams/runners/test_sequential.py tests/pams/test_market.py tests/pams/test_order_book.py tests/pams/test_order.py tests/pams/test_simulator.py tests/pams/agents/test_fcn_agent.py -k collect_orders_from_normal_agents or handle_orders or run_execution_logs_processed_once or execution_order_pattern or expiration_orrder_pattern or get_price_volume or test_gt or test_update_agents_for_execution or test_triggers or test_submit_orders
+...................................                                      [100%]
+=============================== warnings summary ===============================
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_handle_orders
+vendor/pams/tests/pams/runners/test_sequential.py::TestSequentialRunner::test_run_execution_logs_processed_once
+  /tmp/coreorder-p04-clean.OrVmqX/vendor/pams/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+    log: OrderLog = market._add_order(order=order)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+35 passed, 302 deselected, 2 warnings in 0.47s
+[exit=0]
+
+--- 04-runs.log ---
+
++ shasum -a 256 vendor/pams/samples/CI2002/config.json configs/workloads/smoke.json fixtures/pams/event-state/config.json
+580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7  vendor/pams/samples/CI2002/config.json
+ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6  configs/workloads/smoke.json
+16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934  fixtures/pams/event-state/config.json
+[exit=0; expected=0]
+
++ python vendor/pams/samples/CI2002/main.py --config vendor/pams/samples/CI2002/config.json --seed 42
+[exit=0] stdout=official.stdout.log stderr=official.stderr.log
+
++ python -m coreorder.reference --config vendor/pams/samples/CI2002/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-official
+PASS d024600153d2401b9630c1b3ce742008: 600 orders, 207 executions
+[exit=0; expected=0]
+
++ python -m coreorder run --backend py-seq --book-restore upstream --config vendor/pams/samples/CI2002/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-official
+PASS f648543e1f244fe991cf62d5f748ef73: 600 orders, 207 executions
+[exit=0; expected=0]
+
++ python -m coreorder.reference --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-smoke
+PASS 3bb6473505d74ef198a5483ba33432cc: 80 orders, 14 executions
+[exit=0; expected=0]
+
++ python -m coreorder run --backend py-seq --book-restore upstream --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
+PASS ac9863d0d6de4147867911ad0dc2169b: 80 orders, 14 executions
+[exit=0; expected=0]
+
++ python -m coreorder.reference --config fixtures/pams/event-state/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/ref-event-state
+PASS 55ca7ee51cce40439322132efec7d121: 24 orders, 0 executions
+[exit=0; expected=0]
+
++ python -m coreorder run --backend py-seq --book-restore upstream --config fixtures/pams/event-state/config.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-event-state
+PASS 3e246669e77d4a16b80b10bee1c12bd6: 24 orders, 0 executions
+[exit=0; expected=0]
+
++ python -m coreorder validate --suite smoke --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke
+BLOCKED: E1 independent validator is missing at validation/e1.py
+[exit=3; expected=3]
+
++ cat $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-smoke/status.json
+{"contract_version": "coreorder-r4-v1", "git_sha": "040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb", "reason": "E1 independent validator is missing at validation/e1.py", "status": "BLOCKED", "suite": "smoke"}
+[exit=0; expected=0]
+
++ python -m coreorder validate --suite g0 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0
+BLOCKED: E1 independent validator is missing at validation/e1.py
+[exit=3; expected=3]
+
++ cat $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/validate-g0/status.json
+{"contract_version": "coreorder-r4-v1", "git_sha": "040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb", "reason": "E1 independent validator is missing at validation/e1.py", "status": "BLOCKED", "suite": "g0"}
+[exit=0; expected=0]
+
++ python -m coreorder run --backend py-thread --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread
+UNSUPPORTED: backend 'py-thread' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-thread/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --backend py-process --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process
+UNSUPPORTED: backend 'py-process' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-py-process/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --backend native-serial --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial
+UNSUPPORTED: backend 'native-serial' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-serial/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --backend native-parallel --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel
+UNSUPPORTED: backend 'native-parallel' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --backend native-parallel --layout soa --workers 4 --grain 128 --schedule static --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit
+UNSUPPORTED: backend 'native-parallel' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-native-parallel-explicit/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --book-restore incremental --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental
+UNSUPPORTED: book restore 'incremental' is not implemented (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-incremental/stderr.log)
+[exit=2; expected=2]
+
++ python -m coreorder run --workers 0 --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers
+FAIL: ValueError: seed must be nonnegative, and workers and grain must be positive (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-zero-workers/stderr.log)
+[exit=1; expected=1]
+
++ python -m coreorder run --config $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/invalid.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload
+FAIL: ValidationError: 'sessions' is a required property
+
+Failed validating 'required' in schema['properties']['simulation']:
+    {'type': 'object',
+     'properties': {'markets': {'type': 'array',
+                                'items': {'type': 'string',
+                                          'minLength': 1}},
+                    'agents': {'type': 'array',
+                               'items': {'type': 'string', 'minLength': 1}},
+                    'sessions': {'type': 'array',
+                                 'items': {'type': 'object',
+                                           'properties': {'sessionName': {'type': ['string',
+                                                                                   'integer']},
+                                                          'iterationSteps': {'type': 'integer',
+                                                                             'minimum': 0},
+                                                          'withOrderPlacement': {'type': 'boolean'},
+                                                          'withOrderExecution': {'type': 'boolean'},
+                                                          'withPrint': {'type': 'boolean'},
+                                                          'maxNormalOrders': {'type': 'integer',
+                                                                              'minimum': 0},
+                                                          'events': {'type': 'array',
+                                                                     'items': {'type': 'string',
+                                                                               'minLength': 1}}},
+                                           'required': ['sessionName',
+                                                        'iterationSteps',
+                                                        'withOrderPlacement',
+                                                        'withOrderExecution',
+                                                        'withPrint']}}},
+     'required': ['markets', 'agents', 'sessions']}
+
+On instance['simulation']:
+    {'markets': [], 'agents': []} (see $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/reject-invalid-workload/stderr.log)
+[exit=1; expected=1]
+
++ shasum -a 256 $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+[exit=0; expected=0]
+
++ python -m coreorder run --config configs/workloads/smoke.json --seed 42 --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke
+cannot create run directory $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke: File exists
+[exit=1; expected=1]
+
++ shasum -a 256 $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+da71132ca936e7547e5f6f37c9c81d786869028b3802bebb2992b0877586bbad  $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/py-smoke/status.json
+[exit=0; expected=0]
+
++ python fixtures/generate.py --output $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/regenerated-fixtures
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+# INITIALIZATION TIME 0.000502
+# EXECUTION TIME 0.080655
+# INITIALIZATION TIME 0.000213
+# EXECUTION TIME 0.014586
+# INITIALIZATION TIME 0.000633
+# EXECUTION TIME 0.008246
+# INITIALIZATION TIME 0.000624
+# EXECUTION TIME 0.006062
+{"ci2002-smoke": {"execution": 14, "market_steps": 80, "order": 80}, "event-state": {"expiration": 20, "market_steps": 24, "order": 24}, "fcn_rows": 24}
+[exit=0; expected=0]
+
+--- official.stderr.log ---
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+/tmp/coreorder-p04-clean.OrVmqX/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+
+--- 05-audit.log ---
+
++ c++ -std=c++17 -O3 -Iinclude $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi.cpp -o $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe
+[exit=0]
+
++ $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/abi-probe > $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/cxx-layout.txt
+[exit=0]
+
++ python $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426
+Imported PAMS wheel: 38 package files byte-match the clean vendor checkout
+ref-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
+py-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
+official events: 951 ordered matches
+official market frames: 600 ordered matches
+official global step state (with RNG digests): 600 ordered matches
+official: final state and full final RNG byte-match, orders/executions/expirations=(600, 207, 144)
+ref-smoke: config sha256 ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6
+py-smoke: config sha256 ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6
+smoke events: 94 ordered matches
+smoke market frames: 80 ordered matches
+smoke global step state (with RNG digests): 80 ordered matches
+smoke: final state and full final RNG byte-match, orders/executions/expirations=(80, 14, 0)
+ref-event-state: config sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934
+py-event-state: config sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934
+event-state events: 44 ordered matches
+event-state market frames: 24 ordered matches
+event-state global step state (with RNG digests): 24 ordered matches
+event-state: final state and full final RNG byte-match, orders/executions/expirations=(24, 0, 20)
+event-state: fundamental shock 300 -> 270 at step 10
+official stock logger vs project market observations: 600 ordered matches
+fresh fixture regeneration: 16 payloads byte-match committed hashes
+ci2002-smoke committed vs live events.jsonl: 94 ordered matches
+ci2002-smoke committed vs live market_steps.jsonl: 80 ordered matches
+ci2002-smoke committed vs live step_states.jsonl: 80 ordered matches
+event-state committed vs live events.jsonl: 44 ordered matches
+event-state committed vs live market_steps.jsonl: 24 ordered matches
+event-state committed vs live step_states.jsonl: 24 ordered matches
+reject-incremental: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-invalid-workload: FAIL, schema-valid envelopes, no simulation
+reject-native-parallel: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-native-parallel-explicit: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-native-serial: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-py-process: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-py-thread: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-zero-workers: FAIL, schema-valid envelopes, no simulation
+E1 smoke: missing entry, no child receipt
+E1 g0: missing entry, no child receipt
+input: C++ sizeof=112 alignof=8 stride=112 addresses=[6129753360, 6129753472]
+input.p_now: float64 offset=0, column address=504947589120, stride=8
+input.p_fund: float64 offset=8, column address=504947589504, stride=8
+input.p_then: float64 offset=16, column address=504947589312, stride=8
+input.w_f: float64 offset=24, column address=504947589120, stride=8
+input.w_c: float64 offset=32, column address=504947589504, stride=8
+input.w_n: float64 offset=40, column address=504947589312, stride=8
+input.noise_scale: float64 offset=48, column address=504947589120, stride=8
+input.order_margin: float64 offset=56, column address=504947589504, stride=8
+input.z_noise: float64 offset=64, column address=504947589312, stride=8
+input.z_margin: float64 offset=72, column address=504947589120, stride=8
+input.window: int64 offset=80, column address=504947589504, stride=8
+input.effective_window: int64 offset=88, column address=504947589312, stride=8
+input.mean_reversion: int64 offset=96, column address=504947589120, stride=8
+input.margin_type: int32 offset=104, column address=4307491216, stride=4
+input.chart_sign: int32 offset=108, column address=4307414352, stride=4
+input: NumPy row addresses start=504891277312 stride=112; C-contiguous misalignment control address=4965882161 mod 8=1
+output: C++ sizeof=16 alignof=8 stride=16 addresses=[6129753328, 6129753344]
+output.price: float64 offset=0, column address=504947589120, stride=8
+output.side: int32 offset=8, column address=4307414352, stride=4
+output.error: int32 offset=12, column address=4307491216, stride=4
+output: NumPy row addresses start=4307451792 stride=16; C-contiguous misalignment control address=4884451089 mod 8=1
+FCN consumption: 24 real rows and complete linked RNG, native AoS and scalar SoA columns
+[exit=0]
+
++ git status --porcelain=v1 --untracked-files=all
+[exit=0]
+
++ git submodule foreach --quiet --recursive git status --porcelain=v1 --untracked-files=all --ignored=matching
+[exit=0]
+
+--- 05b-audit-replay.log ---
++ /tmp/coreorder-p04-clean.OrVmqX/.venv/bin/python $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426/check_artifacts.py $COREORDER_ARCHIVES/CoreOrder/results/acceptance/g0/p04-20261125-151426
+Imported PAMS wheel: 38 package files byte-match the clean vendor checkout
+ref-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
+py-official: config sha256 580231068a1b7175842df4cb376f96362207786600ed92c9693aa5ed63a65eb7
+official events: 951 ordered matches
+official market frames: 600 ordered matches
+official global step state (with RNG digests): 600 ordered matches
+official: final state and full final RNG byte-match, orders/executions/expirations=(600, 207, 144)
+ref-smoke: config sha256 ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6
+py-smoke: config sha256 ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6
+smoke events: 94 ordered matches
+smoke market frames: 80 ordered matches
+smoke global step state (with RNG digests): 80 ordered matches
+smoke: final state and full final RNG byte-match, orders/executions/expirations=(80, 14, 0)
+ref-event-state: config sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934
+py-event-state: config sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934
+event-state events: 44 ordered matches
+event-state market frames: 24 ordered matches
+event-state global step state (with RNG digests): 24 ordered matches
+event-state: final state and full final RNG byte-match, orders/executions/expirations=(24, 0, 20)
+event-state: fundamental shock 300 -> 270 at step 10
+official stock logger vs project market observations: 600 ordered matches
+fresh fixture regeneration: 16 payloads byte-match committed hashes
+ci2002-smoke committed vs live events.jsonl: 94 ordered matches
+ci2002-smoke committed vs live market_steps.jsonl: 80 ordered matches
+ci2002-smoke committed vs live step_states.jsonl: 80 ordered matches
+event-state committed vs live events.jsonl: 44 ordered matches
+event-state committed vs live market_steps.jsonl: 24 ordered matches
+event-state committed vs live step_states.jsonl: 24 ordered matches
+reject-incremental: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-invalid-workload: FAIL, schema-valid envelopes, no simulation
+reject-native-parallel: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-native-parallel-explicit: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-native-serial: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-py-process: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-py-thread: UNSUPPORTED, schema-valid envelopes, no simulation
+reject-zero-workers: FAIL, schema-valid envelopes, no simulation
+E1 smoke: missing entry, no child receipt
+E1 g0: missing entry, no child receipt
+FCN RNG replay: exact gauss draws and post-call states for 12 fixed + 12 normal rows
+input: C++ sizeof=112 alignof=8 stride=112 addresses=[6129753360, 6129753472]
+input.p_now: float64 offset=0, column address=502725128000, stride=8
+input.p_fund: float64 offset=8, column address=502725128384, stride=8
+input.p_then: float64 offset=16, column address=502725128576, stride=8
+input.w_f: float64 offset=24, column address=502725128768, stride=8
+input.w_c: float64 offset=32, column address=502725128960, stride=8
+input.w_n: float64 offset=40, column address=502725129152, stride=8
+input.noise_scale: float64 offset=48, column address=502725129344, stride=8
+input.order_margin: float64 offset=56, column address=502725129536, stride=8
+input.z_noise: float64 offset=64, column address=502725129728, stride=8
+input.z_margin: float64 offset=72, column address=502725129920, stride=8
+input.window: int64 offset=80, column address=502725130112, stride=8
+input.effective_window: int64 offset=88, column address=502725130304, stride=8
+input.mean_reversion: int64 offset=96, column address=502725130496, stride=8
+input.margin_type: int32 offset=104, column address=4347531488, stride=4
+input.chart_sign: int32 offset=108, column address=4347471648, stride=4
+input: NumPy row addresses start=502739906560 stride=112; C-contiguous misalignment control address=4832205105 mod 8=1
+output: C++ sizeof=16 alignof=8 stride=16 addresses=[6129753328, 6129753344]
+output.price: float64 offset=0, column address=502725129728, stride=8
+output.side: int32 offset=8, column address=4347471648, stride=4
+output.error: int32 offset=12, column address=4347471744, stride=4
+output: NumPy row addresses start=502725676416 stride=16; C-contiguous misalignment control address=4910633585 mod 8=1
+FCN consumption: 24 real rows and complete linked RNG, native AoS and scalar SoA columns
+[exit=0]
+
+--- 06-consumers-and-remote.log ---
++ git rev-parse HEAD
+040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb
+[exit=0]
+
++ git status --short --branch --untracked-files=all
+## a/01-foundation
+[exit=0]
+
++ git show-ref
+a59a4c88329bcbb9aaeed381434813dc9ef2968f refs/codex/turn-diffs/captures/1795589503691/162f7df2-6877-482f-91c2-44a4d875c859/base
+a59a4c88329bcbb9aaeed381434813dc9ef2968f refs/codex/turn-diffs/checkpoints/a6d15485648a0456e006ff90eebc0bcf/1fd5dacf60fa8da9c53eacdb71a7d2ed/1795589243680/73da1179-c443-405d-bb22-dc975df88ed9
+040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb refs/heads/a/01-foundation
+e2492a4b8317c6674918b13470b577f4d6f8675d refs/heads/main
+e2492a4b8317c6674918b13470b577f4d6f8675d refs/remotes/origin/main
+[exit=0]
+
++ git ls-tree -r HEAD -- docs/roles native src/coreorder/packing.py validation tests/native tests/layout tests/runtime tests/differential
+100644 blob 84c9f4a47c1627eea068bf135f7e3a4d4433ebdf	docs/roles/A/G0_CANDIDATE.md
+100644 blob 51e1888808aa16a3f09c4fdefef35bf5277013c1	docs/roles/A/P03_HANDOFF_B.md
+100644 blob c70a9a0b4abf621343b3bfa890a6f4f79d241fe9	docs/roles/A/P03_HANDOFF_C.md
+100644 blob b58c477309d4a6ab0b58be57d87f2031fe238d88	docs/roles/A/P03_HANDOFF_D.md
+100644 blob e215840866d0824ca3a63e81be2093a202fe26b7	docs/roles/A/P03_HANDOFF_E.md
+100644 blob 40ca76fad14211f140a122e6201b60e5f0071ffe	docs/roles/A/PAPER_NOTES.md
+100644 blob 227267f3cd52d77a25b5f6a05db47495d3baaecf	docs/roles/A/RESEARCH.md
+100644 blob c69fe79eedc96001c14eec01eaa42a68753b0d7d	docs/roles/A/STATUS.md
+100644 blob 89031c77789e8437c1ec673ad6608833795a775a	docs/roles/A/UPSTREAM.md
+100644 blob 73b3fd696ad292604eff84e7e9f727f05f733353	docs/roles/A/evidence/P01.txt
+100644 blob f6eff7b34a570a58b87bae1371bd82197cea49c2	docs/roles/A/evidence/P02.txt
+100644 blob 19d3babe109b52b2dd1fecba2556bcedf3639db9	docs/roles/A/evidence/P03.txt
+[exit=0]
+
+GitHub read-only queries
+[
+  {
+    "tool": "mcp__codex_apps__github_fetch",
+    "url": "https://api.github.com/repos/DengJunxian/CoreOrder/branches?per_page=100",
+    "response": [
+      {
+        "name": "main",
+        "commit": {
+          "sha": "e2492a4b8317c6674918b13470b577f4d6f8675d",
+          "url": "https://api.github.com/repos/DengJunxian/CoreOrder/commits/e2492a4b8317c6674918b13470b577f4d6f8675d"
+        },
+        "protected": false
+      }
+    ],
+    "isError": false
+  },
+  {
+    "tool": "mcp__codex_apps__github_fetch",
+    "url": "https://api.github.com/repos/DengJunxian/CoreOrder/pulls?state=all&per_page=100",
+    "response": [],
+    "isError": false
+  },
+  {
+    "tool": "mcp__codex_apps__github_fetch",
+    "url": "https://api.github.com/repos/DengJunxian/CoreOrder/actions/runs?head_sha=040cfe98c2e74cd0a741354e2b1a16cd3b5ec7bb",
+    "response": {
+      "total_count": 0,
+      "workflow_runs": []
+    },
+    "isError": false
+  }
+]

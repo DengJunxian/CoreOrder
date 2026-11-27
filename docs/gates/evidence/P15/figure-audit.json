@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "historical pilot and raw-to-figure diagnostics",
+  "P11_summary": {
+    "attempts": {
+      "PASS": 71,
+      "TIMEOUT": 2
+    },
+    "purposes": {
+      "verify": 26,
+      "timing": 26,
+      "heap": 14,
+      "profile": 3,
+      "phases": 3,
+      "capture": 1
+    },
+    "heap_observations": 30380
+  },
+  "P12_input": "P12/chain/raw + recorded lineage hashes",
+  "P13_input": "P11 chronological-final.json and 12 passing heap-mode raw runs",
+  "formal_run_eligibility_scan": {
+    "manifests": 882,
+    "validation_run_id": 0
+  },
+  "formal_results": "NOT_RUN",
+  "artifact_sha256": {
+    "docs/gates/evidence/P12/diagnostic-workload.png": "2767c117ee0eedb09cc710225adaa5b8cd0836fcf938fa3f9a75fc88944bbf6f",
+    "docs/gates/evidence/P12/plot-data.csv": "348eb1613ef8f393849c634e6083493b225815d96d3e9f4b0d1a88248b1d62f0",
+    "docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.csv": "2948d876e57631805f8e35cc07885ef37465fbccbf44d4c0177f577ec486f34f",
+    "docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.png": "982748334e63764718fcb96bd101772e3da527f6bca9c4672d5a899827aa1857",
+    "docs/roles/A/evidence/P13/figures/heap-mechanism-pilot.pdf": "d77dde76b08aaf4043306c7edd324c7bcaa52bdec45c02a21904c3ee5e3f86b0"
+  }
+}

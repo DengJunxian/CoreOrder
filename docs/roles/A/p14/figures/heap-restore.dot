@@ -1,0 +1,18 @@
+digraph Restore {
+  graph [layout=neato, overlap=true, splines=line, bgcolor="white", pad=0.13, outputorder=edgesfirst]
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12,
+        width=3.35, height=0.84, fixedsize=true, penwidth=1.2,
+        color="#9DB2C8", fillcolor="#F0F5FA", fontcolor="#142B41", pin=true]
+  edge [color="#46637C", penwidth=1.2, arrowsize=0.72]
+
+  start [pos="148,228!", label="One side, seven orders\n[1, 3, 2, 7, 6, 4, 5]"]
+  scan [pos="148,152!", label="Scan pops [1, 2], leaving a valid heap\n[3, 5, 4, 7, 6] · n = 7, k = 2, h = 5"]
+  upstream [pos="0,76!", label="Upstream concatenates and heapifies\n[1, 2, 3, 5, 4, 7, 6]"]
+  inc [pos="296,76!", label="Incremental pushes the original roots\n[1, 5, 2, 7, 6, 4, 3]",
+       color="#508A8A", fillcolor="#E7F4F0"]
+  equal [pos="148,0!", label="Same future pop order under PAMS priority\n1, 2, 3, 4, 5, 6, 7"]
+
+  start -> scan
+  scan -> upstream -> equal
+  scan -> inc -> equal
+}

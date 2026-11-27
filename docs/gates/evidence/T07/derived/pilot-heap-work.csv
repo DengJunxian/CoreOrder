@@ -1,0 +1,7 @@
+scope,workload,seed,matched_events,count_k_over_n_ge_0_25,count_k_over_n_ge_0_50,ratio_max,upstream_comparisons,incremental_comparisons,work_reduction_factor,upstream_case,incremental_case
+Apple M5 P11 instrumented heap pilot,W0-CI2002,11,402,2,1,0.5,14610,3286,4.446135118685332,W0-CI2002-11-py-seq-upstream-heap,W0-CI2002-11-py-seq-incremental-heap
+Apple M5 P11 instrumented heap pilot,W0-CI2002,29,394,2,1,0.5348837209302325,16320,3284,4.969549330085262,W0-CI2002-29-py-seq-upstream-heap,W0-CI2002-29-py-seq-incremental-heap
+Apple M5 P11 instrumented heap pilot,W1-H,11,2422,2,0,0.4790996784565916,1710577,38953,43.913870561959286,W1-H-11-py-seq-upstream-heap,W1-H-11-py-seq-incremental-heap
+Apple M5 P11 instrumented heap pilot,W1-H,29,2434,2,0,0.4915254237288136,1662260,38626,43.03474343706312,W1-H-29-py-seq-upstream-heap,W1-H-29-py-seq-incremental-heap
+Apple M5 P11 instrumented heap pilot,W2-H,11,4846,2,0,0.4780058651026393,8245535,92206,89.42514586903238,W2-H-11-py-seq-upstream-heap-60s,W2-H-11-py-seq-incremental-heap
+Apple M5 P11 instrumented heap pilot,W2-H,29,4692,2,0,0.44664031620553357,8481347,90645,93.56662805449832,W2-H-29-py-seq-upstream-heap-60s,W2-H-29-py-seq-incremental-heap

@@ -1,0 +1,82 @@
+
+$ date -u --iso-8601=seconds
+2026-11-26T04:36:41+00:00
+exit=0
+
+$ uname -smr
+Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+exit=0
+
+$ df -B1 -P <LINUX_HOME>/coreorder-r4b-sPvokUVq
+Filesystem          1-blocks         Used    Available Capacity Mounted on
+/dev/sdd       1081101176832 298319331328 727789490176      30% /
+exit=0
+
+$ uptime
+ 12:36:41 up 16 days,  2:05,  5 users,  load average: 0.49, 0.52, 0.84
+exit=0
+
+$ cat /proc/loadavg
+0.49 0.52 0.84 3/355 519809
+exit=0
+
+$ cat /sys/class/power_supply/AC1/online
+1
+exit=0
+
+$ cat /sys/class/power_supply/BAT1/status
+Full
+exit=0
+
+$ taskset -c 0\,2\,4\,6\,8\,10\,12\,14 taskset -pc 0
+exit=1
+
+$ awk /\^cpu\ MHz/\{freq\[\$4\]++\}\ END\ \{for\ \(f\ in\ freq\)\ print\ f\,\ freq\[f\]\} /proc/cpuinfo
+taskset: bad usage
+Try 'taskset --help' for more information.
+1996.203 16
+exit=0
+
+$ ls -A /sys/devices/system/cpu/cpufreq
+exit=0
+
+$ ls -1 /sys/class/thermal
+cooling_device0
+cooling_device1
+cooling_device10
+cooling_device11
+cooling_device12
+cooling_device13
+cooling_device14
+cooling_device15
+cooling_device2
+cooling_device3
+cooling_device4
+cooling_device5
+cooling_device6
+cooling_device7
+cooling_device8
+cooling_device9
+exit=0
+
+$ git -C <LINUX_HOME>/coreorder-r4b-sPvokUVq/source status --porcelain --ignore-submodules=none
+exit=0
+
+$ python3 - <LINUX_HOME>/coreorder-r4b-sPvokUVq
+{
+  "active_benchmark_processes_observed": [],
+  "coreorder_lock_available": true,
+  "coreorder_active_lease_exists": false,
+  "local_execution_claims": 0
+}
+exit=0
+
+$ Windows readonly system telemetry via PowerShell
+
+$ timeout 20 /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoLogo -NoProfile -NonInteractive -EncodedCommand CgBbAEMAbwBuAHMAbwBsAGUAXQA6ADoATwB1AHQAcAB1AHQARQBuAGMAbwBkAGkAbgBnACAAPQAgAFsAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4AVQBUAEYAOABFAG4AYwBvAGQAaQBuAGcAXQA6ADoAbgBlAHcAKAAkAGYAYQBsAHMAZQApAAoAJABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQAgAD0AIAAnAFMAaQBsAGUAbgB0AGwAeQBDAG8AbgB0AGkAbgB1AGUAJwAKACQARQByAHIAbwByAEEAYwB0AGkAbwBuAFAAcgBlAGYAZQByAGUAbgBjAGUAIAA9ACAAJwBTAHQAbwBwACcACgAkAHoAbwBuAGUAcwAgAD0AIABAACgARwBlAHQALQBDAGkAbQBJAG4AcwB0AGEAbgBjAGUAIABXAGkAbgAzADIAXwBQAGUAcgBmAEYAbwByAG0AYQB0AHQAZQBkAEQAYQB0AGEAXwBDAG8AdQBuAHQAZQByAHMAXwBUAGgAZQByAG0AYQBsAFoAbwBuAGUASQBuAGYAbwByAG0AYQB0AGkAbwBuACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIABOAGEAbQBlACwAVABlAG0AcABlAHIAYQB0AHUAcgBlACwAVABoAHIAbwB0AHQAbABlAFIAZQBhAHMAbwBuAHMALABQAGUAcgBjAGUAbgB0AFAAYQBzAHMAaQB2AGUATABpAG0AaQB0ACkACgAkAGMAcAB1AHMAIAA9ACAAQAAoAEcAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAAVwBpAG4AMwAyAF8AUABlAHIAZgBGAG8AcgBtAGEAdAB0AGUAZABEAGEAdABhAF8AQwBvAHUAbgB0AGUAcgBzAF8AUAByAG8AYwBlAHMAcwBvAHIASQBuAGYAbwByAG0AYQB0AGkAbwBuACAAfAAgAFcAaABlAHIAZQAtAE8AYgBqAGUAYwB0ACAATgBhAG0AZQAgAC0AZQBxACAAJwBfAFQAbwB0AGEAbAAnACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIABOAGEAbQBlACwAUABlAHIAYwBlAG4AdABQAHIAbwBjAGUAcwBzAG8AcgBUAGkAbQBlACwAUABlAHIAYwBlAG4AdABQAHIAbwBjAGUAcwBzAG8AcgBVAHQAaQBsAGkAdAB5ACwAUAByAG8AYwBlAHMAcwBvAHIARgByAGUAcQB1AGUAbgBjAHkAKQAKACQAaAB5AHAAZQByACAAPQAgAEAAKABHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAFcAaQBuADMAMgBfAFAAZQByAGYARgBvAHIAbQBhAHQAdABlAGQARABhAHQAYQBfAEgAdgBTAHQAYQB0AHMAXwBIAHkAcABlAHIAVgBIAHkAcABlAHIAdgBpAHMAbwByAEwAbwBnAGkAYwBhAGwAUAByAG8AYwBlAHMAcwBvAHIAIAAtAEUAcgByAG8AcgBBAGMAdABpAG8AbgAgAFMAaQBsAGUAbgB0AGwAeQBDAG8AbgB0AGkAbgB1AGUAIAB8ACAAVwBoAGUAcgBlAC0ATwBiAGoAZQBjAHQAIABOAGEAbQBlACAALQBlAHEAIAAnAF8AVABvAHQAYQBsACcAIAB8ACAAUwBlAGwAZQBjAHQALQBPAGIAagBlAGMAdAAgAE4AYQBtAGUALABQAGUAcgBjAGUAbgB0AFQAbwB0AGEAbABSAHUAbgBUAGkAbQBlACwARgByAGUAcQB1AGUAbgBjAHkAKQAKACQAcABlAHIAZgAgAD0AIABAACgARwBlAHQALQBQAHIAbwBjAGUAcwBzACAAfAAgAFcAaABlAHIAZQAtAE8AYgBqAGUAYwB0ACAAUAByAG8AYwBlAHMAcwBOAGEAbQBlACAALQBNAGEAdABjAGgAIAAnAF4AKABiAGUAbgBjAGgAfABiAGUAbgBjAGgAbQBhAHIAawB8AHMAeQBzAGIAZQBuAGMAaAB8AHMAdAByAGUAcwBzAHwAcwB0AHIAZQBzAHMALQBuAGcAfABwAGUAcgBmAHwARwBlAGUAawBiAGUAbgBjAGgAfABDAGkAbgBlAGIAZQBuAGMAaAApACQAJwAgAHwAIABTAGUAbABlAGMAdAAtAE8AYgBqAGUAYwB0ACAAUAByAG8AYwBlAHMAcwBOAGEAbQBlACwASQBkACkACgBbAHAAcwBjAHUAcwB0AG8AbQBvAGIAagBlAGMAdABdAEAAewAgAHQAaABlAHIAbQBhAGwAXwB6AG8AbgBlAHMAPQAkAHoAbwBuAGUAcwA7ACAAcAByAG8AYwBlAHMAcwBvAHIAXwB0AG8AdABhAGwAPQAkAGMAcAB1AHMAOwAgAGgAeQBwAGUAcgB2AF8AdABvAHQAYQBsAD0AJABoAHkAcABlAHIAOwAgAGIAZQBuAGMAaABtAGEAcgBrAF8AcAByAG8AYwBlAHMAcwBlAHMAPQAkAHAAZQByAGYAIAB9ACAAfAAgAEMAbwBuAHYAZQByAHQAVABvAC0ASgBzAG8AbgAgAC0AQwBvAG0AcAByAGUAcwBzACAALQBEAGUAcAB0AGgAIAA0AAoAcABvAHcAZQByAGMAZgBnACAALwBHAEUAVABBAEMAVABJAFYARQBTAEMASABFAE0ARQAKAA==
+{"thermal_zones":[{"Name":"\\_TZ.TZ01","Temperature":353,"ThrottleReasons":0,"PercentPassiveLimit":100}],"processor_total":[{"Name":"_Total","PercentProcessorTime":33,"PercentProcessorUtility":35,"ProcessorFrequency":2000}],"hyperv_total":[{"Name":"_Total","PercentTotalRunTime":18,"Frequency":null}],"benchmark_processes":[]}
+电源方案 GUID: 64a64f24-65b9-4b56-befd-5ec1eaced9b3  (Silent)exit=0
+
+$ taskset -c 0,2,4,6,8,10,12,14 python3 -c <read_sched_affinity>
+[0, 2, 4, 6, 8, 10, 12, 14]
+exit=0

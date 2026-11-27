@@ -1,0 +1,529 @@
+{
+  "scope": "a-authorized-timing",
+  "runtime": {
+    "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+    "dirty": false,
+    "host_id": "7fd1261e162f2fef",
+    "architecture": "x86_64",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "environment_sha256": "66efa4e180a9c83500d1ebc9ced921938d0651913c811dd07e2e9084f197d163",
+    "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+    "upstream_shas": {
+      "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    },
+    "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+    "schemas_sha256": {
+      "schemas/records.schema.json": "fda7b32435842eab4693ff8bfca22637521e5cb8399c364b830e42093129619c",
+      "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+      "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+    }
+  },
+  "lock": "3ab85a959e7bcc84a032c42b48b7dabbb36e0dc0a7f36ccd521eaf2316e1613d",
+  "report_sha256": "8c23a4ebe686809da3403630c1515ca4fb3f55ba375c6cc10851128e378a39a4",
+  "F2_archive_sha256": "967106616eafcb0bacac6195889ef179b95a9c8c3a42c879a667fb85c6f60c5d",
+  "F3_archive_sha256": "b9b36de02e8075c9d58357642b83ea1561cb4cef50bc4687349d7c0d7bb10b9b",
+  "timing": {
+    "E01-W0-CI2002|seq|thread-4": {
+      "simulation_s": {
+        "point": "0.320",
+        "low": "0.310",
+        "high": "0.330"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.327",
+        "low": "0.317",
+        "high": "0.337"
+      },
+      "process_wall_s": {
+        "point": "0.777",
+        "low": "0.766",
+        "high": "0.786"
+      }
+    },
+    "E01-W0-CI2002|seq|process-4": {
+      "simulation_s": {
+        "point": "0.00631",
+        "low": "0.00614",
+        "high": "0.00647"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.00654",
+        "low": "0.00638",
+        "high": "0.00669"
+      },
+      "process_wall_s": {
+        "point": "0.045",
+        "low": "0.045",
+        "high": "0.046"
+      }
+    },
+    "E01-W0-CI2002|seq|native-direct": {
+      "simulation_s": {
+        "point": "0.716",
+        "low": "0.707",
+        "high": "0.726"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.723",
+        "low": "0.715",
+        "high": "0.732"
+      },
+      "process_wall_s": {
+        "point": "0.938",
+        "low": "0.924",
+        "high": "0.958"
+      }
+    },
+    "E01-W0-CI2002|seq|native-4": {
+      "simulation_s": {
+        "point": "0.296",
+        "low": "0.288",
+        "high": "0.303"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.303",
+        "low": "0.295",
+        "high": "0.310"
+      },
+      "process_wall_s": {
+        "point": "0.760",
+        "low": "0.749",
+        "high": "0.774"
+      }
+    },
+    "H01-W0-H|upstream|incremental": {
+      "simulation_s": {
+        "point": "1.251",
+        "low": "1.228",
+        "high": "1.270"
+      },
+      "setup_plus_simulation_s": {
+        "point": "1.244",
+        "low": "1.218",
+        "high": "1.264"
+      },
+      "process_wall_s": {
+        "point": "1.036",
+        "low": "1.019",
+        "high": "1.054"
+      }
+    },
+    "H01-W1-H|upstream|incremental": {
+      "simulation_s": {
+        "point": "5.700",
+        "low": "5.567",
+        "high": "5.829"
+      },
+      "setup_plus_simulation_s": {
+        "point": "4.222",
+        "low": "4.145",
+        "high": "4.302"
+      },
+      "process_wall_s": {
+        "point": "2.053",
+        "low": "2.013",
+        "high": "2.090"
+      }
+    },
+    "H01-W2-H|upstream|incremental": {
+      "simulation_s": {
+        "point": "16.956",
+        "low": "16.625",
+        "high": "17.192"
+      },
+      "setup_plus_simulation_s": {
+        "point": "13.129",
+        "low": "12.906",
+        "high": "13.279"
+      },
+      "process_wall_s": {
+        "point": "5.752",
+        "low": "5.694",
+        "high": "5.847"
+      }
+    },
+    "E02-W1-H|seq|native-direct": {
+      "simulation_s": {
+        "point": "0.860",
+        "low": "0.850",
+        "high": "0.871"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.895",
+        "low": "0.881",
+        "high": "0.910"
+      },
+      "process_wall_s": {
+        "point": "0.919",
+        "low": "0.875",
+        "high": "0.951"
+      }
+    },
+    "E02-W1-H|native-direct|native-1": {
+      "simulation_s": {
+        "point": "0.949",
+        "low": "0.937",
+        "high": "0.960",
+        "efficiency": "94.9"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.965",
+        "low": "0.952",
+        "high": "0.976",
+        "efficiency": "96.5"
+      },
+      "process_wall_s": {
+        "point": "1.030",
+        "low": "0.987",
+        "high": "1.095",
+        "efficiency": "103.0"
+      }
+    },
+    "E02-W1-H|native-direct|native-2": {
+      "simulation_s": {
+        "point": "0.941",
+        "low": "0.927",
+        "high": "0.956",
+        "efficiency": "47.0"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.957",
+        "low": "0.950",
+        "high": "0.965",
+        "efficiency": "47.9"
+      },
+      "process_wall_s": {
+        "point": "1.000",
+        "low": "0.966",
+        "high": "1.048",
+        "efficiency": "50.0"
+      }
+    },
+    "E02-W1-H|native-direct|native-4": {
+      "simulation_s": {
+        "point": "0.947",
+        "low": "0.930",
+        "high": "0.960",
+        "efficiency": "23.7"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.956",
+        "low": "0.936",
+        "high": "0.975",
+        "efficiency": "23.9"
+      },
+      "process_wall_s": {
+        "point": "1.000",
+        "low": "0.980",
+        "high": "1.020",
+        "efficiency": "25.0"
+      }
+    },
+    "E02-W3-LARGE-MULTI|seq|native-direct": {
+      "simulation_s": {
+        "point": "0.856",
+        "low": "0.843",
+        "high": "0.869"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.901",
+        "low": "0.890",
+        "high": "0.912"
+      },
+      "process_wall_s": {
+        "point": "0.934",
+        "low": "0.925",
+        "high": "0.942"
+      }
+    },
+    "E02-W3-LARGE-MULTI|native-direct|native-1": {
+      "simulation_s": {
+        "point": "1.001",
+        "low": "0.993",
+        "high": "1.010",
+        "efficiency": "100.1"
+      },
+      "setup_plus_simulation_s": {
+        "point": "1.001",
+        "low": "0.993",
+        "high": "1.009",
+        "efficiency": "100.1"
+      },
+      "process_wall_s": {
+        "point": "0.997",
+        "low": "0.991",
+        "high": "1.003",
+        "efficiency": "99.7"
+      }
+    },
+    "E02-W3-LARGE-MULTI|native-direct|native-2": {
+      "simulation_s": {
+        "point": "0.986",
+        "low": "0.974",
+        "high": "0.998",
+        "efficiency": "49.3"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.988",
+        "low": "0.980",
+        "high": "0.997",
+        "efficiency": "49.4"
+      },
+      "process_wall_s": {
+        "point": "1.000",
+        "low": "0.995",
+        "high": "1.005",
+        "efficiency": "50.0"
+      }
+    },
+    "E02-W3-LARGE-MULTI|native-direct|native-4": {
+      "simulation_s": {
+        "point": "1.001",
+        "low": "0.990",
+        "high": "1.010",
+        "efficiency": "25.0"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.999",
+        "low": "0.991",
+        "high": "1.005",
+        "efficiency": "25.0"
+      },
+      "process_wall_s": {
+        "point": "1.004",
+        "low": "0.996",
+        "high": "1.013",
+        "efficiency": "25.1"
+      }
+    },
+    "E01-W2-H-system|B0|B1": {
+      "simulation_s": {
+        "point": "16.704",
+        "low": "16.363",
+        "high": "16.976"
+      },
+      "setup_plus_simulation_s": {
+        "point": "12.916",
+        "low": "12.660",
+        "high": "13.143"
+      },
+      "process_wall_s": {
+        "point": "5.886",
+        "low": "5.766",
+        "high": "5.987"
+      }
+    },
+    "E01-W2-H-system|B1|B2": {
+      "simulation_s": {
+        "point": "0.853",
+        "low": "0.851",
+        "high": "0.855"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.885",
+        "low": "0.883",
+        "high": "0.889"
+      },
+      "process_wall_s": {
+        "point": "0.945",
+        "low": "0.936",
+        "high": "0.951"
+      }
+    },
+    "E01-W2-H-system|B2|B3": {
+      "simulation_s": {
+        "point": "0.934",
+        "low": "0.926",
+        "high": "0.942",
+        "efficiency": "23.4"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.944",
+        "low": "0.934",
+        "high": "0.954",
+        "efficiency": "23.6"
+      },
+      "process_wall_s": {
+        "point": "0.973",
+        "low": "0.968",
+        "high": "0.979",
+        "efficiency": "24.3"
+      }
+    },
+    "E01-W2-H-system|B3|B4": {
+      "simulation_s": {
+        "point": "0.992",
+        "low": "0.981",
+        "high": "1.002"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.994",
+        "low": "0.985",
+        "high": "1.003"
+      },
+      "process_wall_s": {
+        "point": "0.997",
+        "low": "0.985",
+        "high": "1.007"
+      }
+    },
+    "E01-W2-H-system|B2|direct-soa": {
+      "simulation_s": {
+        "point": "0.971",
+        "low": "0.959",
+        "high": "0.983"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.982",
+        "low": "0.971",
+        "high": "0.994"
+      },
+      "process_wall_s": {
+        "point": "0.992",
+        "low": "0.986",
+        "high": "0.997"
+      }
+    },
+    "E01-W2-H-system|B0|B3": {
+      "simulation_s": {
+        "point": "13.266",
+        "low": "13.032",
+        "high": "13.564"
+      },
+      "setup_plus_simulation_s": {
+        "point": "10.782",
+        "low": "10.568",
+        "high": "11.047"
+      },
+      "process_wall_s": {
+        "point": "5.402",
+        "low": "5.275",
+        "high": "5.540"
+      }
+    },
+    "E01-W2-H-system|B0|B4": {
+      "simulation_s": {
+        "point": "13.143",
+        "low": "12.945",
+        "high": "13.332"
+      },
+      "setup_plus_simulation_s": {
+        "point": "10.729",
+        "low": "10.579",
+        "high": "10.881"
+      },
+      "process_wall_s": {
+        "point": "5.407",
+        "low": "5.312",
+        "high": "5.494"
+      }
+    },
+    "E01-W2-H-system|direct-soa|B4": {
+      "simulation_s": {
+        "point": "0.944",
+        "low": "0.936",
+        "high": "0.953",
+        "efficiency": "23.6"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.949",
+        "low": "0.945",
+        "high": "0.955",
+        "efficiency": "23.7"
+      },
+      "process_wall_s": {
+        "point": "0.976",
+        "low": "0.963",
+        "high": "0.989",
+        "efficiency": "24.4"
+      }
+    },
+    "E03-W3-LARGE-MULTI|direct-aos|direct-soa": {
+      "simulation_s": {
+        "point": "0.998",
+        "low": "0.985",
+        "high": "1.011"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.998",
+        "low": "0.983",
+        "high": "1.014"
+      },
+      "process_wall_s": {
+        "point": "0.992",
+        "low": "0.975",
+        "high": "1.008"
+      }
+    },
+    "E03-W3-LARGE-MULTI|parallel-4-aos|parallel-4-soa": {
+      "simulation_s": {
+        "point": "0.984",
+        "low": "0.967",
+        "high": "0.998"
+      },
+      "setup_plus_simulation_s": {
+        "point": "0.988",
+        "low": "0.978",
+        "high": "0.997"
+      },
+      "process_wall_s": {
+        "point": "0.994",
+        "low": "0.979",
+        "high": "1.010"
+      }
+    }
+  },
+  "w2_descriptives": {
+    "B0": {
+      "median": "5.4324",
+      "iqr": "0.2063"
+    },
+    "B2": {
+      "median": "0.3802",
+      "iqr": "0.0045"
+    },
+    "B4": {
+      "median": "0.4129",
+      "iqr": "0.0052"
+    },
+    "direct-soa": {
+      "median": "0.3884",
+      "iqr": "0.0102"
+    },
+    "B1": {
+      "median": "0.3234",
+      "iqr": "0.0091"
+    },
+    "B3": {
+      "median": "0.4067",
+      "iqr": "0.0062"
+    }
+  },
+  "amdahl": {
+    "run_id": "db5709c238124f249bc4ba68de13e4b2",
+    "record_sha256": "8769ab0ec19441918d44289c122836e1bb6f458ff3eff7c56e56de5a4080fab7",
+    "simulation_s": 4.346253853989765,
+    "binding_s": 0.001930047,
+    "binding_percent": "0.0444",
+    "binding_ms_display": "1.930047",
+    "simulation_display": "4.346254",
+    "ideal_fourfold": "1.000333"
+  },
+  "replay_aos_4": [
+    "0.768",
+    "1.200",
+    "1.629"
+  ],
+  "replay_soa_penalty_percent": [
+    "2.0",
+    "11.2"
+  ],
+  "ipc": {
+    "1": "4.194",
+    "2": "3.331",
+    "3": "3.359",
+    "4": "3.309"
+  }
+}

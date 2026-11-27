@@ -1,0 +1,80 @@
+{
+  "scope": "same workload and role, single successful pilot observation; no formal measurement",
+  "V01_budget_minutes": 80,
+  "estimates": {
+    "P12_original": {
+      "known_proxy_minutes": 184.06333054299466,
+      "known_proxy_raw_bytes": 23263680330,
+      "workloads": {
+        "W0-CI2002": {
+          "attempts": 30,
+          "seconds": 199.0522937150672,
+          "bytes": 347877425
+        },
+        "W1-H": {
+          "attempts": 15,
+          "seconds": 556.1573808733374,
+          "bytes": 1130129045
+        },
+        "W2-H": {
+          "attempts": 15,
+          "seconds": 229.62313355645165,
+          "bytes": 728312595
+        },
+        "W1-SMALL-BATCH": {
+          "attempts": 35,
+          "seconds": 6153.617921787081,
+          "bytes": 9187654990
+        },
+        "W3-LARGE-MULTI": {
+          "attempts": 45,
+          "seconds": 1759.8275202757213,
+          "bytes": 8628546505
+        },
+        "W2-MEDIUM-BATCH": {
+          "attempts": 25,
+          "seconds": 2111.7172616161406,
+          "bytes": 3182202045
+        },
+        "W0-H": {
+          "attempts": 5,
+          "seconds": 33.804320755880326,
+          "bytes": 58957725
+        }
+      },
+      "rows_without_passing_proxy": []
+    },
+    "R4B_approved": {
+      "known_proxy_minutes": 60.633024973853026,
+      "known_proxy_raw_bytes": 12790500575,
+      "workloads": {
+        "W0-CI2002": {
+          "attempts": 30,
+          "seconds": 199.0522937150672,
+          "bytes": 347877425
+        },
+        "W1-H": {
+          "attempts": 35,
+          "seconds": 1315.808418369852,
+          "bytes": 2859596805
+        },
+        "W2-H": {
+          "attempts": 35,
+          "seconds": 504.2658845591359,
+          "bytes": 1934883415
+        },
+        "W3-LARGE-MULTI": {
+          "attempts": 40,
+          "seconds": 1585.050581031246,
+          "bytes": 7589185205
+        },
+        "W0-H": {
+          "attempts": 5,
+          "seconds": 33.804320755880326,
+          "bytes": 58957725
+        }
+      },
+      "rows_without_passing_proxy": []
+    }
+  }
+}

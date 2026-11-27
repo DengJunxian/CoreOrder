@@ -1,0 +1,27 @@
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Traceback (most recent call last):
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/src/coreorder/run_records.py", line 324, in run_recorded
+    report = compare_upstream(output, args.seed, args.reference_trace)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/src/coreorder/validation_trace.py", line 24, in compare_upstream
+    original, candidate = read(reference), read(output / "validation-trace.json.gz")
+                          ^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/validation/io.py", line 11, in read
+    return json.load(stream)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+MemoryError

@@ -1,0 +1,28 @@
+{
+  "suite": "g0",
+  "contract_version": "coreorder-r4-v1",
+  "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "seed": 42,
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "smoke",
+      "status": "PASS",
+      "config_sha256": "ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6",
+      "events": 260,
+      "checkpoints": 81
+    },
+    {
+      "name": "event-state",
+      "status": "PASS",
+      "config_sha256": "16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934",
+      "events": 98,
+      "checkpoints": 25
+    }
+  ],
+  "checks": {
+    "events": "PASS",
+    "step_state": "PASS",
+    "final_rng": "PASS"
+  }
+}

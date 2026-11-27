@@ -1,0 +1,201 @@
+{
+  "scope": "P14 same-device clean-clone functional reproduction",
+  "tested_checkout": "1027ee892f77963fbebc72839f322157be2821f8",
+  "production_baseline_sha": "92f8bbf08da514dcb24e27b6a815d3947c352798",
+  "contract_version": "coreorder-r4-v1",
+  "host": {
+    "architecture": "arm64",
+    "os": "macOS-27.0-arm64-arm-64bit",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.0.123.102)",
+    "python": "3.12.13",
+    "cpu": {
+      "logical_cpus": 10,
+      "physical_cpus": 10,
+      "processor": "Apple M5",
+      "ram_bytes": 25769803776
+    }
+  },
+  "clean_worktree": true,
+  "dependency_lock_sha256": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+  "upstream": [
+    {
+      "name": "PAMS",
+      "version": "0.3.0",
+      "license": "EPL-1.0",
+      "sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358"
+    },
+    {
+      "name": "Taskflow",
+      "version": "3.11.0",
+      "license": "MIT",
+      "sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42"
+    },
+    {
+      "name": "pybind11",
+      "version": "2.13.6",
+      "license": "BSD-3-Clause",
+      "sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    }
+  ],
+  "extension": {
+    "filename": "_coreorder_fcn.cpython-312-darwin.so",
+    "sha256": "b80814cff55404fd75c69f774674ec9152ad95cc935d68eb8a95f852847377d1",
+    "strict_flags": [
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
+    "mode": "Release"
+  },
+  "tests": {
+    "pip_check": "PASS",
+    "ctest_passed": 2,
+    "pytest_passed": 92,
+    "pytest_warnings": 39,
+    "smoke": "PASS",
+    "license_copy_matches_gitlinks": true
+  },
+  "representative": {
+    "seed": 42,
+    "config": "configs/workloads/native-serial-normal.json",
+    "config_sha256": "f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252",
+    "oracle": {
+      "backend_effective": "py-seq",
+      "hashes": {
+        "events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489",
+        "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e",
+        "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0",
+        "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"
+      },
+      "events": 184,
+      "steps": 10
+    },
+    "event_kinds": {
+      "SimulationBeginLog": 1,
+      "SessionBeginLog": 2,
+      "MarketStepBeginLog": 18,
+      "MarketStepEndLog": 18,
+      "SessionEndLog": 2,
+      "OrderLog": 89,
+      "ExecutionLog": 28,
+      "ExpirationLog": 25,
+      "SimulationEndLog": 1
+    },
+    "upstream_trace_sha256": "541f8514c772b222f75ee0ae9e164cbf986786c4fc9ca60f7f20827ddfbf9a5f",
+    "runs": {
+      "py-upstream": {
+        "run_id": "d571545e68b54b169f7fa881152d5bd5",
+        "backend_effective": "py-seq",
+        "parameters": {
+          "book_restore": "upstream",
+          "layout": "not_applicable",
+          "workers": 1,
+          "grain": null,
+          "schedule": null
+        },
+        "semantic_comparison": {
+          "status": "PASS",
+          "scopes": [
+            "events",
+            "steps",
+            "final",
+            "rng",
+            "initial"
+          ]
+        },
+        "hashes": {
+          "manifest.json": "f01867c6772a517c6870d15d0af9738e500e9e64f6e874233c6d7fad40d4b9fb",
+          "metrics.json": "0ba66cd3ffe199f7b157b76dec5ea31cb73887ac9c70b2e04b0c6a949e06c524",
+          "status.json": "5f8f1f93a585307745a9de8b8dc316e6c63d3cb117edbf9198443d6caf36cf74",
+          "validation-trace.json.gz": "c2249b4b01ea6bffbf0e6ec24fae290c43df85baa6b91d7c3b0c5b62d430cc12"
+        }
+      },
+      "py-incremental": {
+        "run_id": "1bbfee1730574f4b95aebcba1d89cd12",
+        "backend_effective": "py-seq",
+        "parameters": {
+          "book_restore": "incremental",
+          "layout": "not_applicable",
+          "workers": 1,
+          "grain": null,
+          "schedule": null
+        },
+        "semantic_comparison": {
+          "status": "PASS",
+          "scopes": [
+            "events",
+            "steps",
+            "final",
+            "rng",
+            "initial"
+          ]
+        },
+        "hashes": {
+          "manifest.json": "dd2a04f40c5e2c4946e97cda83a3c4af4b0862e3c9323c14a68ade46bc10ee31",
+          "metrics.json": "0acf6acdd5d98e410e67244d07e67b142461dc77f19cf797b2298f941b2c6568",
+          "status.json": "c757d9a5c4348c5c7dfc1dc6bb9c9da195d194ddb0e675048c663067f0a1ef38",
+          "validation-trace.json.gz": "722f7370be382d285bac8617e514980b1274b16644b14e26f497f7f37885d83e"
+        }
+      },
+      "serial-aos": {
+        "run_id": "83f8cf44312842449a85798ff5d23a01",
+        "backend_effective": "native-serial",
+        "parameters": {
+          "book_restore": "incremental",
+          "layout": "aos",
+          "workers": 1,
+          "grain": null,
+          "schedule": null
+        },
+        "semantic_comparison": {
+          "status": "PASS",
+          "scopes": [
+            "events",
+            "steps",
+            "final",
+            "rng",
+            "initial"
+          ]
+        },
+        "hashes": {
+          "manifest.json": "b7d1f83245268fb6c1620f99ad7921da8772d5950a06b613675848d196282d05",
+          "metrics.json": "b31317c6ef825c19590f79eedc3541f3a60b5605840ea3868374577bb1b3cea9",
+          "status.json": "6c8b5e5e6ee9e172c11a20f14065064e2f61aa7851c47936df2e314791914ed2",
+          "validation-trace.json.gz": "a00aff69c585f100e54575cdc43b3b54de172c92a90388987d1c5d629e20b627"
+        },
+        "native_sha256": "b80814cff55404fd75c69f774674ec9152ad95cc935d68eb8a95f852847377d1"
+      },
+      "parallel-soa": {
+        "run_id": "fd6537a2b6d84548a4902b9c43828c9d",
+        "backend_effective": "native-parallel",
+        "parameters": {
+          "book_restore": "incremental",
+          "layout": "soa",
+          "workers": 2,
+          "grain": 2,
+          "schedule": "static"
+        },
+        "semantic_comparison": {
+          "status": "PASS",
+          "scopes": [
+            "events",
+            "steps",
+            "final",
+            "rng",
+            "initial"
+          ]
+        },
+        "hashes": {
+          "manifest.json": "38041d6b204490d1eb8b110b41855d72c63964bd3ea42a12c6b53e046e8d8e59",
+          "metrics.json": "9efd81b48e736021032ffa378a59776509213d9aca85c0433fdfb87142fdd901",
+          "status.json": "123835ad71cc2e8fde16e7b4df9eb25844ab991aa7f01bf36a1f7cba2dc9e2a8",
+          "validation-trace.json.gz": "98953dd89ab95be3d074fa71f693428cc607776223ba2a87afdfa6292b7fed43"
+        },
+        "native_sha256": "b80814cff55404fd75c69f774674ec9152ad95cc935d68eb8a95f852847377d1"
+      }
+    }
+  },
+  "reproduction_script_first_attempt": "Comparison found no trace file because the initial script omitted --validation-trace. Corrected the invocation and reran in a new output directory.",
+  "other_physical_device": "NOT_RUN",
+  "formal_G3": "BLOCKED"
+}

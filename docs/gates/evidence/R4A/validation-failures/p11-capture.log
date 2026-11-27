@@ -1,0 +1,27 @@
+<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+Traceback (most recent call last):
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/docs/roles/A/evidence/pilot_p11.py", line 315, in <module>
+    child(Path(config), int(seed), backend, restore, purpose, Path(output))
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/docs/roles/A/evidence/pilot_p11.py", line 209, in child
+    runner, durations = run_py_seq(
+                        ^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/src/coreorder/runner.py", line 85, in run_py_seq
+    runner._run()
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py", line 766, in _run
+    self._iterate_market_updates(session=session)
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py", line 739, in _iterate_market_updates
+    self._update_markets(session=session)
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/lib/python3.12/site-packages/pams/runners/sequential.py", line 713, in _update_markets
+    ] = self._collect_orders_from_normal_agents(session=session)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/src/coreorder/native_serial.py", line 93, in _collect_orders_from_normal_agents
+    orders_by_agent = self._evaluate_batch(batch_agents, markets, first_call)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/src/coreorder/native_serial.py", line 124, in _evaluate_batch
+    outputs = self._evaluate(batch.inputs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/docs/roles/A/evidence/pilot_p11.py", line 126, in observe
+    self.add("native_binding", now - state[2])
+                                     ~~~~~^^^
+IndexError: list index out of range

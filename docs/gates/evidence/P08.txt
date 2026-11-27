@@ -1,0 +1,566 @@
+[Public transcript: local paths and machine identifiers redacted.]
+
+CoreOrder P08 | 2026-11-25 Asia/Shanghai | coreorder-r4-v1
+Raw evidence directory: $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08
+The commands and outputs below come from the independent P08 checkout.
+
+[build.log] shell/driver exit 0
++zsh:4> date -Iseconds
+2026-11-25T23:24:04+08:00
++zsh:5> git rev-parse HEAD
+313ebaba8b59c63fcc4fb5cff1e57d99aaec881f
++zsh:6> git status --porcelain
++zsh:7> git submodule status --recursive
+ 6cd53810103780770c5b5d6ee0069ccab9f4b358 vendor/pams (0.3.0-261-g6cd5381)
+ a2e59f0e7065404b44dfe92a28aca47ba1378dc4 vendor/pybind11 (v2.11.0-182-ga2e59f0e)
+ 816b4ad53b44196c88f409eb7b4a25a0e3bfdf42 vendor/taskflow (v3.11.0)
++zsh:8> sw_vers
+ProductName:		macOS
+ProductVersion:		27.0
+BuildVersion:		26A428
++zsh:9> uname -m
+arm64
++zsh:10> .venv/bin/python -VV
+Python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ]
+Processing ./vendor/pams
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Obtaining file://$COREORDER_ARCHIVES/CoreOrder-P08
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: pams, coreorder
+  Building wheel for pams (pyproject.toml): started
+  Building wheel for pams (pyproject.toml): finished with status 'done'
+  Created wheel for pams: filename=pams-0.3.0-py3-none-any.whl size=98903 sha256=3b10b7ab7d78ed263ff80c7d214b1d3d35df3137203309f66c0a3c6cdcc42828
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-0dvtaupo/wheels/f5/e7/28/8df316a91d5f4deca120588dbc58ed07e76e169a523a5bcff5
+  Building editable for coreorder (pyproject.toml): started
+  Building editable for coreorder (pyproject.toml): finished with status 'done'
+  Created wheel for coreorder: filename=coreorder-0.1.0.dev0-py3-none-any.whl size=6442 sha256=2dc3b50ad5589883c0209a544bec9c1c21b453027228100667a6f4e1acb47df3
+  Stored in directory: $HOST_TEMP/T/pip-ephem-wheel-cache-0dvtaupo/wheels/ce/49/6b/63d2ec9ae2471950b1eac4d3ada5540bca6b99d965c9d68448
+Successfully built pams coreorder
+Installing collected packages: pams, coreorder
+
+Successfully installed coreorder-0.1.0.dev0 pams-0.3.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
++zsh:12> .venv/bin/python -m pip check
+No broken requirements found.
++zsh:13> .venv/bin/python -m pip list '--format=freeze'
+attrs==25.3.0
+cmake==3.31.6
+coreorder==0.1.0.dev0
+iniconfig==2.0.0
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+numpy==1.26.4
+packaging==24.2
+pams==0.3.0
+pip==26.1.2
+pluggy==1.5.0
+pytest==7.4.4
+referencing==0.36.2
+rpds-py==0.23.1
+scipy==1.14.1
+tqdm==4.66.6
+typing_extensions==4.16.0
+uv-build==0.12.19
++zsh:14> c++ --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin27.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
++zsh:15> .venv/bin/cmake --version
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
++zsh:16> .venv/bin/cmake -S . -B build '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DPython_EXECUTABLE=$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python'
+-- The CXX compiler identification is AppleClang 21.0.0.21000099
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: $COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python (found suitable version "3.12.11", required range is "3.12...<3.13") found components: Interpreter Development.Module
+CMake Deprecation Warning at vendor/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- pybind11 v2.13.6
+-- Performing Test HAS_FLTO_THIN
+-- Performing Test HAS_FLTO_THIN - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: $COREORDER_ARCHIVES/CoreOrder-P08/build
++zsh:17> .venv/bin/cmake --build build --parallel 2
+[ 25%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/module.cpp.o
+[ 25%] Building CXX object CMakeFiles/_coreorder_toolchain_smoke.dir/tests/platform/toolchain_smoke.cpp.o
+[ 37%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o
+[ 50%] Linking CXX shared module _coreorder_toolchain_smoke.cpython-312-darwin.so
+[ 50%] Built target _coreorder_toolchain_smoke
+[ 62%] Building CXX object CMakeFiles/coreorder_contract_smoke.dir/tests/platform/contract_smoke.cpp.o
+[ 75%] Linking CXX executable coreorder_contract_smoke
+[ 75%] Built target coreorder_contract_smoke
+[ 87%] Building CXX object CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+[100%] Linking CXX shared module _coreorder_fcn.cpython-312-darwin.so
+[100%] Built target _coreorder_fcn
++zsh:18> .venv/bin/ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: $COREORDER_ARCHIVES/CoreOrder-P08/build
+Test project $COREORDER_ARCHIVES/CoreOrder-P08/build
+    Start 1: contract_smoke
+1/2 Test #1: contract_smoke ...................   Passed    0.29 sec
+    Start 2: toolchain_smoke
+2/2 Test #2: toolchain_smoke ..................   Passed    0.34 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.63 sec
+
+[source-and-binary.log] shell/driver exit 0
++zsh:4> git rev-parse HEAD
+313ebaba8b59c63fcc4fb5cff1e57d99aaec881f
++zsh:5> git diff --exit-code f8d2be9 HEAD -- native/fcn native/bindings
++zsh:6> git diff --exit-code decccbf HEAD -- src/coreorder/packing.py
++zsh:7> git diff --exit-code 835de47 HEAD -- validation
++zsh:8> git -C vendor/pams diff --exit-code HEAD
++zsh:9> git ls-remote --heads origin
+f8d2be9f1391ac5e430112665efaff7bb844c507	refs/heads/b/01-03-native
+5ad1ecb78272ff2564075cf01a90df252ae7e7ba	refs/heads/c/01-03-runtime
+f867a4fb07c928f459fa8b6d3e84a95ee88b1742	refs/heads/codex/g0-candidate
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75	refs/heads/d/01-03-layout
+b05d5555fa5cc756a91ab61c644e797ca227c26f	refs/heads/e/03-github-delivery
+e2492a4b8317c6674918b13470b577f4d6f8675d	refs/heads/main
++zsh:10> .venv/bin/python -
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P08/include -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P08/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/module.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P08/native/bindings/module.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P08/include -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P08/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P08/native/bindings/fcn_binding.cpp
+/Library/Developer/CommandLineTools/usr/bin/c++ -D_coreorder_fcn_EXPORTS -I$COREORDER_ARCHIVES/CoreOrder-P08/include -isystem $LOCAL_HOME/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/include/python3.12 -isystem $COREORDER_ARCHIVES/CoreOrder-P08/vendor/pybind11/include -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -fPIC -fvisibility=hidden -fno-fast-math -ffp-contract=off -o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o -c $COREORDER_ARCHIVES/CoreOrder-P08/native/fcn/evaluate.cpp
++zsh:17> shasum -a 256 build/_coreorder_fcn.cpython-312-darwin.so
+6575e0176fd3d8bfe1e9985fc380f7d31e7d1e38882ce1325b41d7b9a15ed26c  build/_coreorder_fcn.cpython-312-darwin.so
++zsh:18> otool -L build/_coreorder_fcn.cpython-312-darwin.so
+build/_coreorder_fcn.cpython-312-darwin.so:
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2100.43.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)
++zsh:19> rg 'tf::|std::.*async|run_ranges|Taskflow'
++zsh:19> nm -C build/_coreorder_fcn.cpython-312-darwin.so
++zsh:20> cat build/CMakeFiles/_coreorder_fcn.dir/link.txt
+/Library/Developer/CommandLineTools/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -o _coreorder_fcn.cpython-312-darwin.so CMakeFiles/_coreorder_fcn.dir/native/bindings/module.cpp.o CMakeFiles/_coreorder_fcn.dir/native/bindings/fcn_binding.cpp.o CMakeFiles/_coreorder_fcn.dir/native/fcn/evaluate.cpp.o
+
+[project.log] shell/driver exit 0
+============================= test session starts ==============================
+platform darwin -- Python 3.12.11, pytest-7.4.4, pluggy-1.5.0
+rootdir: $COREORDER_ARCHIVES/CoreOrder-P08
+configfile: pyproject.toml
+testpaths: tests
+collected 84 items
+
+tests/differential/test_e1.py ........                                   [  9%]
+tests/differential/test_e2.py ........                                   [ 19%]
+tests/differential/test_e3.py ................                           [ 38%]
+tests/heap/test_heap_runs.py .....................                       [ 63%]
+tests/heap/test_market_adapter.py .........                              [ 73%]
+tests/platform/test_contract.py ........                                 [ 83%]
+tests/platform/test_foundation.py ....                                   [ 88%]
+tests/platform/test_native_serial.py .....                               [ 94%]
+tests/platform/test_py_seq.py .....                                      [100%]
+
+=============================== warnings summary ===============================
+tests/differential/test_e1.py: 2 warnings
+tests/differential/test_e2.py: 3 warnings
+tests/differential/test_e3.py: 15 warnings
+tests/heap/test_market_adapter.py: 9 warnings
+
+tests/differential/test_e1.py::test_upstream_repeat_exact
+tests/differential/test_e1.py::test_non_array_event_trace_reports_first_difference
+tests/differential/test_e2.py::test_same_hash_does_not_hide_bit_fault
+tests/differential/test_e2.py::test_upstream_thread_matches
+tests/differential/test_e3.py::test_diagnostic_business_equivalence
+tests/differential/test_e3.py::test_missing_and_fallback_never_pass
+tests/differential/test_e3.py::test_negative_cash_is_upstream_legal
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+
+tests/differential/test_e2.py::test_upstream_thread_matches
+
+tests/differential/test_e3.py::test_prefilled_gauss_cache_multiple_markets
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 84 passed, 39 warnings in 49.27s =======================
+
+[member-B.log] shell/driver exit 0
+.PUBLIC_RNG_CROSS_HOST []
+...LIVE_PAMS {"empty": 2387, "inaccessible": 910, "margin_0_chart_-1": 2270, "margin_0_chart_1": 2270, "margin_1_chart_-1": 2274, "margin_1_chart_1": 2276, "mean_reversion_zero": 575, "normal_empty": 1217, "prefilled_agents": 50, "rows": 9090, "time_zero": 1820, "unclipped_forecast": 3640, "window_zero": 1818}
+...............sssssssssssss
+=============================== warnings summary ===============================
+tests/native/test_fcn.py::test_live_original[aos]
+  $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/vendor/pams/pams/agents/fcn_agent.py:196: UserWarning: price should be positive
+    Order(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [12] ../CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/tests/native/test_fcn.py:251: C executor fixture is test-only
+SKIPPED [1] ../CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/tests/native/test_fcn.py:273: C executor fixture is test-only
+19 passed, 13 skipped, 1 warning in 12.69s
+
+[member-D.log] shell/driver exit 0
++zsh:4> p08_d=$COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D
++zsh:6> c++ '-std=c++17' -I $COREORDER_ARCHIVES/CoreOrder-P08/include $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/abi_check.cpp -o results/acceptance/g1-native/p08/abi_check
++zsh:7> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/compare_abi.py results/acceptance/g1-native/p08/abi_check
+PASS NumPy-to-C++ all fields, descending market IDs preserved
+input 112 8
+output 16 8
+metadata 24 8
+p_now 0
+p_fund 8
+p_then 16
+w_f 24
+w_c 32
+w_n 40
+noise_scale 48
+order_margin 56
+z_noise 64
+z_margin 72
+window 80
+effective_window 88
+mean_reversion 96
+margin_type 104
+chart_sign 108
+price 0
+side 8
+error 12
+agent_id 0
+market_id 8
+call_index 16
+PASS numpy=1.26.4 python=3.12.11 fields=21
++zsh:8> .venv/bin/python -B -m pytest -q $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout
+..........s..                                                            [100%]
+12 passed, 1 skipped in 7.52s
++zsh:9> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/replay_binding.py fixtures/pams
+python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ] numpy 1.26.4 host macOS-27.0-arm64-arm-64bit
+production binding $COREORDER_ARCHIVES/CoreOrder-P08/build/_coreorder_fcn.cpython-312-darwin.so
+input SHA256 c7bd6c091b008534c8b0978128b41141acd3cfb643de0ee95165c12a0002c6aa rows 24 PAMS 6cd53810103780770c5b5d6ee0069ccab9f4b358 fixture environment {'architecture': 'arm64', 'os': 'macOS-27.0-arm64-arm-64bit', 'packages': {'numpy': '1.26.4', 'scipy': '1.14.1', 'tqdm': '4.66.6'}, 'python': '3.12.13'} seed 42
+aos output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"rows": 2688}, "buffer_capacity_nbytes": {"rows": 2688}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+soa output SHA256 9fb9fbf392e44374a44d3335f635423dca2c6c980ee40cfd12e83139af2697f3 stats {"n_rows": 24, "capacity": 24, "buffer_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "buffer_capacity_nbytes": {"p_now": 192, "p_fund": 192, "p_then": 192, "w_f": 192, "w_c": 192, "w_n": 192, "noise_scale": 192, "order_margin": 192, "z_noise": 192, "z_margin": 192, "window": 192, "effective_window": 192, "mean_reversion": 192, "margin_type": 96, "chart_sign": 96}, "input_nbytes": 2688, "metadata_nbytes": 576, "metadata_capacity_nbytes": 576}
+AoS vs SoA: all output bytes identical
+B vs recorded oracle mismatching row indices []
++zsh:10> .venv/bin/python -B $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-D/tests/layout/replay_live_event.py fixtures/pams
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Python 3.12.11 (main, Jun 26 2025, 21:44:36) [Clang 20.1.4 ] NumPy 1.26.4 binding $COREORDER_ARCHIVES/CoreOrder-P08/build/_coreorder_fcn.cpython-312-darwin.so
+input sha256 16572106cb0c1c552071347a3deb4a38c1c0bcf26e2352c8224f418dfefed934 pams_sha 6cd53810103780770c5b5d6ee0069ccab9f4b358 seed 42
+# INITIALIZATION TIME 0.000807
+# EXECUTION TIME 0.003338
+counts {'calls': 24, 'before': 10, 'gauss': 24, 'orders': 24, 'shock_hooks': 1, 'after': 14}
+before steps [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] fundamental prices ['0x1.2c00000000000p+8']
+after steps [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] fundamental prices ['0x1.0e00000000000p+8']
+all live outputs matched PAMS including price bytes and identity; observed agent RNG unchanged
+ordered outputs sha256 7107a3fcb0564c8d2ef3d0f7033a5cf137f9446b447d190a709bd550ddd2709d
+
+[full-markets.log] shell/driver exit 0
++zsh:4> cp ../CoreOrder-P07/results/acceptance/p07/audit_p07.py results/acceptance/g1-native/p08/audit_p07.py
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/cli-py-seq']
+exit=0
+PASS afe2e915156943e298dc34024b7f4a46: 80 orders, 14 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/cli-native-serial']
+exit=0
+PASS 4ece18fd3e3f438f8fd88b6b955df3ae: 80 orders, 14 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'validation', 'collect', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/workload.json', '--seed', '42', '--pams-root', '$COREORDER_ARCHIVES/CoreOrder-P08/vendor/pams', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/smoke/reference.json.gz']
+exit=0
+{"backend_effective": "py-seq", "hashes": {"events": "be8151a618e06f8ac7f24b5519e990a0b7b6371357deb54574fd3a1b57072973", "steps": "c75a50a288670ef7c04d19a134f21571a500df20f0c19c46f62caaac23f2b197", "final": "17c8b0200518cff25931be6d65d9e171ebd614c39558458bf24c6a1dc0c32326", "rng": "bdfd1873a9fb75ade4581658d4d16a5516d54a55ac7e2b46ddf703c4389f09e4"}, "events": 260, "steps": 81}
+
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+{'status': 'PASS', 'workload': 'smoke.json', 'input_sha256': 'ef2943202b167573638722737e4d53c743513db894d9f73636c5801c927576f6', 'events': 260, 'checkpoints': 81, 'market_steps': 80, 'agent_calls': 80, 'native_rows': 80, 'gauss_api_calls': 80, 'batch_widths': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'orders': 80, 'executions': 14, 'expirations': 0, 'trace_hash': '9805f9c715075910acf8fbeacbe66b52fc94bf315d471ac3eb63d3b7cd73cab8', 'final_state_hash': '5a0a6df88b746796e60f450163a9988240fd90587d0e8677513f807cc58a7c12', 'rng_hash': '9aeb65d7f46ba3afe46cda4a469f9abcb95200f91739931b418eeaba6293622c'}
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'py-seq', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/cli-py-seq']
+exit=0
+PASS aa3f3bec6fb148058cc8f96ca007b709: 89 orders, 28 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--book-restore', 'upstream', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/workload.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/cli-native-serial']
+exit=0
+PASS d36a5d9c65364dc38253c291392d495a: 89 orders, 28 executions
+
+$ ['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'validation', 'collect', '--config', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/workload.json', '--seed', '42', '--pams-root', '$COREORDER_ARCHIVES/CoreOrder-P08/vendor/pams', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/full-markets/native-serial-normal/reference.json.gz']
+exit=0
+{"backend_effective": "py-seq", "hashes": {"events": "2933d540cbd9c35c2466a94b53dadba002ed80f80c40060a6ab62a8c45392489", "steps": "19dae3ee724916cafe2c3e9aeeff59b7cd2a50e6083102af40d585167c87ba0e", "final": "834203214eb05abdd48c9adbc9b407eeac8d928c2b2876d1c08032cd0b87a5f0", "rng": "3d0e6ab8ed08f2f2e395563a9e42519f456759f765b5d3310c34f8af1588ec89"}, "events": 184, "steps": 10}
+
+{'status': 'PASS', 'workload': 'native-serial-normal.json', 'input_sha256': 'f78aad0bffc1b379232b786de2d4ca6ca8cdd31ab3082c78de81021494486252', 'events': 184, 'checkpoints': 10, 'market_steps': 18, 'agent_calls': 35, 'native_rows': 57, 'gauss_api_calls': 114, 'batch_widths': [3, 1, 3, 1, 3, 2, 3, 3, 1, 3, 3, 3, 3, 2, 1], 'orders': 89, 'executions': 28, 'expirations': 25, 'trace_hash': 'fb2bdd53b3a88969101ebe52f726bc6dd1b5114be6b0cac48c10bfc7d60e8bc9', 'final_state_hash': '378cfeff4bd2636dc50bef996a91c8d1052db709b4607da12d4953e6530f758e', 'rng_hash': '4aec6cab274e049e13cfa870e806000568231163a677820840d6bedf33bffe8f'}
+
+[calls.log] shell/driver exit 0
++zsh:5> .venv/bin/python -B results/acceptance/g1-native/p08/replay_p08.py calls results/acceptance/g1-native/p08/calls $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:450: UserWarning: hifreqSubmitRate is replaced to highFrequencySubmitRate in pams.
+  _ = [func(**kwargs) for func, kwargs in self._pending_setups]
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+CALLS smoke {'status': 'PASS', 'seed': 42, 'sample': 80, 'activation': 80, 'market_visits': 80, 'inaccessible': 0, 'gauss': 80, 'prefilled_gauss_calls': 34, 'checks': 80, 'handle': 80, 'widths': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'leases': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+CALLS native-serial-normal {'status': 'PASS', 'seed': 42, 'sample': 9, 'activation': 35, 'market_visits': 70, 'inaccessible': 13, 'gauss': 114, 'prefilled_gauss_calls': 57, 'checks': 48, 'handle': 9, 'widths': [3, 1, 3, 1, 3, 2, 3, 3, 1, 3, 3, 3, 3, 2, 1], 'leases': [6, 1, 6, 2, 6, 4, 5, 3, 2, 5, 4, 4, 3, 4, 2]}
+
+[numerical.log] shell/driver exit 0
++zsh:5> .venv/bin/python -B results/acceptance/g1-native/p08/replay_p08.py numerical results/acceptance/g1-native/p08/numerical $COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B
+NUMERICAL {'status': 'PASS', 'valid': 10181, 'attempted': 11200, 'inaccessible': 1019, 'margin_0_chart_1': 2545, 'normal_empty': 1360, 'empty': 2669, 'time_zero': 2037, 'window_zero': 2036, 'mean_reversion_zero': 633, 'unclipped_forecast': 4055, 'margin_1_chart_1': 2546, 'margin_0_chart_-1': 2545, 'margin_1_chart_-1': 2545, 'prefilled_agents': 56, 'generator_sha256': '396dd5e0d03f0c935465f88bee5148fc81317d67e6666970d9acb87988927517', 'inputs_sha256': '1456ecd3bc06f26643437c7c908bc20383eb77b53493d55d176f542da6447d51', 'outputs_sha256': 'ef8de9b240aab8726928355c2069dd1a4027fe0cb07426d753de848ed43d3432', 'byteorder': 'little', 'input_stride': (112,), 'output_stride': (16,)}
+
+[failure-confirmation.log] shell/driver exit 0
++zsh:65> mv results/acceptance/g1-native/p08/failure results/acceptance/g1-native/p08/failure-preliminary
++zsh:67> .venv/bin/python -B results/acceptance/g1-native/p08/replay_p08.py failure results/acceptance/g1-native/p08/failure
+FAILURE ORDER {'status': 'BLOCKED', 'seed': 3, 'first_row': 'ZeroWeight', 'second_row': 'NonFinite', 'derived_noise_scale': 'inf', 'first_difference': {'expected_index': 0, 'reported_index': 1}, 'direct_same_rows': 'FCN row 0 failed with error 1', 'actual': 'ValueError: row 1 (1, 0): non-finite numeric field', 'reference': 'ZeroDivisionError: float division by zero', 'row0-control': 'ValueError: FCN row 0 failed with error 1'}
+
+[rejections.log] shell/driver exit 0
++zsh:6> .venv/bin/python -B - $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08
+['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--config', 'configs/workloads/smoke.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/workers-two', '--workers', '2'] exit 2
+ UNSUPPORTED: serial backends support one worker and no grain or schedule (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/workers-two/stderr.log)
+['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--config', 'configs/workloads/smoke.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/soa', '--layout', 'soa'] exit 2
+ UNSUPPORTED: native-serial supports AoS with upstream book restore (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/soa/stderr.log)
+['$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python', '-B', '-m', 'coreorder', 'run', '--backend', 'native-serial', '--config', 'configs/workloads/smoke.json', '--seed', '42', '--output', '$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/incremental', '--book-restore', 'incremental'] exit 2
+ UNSUPPORTED: native-serial supports AoS with upstream book restore (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/rejections/incremental/stderr.log)
+
+[full-markets/smoke/comparison-py-seq.json]
+{
+  "status": "PASS",
+  "scopes": [
+    "events",
+    "steps",
+    "final",
+    "rng",
+    "initial"
+  ]
+}
+
+[full-markets/smoke/comparison-native-serial.json]
+{
+  "status": "PASS",
+  "scopes": [
+    "events",
+    "steps",
+    "final",
+    "rng",
+    "initial"
+  ]
+}
+
+[full-markets/native-serial-normal/comparison-py-seq.json]
+{
+  "status": "PASS",
+  "scopes": [
+    "events",
+    "steps",
+    "final",
+    "rng",
+    "initial"
+  ]
+}
+
+[full-markets/native-serial-normal/comparison-native-serial.json]
+{
+  "status": "PASS",
+  "scopes": [
+    "events",
+    "steps",
+    "final",
+    "rng",
+    "initial"
+  ]
+}
+
+[failure/actual-command.json]
+{
+  "argv": [
+    "$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/workload.json",
+    "--seed",
+    "3",
+    "--backend",
+    "native-serial",
+    "--book-restore",
+    "upstream",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/actual"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P08",
+  "exit": 1
+}
+
+[failure/actual/status.json]
+{"comparison_scope": null, "reason": "ValueError: row 1 (1, 0): non-finite numeric field", "reference_run_id": null, "run_id": "cdced9ea83e34b79a3bd35e4075469e4", "status": "FAIL", "validation_status": "NOT_RUN"}
+
+FAIL: ValueError: row 1 (1, 0): non-finite numeric field (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/actual/stderr.log)
+
+[failure/reference-command.json]
+{
+  "argv": [
+    "$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/workload.json",
+    "--seed",
+    "3",
+    "--backend",
+    "py-seq",
+    "--book-restore",
+    "upstream",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/reference"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P08",
+  "exit": 1
+}
+
+[failure/reference/status.json]
+{"comparison_scope": null, "reason": "ZeroDivisionError: float division by zero", "reference_run_id": null, "run_id": "3809a8623a054b00b8c5214e29c3e08f", "status": "FAIL", "validation_status": "NOT_RUN"}
+
+FAIL: ZeroDivisionError: float division by zero (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/reference/stderr.log)
+
+[failure/row0-control-command.json]
+{
+  "argv": [
+    "$COREORDER_ARCHIVES/CoreOrder-P08/.venv/bin/python",
+    "-B",
+    "-m",
+    "coreorder",
+    "run",
+    "--config",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/row0-control.json",
+    "--seed",
+    "3",
+    "--backend",
+    "native-serial",
+    "--book-restore",
+    "upstream",
+    "--output",
+    "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/row0-control"
+  ],
+  "cwd": "$COREORDER_ARCHIVES/CoreOrder-P08",
+  "exit": 1
+}
+
+[failure/row0-control/status.json]
+{"comparison_scope": null, "reason": "ValueError: FCN row 0 failed with error 1", "reference_run_id": null, "run_id": "5523aad2934946ca8d1f95100b6be210", "status": "FAIL", "validation_status": "NOT_RUN"}
+
+FAIL: ValueError: FCN row 0 failed with error 1 (see $COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/failure/row0-control/stderr.log)
+
+[failure/first-divergence.json]
+{
+  "status": "BLOCKED",
+  "seed": 3,
+  "first_row": "ZeroWeight",
+  "second_row": "NonFinite",
+  "derived_noise_scale": "inf",
+  "first_difference": {
+    "expected_index": 0,
+    "reported_index": 1
+  },
+  "direct_same_rows": "FCN row 0 failed with error 1",
+  "actual": "ValueError: row 1 (1, 0): non-finite numeric field",
+  "reference": "ZeroDivisionError: float division by zero",
+  "row0-control": "ValueError: FCN row 0 failed with error 1"
+}
+
+[failure/canonical-rows.json]
+[
+  {
+    "row": 0,
+    "metadata": [
+      0,
+      0,
+      0
+    ],
+    "input": {
+      "p_now": "0x1.2c00000000000p+8",
+      "p_fund": "0x1.2c00000000000p+8",
+      "p_then": "0x1.2c00000000000p+8",
+      "w_f": "0x0.0p+0",
+      "w_c": "0x0.0p+0",
+      "w_n": "0x0.0p+0",
+      "noise_scale": "0x1.0624dd2f1a9fcp-10",
+      "order_margin": "0x0.0p+0",
+      "z_noise": "-0x1.16b0fc64a8bf1p+0",
+      "z_margin": "0x0.0p+0",
+      "window": 2,
+      "effective_window": 0,
+      "mean_reversion": 2,
+      "margin_type": 0,
+      "chart_sign": 1
+    }
+  },
+  {
+    "row": 1,
+    "metadata": [
+      1,
+      0,
+      1
+    ],
+    "input": {
+      "p_now": "0x1.2c00000000000p+8",
+      "p_fund": "0x1.2c00000000000p+8",
+      "p_then": "0x1.2c00000000000p+8",
+      "w_f": "0x1.0000000000000p+0",
+      "w_c": "0x0.0p+0",
+      "w_n": "0x0.0p+0",
+      "noise_scale": "inf",
+      "order_margin": "0x0.0p+0",
+      "z_noise": "-0x1.df16bd0c23728p+0",
+      "z_margin": "0x0.0p+0",
+      "window": 2,
+      "effective_window": 0,
+      "mean_reversion": 2,
+      "margin_type": 0,
+      "chart_sign": 1
+    }
+  }
+]
+
+[numerical-initial.log] audit driver exit 1; superseded by the rerun above
+    rows, expected, identity, counts, orders = cases.generated_cases()
+                                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "$COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/tests/native/fcn_cases.py", line 64, in generated_cases
+    fcn, market_module, order_module = load_pams(ROOT / "vendor/pams")
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$COREORDER_ARCHIVES/CoreOrder-P04.5/results/acceptance/g0/p04-5/member-B/tests/native/b1/oracle.py", line 29, in load_pams
+    raise RuntimeError(f"Unexpected import location: {module.__file__}")
+RuntimeError: Unexpected import location: $COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/agents/fcn_agent.py
+
+[calls-initial.log] audit driver exit 1; superseded by the rerun above
+$COREORDER_ARCHIVES/CoreOrder-P08/.venv/lib/python3.12/site-packages/pams/runners/sequential.py:610: UserWarning: order price does not accord to the tick size. price will be modified
+  log: OrderLog = market._add_order(order=order)
+Traceback (most recent call last):
+  File "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/replay_p08.py", line 251, in <module>
+    runner_boundary(output, native)
+  File "$COREORDER_ARCHIVES/CoreOrder-P08/results/acceptance/g1-native/p08/replay_p08.py", line 170, in runner_boundary
+    raise AssertionError(result)
+AssertionError: {'status': 'FAIL', 'scope': 'identity', 'difference': {'path': 'contract_version', 'reference': None, 'candidate': None}}
+
+[GitHub read-only checks]
+PR #1 open, draft=true, merged=false
+base e2492a4b8317c6674918b13470b577f4d6f8675d
+head f867a4fb07c928f459fa8b6d3e84a95ee88b1742
+PR workflow run id=45567774938 name=Foundation checks status=completed conclusion=success
+PR-triggered workflow runs returned for P08 tested source 313ebaba8b59c63fcc4fb5cff1e57d99aaec881f: []
+
+[P07 / P08 artifact cross-check, exit 0]
+Workload counts, configuration hashes, trace hashes, final state hashes and RNG hashes agree for both markets.
+The rebuilt production extension has the same SHA-256.
+
+[Tracked minimal workload replay]
+FAIL: ValueError: row 1 (1, 0): non-finite numeric field (see results/acceptance/g1-native/p08/portable-reproducer/stderr.log)
+CLI exit 1
+Committed counterexample reproduced the expected first-row diagnostic mismatch.

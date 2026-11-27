@@ -1,0 +1,63 @@
+{
+  "simulation": {
+    "markets": [
+      "Market"
+    ],
+    "agents": [
+      "ZeroWeight",
+      "NonFinite"
+    ],
+    "sessions": [
+      {
+        "sessionName": 0,
+        "iterationSteps": 1,
+        "withOrderPlacement": true,
+        "withOrderExecution": false,
+        "withPrint": false,
+        "maxNormalOrders": 2
+      }
+    ]
+  },
+  "Market": {
+    "class": "Market",
+    "tickSize": 1e-05,
+    "marketPrice": 300.0
+  },
+  "ZeroWeight": {
+    "class": "FCNAgent",
+    "numAgents": 1,
+    "markets": [
+      "Market"
+    ],
+    "assetVolume": 50,
+    "cashAmount": 10000,
+    "fundamentalWeight": 0,
+    "chartWeight": 0,
+    "noiseWeight": 0,
+    "meanReversionTime": 2,
+    "noiseScale": 0.001,
+    "timeWindowSize": 2,
+    "orderMargin": 0
+  },
+  "NonFinite": {
+    "class": "FCNAgent",
+    "numAgents": 1,
+    "markets": [
+      "Market"
+    ],
+    "assetVolume": 50,
+    "cashAmount": 10000,
+    "fundamentalWeight": 1,
+    "chartWeight": 0,
+    "noiseWeight": 0,
+    "meanReversionTime": 2,
+    "noiseScale": {
+      "uniform": [
+        -1e+308,
+        1e+308
+      ]
+    },
+    "timeWindowSize": 2,
+    "orderMargin": 0
+  }
+}

@@ -1,0 +1,10 @@
+field,value
+CPU,AMD Ryzen AI 7 H 350
+Topology,8 cores / 16 threads reported by Windows
+WSL guest affinity,"0, 2, 4, 6, 8, 10, 12, 14"
+Reported cache,"32 KiB L1I, 48 KiB L1D, 1 MiB L2 per core; 16 MiB shared L3"
+Operating system,Ubuntu 24.04.5 LTS under Windows 11 / WSL2
+Language and compiler,CPython 3.12.3; GCC 13.3.0 (Release)
+Floating point,"-O3, -ffp-contract=off, -fno-fast-math"
+External threads,OpenMP and BLAS = 1
+Native parallel,1 / 2 / 4 workers; static; grain 128 rows

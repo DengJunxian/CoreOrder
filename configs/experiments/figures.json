@@ -1,0 +1,67 @@
+{
+  "formal_figures": "NOT_RUN",
+  "figures": [
+    {
+      "id": "F1",
+      "source": [
+        "C01",
+        "V01"
+      ],
+      "scope": "full correctness with failed rows retained"
+    },
+    {
+      "id": "F2",
+      "source": [
+        "H01",
+        "E05"
+      ],
+      "scope": "restore operations and inclusive phase contributions"
+    },
+    {
+      "id": "F3",
+      "source": [
+        "E01",
+        "E02",
+        "E05"
+      ],
+      "scope": "raw times and phase boundaries"
+    },
+    {
+      "id": "F4",
+      "source": [
+        "E02"
+      ],
+      "scope": "workers curve with complete seed-block effects"
+    },
+    {
+      "id": "F5",
+      "source": [
+        "E03",
+        "E05"
+      ],
+      "scope": "same-row AoS/SoA, PMU only if qualified"
+    },
+    {
+      "id": "F6",
+      "source": [
+        "E02",
+        "E05"
+      ],
+      "scope": "bare kernel and system results at their own scopes"
+    },
+    {
+      "id": "T7",
+      "source": [
+        "Mac"
+      ],
+      "scope": "separate-platform correctness and compatibility"
+    },
+    {
+      "id": "P12-smoke",
+      "source": [
+        "local diagnostic run IDs"
+      ],
+      "scope": "workload counters, no speed or eligibility"
+    }
+  ]
+}

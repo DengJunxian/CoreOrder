@@ -1,0 +1,22 @@
+{
+  "elapsed_s": 603.6548909679987,
+  "attempts": 38,
+  "control": {
+    "affinity": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+    ],
+    "loadavg": "1.01 0.89 0.50 3/375 482839",
+    "guest_cpu_stat": "cpu  42804784 5684 2734096 2166250113 1358684 0 835357 0 0 0",
+    "sensors": {
+      "/sys/class/power_supply/AC1/online": "1",
+      "/sys/class/power_supply/BAT1/status": "Full"
+    }
+  }
+}

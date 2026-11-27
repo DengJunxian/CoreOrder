@@ -1,0 +1,76 @@
+{
+  "host_id": "7fd1261e162f2fef",
+  "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "kernel": "6.18.33.2-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "cpu": {
+    "processor": "x86_64",
+    "logical_cpus": 16,
+    "physical_cpus": null,
+    "ram_bytes": null
+  },
+  "libc": {
+    "name": "glibc",
+    "version": "2.39"
+  },
+  "python": "3.12.3",
+  "python_executable": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/.venv/bin/python",
+  "packages": {
+    "iniconfig": "2.0.0",
+    "packaging": "24.2",
+    "jsonschema": "4.23.0",
+    "rpds-py": "0.23.1",
+    "pluggy": "1.5.0",
+    "numpy": "1.26.4",
+    "typing_extensions": "4.16.0",
+    "pip": "26.1.2",
+    "jsonschema-specifications": "2024.10.1",
+    "tqdm": "4.66.6",
+    "pytest": "7.4.4",
+    "scipy": "1.14.1",
+    "uv-build": "0.12.19",
+    "coreorder": "0.1.0.dev0",
+    "pams": "0.3.0",
+    "attrs": "25.3.0",
+    "referencing": "0.36.2",
+    "cmake": "3.31.6"
+  },
+  "coreorder_module": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/src/coreorder/__init__.py",
+  "pams_module": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/.venv/lib/python3.12/site-packages/pams/__init__.py",
+  "pams_version": "0.3.0",
+  "pams_distribution_matches_import": true,
+  "pams_install_source": "file://<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/vendor/pams",
+  "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+  "git_version": "git version 2.43.0",
+  "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "dirty": false,
+  "contract_version": "coreorder-r4-v1",
+  "upstream": {
+    "PAMS": {
+      "required_sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "required_version": "0.3.0",
+      "sha": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "dirty": false
+    },
+    "Taskflow": {
+      "required_sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "required_version": "3.11.0",
+      "sha": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "dirty": false
+    },
+    "pybind11": {
+      "required_sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+      "required_version": "2.13.6",
+      "sha": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+      "dirty": false
+    }
+  },
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "native_module": null,
+  "run_native_flags": null,
+  "external_threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "W1-H-11-native-serial-incremental-phases": {
+    "raw_path": "<MAC_HOME>/Documents/ChatGPT/CoreOrder-P11/results/pilot/p11/runs/W1-H-11-native-serial-incremental-phases/phases.json",
+    "raw_sha256": "c904a69856e0ea726ba1e60ee3e5a591c7dbca9f2790be3b0466d4b1eac9e871",
+    "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36"
+  },
+  "W1-H-11-py-seq-incremental-phases": {
+    "raw_path": "<MAC_HOME>/Documents/ChatGPT/CoreOrder-P11/results/pilot/p11/runs/W1-H-11-py-seq-incremental-phases/phases.json",
+    "raw_sha256": "6c04322d67ae935b2a2e94b4233f81b50c85d5e88685ee59f9027c3eeea016ba",
+    "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36"
+  },
+  "W1-H-11-py-seq-upstream-phases": {
+    "raw_path": "<MAC_HOME>/Documents/ChatGPT/CoreOrder-P11/results/pilot/p11/runs/W1-H-11-py-seq-upstream-phases/phases.json",
+    "raw_sha256": "eac3cf128772ac6d1433e23268806665bd7ca27be5327010f2dd65f300efc14e",
+    "git_sha": "3c344f765c6ff288abad2faa6081c921f0ee0f36"
+  }
+}

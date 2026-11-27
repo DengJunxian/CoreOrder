@@ -1,0 +1,20 @@
+2026-11-26T03:07:59+00:00
+taskset -c 0,2,4,6,8,10,12,14 python <LINUX_HOME>/coreorder-r4b-sPvokUVq/calibrate-x86.py <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal 58ec5764c21833142c50abacd9e2302404ffdb06
+r4b-rehearsal-oracle-W0-CI2002-11 PASS 6.006 10617760 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W0-CI2002-11/e3b1fdba97ac4009b973dcdc1a5d6a91/core/status.json)
+r4b-rehearsal-W0-CI2002-11 PASS 6.761 11791545 None
+r4b-rehearsal-oracle-W1-H-11 PASS 35.266 53079033 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W1-H-11/32a87a7ce7ec4c02aeab40342cdc0ef8/core/status.json)
+r4b-rehearsal-W1-H-11 PASS 37.983 86473388 None
+r4b-rehearsal-oracle-W2-H-11 PASS 18.460 25005437 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W2-H-11/f940c3566dbc4ec4bee82e05e6fc7ffa/core/status.json)
+r4b-rehearsal-W2-H-11 PASS 13.732 60328541 None
+r4b-rehearsal-oracle-W1-SMALL-BATCH-11 PASS 172.287 228498002 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W1-SMALL-BATCH-11/74f4c473d0a54ac192dc27c5e5058694/core/status.json)
+r4b-rehearsal-W1-SMALL-BATCH-11 PASS 176.406 268172166 None
+r4b-rehearsal-oracle-W2-MEDIUM-BATCH-29 PASS 153.699 90134893 None
+PASS (see <LINUX_HOME>/coreorder-r4b-sPvokUVq/rehearsal/raw/r4b-rehearsal-W2-MEDIUM-BATCH-29/f1842cbcffb44e4a81b855d93dc22cde/core/status.json)
+r4b-rehearsal-W2-MEDIUM-BATCH-29 PASS 67.161 136576379 None
+r4b-rehearsal-oracle-W3-LARGE-MULTI-11 TIMEOUT 32.393 53584218 attempt deadline exceeded
+exit=0
+2026-11-26T03:20:00+00:00

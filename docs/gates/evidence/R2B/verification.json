@@ -1,0 +1,898 @@
+{
+  "c01": [
+    {
+      "case_id": "C01-C01c-all-empty-101-0",
+      "mode": "validation",
+      "native_rows": null,
+      "orders": null,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01c-all-empty-101-0/ee1c2a091b144d2782bdc0afaee4adf3",
+      "record_sha256": "12c0fe4dc0599893e0c1dc7b77aa1056d631151227f8be055a8e68f1f809ece7",
+      "run_id": "ee1c2a091b144d2782bdc0afaee4adf3",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": null
+    },
+    {
+      "case_id": "C01-C01c-all-empty-101-5",
+      "mode": "validation",
+      "native_rows": 48,
+      "orders": 0,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01c-all-empty-101-5/5b23bbc4b4eb4e9797d56a6bfc893fd2",
+      "record_sha256": "c942aacbc642dd8c2da1bfbe17c81a9d7e89ce0ceea482868ce0623e95b15aa1",
+      "run_id": "5b23bbc4b4eb4e9797d56a6bfc893fd2",
+      "status": "PASS",
+      "validation_receipt_sha256": "4423ee2ab73f40378003450a6a02d93578890489796b34a63c46e700395da31e",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "C01-C01d-sparse-access-101-0",
+      "mode": "validation",
+      "native_rows": null,
+      "orders": null,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01d-sparse-access-101-0/89022ce6ce354324a8647354fdf47b3c",
+      "record_sha256": "a791a4f2c3a3188d2a4337eb2c993ebd3a0f7a3474c627ed793d5b494b34ed2a",
+      "run_id": "89022ce6ce354324a8647354fdf47b3c",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": null
+    },
+    {
+      "case_id": "C01-C01d-sparse-access-101-5",
+      "mode": "validation",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01d-sparse-access-101-5/d8b5216d79b74255a1676ac3edc30662",
+      "record_sha256": "848f4705646d57adaa1f1be24ca1d92f7f6d17a5bc556aab809b1400a9f1b8a1",
+      "run_id": "d8b5216d79b74255a1676ac3edc30662",
+      "status": "PASS",
+      "validation_receipt_sha256": "be9b938e08aae62b9b82b93f116260c2ed86f65a7d5a5d4afbe773e27ca5c9a1",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "C01-C01f-M0-101-0",
+      "mode": "validation",
+      "native_rows": null,
+      "orders": null,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01f-M0-101-0/0bf0cbb8cf944b53aba9637cb85cfbbd",
+      "record_sha256": "d3896fe1510d0a2d6b5e839f54c956bf90779c70a5628c495567e2c8205959c9",
+      "run_id": "0bf0cbb8cf944b53aba9637cb85cfbbd",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": null
+    },
+    {
+      "case_id": "C01-C01f-M0-101-5",
+      "mode": "validation",
+      "native_rows": 0,
+      "orders": 0,
+      "raw_path": "results/r2b/verification/c01/raw/C01-C01f-M0-101-5/00151afd1f9b4820b58a36ad7d50fff1",
+      "record_sha256": "8fc824ec671480fb574f9887b8bab5eaa900b99f319e9ea3b253eeeee3132762",
+      "run_id": "00151afd1f9b4820b58a36ad7d50fff1",
+      "status": "PASS",
+      "validation_receipt_sha256": "f38d978a7fb4f6febc1ecf92e6520fb9804213e85f3db5bdb8ed1a3c898e7fc3",
+      "validation_run_id": null
+    }
+  ],
+  "capture": {
+    "rows": 600,
+    "sha256": "99054e0775b8edd93b3059feead4b87c191c132b8fa0c6949cd30c9edcbc3db0",
+    "stride": 112
+  },
+  "clean_build_bootstrap_log_sha256": "b7f6512aa08620c28ca141992a4ef82adf2a50ce732ae708aff7219663dadb7b",
+  "commands": {
+    "build": {
+      "command": [
+        ".venv/bin/cmake",
+        "--build",
+        "build",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.27432283433154225,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/build/command.json",
+      "receipt_sha256": "b0070cde78de36b4a788a99116dd28bbdc82d263c1db18f1a45e97feb7a5d1b4",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:12:21.524951+00:00"
+    },
+    "c01-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "C01",
+        "--case",
+        "C01-C01f-M0-101-5",
+        "--case",
+        "C01-C01c-all-empty-101-5",
+        "--case",
+        "C01-C01d-sparse-access-101-5",
+        "--output",
+        "results/r2b/verification/c01"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 3.4695333749987185,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/c01-command/command.json",
+      "receipt_sha256": "1ce8e00896b8103eb8364146cc3effed12c355c86e52e1ca22af90c0afa2839c",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:14:05.435782+00:00"
+    },
+    "check": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "check"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.22689333418384194,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/check/command.json",
+      "receipt_sha256": "b50dc0ce122d62d2f99b75e6fc748087e727694d08430571e38d6ae3b72e8298",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:13:55.005574+00:00"
+    },
+    "ctest": {
+      "command": [
+        ".venv/bin/ctest",
+        "--test-dir",
+        "build",
+        "-C",
+        "Release",
+        "--output-on-failure"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.12225770903751254,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/ctest/command.json",
+      "receipt_sha256": "e1c110f3df886d1de8f6ce8666be934144daf727bc99b23750f767fed314afc1",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:12:21.969623+00:00"
+    },
+    "frozen-p12": {
+      "command": [
+        ".venv/bin/python",
+        "docs/gates/evidence/P12/verify_protocol_p12.py"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.21318545937538147,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/frozen-p12/command.json",
+      "receipt_sha256": "a6e8d78330df6cb85aa3cb4e2811c83abda6aa3f1a5f98040e50d986ee7aa0b9",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:13:55.350822+00:00"
+    },
+    "g3-refusal": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "timing",
+        "--output",
+        "results/r2b/verification/forbidden-formal"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.28702304093167186,
+      "exit_code": 2,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/g3-refusal/command.json",
+      "receipt_sha256": "fa1e478076923259fdf44c04c05bca7fcb5379cd7a79264cf57b510a5c276953",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T02:14:21.584688+00:00"
+    },
+    "host-lock-refusal": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "pilot",
+        "--output",
+        "results/r2b/verification/concurrent-pilot"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.576135250274092,
+      "exit_code": 2,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/host-lock-refusal/command.json",
+      "receipt_sha256": "385a799bb3e1b42ad02b46eb0fb762c6542f01be8bb5589efb6658cab2fa56da",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T02:15:19.015486+00:00"
+    },
+    "inaccessible-timing-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "run",
+        "--mode",
+        "timing",
+        "--backend",
+        "native-parallel",
+        "--workers",
+        "2",
+        "--layout",
+        "soa",
+        "--book-restore",
+        "incremental",
+        "--config",
+        "results/r2b/verification/inaccessible-workload.json",
+        "--seed",
+        "11",
+        "--output",
+        "results/r2b/verification/inaccessible-timing"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.6206015828065574,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/inaccessible-timing-command/command.json",
+      "receipt_sha256": "6c07e4f77a3549118d6e3cd17e41ab974f43e53bffb153dd08f8853096bd3e1c",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:15:46.375302+00:00"
+    },
+    "inaccessible-validation-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "coreorder",
+        "run",
+        "--mode",
+        "validation",
+        "--backend",
+        "native-parallel",
+        "--workers",
+        "2",
+        "--layout",
+        "soa",
+        "--book-restore",
+        "incremental",
+        "--config",
+        "results/r2b/verification/inaccessible-workload.json",
+        "--seed",
+        "11",
+        "--output",
+        "results/r2b/verification/inaccessible-validation"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 1.292092667426914,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/inaccessible-validation-command/command.json",
+      "receipt_sha256": "9c28e657b965c579989d0799f1d66249e9f16cd45ae0649b5c03e168f120d688",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:15:44.968575+00:00"
+    },
+    "p11-capture-command": {
+      "command": [
+        ".venv/bin/python",
+        "docs/roles/A/evidence/pilot_p11.py",
+        "child",
+        "vendor/pams/samples/CI2002/config.json",
+        "11",
+        "native-serial",
+        "incremental",
+        "capture",
+        "results/r2b/verification/real-capture"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.032335249707102776,
+      "exit_code": 1,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/p11-capture-command/command.json",
+      "receipt_sha256": "a9af3813b41944cf780409cba62c0a19b23b91c34be3979a22c9bf900f7c9ccd",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T02:14:22.627933+00:00"
+    },
+    "p11-capture-retry": {
+      "command": [
+        ".venv/bin/python",
+        "docs/roles/A/evidence/pilot_p11.py",
+        "child",
+        "vendor/pams/samples/CI2002/config.json",
+        "11",
+        "native-serial",
+        "incremental",
+        "capture",
+        "results/r2b/verification/real-capture"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.7859962079674006,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/p11-capture-retry/command.json",
+      "receipt_sha256": "485849f5d1e90f9490987ab4fd0bfa81a56d09d21d7efe042dc3fb2e9c763718",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:14:59.344987+00:00"
+    },
+    "pilot-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "pilot",
+        "--budget-seconds",
+        "90",
+        "--output",
+        "results/r2b/verification/pilot"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 9.108527000062168,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/pilot-command/command.json",
+      "receipt_sha256": "1abf185529bde1c444c07f94ad514984094f5b0478eb4568745ad23d9cc953cd",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:13:55.674186+00:00"
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "results/r2b/verification/pytest-runs"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 92.70160183403641,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/pytest/command.json",
+      "receipt_sha256": "9ffe2a0f8736789569010884001da857615cae710642e1291674c3f97833c6bc",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:12:22.193317+00:00"
+    },
+    "replay-aos-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.replay",
+        "--input",
+        "results/r2b/verification/real-capture/input.aos",
+        "--sha256",
+        "99054e0775b8edd93b3059feead4b87c191c132b8fa0c6949cd30c9edcbc3db0",
+        "--rows",
+        "128",
+        "--repeats",
+        "3",
+        "--layout",
+        "aos",
+        "--workers",
+        "2",
+        "--grain",
+        "128",
+        "--schedule",
+        "static",
+        "--backend",
+        "native-parallel",
+        "--output",
+        "results/r2b/verification/replay-aos.json"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.18533954210579395,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/replay-aos-command/command.json",
+      "receipt_sha256": "c6fae4b2f3be8121365cb6f36e608ce260c74d48258e52d2c5b82461bdcd4aac",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:15:00.271998+00:00"
+    },
+    "replay-soa-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.replay",
+        "--input",
+        "results/r2b/verification/real-capture/input.aos",
+        "--sha256",
+        "99054e0775b8edd93b3059feead4b87c191c132b8fa0c6949cd30c9edcbc3db0",
+        "--rows",
+        "128",
+        "--repeats",
+        "3",
+        "--layout",
+        "soa",
+        "--workers",
+        "2",
+        "--grain",
+        "128",
+        "--schedule",
+        "static",
+        "--backend",
+        "native-parallel",
+        "--output",
+        "results/r2b/verification/replay-soa.json"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.16682695876806974,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/replay-soa-command/command.json",
+      "receipt_sha256": "a721559ce00a183bdfa46d0221d6ffe152719599da8d6b9eb5b3f8498325ffee",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:15:00.577451+00:00"
+    },
+    "report-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "analysis.report",
+        "--input",
+        "results/r2b/verification/pilot",
+        "--output",
+        "results/r2b/verification/report",
+        "--development",
+        "--figures"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 1.304934416897595,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/report-command/command.json",
+      "receipt_sha256": "c5f0c2efb4dddfdff436a1b58bb63cbb037384c77679ccbc5ee000fd39282385",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:14:09.020149+00:00"
+    },
+    "resume-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "pilot",
+        "--budget-seconds",
+        "90",
+        "--output",
+        "results/r2b/verification/pilot",
+        "--resume"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.4445859999395907,
+      "exit_code": 0,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/resume-command/command.json",
+      "receipt_sha256": "166675fffc45bb83404fd79d215e14e3138041d884fa7e6be76373887f1c4afc",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-26T02:14:04.888331+00:00"
+    },
+    "timeout-command": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "experiments.run",
+        "--stage",
+        "V01",
+        "--case",
+        "V01-reference-580231068a1b7175-101",
+        "--budget-seconds",
+        "0.02",
+        "--output",
+        "results/r2b/verification/timeout"
+      ],
+      "dirty": false,
+      "elapsed_s_driver": 0.5259837917983532,
+      "exit_code": 1,
+      "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+      "receipt_path": "results/r2b/verification/timeout-command/command.json",
+      "receipt_sha256": "ce9af84bb39d5fd66ce40d8e50694d8bc5ca754befe173aea49e100ca1fa5b31",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-26T02:14:21.984163+00:00"
+    }
+  },
+  "figure_lineage_sha256": "dd1c7df96499ff6cd1d118e658eb271f587cb2ee1319b8090300f8525dccc861",
+  "figure_products": {
+    "T7": {
+      "status": "NOT_RUN"
+    },
+    "pilot-F1-correctness": {
+      "output_sha256": {
+        "pdf": "13f89d4173a732311c89cb852146961a2a65c839da1b8bb37835c582078c31ac",
+        "png": "d5c2c3fa4aea7e56934c93ddd2bfcf8b302585894b70835d5c5d1107dd0a0688"
+      },
+      "status": "PASS"
+    },
+    "pilot-F2-bottlenecks": {
+      "output_sha256": {
+        "pdf": "6f5a86948a4606f6c7b14046a29bb53c7dd650d477752f2803b5aa5db0471f33",
+        "png": "ff795878882148a10160f7ab8faaf5f3e930c6720c979ff3906f410b6a29a57a"
+      },
+      "status": "PASS"
+    },
+    "pilot-F2-heap": {
+      "status": "NOT_RUN"
+    },
+    "pilot-F3-native": {
+      "output_sha256": {
+        "pdf": "b08b56dcbbe2440ea138fa69ce838afb2f8f4b12a22f019ad68aa2c0472eb13d",
+        "png": "c3b8619239081988f06f055befc10cd4d2ba1d9c67014f8ebbec5bb42413b8cb"
+      },
+      "status": "PASS"
+    },
+    "pilot-F4-efficiency": {
+      "output_sha256": {
+        "pdf": "0171c4893d8fd4b7f96513922b97d1e297a73a2da037c4ae5a83f01b9eaec6ba",
+        "png": "f4d3eeae23f3f5c91b65993ecdcb657be23df9b7f0106710913a6351b7816de8"
+      },
+      "status": "PASS"
+    },
+    "pilot-F4-workers": {
+      "output_sha256": {
+        "pdf": "437af7c18b09a8cb2de0ab4dd9eaabccc933ac49c3ce4ac164527ef950df349d",
+        "png": "e82c4d9a3b34ed41a38c94defa96e72d578dab5b3ac24e42580e400b7d0a2e8d"
+      },
+      "status": "PASS"
+    },
+    "pilot-F5-layout": {
+      "status": "NOT_RUN"
+    },
+    "pilot-F5-pmu": {
+      "status": "NOT_RUN"
+    },
+    "pilot-F6-production-phases": {
+      "output_sha256": {
+        "pdf": "67c1c28495f66251972e041313cde683f72bd1a8ebf366b1bdca4981fc582729",
+        "png": "77e3c27c6e596b9d839855368661847a7ae3c8a39db40c6f6553a0bf67333ec7"
+      },
+      "status": "PASS"
+    },
+    "pilot-F6-workset": {
+      "status": "NOT_RUN"
+    }
+  },
+  "first_focused_test_log_sha256": "0491797331d4179b9f6ed08b3beb96df983982c3d2bf6ccc7391c17da51457ed",
+  "inaccessible": {
+    "input_counts": {
+      "agent_calls": 48,
+      "market_steps": 12,
+      "native_rows": 0,
+      "orders": 0
+    },
+    "rng_sha256": "49baae8de38a50951f416065f96a114fc66db3ae86152792a9a68ded713a5268",
+    "workload_sha256": "4c5470173f1629dce4d38dcbc38e4ca4ada6e64169f3067bc9fee9b6be48d982"
+  },
+  "pilot": [
+    {
+      "case_id": "pilot-C01b-normal-11-1-native-2",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-11-1-native-2/53ff154b3eb744ec87b90a160d5beeea",
+      "record_sha256": "34b5aac02fd1e27d9a5a2964bcfb734b86a705c46cac0b49e8f985bbfccd50c0",
+      "run_id": "53ff154b3eb744ec87b90a160d5beeea",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "35ce96294dba4deebf542fa10624a11f"
+    },
+    {
+      "case_id": "pilot-C01b-normal-11-1-native-direct",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-11-1-native-direct/67f5dc754cda4adcbd48e7c949a7c28c",
+      "record_sha256": "19b86e03f88084c64d4452d50bf76ab786901968ef4420059e59843e81cf7aed",
+      "run_id": "67f5dc754cda4adcbd48e7c949a7c28c",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "f4a18fb3fa0a4c458d91d8021750aa41"
+    },
+    {
+      "case_id": "pilot-C01b-normal-11-2-native-2",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-11-2-native-2/920f0c9aa6d04f8ca5c2d04f23a60633",
+      "record_sha256": "916f50c47a6cf6f026bc662c14095fb46e8d28ee4185101f6ead417ef5f21554",
+      "run_id": "920f0c9aa6d04f8ca5c2d04f23a60633",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "35ce96294dba4deebf542fa10624a11f"
+    },
+    {
+      "case_id": "pilot-C01b-normal-11-2-native-direct",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-11-2-native-direct/00ea4b88e4b648fc8b0abf4aa46d43e7",
+      "record_sha256": "55ad0ef46bb5e4018380660f238569b2419e092e202dd65cf285b90d86d89fce",
+      "run_id": "00ea4b88e4b648fc8b0abf4aa46d43e7",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "f4a18fb3fa0a4c458d91d8021750aa41"
+    },
+    {
+      "case_id": "pilot-C01b-normal-29-1-native-2",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-29-1-native-2/56f7b403adf64f668c0df272e6405f80",
+      "record_sha256": "17f3f21bcf5574deae07b753a5e8892c91987686c79ddfa31994ee3ac53bd08c",
+      "run_id": "56f7b403adf64f668c0df272e6405f80",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "86df7a675fe54c599e832cef2f024543"
+    },
+    {
+      "case_id": "pilot-C01b-normal-29-1-native-direct",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-29-1-native-direct/5bc4e0c57f224659bbb7d8137955c641",
+      "record_sha256": "c59d27c52de197f75400b6e31b29c67a09cddcf2ba759fc0d80d56e288899aee",
+      "run_id": "5bc4e0c57f224659bbb7d8137955c641",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "43cec1c91b9749b599e389cd9a374aae"
+    },
+    {
+      "case_id": "pilot-C01b-normal-29-2-native-2",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-29-2-native-2/31d751f1d84e4c88b15cd6845c028aa0",
+      "record_sha256": "39bda5828f412ec259858edcfcdc1e591329f3b614c2395b9f20f13420603e67",
+      "run_id": "31d751f1d84e4c88b15cd6845c028aa0",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "86df7a675fe54c599e832cef2f024543"
+    },
+    {
+      "case_id": "pilot-C01b-normal-29-2-native-direct",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-C01b-normal-29-2-native-direct/b5cc5ccf0d724ab197b83d8aa8ed42eb",
+      "record_sha256": "194b9a9847cb86d9f9ee00ce8aaeafb5de8d03130da8a39b02a70b586ec4325f",
+      "run_id": "b5cc5ccf0d724ab197b83d8aa8ed42eb",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "43cec1c91b9749b599e389cd9a374aae"
+    },
+    {
+      "case_id": "pilot-oracle-11",
+      "mode": "validation",
+      "native_rows": null,
+      "orders": null,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-oracle-11/cd8190151d954ccd825a5062ea715cf8",
+      "record_sha256": "c8338e3e85f140a23d9c247cfc4268a56fb2ae808b0341c56cd74871921295cd",
+      "run_id": "cd8190151d954ccd825a5062ea715cf8",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-oracle-29",
+      "mode": "validation",
+      "native_rows": null,
+      "orders": null,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-oracle-29/8d9e8b42ff664e9683b60b35edf66f71",
+      "record_sha256": "a52f5662c04e44c017ae9d50cec9055842b084cbcdaffa3d73d07f8380dc64bc",
+      "run_id": "8d9e8b42ff664e9683b60b35edf66f71",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-profile-native-2",
+      "mode": "profile",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-profile-native-2/a8ba88dea5654e8d9cf4fc935dd30c0f",
+      "record_sha256": "772de005d666e70402daf5fc951125ec41d18bb13463d199a2c456b20b8b7364",
+      "run_id": "a8ba88dea5654e8d9cf4fc935dd30c0f",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "35ce96294dba4deebf542fa10624a11f"
+    },
+    {
+      "case_id": "pilot-profile-native-direct",
+      "mode": "profile",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-profile-native-direct/d41c1f3022f942d89f133d60c0aa8564",
+      "record_sha256": "52c18265d778efbcccaa391ed3f71dd6cde5467959861fd49445a32d199741ce",
+      "run_id": "d41c1f3022f942d89f133d60c0aa8564",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "f4a18fb3fa0a4c458d91d8021750aa41"
+    },
+    {
+      "case_id": "pilot-validation-11-native-2",
+      "mode": "validation",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-validation-11-native-2/35ce96294dba4deebf542fa10624a11f",
+      "record_sha256": "4353ec0d991582aa979164e688b0f6e4a60548845e48f7e3b44e47f2d34178a5",
+      "run_id": "35ce96294dba4deebf542fa10624a11f",
+      "status": "PASS",
+      "validation_receipt_sha256": "eb939d2edc11e1fe9ab131e262dac4c7b28036d5f9669dbe4f8939dea846ea2d",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-validation-11-native-direct",
+      "mode": "validation",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-validation-11-native-direct/f4a18fb3fa0a4c458d91d8021750aa41",
+      "record_sha256": "6dbd028d8ca6f56a296f2d1bf33a39a9b2f2bb2f72f3f7b194cc5fb7cb0847fb",
+      "run_id": "f4a18fb3fa0a4c458d91d8021750aa41",
+      "status": "PASS",
+      "validation_receipt_sha256": "778a813c2fb970b458143be55e521f507aaf988c8e31b2ca8272eadb830444c7",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-validation-29-native-2",
+      "mode": "validation",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-validation-29-native-2/86df7a675fe54c599e832cef2f024543",
+      "record_sha256": "1e7550ea58874d084ac9f3cb9b9185ff9c9f85f46473243939e3e0ccaccfda15",
+      "run_id": "86df7a675fe54c599e832cef2f024543",
+      "status": "PASS",
+      "validation_receipt_sha256": "5dc91a92cad860320756a54b7d7c622657bab86d36b8fd15395c0e04fa9a2d5c",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-validation-29-native-direct",
+      "mode": "validation",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-validation-29-native-direct/43cec1c91b9749b599e389cd9a374aae",
+      "record_sha256": "a8258aa719a97d57b36d76c7a253f914d3f76b6acf8b279b91e161de25129093",
+      "run_id": "43cec1c91b9749b599e389cd9a374aae",
+      "status": "PASS",
+      "validation_receipt_sha256": "69d7f6f2de4e6b950647219bf1e204c50acaaf4540d9d19dfbdce0fb72aa8fad",
+      "validation_run_id": null
+    },
+    {
+      "case_id": "pilot-warmup-native-2",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-warmup-native-2/1cc6dada29b14d2e81fc317f6fbedf01",
+      "record_sha256": "d3a394594c5989f33108412d2a7dc1897a64b03bb2d44a8243989331db9ddb82",
+      "run_id": "1cc6dada29b14d2e81fc317f6fbedf01",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "35ce96294dba4deebf542fa10624a11f"
+    },
+    {
+      "case_id": "pilot-warmup-native-direct",
+      "mode": "timing",
+      "native_rows": 18,
+      "orders": 18,
+      "raw_path": "results/r2b/verification/pilot/raw/pilot-warmup-native-direct/0b21ca59c903483f999b6a14e5bfa599",
+      "record_sha256": "9092823ff0deb465093292d4b2b455c38133f14c9224fe41e8b48212dadcb6ef",
+      "run_id": "0b21ca59c903483f999b6a14e5bfa599",
+      "status": "PASS",
+      "validation_receipt_sha256": null,
+      "validation_run_id": "f4a18fb3fa0a4c458d91d8021750aa41"
+    }
+  ],
+  "pilot_comparison": {
+    "parallel_efficiency": 0.388190546219847,
+    "seed_effects": {
+      "11": {
+        "median_log_ratio": -0.2753601133337391,
+        "n_pairs": 2
+      },
+      "29": {
+        "median_log_ratio": -0.2308634483533859,
+        "n_pairs": 2
+      }
+    },
+    "simulation_ms": {
+      "native-2": {
+        "iqr": 0.05385384429246187,
+        "median": 1.0500415228307247,
+        "n": 4,
+        "q1": 1.0207499144598842,
+        "q3": 1.074603758752346
+      },
+      "native-direct": {
+        "iqr": 0.03832310903817415,
+        "median": 0.7997702341526747,
+        "n": 4,
+        "q1": 0.7866244995966554,
+        "q3": 0.8249476086348295
+      }
+    },
+    "speedup": 0.776381092439694,
+    "speedup_ci95": [
+      0.7592986404208163,
+      0.7938478598668222
+    ]
+  },
+  "platform": {
+    "cpu": {
+      "logical_cpus": 10,
+      "physical_cpus": 10,
+      "processor": "Apple M5",
+      "ram_bytes": 25769803776
+    },
+    "external_threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "os": "macOS-27.0-arm64-arm-64bit",
+    "python": "3.12.13"
+  },
+  "protocol_hash": "ea98b65575044c2d914f35c44d3a934f632cbf4b4cdf5c5284ad7ac8ca815fcf",
+  "replay": {
+    "aos": {
+      "backend": "native-parallel",
+      "capture_sha256": "99054e0775b8edd93b3059feead4b87c191c132b8fa0c6949cd30c9edcbc3db0",
+      "layout": "aos",
+      "measurement_scope": "production native binding, allocation and executor wait on captured inputs",
+      "native_executor_creations": 1,
+      "native_sha256": "892ba61efdc3fddff5c22bfa928d729c78e1f5e329abcf172ebf77ec0d250036",
+      "output_sha256": "4a4c3efbbde38bc315fd51cf8c92aba054f64e9280088adc68bb6e64c11b0860",
+      "repeats": 3,
+      "replay_row_evaluations": 384,
+      "replay_s": 0.00010770931839942932,
+      "rows": 128,
+      "workers": 2
+    },
+    "soa": {
+      "backend": "native-parallel",
+      "capture_sha256": "99054e0775b8edd93b3059feead4b87c191c132b8fa0c6949cd30c9edcbc3db0",
+      "layout": "soa",
+      "measurement_scope": "production native binding, allocation and executor wait on captured inputs",
+      "native_executor_creations": 1,
+      "native_sha256": "892ba61efdc3fddff5c22bfa928d729c78e1f5e329abcf172ebf77ec0d250036",
+      "output_sha256": "4a4c3efbbde38bc315fd51cf8c92aba054f64e9280088adc68bb6e64c11b0860",
+      "repeats": 3,
+      "replay_row_evaluations": 384,
+      "replay_s": 7.61672854423523e-05,
+      "rows": 128,
+      "workers": 2
+    }
+  },
+  "report_sha256": "b9dd4acd6d03b8f7efeeb183fa28503ebf851d0631e3c7445826fd032b74ee1e",
+  "runs_csv_sha256": "b976397a7bea9e2103a3fda7cd7c41c08a3d53cba59130f7dd60bb453d5f6d4c",
+  "runtime": {
+    "architecture": "arm64",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.0.123.102)",
+    "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+    "dirty": false,
+    "environment_sha256": "48a334f840ae7cbdbdd27a968513a8657f1fa4104f3b652116eabb9db46e3f1b",
+    "git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+    "host_id": "4497a5d4cf065b7e",
+    "native_sha256": "892ba61efdc3fddff5c22bfa928d729c78e1f5e329abcf172ebf77ec0d250036",
+    "schemas_sha256": {
+      "schemas/records.schema.json": "58e8055431a5220fffba28a7f60a0847a336d53fd26c33a7fb8a0ba6a2036854",
+      "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+      "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+    },
+    "upstream_shas": {
+      "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+      "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+      "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+    }
+  },
+  "scope": "R2B development verification",
+  "tested_git_sha": "dee54bb7d2a3aadd415356176c4f3a788c25de97",
+  "v01_timeout": {
+    "censoring": "right",
+    "exit_code": -9,
+    "reason": "attempt deadline exceeded",
+    "reference_run_id": null,
+    "run_id": "27925989a9d04584afc822e510c7252e",
+    "status": "TIMEOUT",
+    "validation_status": "NOT_RUN"
+  }
+}

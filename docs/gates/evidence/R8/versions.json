@@ -1,0 +1,31 @@
+{
+  "as_of": "2026-11-26",
+  "source_tested": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "upstreams": {
+    "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+    "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+    "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+  },
+  "target_x86": {
+    "host_id": "7fd1261e162f2fef",
+    "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+    "environment_sha256": "66efa4e180a9c83500d1ebc9ced921938d0651913c811dd07e2e9084f197d163",
+    "c01_index_sha256": "51afcd74f179f3ec850891be9df2b6dfe6d78c62ccb1b32a7de3d3a3dd54a37b",
+    "v01_index_sha256": "2f62854217c08fbd1b28188026d3f713db8b55d2dc8bd17ab659069adb151e30"
+  },
+  "reviewed_candidate_protocol": "8113c98d7c108b8fd33dd86d35c7c63e890cf6f05fd731ded36551c26ce0219c",
+  "formal": {
+    "state": "BLOCKED",
+    "code_sha": null,
+    "effective_protocol_lock_sha256": null,
+    "authorized": 0,
+    "raw_attempts": 0
+  },
+  "diagnostic_sources": {
+    "P11_mac_pilot": "3c344f765c6ff288abad2faa6081c921f0ee0f36",
+    "R5B_evidence": "a58c37842b0bc3583410bbf24f8eb7ca9fb29877"
+  },
+  "paper_package": "5c1f7fe9e1079fd40baf78071516cbf467579e4f",
+  "final_documentation_ref": "refs/heads/codex/r8-final-audit",
+  "final_documentation_sha_source": "External archive manifest, computed after commit"
+}

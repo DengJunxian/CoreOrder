@@ -1,0 +1,161 @@
++ package=linux-tools-6.8.0-151
++ apt-cache show linux-tools-6.8.0-151 libpci3 libtraceevent1
++ awk '/^(Package|Version|Filename|SHA256):/'
+Package: linux-tools-6.8.0-151
+Version: 6.8.0-151.151
+Filename: pool/main/l/linux/linux-tools-6.8.0-151_6.8.0-151.151_amd64.deb
+SHA256: 3e0b0ceda24274de02978744fd6641858d3e86b3578a9de5becefa24865cb4a8
+Package: libpci3
+Version: 1:3.10.0-2build1
+Filename: pool/main/p/pciutils/libpci3_3.10.0-2build1_amd64.deb
+SHA256: 8e281ca777649e78755b064cb7ce0646a1cff6bede7e765ddc61f8bd1fb4e723
+Package: libtraceevent1
+Version: 1:1.8.2-1ubuntu2.1
+Filename: pool/main/libt/libtraceevent/libtraceevent1_1.8.2-1ubuntu2.1_amd64.deb
+SHA256: fb03496824a22ffb70c67a92a66c4e369bbbefc934078a1fecda564364793d56
+Package: libtraceevent1
+Version: 1:1.8.2-1ubuntu2
+Filename: pool/main/libt/libtraceevent/libtraceevent1_1.8.2-1ubuntu2_amd64.deb
+SHA256: 6493d2f65f232eceba7e6b6b85d86364ad959429f1f08ce44011f7451e5ec8d0
++ timeout --kill-after=3s 45s apt-get download linux-tools-6.8.0-151 libpci3 libtraceevent1
+Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 libpci3 amd64 1:3.10.0-2build1 [36.5 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtraceevent1 amd64 1:1.8.2-1ubuntu2.1 [55.3 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-tools-6.8.0-151 amd64 6.8.0-151.151 [5442 kB]
+Fetched 5533 kB in 4s (1525 kB/s)
++ sha256sum ./libpci3_1%3a3.10.0-2build1_amd64.deb ./libtraceevent1_1%3a1.8.2-1ubuntu2.1_amd64.deb ./linux-tools-6.8.0-151_6.8.0-151.151_amd64.deb
+8e281ca777649e78755b064cb7ce0646a1cff6bede7e765ddc61f8bd1fb4e723  ./libpci3_1%3a3.10.0-2build1_amd64.deb
+fb03496824a22ffb70c67a92a66c4e369bbbefc934078a1fecda564364793d56  ./libtraceevent1_1%3a1.8.2-1ubuntu2.1_amd64.deb
+3e0b0ceda24274de02978744fd6641858d3e86b3578a9de5becefa24865cb4a8  ./linux-tools-6.8.0-151_6.8.0-151.151_amd64.deb
++ for deb in ./*.deb
++ dpkg-deb --extract ./libpci3_1%3a3.10.0-2build1_amd64.deb extracted
++ for deb in ./*.deb
++ dpkg-deb --extract ./libtraceevent1_1%3a1.8.2-1ubuntu2.1_amd64.deb extracted
++ for deb in ./*.deb
++ dpkg-deb --extract ./linux-tools-6.8.0-151_6.8.0-151.151_amd64.deb extracted
++ export LD_LIBRARY_PATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/x86_64-linux-gnu
++ LD_LIBRARY_PATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/x86_64-linux-gnu
+++ find <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted -type f -name perf -print -quit
++ perf=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/linux-tools-6.8.0-151/perf
++ test -x <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/linux-tools-6.8.0-151/perf
++ ldd <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/linux-tools-6.8.0-151/perf
+	linux-vdso.so.1 (0x00007e9c77f7e000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007e9c77517000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007e9c77f52000)
+	libelf.so.1 => /lib/x86_64-linux-gnu/libelf.so.1 (0x00007e9c77f33000)
+	libdw.so.1 => /lib/x86_64-linux-gnu/libdw.so.1 (0x00007e9c77463000)
+	libunwind-x86_64.so.8 => /lib/x86_64-linux-gnu/libunwind-x86_64.so.8 (0x00007e9c77447000)
+	libunwind.so.8 => /lib/x86_64-linux-gnu/libunwind.so.8 (0x00007e9c7742c000)
+	liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007e9c773fa000)
+	libcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x00007e9c76e00000)
+	libslang.so.2 => /lib/x86_64-linux-gnu/libslang.so.2 (0x00007e9c76a00000)
+	libpython3.12.so.1.0 => /lib/x86_64-linux-gnu/libpython3.12.so.1.0 (0x00007e9c76000000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007e9c75c00000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007e9c77340000)
+	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007e9c77333000)
+	libnuma.so.1 => /lib/x86_64-linux-gnu/libnuma.so.1 (0x00007e9c77325000)
+	libtraceevent.so.1 => <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/x86_64-linux-gnu/libtraceevent.so.1 (0x00007e9c76dd7000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007e9c75800000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007e9c77f80000)
+	libbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007e9c76dc3000)
+	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007e9c769d2000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007e9c769a4000)
++ <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/linux-tools-6.8.0-151/perf version
+perf version 6.8.12
++ mkdir bin
++ ln -s <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/extracted/usr/lib/linux-tools-6.8.0-151/perf bin/perf
++ cd <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source
++ export PATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/bin:<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin PYTHONPATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source:<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/build
++ PATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/perf-tools/bin:<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ PYTHONPATH=<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source:<LINUX_HOME>/coreorder-r4a-gTl3K1Uz/source/build
++ export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 BLIS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
++ OMP_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ NUMEXPR_NUM_THREADS=1
++ BLIS_NUM_THREADS=1
++ VECLIB_MAXIMUM_THREADS=1
++ for group in cpu branch l1 llc
++ case $group in
++ events=(--pmu-event cycles:u --pmu-event instructions:u)
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-serial)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/cpu-1 --book-restore incremental --layout aos --workers 1 --backend native-serial --pmu-event cycles:u --pmu-event instructions:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/cpu-1/status.json)
++ printf '%s %s exit=%s\n' cpu 1 0
+cpu 1 exit=0
++ set -e
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-parallel --grain 128 --schedule static)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/cpu-4 --book-restore incremental --layout aos --workers 4 --backend native-parallel --grain 128 --schedule static --pmu-event cycles:u --pmu-event instructions:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/cpu-4/status.json)
++ printf '%s %s exit=%s\n' cpu 4 0
+cpu 4 exit=0
++ set -e
++ for group in cpu branch l1 llc
++ case $group in
++ events=(--pmu-event branches:u --pmu-event branch-misses:u)
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-serial)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/branch-1 --book-restore incremental --layout aos --workers 1 --backend native-serial --pmu-event branches:u --pmu-event branch-misses:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/branch-1/status.json)
++ printf '%s %s exit=%s\n' branch 1 0
+branch 1 exit=0
++ set -e
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-parallel --grain 128 --schedule static)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/branch-4 --book-restore incremental --layout aos --workers 4 --backend native-parallel --grain 128 --schedule static --pmu-event branches:u --pmu-event branch-misses:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/branch-4/status.json)
++ printf '%s %s exit=%s\n' branch 4 0
+branch 4 exit=0
++ set -e
++ for group in cpu branch l1 llc
++ case $group in
++ events=(--pmu-event L1-dcache-loads:u --pmu-event L1-dcache-load-misses:u)
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-serial)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/l1-1 --book-restore incremental --layout aos --workers 1 --backend native-serial --pmu-event L1-dcache-loads:u --pmu-event L1-dcache-load-misses:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/l1-1/status.json)
++ printf '%s %s exit=%s\n' l1 1 0
+l1 1 exit=0
++ set -e
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-parallel --grain 128 --schedule static)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/l1-4 --book-restore incremental --layout aos --workers 4 --backend native-parallel --grain 128 --schedule static --pmu-event L1-dcache-loads:u --pmu-event L1-dcache-load-misses:u
+PASS (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/l1-4/status.json)
++ printf '%s %s exit=%s\n' l1 4 0
+l1 4 exit=0
++ set -e
++ for group in cpu branch l1 llc
++ case $group in
++ events=(--pmu-event LLC-loads:u --pmu-event LLC-load-misses:u)
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-serial)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/llc-1 --book-restore incremental --layout aos --workers 1 --backend native-serial --pmu-event LLC-loads:u --pmu-event LLC-load-misses:u
+PMU collection incomplete (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/llc-1/pmu.json)
++ printf '%s %s exit=%s\n' llc 1 1
+llc 1 exit=1
++ set -e
++ for workers in 1 4
++ ((  workers == 1  ))
++ settings=(--backend native-parallel --grain 128 --schedule static)
++ set +e
++ taskset -c 0,2,4,6,8,10,12,14 python -m coreorder run --mode pmu --timeout 30 --config configs/experiments/workloads/W2-H.json --seed 11 --output <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/llc-4 --book-restore incremental --layout aos --workers 4 --backend native-parallel --grain 128 --schedule static --pmu-event LLC-loads:u --pmu-event LLC-load-misses:u
+PMU collection incomplete (see <LINUX_HOME>/coreorder-r4a-gTl3K1Uz/pmu-core/llc-4/pmu.json)
++ printf '%s %s exit=%s\n' llc 4 1
+llc 4 exit=1
++ set -e
+toolchain_exit=0

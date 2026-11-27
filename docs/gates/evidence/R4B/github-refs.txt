@@ -1,0 +1,7 @@
+f8d2be9f1391ac5e430112665efaff7bb844c507	refs/heads/b/01-03-native
+5ad1ecb78272ff2564075cf01a90df252ae7e7ba	refs/heads/c/01-03-runtime
+f867a4fb07c928f459fa8b6d3e84a95ee88b1742	refs/heads/codex/g0-candidate
+8f25a381f08ea9c398b6835c64ea470918819451	refs/heads/codex/research-candidate
+decccbf55955e3fbeb4bbe5266eb0c2b043b3f75	refs/heads/d/01-03-layout
+b05d5555fa5cc756a91ab61c644e797ca227c26f	refs/heads/e/03-github-delivery
+e2492a4b8317c6674918b13470b577f4d6f8675d	refs/heads/main

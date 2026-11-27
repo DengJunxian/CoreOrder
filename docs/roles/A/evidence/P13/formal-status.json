@@ -1,0 +1,65 @@
+{
+  "G3": "BLOCKED",
+  "formal_code_sha": null,
+  "formal_protocol_lock_hash": null,
+  "authorized_formal_runs": [],
+  "accepted_V01_candidates": 0,
+  "required_V01_candidates": 140,
+  "H01": {
+    "state": "NOT_RUN",
+    "formal_seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "repeats_per_seed": 3,
+    "workloads": {
+      "W0-H": {
+        "planned_timed": 30,
+        "planned_warmup": 4,
+        "planned_pairs": 15,
+        "accepted_timed": 0,
+        "accepted_pairs": 0,
+        "simulation_time_s": null,
+        "restore_time_s": null,
+        "geometric_mean_speedup": null,
+        "bootstrap_ci95": null
+      },
+      "W1-H": {
+        "planned_timed": 30,
+        "planned_warmup": 4,
+        "planned_pairs": 15,
+        "accepted_timed": 0,
+        "accepted_pairs": 0,
+        "simulation_time_s": null,
+        "restore_time_s": null,
+        "geometric_mean_speedup": null,
+        "bootstrap_ci95": null
+      },
+      "W2-H": {
+        "planned_timed": 30,
+        "planned_warmup": 4,
+        "planned_pairs": 15,
+        "accepted_timed": 0,
+        "accepted_pairs": 0,
+        "simulation_time_s": null,
+        "restore_time_s": null,
+        "geometric_mean_speedup": null,
+        "bootstrap_ci95": null
+      }
+    }
+  },
+  "E05": {
+    "state": "NOT_RUN",
+    "planned": {
+      "E05-profile": 4,
+      "E05-PMU": 24,
+      "E05-replay": 80
+    },
+    "accepted_records": 0,
+    "formal_pmu": null,
+    "formal_bottleneck_migration": null
+  }
+}

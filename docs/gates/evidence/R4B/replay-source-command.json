@@ -1,0 +1,26 @@
+{
+  "command": [
+    "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source/.venv/bin/python",
+    "<LINUX_HOME>/coreorder-r4b-sPvokUVq/replay_capture.py",
+    "--plan",
+    "<LINUX_HOME>/coreorder-r4b-sPvokUVq/approved",
+    "--output",
+    "<LINUX_HOME>/coreorder-r4b-sPvokUVq/replay-source",
+    "--seed",
+    "101",
+    "--v01",
+    "<LINUX_HOME>/coreorder-r4b-sPvokUVq/V01",
+    "--child"
+  ],
+  "cwd": "<LINUX_HOME>/coreorder-r4b-sPvokUVq/source",
+  "timestamp_utc": "2026-11-26T04:30:34.568079+00:00",
+  "exit_code": 0,
+  "status": "PASS",
+  "elapsed_s_driver": 2.5798679091967642,
+  "timeout_s": 45,
+  "censoring": null,
+  "timeout_cleanup": null,
+  "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+  "dirty": false,
+  "scope": "R4B independent replay capture"
+}

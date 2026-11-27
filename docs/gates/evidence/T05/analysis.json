@@ -1,0 +1,2388 @@
+{
+  "formal_e02": [
+    {
+      "label": "W1-H",
+      "points": [
+        {
+          "complete_seeds": 0,
+          "group": "E02-W1-H",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-1",
+          "workload": "W1-H"
+        },
+        {
+          "complete_seeds": 0,
+          "group": "E02-W1-H",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-2",
+          "workload": "W1-H"
+        },
+        {
+          "complete_seeds": 0,
+          "group": "E02-W1-H",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-4",
+          "workload": "W1-H"
+        }
+      ]
+    },
+    {
+      "label": "W3",
+      "points": [
+        {
+          "complete_seeds": 0,
+          "group": "E02-W3-LARGE-MULTI",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-1",
+          "workload": "W3-LARGE-MULTI"
+        },
+        {
+          "complete_seeds": 0,
+          "group": "E02-W3-LARGE-MULTI",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-2",
+          "workload": "W3-LARGE-MULTI"
+        },
+        {
+          "complete_seeds": 0,
+          "group": "E02-W3-LARGE-MULTI",
+          "planned_pairs": 15,
+          "reference": "native-direct",
+          "valid_pairs": 0,
+          "variant": "native-4",
+          "workload": "W3-LARGE-MULTI"
+        }
+      ]
+    }
+  ],
+  "production_batches": [
+    {
+      "K": 1,
+      "M_by_session": [
+        1,
+        1
+      ],
+      "N": 100,
+      "accessible_decision_rows": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "actual_ranges": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "actual_workers_by_batch": {
+        "1": 600
+      },
+      "batches_per_step": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "candidate_agents": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "empty_agent_results": 0,
+      "extension_sha256": "0a58ceeaec984106c487a07af26a9b9265e3aeb300743ac3bd2b740b670fd489",
+      "largest_observed_worker_row_fraction": {
+        "max": 1.0,
+        "median": 1.0,
+        "min": 1.0,
+        "n": 600,
+        "p90": 1.0,
+        "p99": 1.0
+      },
+      "native_batch_width": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "per_batch_row_bounds": [
+        1,
+        1
+      ],
+      "range_length": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 600,
+        "p90": 1,
+        "p99": 1
+      },
+      "refills": 0,
+      "run_id": "1de5779a8fcd4749880e2e8b4d529283",
+      "sealed_run_id": "fdcbbf0daaac41998059b6b46e7be5cb",
+      "seed": 101,
+      "settings": {
+        "backend": "native-parallel",
+        "book_restore": "upstream",
+        "grain": 128,
+        "layout": "aos",
+        "schedule": "static",
+        "workers": 4
+      },
+      "source_member": "observed-r1/W0-CI2002-4-aos/batches.json",
+      "workload": "W0-CI2002"
+    },
+    {
+      "K": 1,
+      "M_by_session": [
+        32,
+        32
+      ],
+      "N": 4096,
+      "accessible_decision_rows": {
+        "max": 32,
+        "median": 32.0,
+        "min": 32,
+        "n": 120,
+        "p90": 32,
+        "p99": 32
+      },
+      "actual_ranges": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 120,
+        "p90": 1,
+        "p99": 1
+      },
+      "actual_workers_by_batch": {
+        "1": 120
+      },
+      "batches_per_step": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 120,
+        "p90": 1,
+        "p99": 1
+      },
+      "candidate_agents": {
+        "max": 32,
+        "median": 32.0,
+        "min": 32,
+        "n": 120,
+        "p90": 32,
+        "p99": 32
+      },
+      "empty_agent_results": 0,
+      "extension_sha256": "0a58ceeaec984106c487a07af26a9b9265e3aeb300743ac3bd2b740b670fd489",
+      "largest_observed_worker_row_fraction": {
+        "max": 1.0,
+        "median": 1.0,
+        "min": 1.0,
+        "n": 120,
+        "p90": 1.0,
+        "p99": 1.0
+      },
+      "native_batch_width": {
+        "max": 32,
+        "median": 32.0,
+        "min": 32,
+        "n": 120,
+        "p90": 32,
+        "p99": 32
+      },
+      "per_batch_row_bounds": [
+        32,
+        32
+      ],
+      "range_length": {
+        "max": 32,
+        "median": 32.0,
+        "min": 32,
+        "n": 120,
+        "p90": 32,
+        "p99": 32
+      },
+      "refills": 0,
+      "run_id": "b554d641a0154626a261a1e30c8b7d73",
+      "sealed_run_id": "780f67f8032644faa119cfa3214c9902",
+      "seed": 101,
+      "settings": {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 128,
+        "layout": "aos",
+        "schedule": "static",
+        "workers": 4
+      },
+      "source_member": "observed-r1/W1-H-4-aos/batches.json",
+      "workload": "W1-H"
+    },
+    {
+      "K": 1,
+      "M_by_session": [
+        256,
+        256
+      ],
+      "N": 4096,
+      "accessible_decision_rows": {
+        "max": 256,
+        "median": 256.0,
+        "min": 256,
+        "n": 32,
+        "p90": 256,
+        "p99": 256
+      },
+      "actual_ranges": {
+        "max": 2,
+        "median": 2.0,
+        "min": 2,
+        "n": 32,
+        "p90": 2,
+        "p99": 2
+      },
+      "actual_workers_by_batch": {
+        "1": 14,
+        "2": 18
+      },
+      "batches_per_step": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 32,
+        "p90": 1,
+        "p99": 1
+      },
+      "candidate_agents": {
+        "max": 256,
+        "median": 256.0,
+        "min": 256,
+        "n": 32,
+        "p90": 256,
+        "p99": 256
+      },
+      "empty_agent_results": 0,
+      "extension_sha256": "0a58ceeaec984106c487a07af26a9b9265e3aeb300743ac3bd2b740b670fd489",
+      "largest_observed_worker_row_fraction": {
+        "max": 1.0,
+        "median": 0.5,
+        "min": 0.5,
+        "n": 32,
+        "p90": 1.0,
+        "p99": 1.0
+      },
+      "native_batch_width": {
+        "max": 256,
+        "median": 256.0,
+        "min": 256,
+        "n": 32,
+        "p90": 256,
+        "p99": 256
+      },
+      "per_batch_row_bounds": [
+        256,
+        256
+      ],
+      "range_length": {
+        "max": 128,
+        "median": 128.0,
+        "min": 128,
+        "n": 64,
+        "p90": 128,
+        "p99": 128
+      },
+      "refills": 0,
+      "run_id": "7c6d2744a88e4b08909fc204e8aedc9d",
+      "sealed_run_id": "a172bdfc58f3408db6a20f8adbdd0625",
+      "seed": 101,
+      "settings": {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 128,
+        "layout": "aos",
+        "schedule": "static",
+        "workers": 4
+      },
+      "source_member": "observed-r1/W2-H-4-aos/batches.json",
+      "workload": "W2-H"
+    },
+    {
+      "K": 4,
+      "M_by_session": [
+        1024,
+        1024
+      ],
+      "N": 16384,
+      "accessible_decision_rows": {
+        "max": 4096,
+        "median": 4096.0,
+        "min": 4096,
+        "n": 10,
+        "p90": 4096,
+        "p99": 4096
+      },
+      "actual_ranges": {
+        "max": 32,
+        "median": 32.0,
+        "min": 32,
+        "n": 10,
+        "p90": 32,
+        "p99": 32
+      },
+      "actual_workers_by_batch": {
+        "2": 5,
+        "3": 5
+      },
+      "batches_per_step": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 10,
+        "p90": 1,
+        "p99": 1
+      },
+      "candidate_agents": {
+        "max": 1024,
+        "median": 1024.0,
+        "min": 1024,
+        "n": 10,
+        "p90": 1024,
+        "p99": 1024
+      },
+      "empty_agent_results": 0,
+      "extension_sha256": "0a58ceeaec984106c487a07af26a9b9265e3aeb300743ac3bd2b740b670fd489",
+      "largest_observed_worker_row_fraction": {
+        "max": 0.75,
+        "median": 0.625,
+        "min": 0.5,
+        "n": 10,
+        "p90": 0.75,
+        "p99": 0.75
+      },
+      "native_batch_width": {
+        "max": 4096,
+        "median": 4096.0,
+        "min": 4096,
+        "n": 10,
+        "p90": 4096,
+        "p99": 4096
+      },
+      "per_batch_row_bounds": [
+        4096,
+        4096
+      ],
+      "range_length": {
+        "max": 128,
+        "median": 128.0,
+        "min": 128,
+        "n": 320,
+        "p90": 128,
+        "p99": 128
+      },
+      "refills": 0,
+      "run_id": "6f39854e1e62440ebccb69cddfaa2d33",
+      "sealed_run_id": "43e87f1199734fe7bc60b680a37988bd",
+      "seed": 101,
+      "settings": {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 128,
+        "layout": "aos",
+        "schedule": "static",
+        "workers": 4
+      },
+      "source_member": "observed-r1/W3-LARGE-MULTI-4-aos/batches.json",
+      "workload": "W3-LARGE-MULTI"
+    },
+    {
+      "K": 1,
+      "M_by_session": [
+        3,
+        3
+      ],
+      "N": 8,
+      "accessible_decision_rows": {
+        "max": 3,
+        "median": 3.0,
+        "min": 2,
+        "n": 18,
+        "p90": 3,
+        "p99": 3
+      },
+      "actual_ranges": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "n": 18,
+        "p90": 1,
+        "p99": 1
+      },
+      "actual_workers_by_batch": {
+        "1": 18
+      },
+      "batches_per_step": {
+        "max": 3,
+        "median": 3.0,
+        "min": 3,
+        "n": 6,
+        "p90": 3,
+        "p99": 3
+      },
+      "candidate_agents": {
+        "max": 3,
+        "median": 3.0,
+        "min": 2,
+        "n": 18,
+        "p90": 3,
+        "p99": 3
+      },
+      "empty_agent_results": 48,
+      "extension_sha256": "0a58ceeaec984106c487a07af26a9b9265e3aeb300743ac3bd2b740b670fd489",
+      "largest_observed_worker_row_fraction": {
+        "max": 1.0,
+        "median": 1.0,
+        "min": 1.0,
+        "n": 18,
+        "p90": 1.0,
+        "p99": 1.0
+      },
+      "native_batch_width": {
+        "max": 3,
+        "median": 3.0,
+        "min": 2,
+        "n": 18,
+        "p90": 3,
+        "p99": 3
+      },
+      "per_batch_row_bounds": [
+        3,
+        3
+      ],
+      "range_length": {
+        "max": 3,
+        "median": 3.0,
+        "min": 2,
+        "n": 18,
+        "p90": 3,
+        "p99": 3
+      },
+      "refills": 12,
+      "run_id": "0972e0f09f5f483fb00e1aca6d7259fd",
+      "sealed_run_id": "9efbecc5cf28486aa7d9325a1db0cecb",
+      "seed": 101,
+      "settings": {
+        "backend": "native-parallel",
+        "book_restore": "incremental",
+        "grain": 128,
+        "layout": "soa",
+        "schedule": "static",
+        "workers": 4
+      },
+      "source_member": "observed-r1/C01c-all-empty-4-soa/batches.json",
+      "workload": "C01c-all-empty"
+    }
+  ],
+  "replay": {
+    "dispatch_witness": "One dispatch per cell on the separate T02 build; counts only, no timings",
+    "outcome": {
+      "counts": {
+        "PASS": 96
+      },
+      "elapsed_s": 63.8833672539331,
+      "observed_after": {
+        "ac_online": {
+          "/sys/class/power_supply/AC1/online": "1"
+        },
+        "guest_loadavg": "1.16 0.37 0.17 2/366 556664",
+        "guest_thermal": {},
+        "utc": "2026-11-26T11:28:31.928672+00:00"
+      }
+    },
+    "plan": {
+      "affinity": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "blocks": 3,
+      "capture": {
+        "byteorder": "little",
+        "capture_sha256": "0878c64707646dd00b6a88e25a42283c16c74196cfeb31d6a3d210e7741b7cc3",
+        "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+        "host_id": "7fd1261e162f2fef",
+        "input_sha256": "5afcf91367b9f75f3cda2a295de6613c3340275c80981b93e84885d4c482e80a",
+        "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+        "path": "replay-source/input.aos",
+        "production_final": {
+          "final_state_hash": "39f6b61c85876273bbc165c4add853db5d4690d463212c397ca2ed4e6d302f1f",
+          "rng_hash": "be48df92aae67487ba9319cd8b934b57ee54b65f8803a947c077f0f8d7c81b2b"
+        },
+        "profile_run_id": "ddafaa9c32f74c1eac616b3f4baeffa7",
+        "rows": 8192,
+        "scope": "real production FCN rows in original order",
+        "seed": 101,
+        "source_settings": {
+          "backend": "native-serial",
+          "book_restore": "incremental",
+          "grain": null,
+          "layout": "aos",
+          "schedule": null,
+          "workers": 1
+        },
+        "stride": 112,
+        "validation_run_id": "6d10cadf6ca44b87b8e40221f4e24bea"
+      },
+      "diagnostic_budget_s": 150,
+      "grain": 128,
+      "independent_reference_run_id": "c2a4d50f7ae44b2a9398491dbd9b7f00",
+      "layout": "aos",
+      "modes": [
+        [
+          "direct",
+          "native-serial",
+          1
+        ],
+        [
+          "tf1",
+          "native-parallel",
+          1
+        ],
+        [
+          "tf2",
+          "native-parallel",
+          2
+        ],
+        [
+          "tf4",
+          "native-parallel",
+          4
+        ]
+      ],
+      "observed_before": {
+        "ac_online": {
+          "/sys/class/power_supply/AC1/online": "1"
+        },
+        "guest_loadavg": "0.04 0.03 0.05 1/366 555056",
+        "guest_thermal": {},
+        "utc": "2026-11-26T11:27:28.043762+00:00"
+      },
+      "order_seed": 20261126,
+      "repeat_rule": "12000 calls through 256 rows; 3000 calls above 256 rows",
+      "row_sizes": [
+        1,
+        32,
+        128,
+        256,
+        1024,
+        2048,
+        4096,
+        8192
+      ],
+      "runtime": {
+        "architecture": "x86_64",
+        "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+        "dependency_lock_hash": "bbd205a14472df76adaf2ed81d5528a7c9946d7d1facfc637df85a61a1f46a70",
+        "dirty": false,
+        "environment_sha256": "66efa4e180a9c83500d1ebc9ced921938d0651913c811dd07e2e9084f197d163",
+        "git_sha": "58ec5764c21833142c50abacd9e2302404ffdb06",
+        "host_id": "7fd1261e162f2fef",
+        "native_sha256": "a9d294e6bac9098bb486d1ba3e728a0fa9f974eb858ad107fde858b86e16fc5e",
+        "schemas_sha256": {
+          "schemas/records.schema.json": "fda7b32435842eab4693ff8bfca22637521e5cb8399c364b830e42093129619c",
+          "schemas/run_config.schema.json": "bc4e0766e2975725a416067c6eeec807232a5dc5e5b5e6ba3e606b1254179edc",
+          "schemas/workload.schema.json": "005da6ba859f98783b81d56ae2f5447df7c4c662c538ffde7497d28f64142efa"
+        },
+        "upstream_shas": {
+          "PAMS": "6cd53810103780770c5b5d6ee0069ccab9f4b358",
+          "Taskflow": "816b4ad53b44196c88f409eb7b4a25a0e3bfdf42",
+          "pybind11": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4"
+        }
+      },
+      "schedule": "static",
+      "scope": "T05 development binding replay on real W2-H prefixes; no formal timing or E05 claim",
+      "v01_binding": {
+        "run_id": "6d10cadf6ca44b87b8e40221f4e24bea",
+        "sha256": "6e739a0669321897d46d1c035a10e4529428b18b03dcc778b3c16a6420f278b7"
+      }
+    },
+    "prefixes": [
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 1.4793376515929897,
+          "median": 1.3727184850722551,
+          "min": 1.3513673329725862,
+          "n": 3,
+          "p90": 1.4793376515929897,
+          "p99": 1.4793376515929897
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "2daaee147464ad011b938b1bd73395ab745c6f1ab80f7884537afbd6c0608e37",
+        "range_lengths": [
+          1
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1
+        ],
+        "rows": 1
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 2.1712946666715047,
+          "median": 2.0776073215529323,
+          "min": 1.9933049140187602,
+          "n": 3,
+          "p90": 2.1712946666715047,
+          "p99": 2.1712946666715047
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "36d27bdcce63656afc4bc10ffabfb0e49521a36702b5bae6746fe94a34624ed6",
+        "range_lengths": [
+          32
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          32
+        ],
+        "rows": 32
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 4.859086494737615,
+          "median": 4.840358335059136,
+          "min": 4.770691176721205,
+          "n": 3,
+          "p90": 4.859086494737615,
+          "p99": 4.859086494737615
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "97fb87b84baa89ddb335249fd1645cfbbbe42fac499cfbb4b16a51a15569b2ea",
+        "range_lengths": [
+          128
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          128
+        ],
+        "rows": 128
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 8.50142266911765,
+          "median": 8.496145329748591,
+          "min": 8.422030679260692,
+          "n": 3,
+          "p90": 8.50142266911765,
+          "p99": 8.50142266911765
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "a4a5f5ffbe638678c39790685aa43472706ee1c52aa8414b5350e3d79088d327",
+        "range_lengths": [
+          256
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          256
+        ],
+        "rows": 256
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 31.148221033314865,
+          "median": 30.648327665403485,
+          "min": 30.28512637441357,
+          "n": 3,
+          "p90": 31.148221033314865,
+          "p99": 31.148221033314865
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "89837af1378175b5caa92b47e532381909af8467791633b732d8abce6a836e07",
+        "range_lengths": [
+          1024
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1024
+        ],
+        "rows": 1024
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 61.44863134250045,
+          "median": 61.07741501182318,
+          "min": 60.53046300075948,
+          "n": 3,
+          "p90": 61.44863134250045,
+          "p99": 61.44863134250045
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "fcf63d4e65458017eeffaaafc8c9fe992fe38c4bf3a84d5683edd9994f621476",
+        "range_lengths": [
+          2048
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          2048
+        ],
+        "rows": 2048
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 126.75817962735891,
+          "median": 126.28681864589453,
+          "min": 124.26996696740389,
+          "n": 3,
+          "p90": 126.75817962735891,
+          "p99": 126.75817962735891
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "bbc56be24ca49fb13fabd4bfbd408a4ea5fab8ccd9942666b7f73acd7f5b39d1",
+        "range_lengths": [
+          4096
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          4096
+        ],
+        "rows": 4096
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "n": 3,
+          "p90": 0.0,
+          "p99": 0.0
+        },
+        "binding_efficiency": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "binding_us_per_call": {
+          "max": 261.0205226422598,
+          "median": 259.60475167570013,
+          "min": 257.4477539552997,
+          "n": 3,
+          "p90": 261.0205226422598,
+          "p99": 261.0205226422598
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "n": 3,
+          "p90": 1.0,
+          "p99": 1.0
+        },
+        "mode": "direct",
+        "output_sha256": "2c149e357b5a2374ebe1d252c645212bba999264e908a79cbc03c4da3e5a0c99",
+        "range_lengths": [
+          8192
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          8192
+        ],
+        "rows": 8192
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 15.561969582146656,
+          "median": 15.509184023054939,
+          "min": 15.088236095228543,
+          "n": 3,
+          "p90": 15.561969582146656,
+          "p99": 15.561969582146656
+        },
+        "binding_efficiency": {
+          "max": 0.08929114631988878,
+          "median": 0.08131302052072677,
+          "min": 0.07989951005851283,
+          "n": 3,
+          "p90": 0.08929114631988878,
+          "p99": 0.08929114631988878
+        },
+        "binding_us_per_call": {
+          "max": 16.913336915119242,
+          "median": 16.881902508127194,
+          "min": 16.567573746821534,
+          "n": 3,
+          "p90": 16.913336915119242,
+          "p99": 16.913336915119242
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.08929114631988878,
+          "median": 0.08131302052072677,
+          "min": 0.07989951005851283,
+          "n": 3,
+          "p90": 0.08929114631988878,
+          "p99": 0.08929114631988878
+        },
+        "mode": "tf1",
+        "output_sha256": "2daaee147464ad011b938b1bd73395ab745c6f1ab80f7884537afbd6c0608e37",
+        "range_lengths": [
+          1
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1
+        ],
+        "rows": 1
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 21.467318758368492,
+          "median": 21.266546100378036,
+          "min": 21.242563748576988,
+          "n": 3,
+          "p90": 21.467318758368492,
+          "p99": 21.467318758368492
+        },
+        "binding_efficiency": {
+          "max": 0.09185372372016913,
+          "median": 0.08899904331510677,
+          "min": 0.08578568518195791,
+          "n": 3,
+          "p90": 0.09185372372016913,
+          "p99": 0.09185372372016913
+        },
+        "binding_us_per_call": {
+          "max": 23.638613425039996,
+          "median": 23.34415342193097,
+          "min": 23.23586866259575,
+          "n": 3,
+          "p90": 23.638613425039996,
+          "p99": 23.638613425039996
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.09185372372016913,
+          "median": 0.08899904331510677,
+          "min": 0.08578568518195791,
+          "n": 3,
+          "p90": 0.09185372372016913,
+          "p99": 0.09185372372016913
+        },
+        "mode": "tf1",
+        "output_sha256": "36d27bdcce63656afc4bc10ffabfb0e49521a36702b5bae6746fe94a34624ed6",
+        "range_lengths": [
+          32
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          32
+        ],
+        "rows": 32
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 37.70561500762899,
+          "median": 37.67721267649904,
+          "min": 37.23083923493201,
+          "n": 3,
+          "p90": 37.70561500762899,
+          "p99": 37.70561500762899
+        },
+        "binding_efficiency": {
+          "max": 0.11415765465822539,
+          "median": 0.11384371731262143,
+          "min": 0.1135837463531469,
+          "n": 3,
+          "p90": 0.11415765465822539,
+          "p99": 0.11415765465822539
+        },
+        "binding_us_per_call": {
+          "max": 42.56470150236661,
+          "median": 42.517571011558175,
+          "min": 42.00153041165322,
+          "n": 3,
+          "p90": 42.56470150236661,
+          "p99": 42.56470150236661
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.11415765465822539,
+          "median": 0.11384371731262143,
+          "min": 0.1135837463531469,
+          "n": 3,
+          "p90": 0.11415765465822539,
+          "p99": 0.11415765465822539
+        },
+        "mode": "tf1",
+        "output_sha256": "97fb87b84baa89ddb335249fd1645cfbbbe42fac499cfbb4b16a51a15569b2ea",
+        "range_lengths": [
+          128
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          128
+        ],
+        "rows": 128
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 41.49788257200271,
+          "median": 41.36492032557726,
+          "min": 40.93024074488009,
+          "n": 3,
+          "p90": 41.49788257200271,
+          "p99": 41.49788257200271
+        },
+        "binding_efficiency": {
+          "max": 0.1718949331419922,
+          "median": 0.1704841814853374,
+          "min": 0.1687108436440951,
+          "n": 3,
+          "p90": 0.1718949331419922,
+          "p99": 0.1718949331419922
+        },
+        "binding_us_per_call": {
+          "max": 49.9199132512634,
+          "median": 49.86634299469491,
+          "min": 49.42638607462868,
+          "n": 3,
+          "p90": 49.9199132512634,
+          "p99": 49.9199132512634
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.1718949331419922,
+          "median": 0.1704841814853374,
+          "min": 0.1687108436440951,
+          "n": 3,
+          "p90": 0.1718949331419922,
+          "p99": 0.1718949331419922
+        },
+        "mode": "tf1",
+        "output_sha256": "a4a5f5ffbe638678c39790685aa43472706ee1c52aa8414b5350e3d79088d327",
+        "range_lengths": [
+          256
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          256
+        ],
+        "rows": 256
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 43.4371867061903,
+          "median": 42.56855230778456,
+          "min": 42.14574326761067,
+          "n": 3,
+          "p90": 43.4371867061903,
+          "p99": 43.4371867061903
+        },
+        "binding_efficiency": {
+          "max": 0.4225391267356075,
+          "median": 0.4181245720794467,
+          "min": 0.4136885317645147,
+          "n": 3,
+          "p90": 0.4225391267356075,
+          "p99": 0.4225391267356075
+        },
+        "binding_us_per_call": {
+          "max": 74.08551437159379,
+          "median": 73.71677334109943,
+          "min": 72.43086964202423,
+          "n": 3,
+          "p90": 74.08551437159379,
+          "p99": 74.08551437159379
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.4225391267356075,
+          "median": 0.4181245720794467,
+          "min": 0.4136885317645147,
+          "n": 3,
+          "p90": 0.4225391267356075,
+          "p99": 0.4225391267356075
+        },
+        "mode": "tf1",
+        "output_sha256": "89837af1378175b5caa92b47e532381909af8467791633b732d8abce6a836e07",
+        "range_lengths": [
+          1024
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1024
+        ],
+        "rows": 1024
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 44.910380616784096,
+          "median": 43.52668998762965,
+          "min": 43.16334263421595,
+          "n": 3,
+          "p90": 44.910380616784096,
+          "p99": 44.910380616784096
+        },
+        "binding_efficiency": {
+          "max": 0.5859264302281667,
+          "median": 0.5853626410845137,
+          "min": 0.5740703594929151,
+          "n": 3,
+          "p90": 0.5859264302281667,
+          "p99": 0.5859264302281667
+        },
+        "binding_us_per_call": {
+          "max": 105.44084361754358,
+          "median": 104.9753213301301,
+          "min": 104.24075764603913,
+          "n": 3,
+          "p90": 105.44084361754358,
+          "p99": 105.44084361754358
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.5859264302281667,
+          "median": 0.5853626410845137,
+          "min": 0.5740703594929151,
+          "n": 3,
+          "p90": 0.5859264302281667,
+          "p99": 0.5859264302281667
+        },
+        "mode": "tf1",
+        "output_sha256": "fcf63d4e65458017eeffaaafc8c9fe992fe38c4bf3a84d5683edd9994f621476",
+        "range_lengths": [
+          2048
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          2048
+        ],
+        "rows": 2048
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 45.476909338807076,
+          "median": 43.36939100176096,
+          "min": 43.05567840735117,
+          "n": 3,
+          "p90": 45.476909338807076,
+          "p99": 45.476909338807076
+        },
+        "binding_efficiency": {
+          "max": 0.7464536822515948,
+          "median": 0.7412935033446131,
+          "min": 0.7352356642907893,
+          "n": 3,
+          "p90": 0.7464536822515948,
+          "p99": 0.7464536822515948
+        },
+        "binding_us_per_call": {
+          "max": 171.7637279847016,
+          "median": 169.81385803471008,
+          "min": 167.63935796916485,
+          "n": 3,
+          "p90": 171.7637279847016,
+          "p99": 171.7637279847016
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.7464536822515948,
+          "median": 0.7412935033446131,
+          "min": 0.7352356642907893,
+          "n": 3,
+          "p90": 0.7464536822515948,
+          "p99": 0.7464536822515948
+        },
+        "mode": "tf1",
+        "output_sha256": "bbc56be24ca49fb13fabd4bfbd408a4ea5fab8ccd9942666b7f73acd7f5b39d1",
+        "range_lengths": [
+          4096
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          4096
+        ],
+        "rows": 4096
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 50.60673124777776,
+          "median": 45.97643002246821,
+          "min": 45.89795507490635,
+          "n": 3,
+          "p90": 50.60673124777776,
+          "p99": 50.60673124777776
+        },
+        "binding_efficiency": {
+          "max": 0.8502381550585645,
+          "median": 0.8486942333166941,
+          "min": 0.8368637718666871,
+          "n": 3,
+          "p90": 0.8502381550585645,
+          "p99": 0.8502381550585645
+        },
+        "binding_us_per_call": {
+          "max": 310.2114829234779,
+          "median": 306.996952664728,
+          "min": 303.345709030206,
+          "n": 3,
+          "p90": 310.2114829234779,
+          "p99": 310.2114829234779
+        },
+        "configured_workers": 1,
+        "direct_over_variant": {
+          "max": 0.8502381550585645,
+          "median": 0.8486942333166941,
+          "min": 0.8368637718666871,
+          "n": 3,
+          "p90": 0.8502381550585645,
+          "p99": 0.8502381550585645
+        },
+        "mode": "tf1",
+        "output_sha256": "2c149e357b5a2374ebe1d252c645212bba999264e908a79cbc03c4da3e5a0c99",
+        "range_lengths": [
+          8192
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          8192
+        ],
+        "rows": 8192
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 25.292285329972703,
+          "median": 17.377568680482607,
+          "min": 17.362761097804956,
+          "n": 3,
+          "p90": 25.292285329972703,
+          "p99": 25.292285329972703
+        },
+        "binding_efficiency": {
+          "max": 0.03925618030316974,
+          "median": 0.03660526564078448,
+          "min": 0.025360023831342067,
+          "n": 3,
+          "p90": 0.03925618030316974,
+          "p99": 0.03925618030316974
+        },
+        "binding_us_per_call": {
+          "max": 26.64365266294529,
+          "median": 18.842098749397945,
+          "min": 18.750287165554862,
+          "n": 3,
+          "p90": 26.64365266294529,
+          "p99": 26.64365266294529
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.07851236060633948,
+          "median": 0.07321053128156896,
+          "min": 0.050720047662684134,
+          "n": 3,
+          "p90": 0.07851236060633948,
+          "p99": 0.07851236060633948
+        },
+        "mode": "tf2",
+        "output_sha256": "2daaee147464ad011b938b1bd73395ab745c6f1ab80f7884537afbd6c0608e37",
+        "range_lengths": [
+          1
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1
+        ],
+        "rows": 1
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 30.65186826279387,
+          "median": 28.85109975856418,
+          "min": 27.372803674855582,
+          "n": 3,
+          "p90": 30.65186826279387,
+          "p99": 30.65186826279387
+        },
+        "binding_efficiency": {
+          "max": 0.03674667342309006,
+          "median": 0.03231226109205107,
+          "min": 0.0317390866254296,
+          "n": 3,
+          "p90": 0.03674667342309006,
+          "p99": 0.03674667342309006
+        },
+        "binding_us_per_call": {
+          "max": 32.7294755843468,
+          "median": 30.844404672582943,
+          "min": 29.544098341527086,
+          "n": 3,
+          "p90": 32.7294755843468,
+          "p99": 32.7294755843468
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.07349334684618011,
+          "median": 0.06462452218410214,
+          "min": 0.0634781732508592,
+          "n": 3,
+          "p90": 0.07349334684618011,
+          "p99": 0.07349334684618011
+        },
+        "mode": "tf2",
+        "output_sha256": "36d27bdcce63656afc4bc10ffabfb0e49521a36702b5bae6746fe94a34624ed6",
+        "range_lengths": [
+          32
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          32
+        ],
+        "rows": 32
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 58.5090319897669,
+          "median": 58.348089922219515,
+          "min": 57.304694647124656,
+          "n": 3,
+          "p90": 58.5090319897669,
+          "p99": 58.5090319897669
+        },
+        "binding_efficiency": {
+          "max": 0.03843777534598133,
+          "median": 0.03842659303205309,
+          "min": 0.038203669445278345,
+          "n": 3,
+          "p90": 0.03843777534598133,
+          "p99": 0.03843777534598133
+        },
+        "binding_us_per_call": {
+          "max": 63.34939032482604,
+          "median": 63.20717641695713,
+          "min": 62.07538582384586,
+          "n": 3,
+          "p90": 63.34939032482604,
+          "p99": 63.34939032482604
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.07687555069196265,
+          "median": 0.07685318606410618,
+          "min": 0.07640733889055669,
+          "n": 3,
+          "p90": 0.07687555069196265,
+          "p99": 0.07687555069196265
+        },
+        "mode": "tf2",
+        "output_sha256": "97fb87b84baa89ddb335249fd1645cfbbbe42fac499cfbb4b16a51a15569b2ea",
+        "range_lengths": [
+          128
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          128
+        ],
+        "rows": 128
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 42.95910768754159,
+          "median": 41.545866581145674,
+          "min": 41.211728899118796,
+          "n": 3,
+          "p90": 42.95910768754159,
+          "p99": 42.95910768754159
+        },
+        "binding_efficiency": {
+          "max": 0.08493389748449683,
+          "median": 0.08484175640534528,
+          "min": 0.08255858082063736,
+          "n": 3,
+          "p90": 0.08493389748449683,
+          "p99": 0.08493389748449683
+        },
+        "binding_us_per_call": {
+          "max": 51.45525301729018,
+          "median": 50.047289250263326,
+          "min": 49.63375957837949,
+          "n": 3,
+          "p90": 51.45525301729018,
+          "p99": 51.45525301729018
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.16986779496899365,
+          "median": 0.16968351281069055,
+          "min": 0.1651171616412747,
+          "n": 3,
+          "p90": 0.16986779496899365,
+          "p99": 0.16986779496899365
+        },
+        "mode": "tf2",
+        "output_sha256": "a4a5f5ffbe638678c39790685aa43472706ee1c52aa8414b5350e3d79088d327",
+        "range_lengths": [
+          128,
+          128
+        ],
+        "ranges": 2,
+        "row_count_per_worker": [
+          256
+        ],
+        "rows": 256
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 32.517368284364544,
+          "median": 31.473714315022033,
+          "min": 29.142506653442975,
+          "n": 3,
+          "p90": 32.517368284364544,
+          "p99": 32.517368284364544
+        },
+        "binding_efficiency": {
+          "max": 0.2583168443010534,
+          "median": 0.24518859191923034,
+          "min": 0.24260262793412662,
+          "n": 3,
+          "p90": 0.2583168443010534,
+          "p99": 0.2583168443010534
+        },
+        "binding_us_per_call": {
+          "max": 63.16569594976803,
+          "median": 61.7588406894356,
+          "min": 60.29072768675784,
+          "n": 3,
+          "p90": 63.16569594976803,
+          "p99": 63.16569594976803
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.5166336886021068,
+          "median": 0.4903771838384607,
+          "min": 0.48520525586825325,
+          "n": 3,
+          "p90": 0.5166336886021068,
+          "p99": 0.5166336886021068
+        },
+        "mode": "tf2",
+        "output_sha256": "89837af1378175b5caa92b47e532381909af8467791633b732d8abce6a836e07",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 8,
+        "row_count_per_worker": [
+          1024
+        ],
+        "rows": 1024
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 18.069345271214843,
+          "median": 17.733382992446423,
+          "min": 16.912142358099416,
+          "n": 3,
+          "p90": 18.069345271214843,
+          "p99": 18.069345271214843
+        },
+        "binding_efficiency": {
+          "max": 0.3915743150209124,
+          "median": 0.38802139512748024,
+          "min": 0.38505477514213177,
+          "n": 3,
+          "p90": 0.3915743150209124,
+          "p99": 0.3915743150209124
+        },
+        "binding_us_per_call": {
+          "max": 79.18201433494687,
+          "median": 78.59980827197433,
+          "min": 77.9895573699226,
+          "n": 3,
+          "p90": 79.18201433494687,
+          "p99": 79.18201433494687
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 0.7831486300418248,
+          "median": 0.7760427902549605,
+          "min": 0.7701095502842635,
+          "n": 3,
+          "p90": 0.7831486300418248,
+          "p99": 0.7831486300418248
+        },
+        "mode": "tf2",
+        "output_sha256": "fcf63d4e65458017eeffaaafc8c9fe992fe38c4bf3a84d5683edd9994f621476",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 16,
+        "row_count_per_worker": [
+          2048
+        ],
+        "rows": 2048
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": -10.332669597119093,
+          "median": -11.534737966333822,
+          "min": -11.934693669900298,
+          "n": 3,
+          "p90": -10.332669597119093,
+          "p99": -10.332669597119093
+        },
+        "binding_efficiency": {
+          "max": 0.5521839610431627,
+          "median": 0.5500537815918907,
+          "min": 0.545343666365628,
+          "n": 3,
+          "p90": 0.5521839610431627,
+          "p99": 0.5521839610431627
+        },
+        "binding_us_per_call": {
+          "max": 115.22344166102509,
+          "median": 114.35212497599423,
+          "min": 113.9372973702848,
+          "n": 3,
+          "p90": 115.22344166102509,
+          "p99": 115.22344166102509
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 1.1043679220863254,
+          "median": 1.1001075631837813,
+          "min": 1.090687332731256,
+          "n": 3,
+          "p90": 1.1043679220863254,
+          "p99": 1.1043679220863254
+        },
+        "mode": "tf2",
+        "output_sha256": "bbc56be24ca49fb13fabd4bfbd408a4ea5fab8ccd9942666b7f73acd7f5b39d1",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 32,
+        "row_count_per_worker": [
+          2048,
+          2048
+        ],
+        "rows": 4096
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": -56.539515343805135,
+          "median": -70.3518749990811,
+          "min": -72.23756766567627,
+          "n": 3,
+          "p90": -56.539515343805135,
+          "p99": -56.539515343805135
+        },
+        "binding_efficiency": {
+          "max": 0.6913243906862157,
+          "median": 0.6880102207263042,
+          "min": 0.6392151516554895,
+          "n": 3,
+          "p90": 0.6913243906862157,
+          "p99": 0.6913243906862157
+        },
+        "binding_us_per_call": {
+          "max": 203.065236331895,
+          "median": 188.7829549765835,
+          "min": 187.09587895621857,
+          "n": 3,
+          "p90": 203.065236331895,
+          "p99": 203.065236331895
+        },
+        "configured_workers": 2,
+        "direct_over_variant": {
+          "max": 1.3826487813724313,
+          "median": 1.3760204414526085,
+          "min": 1.278430303310979,
+          "n": 3,
+          "p90": 1.3826487813724313,
+          "p99": 1.3826487813724313
+        },
+        "mode": "tf2",
+        "output_sha256": "2c149e357b5a2374ebe1d252c645212bba999264e908a79cbc03c4da3e5a0c99",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 64,
+        "row_count_per_worker": [
+          4096,
+          4096
+        ],
+        "rows": 8192
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 89.20436692036067,
+          "median": 88.97082418358575,
+          "min": 88.91634177416563,
+          "n": 3,
+          "p90": 89.20436692036067,
+          "p99": 89.20436692036067
+        },
+        "binding_efficiency": {
+          "max": 0.004088819803022264,
+          "median": 0.0038008992482890694,
+          "min": 0.0037307613485637542,
+          "n": 3,
+          "p90": 0.004088819803022264,
+          "p99": 0.004088819803022264
+        },
+        "binding_us_per_call": {
+          "max": 90.55573425333326,
+          "median": 90.45016183517873,
+          "min": 90.28906025923789,
+          "n": 3,
+          "p90": 90.55573425333326,
+          "p99": 90.55573425333326
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.016355279212089055,
+          "median": 0.015203596993156277,
+          "min": 0.014923045394255017,
+          "n": 3,
+          "p90": 0.016355279212089055,
+          "p99": 0.016355279212089055
+        },
+        "mode": "tf4",
+        "output_sha256": "2daaee147464ad011b938b1bd73395ab745c6f1ab80f7884537afbd6c0608e37",
+        "range_lengths": [
+          1
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          1
+        ],
+        "rows": 1
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 88.58532450782755,
+          "median": 87.7855743553179,
+          "min": 87.63960032956675,
+          "n": 3,
+          "p90": 88.58532450782755,
+          "p99": 88.58532450782755
+        },
+        "binding_efficiency": {
+          "max": 0.006044073680488459,
+          "median": 0.005779918101007075,
+          "min": 0.00550158720313448,
+          "n": 3,
+          "p90": 0.006044073680488459,
+          "p99": 0.006044073680488459
+        },
+        "binding_us_per_call": {
+          "max": 90.57862942184632,
+          "median": 89.86318167687084,
+          "min": 89.81089499623825,
+          "n": 3,
+          "p90": 90.57862942184632,
+          "p99": 90.57862942184632
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.024176294721953834,
+          "median": 0.0231196724040283,
+          "min": 0.02200634881253792,
+          "n": 3,
+          "p90": 0.024176294721953834,
+          "p99": 0.024176294721953834
+        },
+        "mode": "tf4",
+        "output_sha256": "36d27bdcce63656afc4bc10ffabfb0e49521a36702b5bae6746fe94a34624ed6",
+        "range_lengths": [
+          32
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          32
+        ],
+        "rows": 32
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 86.36453549843282,
+          "median": 86.10395656432956,
+          "min": 86.08217500538255,
+          "n": 3,
+          "p90": 86.36453549843282,
+          "p99": 86.36453549843282
+        },
+        "binding_efficiency": {
+          "max": 0.013316415169037567,
+          "median": 0.013309017460323501,
+          "min": 0.013124373230902063,
+          "n": 3,
+          "p90": 0.013316415169037567,
+          "p99": 0.013316415169037567
+        },
+        "binding_us_per_call": {
+          "max": 91.22362199317043,
+          "median": 90.92253334044169,
+          "min": 90.87464774105077,
+          "n": 3,
+          "p90": 91.22362199317043,
+          "p99": 91.22362199317043
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.05326566067615027,
+          "median": 0.053236069841294004,
+          "min": 0.05249749292360825,
+          "n": 3,
+          "p90": 0.05326566067615027,
+          "p99": 0.05326566067615027
+        },
+        "mode": "tf4",
+        "output_sha256": "97fb87b84baa89ddb335249fd1645cfbbbe42fac499cfbb4b16a51a15569b2ea",
+        "range_lengths": [
+          128
+        ],
+        "ranges": 1,
+        "row_count_per_worker": [
+          128
+        ],
+        "rows": 128
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 65.56898314738646,
+          "median": 64.91559192848703,
+          "min": 64.88493758176143,
+          "n": 3,
+          "p90": 65.56898314738646,
+          "p99": 65.56898314738646
+        },
+        "binding_efficiency": {
+          "max": 0.028961181069801775,
+          "median": 0.02893319803842219,
+          "min": 0.028456261928619428,
+          "n": 3,
+          "p90": 0.028961181069801775,
+          "p99": 0.028961181069801775
+        },
+        "binding_us_per_call": {
+          "max": 73.99101382664715,
+          "median": 73.41173725823562,
+          "min": 73.38636025087908,
+          "n": 3,
+          "p90": 73.99101382664715,
+          "p99": 73.99101382664715
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.1158447242792071,
+          "median": 0.11573279215368876,
+          "min": 0.11382504771447771,
+          "n": 3,
+          "p90": 0.1158447242792071,
+          "p99": 0.1158447242792071
+        },
+        "mode": "tf4",
+        "output_sha256": "a4a5f5ffbe638678c39790685aa43472706ee1c52aa8414b5350e3d79088d327",
+        "range_lengths": [
+          128,
+          128
+        ],
+        "ranges": 2,
+        "row_count_per_worker": [
+          128,
+          128
+        ],
+        "rows": 256
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 37.80220464492838,
+          "median": 37.40516599888602,
+          "min": 37.26960928179324,
+          "n": 3,
+          "p90": 37.80220464492838,
+          "p99": 37.80220464492838
+        },
+        "binding_efficiency": {
+          "max": 0.11359110899467274,
+          "median": 0.11207625224283972,
+          "min": 0.11193604575072623,
+          "n": 3,
+          "p90": 0.11359110899467274,
+          "p99": 0.11359110899467274
+        },
+        "binding_us_per_call": {
+          "max": 68.55338703220089,
+          "median": 68.45053231033187,
+          "min": 67.5547356562068,
+          "n": 3,
+          "p90": 68.55338703220089,
+          "p99": 68.55338703220089
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.454364435978691,
+          "median": 0.4483050089713589,
+          "min": 0.4477441830029049,
+          "n": 3,
+          "p90": 0.454364435978691,
+          "p99": 0.454364435978691
+        },
+        "mode": "tf4",
+        "output_sha256": "89837af1378175b5caa92b47e532381909af8467791633b732d8abce6a836e07",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 8,
+        "row_count_per_worker": [
+          512,
+          256,
+          256
+        ],
+        "rows": 1024
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": 20.267642724017307,
+          "median": 17.565014616896704,
+          "min": 16.57330205974479,
+          "n": 3,
+          "p90": 20.267642724017307,
+          "p99": 20.267642724017307
+        },
+        "binding_efficiency": {
+          "max": 0.19689537500211493,
+          "median": 0.19416177532973233,
+          "min": 0.18728923920241666,
+          "n": 3,
+          "p90": 0.19689537500211493,
+          "p99": 0.19689537500211493
+        },
+        "binding_us_per_call": {
+          "max": 80.79810572477679,
+          "median": 78.64242962871988,
+          "min": 78.02193340224524,
+          "n": 3,
+          "p90": 80.79810572477679,
+          "p99": 80.79810572477679
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 0.7875815000084597,
+          "median": 0.7766471013189293,
+          "min": 0.7491569568096667,
+          "n": 3,
+          "p90": 0.7875815000084597,
+          "p99": 0.7875815000084597
+        },
+        "mode": "tf4",
+        "output_sha256": "fcf63d4e65458017eeffaaafc8c9fe992fe38c4bf3a84d5683edd9994f621476",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 16,
+        "row_count_per_worker": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "rows": 2048
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": -17.973063358416155,
+          "median": -18.422572951142982,
+          "min": -20.192839981367186,
+          "n": 3,
+          "p90": -17.973063358416155,
+          "p99": -17.973063358416155
+        },
+        "binding_efficiency": {
+          "max": 0.297582436429351,
+          "median": 0.2925127377700546,
+          "min": 0.2922709005347181,
+          "n": 3,
+          "p90": 0.297582436429351,
+          "p99": 0.297582436429351
+        },
+        "binding_us_per_call": {
+          "max": 108.33560667621593,
+          "median": 106.29690360898773,
+          "min": 106.09397866452734,
+          "n": 3,
+          "p90": 108.33560667621593,
+          "p99": 108.33560667621593
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 1.190329745717404,
+          "median": 1.1700509510802184,
+          "min": 1.1690836021388724,
+          "n": 3,
+          "p90": 1.190329745717404,
+          "p99": 1.190329745717404
+        },
+        "mode": "tf4",
+        "output_sha256": "bbc56be24ca49fb13fabd4bfbd408a4ea5fab8ccd9942666b7f73acd7f5b39d1",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 32,
+        "row_count_per_worker": [
+          1024,
+          1024,
+          1024,
+          1024
+        ],
+        "rows": 4096
+      },
+      {
+        "binding_difference_vs_direct_us": {
+          "max": -95.48102924600246,
+          "median": -96.49585365938643,
+          "min": -104.160928633064,
+          "n": 3,
+          "p90": -95.48102924600246,
+          "p99": -95.48102924600246
+        },
+        "binding_efficiency": {
+          "max": 0.41600981484587685,
+          "median": 0.39790096498864086,
+          "min": 0.397377539147894,
+          "n": 3,
+          "p90": 0.41600981484587685,
+          "p99": 0.41600981484587685
+        },
+        "binding_us_per_call": {
+          "max": 163.1088980163137,
+          "median": 161.9667247092972,
+          "min": 156.85959400919577,
+          "n": 3,
+          "p90": 163.1088980163137,
+          "p99": 163.1088980163137
+        },
+        "configured_workers": 4,
+        "direct_over_variant": {
+          "max": 1.6640392593835074,
+          "median": 1.5916038599545634,
+          "min": 1.589510156591576,
+          "n": 3,
+          "p90": 1.6640392593835074,
+          "p99": 1.6640392593835074
+        },
+        "mode": "tf4",
+        "output_sha256": "2c149e357b5a2374ebe1d252c645212bba999264e908a79cbc03c4da3e5a0c99",
+        "range_lengths": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ],
+        "ranges": 64,
+        "row_count_per_worker": [
+          4096,
+          2048,
+          2048
+        ],
+        "rows": 8192
+      }
+    ]
+  },
+  "scope": "development; no formal timing estimate",
+  "w2_profile": {
+    "direct": {
+      "instrumented_phase_ns": {
+        "batch_wall_ns": 695128979,
+        "binding_outside_dispatch_ns": 1537343,
+        "dispatch_outside_compute_ns": 0,
+        "native_binding_ns": 1941530,
+        "native_dispatch_ns": 404187,
+        "packing_ns": 580715106,
+        "range_compute_sum_ns": 404187,
+        "range_compute_wall_union_ns": 404187,
+        "rebuild_and_release_ns": 51353259,
+        "rng_and_prepare_ns": 60163677
+      },
+      "instrumented_run_id": "3f9339dcfcac4ca49bfd852a792b296c",
+      "stock_phase_ns": {
+        "account_updates": 12275922,
+        "draw_pack_s": 618094827,
+        "gauss": 26597944,
+        "handle_orders_s": 3042263012,
+        "matching_collect": 850161380,
+        "native_collect": 986015701,
+        "native_compute_s": 1841558,
+        "optional_restore_s": 716573280,
+        "rebuild_orders_s": 49660291,
+        "sample": 293801797
+      },
+      "stock_profile_setup_s": 0.09854691103100777,
+      "stock_profile_simulation_s": 4.03594139800407,
+      "stock_run_id": "90f8f45d960041619dccfa2f9666b774"
+    },
+    "tf4": {
+      "instrumented_phase_ns": {
+        "batch_wall_ns": 724321478,
+        "binding_outside_dispatch_ns": 2234962,
+        "dispatch_outside_compute_ns": 7672498,
+        "native_binding_ns": 10503518,
+        "native_dispatch_ns": 8268556,
+        "packing_ns": 583485333,
+        "range_compute_sum_ns": 620947,
+        "range_compute_wall_union_ns": 596058,
+        "rebuild_and_release_ns": 67798269,
+        "rng_and_prepare_ns": 61674029
+      },
+      "instrumented_run_id": "7c6d2744a88e4b08909fc204e8aedc9d",
+      "stock_phase_ns": {
+        "account_updates": 12650153,
+        "draw_pack_s": 628921963,
+        "gauss": 27785500,
+        "handle_orders_s": 3074923120,
+        "matching_collect": 858709658,
+        "native_collect": 1016318431,
+        "native_compute_s": 9949545,
+        "optional_restore_s": 726642869,
+        "rebuild_orders_s": 57598483,
+        "sample": 292832750
+      },
+      "stock_profile_setup_s": 0.10290090506896377,
+      "stock_profile_simulation_s": 4.099909948883578,
+      "stock_run_id": "02e19f6f26de4012b34ff839314ad64f"
+    }
+  }
+}
