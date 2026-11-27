@@ -1,6 +1,6 @@
 # CoreOrder 公共工程契约 R4-v1
 
-本实现对应材料的 `coreorder-r4-v1`。源码 HEAD、三个 gitlink 和 [UPSTREAM.lock.json](../UPSTREAM.lock.json) 一起标识基线。B/D、C、E 的确认见 [G0 候选检查表](roles/A/G0_CANDIDATE.md)。
+本实现对应材料的 `coreorder-r4-v1`。源码 HEAD、三个 gitlink 和 [UPSTREAM.lock.json](../UPSTREAM.lock.json) 一起标识基线。当前验证范围见[最终审计](gates/FINAL.md)。
 
 ## FCN 数值 ABI
 
@@ -71,4 +71,4 @@ R3 研究验收涵盖无费普通市场、精确 FCNAgent 和已测上游 Market
 
 ## 独立验证入口
 
-`python -m coreorder validate --suite smoke|g0 --output <new-directory>` 会调用 E 所有的 `validation/e1.py`。协议和返回条件见 [E 交接](roles/A/P03_HANDOFF_E.md)。A 的共享观察器和 fixtures 可作接口参考，E 仍需独立采集原版轨迹并比较。缺方法时 CLI 记录 BLOCKED 并退出 3。
+`python -m coreorder validate --suite smoke|g0 --output <new-directory>` 会调用 E 所有的 `validation/e1.py`。协议和返回条件见 [独立验证规范](roles/E/VALIDATION_SPEC.md)。A 的共享观察器和 fixtures 可作接口参考，E 仍需独立采集原版轨迹并比较。缺方法时 CLI 记录 BLOCKED 并退出 3。

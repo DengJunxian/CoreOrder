@@ -25,7 +25,7 @@ P02 的 `py-seq` 直接调用同一个上游 `SequentialRunner` 的 `_setup`、`
 
 C++17 头在编译时检查 R4-v1 每个字段的 offset、尺寸和对齐，NumPy dtype 在同机检查。共享观察器在首个原版 market end-log 记录全局逐步账户、簿与 RNG 摘要，最终记录完整 RNG 和历史。真实 FCN 样本直接观察原函数及本次调用中 Python gauss 的返回，保持原随机状态推进。事件 fixture 由固定 PAMS 的 `FundamentalPriceShock` 驱动。
 
-独立验证仍归 E 所有。该候选已暴露 fail-closed 调用入口，与 B/C/D/E 的回执分别保留。 [公共契约](../../CONTRACT.md) · [G0 候选](G0_CANDIDATE.md)
+独立验证仍归 E 所有。该候选已暴露 fail-closed 调用入口，与 B/C/D/E 的回执分别保留。 [公共契约](../../CONTRACT.md)
 
 ## P04 清洁环境复验
 

@@ -10,6 +10,6 @@
 | D · swel | AoS/SoA、live packing、布局缓冲与事件刷新。 | 原实现 `a56e485`、`3ef2298`，原分支 `decccbf`，接收 `8b63c8c` | W2-H direct 与 4-worker 的两布局各有 V01 回执。 |
 | E · cheng123456916 | 原 PAMS 独立参考、有序观察、首差诊断、故障注入与独立记录协议。原始验证与实验设计由 E 交付，生产工具后续由 A 集成。 | 原实现 `533ab87`，原分支 `b05d555`，接收 `5eb8690` | W3 seed 101 独立参考 `07e25c0ca8ff4ed495db1e8f2d9639b5`。V01 共 20 条独立参考及 125 条生产候选。 |
 
-[历史来源核对](../P15/CONTRIBUTIONS.md) · [R3 回归恢复来源](../R3/README.md) · [原始回执索引](../R4B/v01-index.json) · 完整论文补充材料
+[R3 回归恢复来源](../R3/README.md) · [原始回执索引](../R4B/v01-index.json) · 完整论文补充材料
 
 E 的完整历史 `CoreOrder_E1-E3.bundle` 由成员记录为另行交付。R8 搜索仓库对象、现有项目与下载目录、目标主机相关目录及 GitHub Release，未取得该 bundle。公开 E 分支及其清单仍可定位所缺历史。R4B 新的封存正确性和 R8 原始封存复验覆盖当前候选，历史 E1–E3 全量原始目录仍缺失。 [E 声明及预期 SHA-256](../../../roles/E/EVIDENCE_ARCHIVE.json)

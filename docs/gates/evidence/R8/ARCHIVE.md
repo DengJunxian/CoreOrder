@@ -1,10 +1,10 @@
 # R8 受限科研归档目录
 
-本地交付包目录为本 R8 worktree 相邻的 `CoreOrder-R8-Archive`。其 `ARCHIVE-INDEX.md` 登记实际位置、各包大小、SHA-256、R8 文档提交和华硕原始数据归档。程序、环境和研究证据各有固定身份，公开准备见 [发布审查](RELEASE.md)。
+本地交付包目录为本 R8 worktree 相邻的 `CoreOrder-R8-Archive`。其 `ARCHIVE-INDEX.md` 登记实际位置、各包大小、SHA-256、R8 文档提交和华硕原始数据归档。程序、环境和研究证据各有固定身份，公开范围见[最终审计](../../FINAL.md)。
 
 | 归档成员 | 内容及用途 |
 | --- | --- |
-| `CoreOrder-R8-review.bundle` | 生产源码、上游锁与许可证、冻结候选、分析脚本、验收索引、论文源及 PDF、现有 A PPTX/PDF、Demo、答辩与本轮审计。保留公开 refs 和各成员原始提交。依赖通过三个固定上游 gitlink 还原。 |
+| `CoreOrder-R8-review.bundle` | 生产源码、上游锁与许可证、冻结候选、分析脚本、验收索引、复现和审计。保留公开 refs 和各成员原始提交。依赖通过三个固定上游 gitlink 还原。 |
 | `P11-pilot-raw.tar.gz` | 原 Apple M5 P11 运行、命令和诊断，保留失败或超时。 |
 | `arm64-reproduction-raw.tar.gz` | R8 新建环境后的 G0、G1、G2 和 Demo 原始回执、轨迹及环境。 |
 | `x86-metadata/` | 重新计算的双套索引和目标包校验清单。原始 x86 数据归档在授权华硕主机，由同一来源压缩、逐文件回比并以 SSH 读取。 |

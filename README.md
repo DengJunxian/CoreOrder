@@ -11,7 +11,7 @@ inactive.
 Matched W2-H simulation speedups were 16.704× for heap-only, 13.266× for
 four-worker AoS and 13.143× for four-worker SoA against stock PAMS.
 
-[Experiment results](docs/results/README.md) · [Course delivery](docs/course/F6/README.md) · [Final audit](docs/gates/FINAL.md)
+[Experiment results](docs/results/README.md) · [Reproduction](docs/REPRODUCE.md) · [Final audit](docs/gates/FINAL.md)
 
 ## Build and test the pinned system
 
@@ -159,8 +159,7 @@ the comparison, and the status receipt. On divergence, it also saves a replay bu
 The [final project audit](docs/gates/FINAL.md) maps the published source to the
 measured runtime, correctness checks and experimental data.
 
-Use the [six-configuration demo](docs/course/F6/DEMO.md) with an
-already built checkout. The CLI accepts `validate --suite smoke`, `g0`,
+Use the [six-configuration semantic check](docs/REPRODUCE.md) with an already built checkout. The CLI accepts `validate --suite smoke`, `g0`,
 `g1`, and `g2` for local correctness checks. The G1 reproduction script
 retrieves the pinned original E tree needed by its historical heap checks. Unsupported native inputs
 fail explicitly. Choose `py-seq` before a run to use the upstream Python path.

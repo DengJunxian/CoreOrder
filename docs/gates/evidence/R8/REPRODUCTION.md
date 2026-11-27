@@ -21,4 +21,4 @@ Demo 包中的 run ID 为 `4cf069544b224be1a141c46ce6ff051b`、`b554e9e201ee46d0
 bash docs/gates/evidence/R8/reproduce.sh "$PWD" /path/to/new/coreorder-reproduction
 ```
 
-[现场 Demo 和离线程序](../P15/DEMO.md) · [目标归档命令](reseal-x86.sh) · [归档范围与位置](ARCHIVE.md)
+[当前科研复现入口](../../../REPRODUCE.md) · [目标归档命令](reseal-x86.sh) · [归档范围与位置](ARCHIVE.md)
